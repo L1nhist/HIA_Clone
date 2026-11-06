@@ -1,0 +1,8 @@
+2026-10-07 14:26:02.447 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-07 14:26:02.539 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (02:26:02).
+2026-10-07 14:26:02.541 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-07 14:26:02.543 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (02:26:02).
+2026-10-07 14:26:02.547 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-07 14:26:02.549 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (02:26:02).
+2026-10-07 14:27:56.663 +07:00 [Information] [BACKGROUND_SERVICE] CheckError: CheckError.F1 Time: 45505,5465 linhist@yahoo.com (31313). FileName: 26.024565_04_10_2026_639267126366922716_Encode.xml
+2026-10-07 14:30:21.421 +07:00 [Information] [BACKGROUND_SERVICE] CheckError: CheckError.F1 Time: 18670,9887 linhist@yahoo.com (31313). FileName: TN.2511.0049243_29_11_2025_639000297005172495_Encode.xml

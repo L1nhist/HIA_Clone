@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="HIA.Core/HIA.Core.csproj" />
+  <Project Path="HIA.Data/HIA.Data.csproj" />
+  <Project Path="HIA.Repositories/HIA.Repositories.csproj" />
+  <Project Path="HIA.Services/HIA.Services.csproj" />
+  <Project Path="HIA.Web/HIA.Web.csproj" />
+</Solution>

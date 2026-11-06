@@ -1,0 +1,100 @@
+﻿.tags-input-wrapper{
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    padding: 5px 5px 0;
+}
+.tags-input-wrapper a {
+    cursor: pointer;
+    display: inline-block;
+}
+.tags-input-wrapper .tag {
+    background-color: #f3f3f3;
+    border: solid 1px #eee;
+    border-radius: 3px;
+    display: inline-block;
+    color: #666;
+    font-size:80%;
+    padding: 0 0 0 6px;
+    margin: 3px;
+    line-height: 1.5em;
+}
+.tags-input-wrapper .tag.dub {
+    border-color: #dc3545;
+    color: #dc3545 !important;
+}
+.tags-input-wrapper .tag-closer {
+    background: #ddd;
+    border-radius: 50%;
+    line-height: 1.1em;
+    margin: .2em 3px .2em 6px;
+    width: 1.1em;
+    height: 1.1em;
+    text-align: center;
+}
+.tags-input-wrapper .tag-closer:hover {
+    background-color: #666;
+    color: #fff !important;
+}
+.tags-input-wrapper .tag-input {
+    appearance: none;
+    border: none;
+    border-top: solid 1px #ddd;
+    clear: both;
+    display: block;
+    line-height: 26px;
+    padding: 5px;
+    width: 100%;
+}
+.tags-input-wrapper .tag-error {
+    color: #dc3545;
+    clear: both;
+    display: block;
+    font-size: 80%;
+    font-style: italic;
+    padding: 5px;
+    height: auto;
+}
+.tags-input-wrapper .tag-reset {
+    border-left: solid 1px #ddd;
+    color: #666 !important;
+    display: block;
+    float: right;
+    font-size: 80%;
+    line-height: 30px;
+    margin: -33px 0 0;
+    padding: 0 5px;
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+}
+.tags-input-wrapper .tag-reset:hover {
+    color: #dc3545 !important;
+}
+.tags-input-wrapper .tag-reset span {
+    display: inline-block;
+    font-size: 120%;
+    margin-right: 3px;
+    font-weight: lighter;
+}
+
+.rule-switch {
+    display: block;
+    margin: auto;
+}
+.rule-switch label span:before {
+    color: #dc3545;
+    content: 'CHỐNG CHỈ ĐỊNH';
+    display: inline-block;
+    font-weight: bold;
+}
+.rule-switch input:checked ~ label span:before {
+    color: #007bff;
+    content: 'CHỈ ĐỊNH';
+}
+.rule-switch label:after {
+    background-color: #fff !important;
+}
+.rule-switch input:not(:checked) ~ label:before {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}

@@ -1,0 +1,31 @@
+﻿@inject IMessageService _message
+@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+
+<div>
+
+    <Button Type="ButtonType.Default" @onclick="OnClick">Show Message</Button>
+</div>
+<div>
+    <Button Type="ButtonType.Primary" @onclick="()=>currentCount--">-</Button>
+    <Button Type="ButtonType.Primary" @onclick="()=>currentCount++">+</Button>
+   
+</div>
+<div>
+    <Input Placeholder="Basic usage" @bind-Value="currentCount" />
+</div>
+
+
+
+
+@code {
+    private int currentCount = 0;
+    private void OnClick()
+    {
+        Console.WriteLine("onclick");
+        _message.Info("Số hiện tại của bạn là:" + currentCount.ToString());
+    }
+   
+}

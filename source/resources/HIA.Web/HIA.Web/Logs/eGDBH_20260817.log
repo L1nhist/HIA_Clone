@@ -1,0 +1,35 @@
+2026-08-17 16:28:42.987 +07:00 [Error] SendEmailAsync: 534: 5.7.9 Please log in with your web browser and then try again. For more
+5.7.9 information, go to
+5.7.9  https://support.google.com/mail/?p=WebLoginRequired 98e67ed59e1d1-395320229f4sm4029103a91.15 - gsmtp
+MailKit.Security.AuthenticationException: 534: 5.7.9 Please log in with your web browser and then try again. For more
+5.7.9 information, go to
+5.7.9  https://support.google.com/mail/?p=WebLoginRequired 98e67ed59e1d1-395320229f4sm4029103a91.15 - gsmtp
+ ---> MailKit.Net.Smtp.SmtpCommandException: 5.7.9 Please log in with your web browser and then try again. For more
+5.7.9 information, go to
+5.7.9  https://support.google.com/mail/?p=WebLoginRequired 98e67ed59e1d1-395320229f4sm4029103a91.15 - gsmtp
+   --- End of inner exception stack trace ---
+   at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, Boolean doAsync, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.Authenticate(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+   at MailKit.MailService.Authenticate(Encoding encoding, String userName, String password, CancellationToken cancellationToken)
+   at MailKit.MailService.Authenticate(String userName, String password, CancellationToken cancellationToken)
+   at HIA.Services.Email.EmailService.SendEmailAsync(MimeMessage message) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Email\EmailService.cs:line 72
+2026-08-17 16:42:41.080 +07:00 [Error] ReportHandleService - BaoCao_ChamCong: An item with the same key has already been added. Key: 12/07/2026 12:00:00 SA
+System.ArgumentException: An item with the same key has already been added. Key: 12/07/2026 12:00:00 SA
+   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)
+   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   at HIA.Services.Report.ReportHandleService.BaoCao_ChamCong(String filterString) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Report\ReportHandleService.cs:line 4097
+2026-08-17 16:58:15.261 +07:00 [Error] SendEmailAsync: 534: 5.7.9 Please log in with your web browser and then try again. For more
+5.7.9 information, go to
+5.7.9  https://support.google.com/mail/?p=WebLoginRequired 98e67ed59e1d1-39531e8418bsm4415858a91.7 - gsmtp
+MailKit.Security.AuthenticationException: 534: 5.7.9 Please log in with your web browser and then try again. For more
+5.7.9 information, go to
+5.7.9  https://support.google.com/mail/?p=WebLoginRequired 98e67ed59e1d1-39531e8418bsm4415858a91.7 - gsmtp
+ ---> MailKit.Net.Smtp.SmtpCommandException: 5.7.9 Please log in with your web browser and then try again. For more
+5.7.9 information, go to
+5.7.9  https://support.google.com/mail/?p=WebLoginRequired 98e67ed59e1d1-39531e8418bsm4415858a91.7 - gsmtp
+   --- End of inner exception stack trace ---
+   at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, Boolean doAsync, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.Authenticate(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+   at MailKit.MailService.Authenticate(Encoding encoding, String userName, String password, CancellationToken cancellationToken)
+   at MailKit.MailService.Authenticate(String userName, String password, CancellationToken cancellationToken)
+   at HIA.Services.Email.EmailService.SendEmailAsync(MimeMessage message) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Email\EmailService.cs:line 72

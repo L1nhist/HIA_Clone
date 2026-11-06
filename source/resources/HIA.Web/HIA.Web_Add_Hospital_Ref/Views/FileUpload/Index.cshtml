@@ -1,0 +1,213 @@
+﻿@model HIA.Core.Models.FileUploads.FileUpload
+@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Files;
+
+@{
+    ViewData["Title"] = "Tải Lên Hồ Sơ";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/lib/elite/libs/dropify/dropify.min.css")">
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">Tải Lên Hồ Sơ</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">Tải Lên Hồ Sơ</li>
+                </ol>
+                @*<a href="@Url.Action(nameof(FilesController.Create), Uti.GetControllerName(nameof(FilesController)))" class="btn btn-info d-none d-lg-block m-l-15">
+                        <i class="fa fa-plus-circle"></i> @DisplayFieldResource.CREATE_NEW
+                    </a>*@
+            </div>
+        </div>
+    </div>
+    <div class="card upload-file-wrapper">
+        <div class="card-body">
+            <div class="row handle-file display-flex">
+                <div class="col-10 drop-wrapper">
+                    <input type="file" onchange="checkFilesCount(this)" multiple asp-for="@Model.FormFiles" class="dropify" data-allowed-file-extensions='["xml"]' />
+                    @*<input type="file" multiple asp-for="@Model.FormFiles" class="dropify" data-allowed-file-extensions='["xml"]' />*@
+
+                </div>
+                <div class="col-2 button-wrappe flex-middler">
+                    <div style="height: 38px;">Tổng số tệp được chọn: <b id="numberFiles">0</b></div>
+                    <button type="button" class="btn btn-block btn-info" onclick="uploadFiles('@nameof(Model.FormFiles)')"><i class="icon-cloud-upload"></i> @DisplayFieldResource.UPLOAD_TEXT</button>
+                </div>
+            </div>
+            <div id="uplProgress"style="padding: 10px;display:none;">
+                <h6>Đang tải lên:</h6>
+                <div class="progress" style="margin: 10px 0;height:25px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width:0%;background-image: linear-gradient(-45deg,rgba(0,0,0,.1) 25%,transparent 25%,transparent 50%,rgba(0,0,0,.1) 50%,rgba(0,0,0,.1) 75%,transparent 75%,transparent);-webkit-animation: stripes 3s linear infinite;animation: stripes 2s linear infinite;background-size: 30px 30px;">0%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card result-wrapper custom-display none">
+        <div class="card-body">
+            <div class="upload-result">
+                <div class="result-item summary-wrapper">
+                    <div class="status"></div>
+                    <div class="time"></div>
+                </div>
+                <div class="result-item error-wrapper">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_spinnerPartial" />
+
+@section Scripts {
+    <script src="@Url.Content("~/lib/elite/libs/dropify/dropify.min.js")"></script>
+    <script type="text/javascript" charset="utf-8">
+        function checkFilesCount(id) {
+            if (id.files) {
+                if (id.files.length > 1000) {
+                    alert('Cảnh báo:Tổng số hồ sơ tải lên vượt quá 1000 !!');
+                    $(id).value = "";
+                }
+                //var fileArr = [];
+                var totalSize = 0;
+                //var fileSize = id.files[0].size;
+
+                for (let step = 0; step < id.files.length; step++) {
+                    totalSize = totalSize + id.files[step].size
+                }
+
+                if (totalSize > 100000000) {
+                    alert('Tệp hồ sơ quá lớn !!');
+                    $(id).value = "";
+                }
+            }
+        }
+        $('.dropify').dropify({
+            messages: @Html.Raw(DropifySettingDefault.MESSAGES_XML),
+            error: @Html.Raw(DropifySettingDefault.ERROR),
+        });
+        $("input[type='file']").on("change", function () {
+            var numFiles = $(this).get(0).files.length
+            $("#numberFiles").text(numFiles);
+        });
+
+        var CanUploading = true;
+
+        function uploadFiles(inputId) {
+            $(".summary-wrapper .status").html('');
+            $(".summary-wrapper .time").html('');
+            $(".success-wrapper").html('');
+            $(".error-wrapper").html('');
+
+            var input = document.getElementById(inputId);
+            var files = input.files;
+            if (!files.length) {
+                $.toast({
+                    heading: 'Lỗi',
+                    text: 'Vui lòng chọn tệp (.xml) để tải lên',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'warning',
+                    hideAfter: 2000,
+                    stack: 6
+                });
+                return;
+            }
+
+            @* Linhist removed 24/04/22
+                $("#spinnerWrapper").modal("show");*@
+            @* Linhist added 24/04/22 them upload percentage *@
+            var uploader = $("input[type='file']"), prgss = $('#uplProgress'), pgrbar = $('.progress-bar', prgss);
+            uploader.attr('disabled', 'disabled');
+            prgss.css('display', '');
+            pgrbar.css('width', 0);
+            pgrbar.html('0%');
+            @* End Linhist added 24/04/22 them upload percentage *@
+
+            var formData = new FormData();
+            for (var i = 0; i != files.length; i++) {
+                formData.append("formFiles", files[i]);
+            }
+            @*Linhist removed 24/04/22
+                $.ajax(
+                {
+                    url: "@Url.Action(nameof(FileUploadController.Index), Uti.GetControllerName(nameof(FileUploadController)))",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: "POST",
+                    success: function (res) {
+                        $('.dropify-clear').click();
+                        $("#numberFiles").text(0);
+                        $("#spinnerWrapper").modal("hide");
+
+                        if (!res || !res.data) return;
+
+                        $(".result-wrapper").removeClass("none");
+                        $(".result-wrapper").addClass("block");
+
+                        $(".summary-wrapper .status").html(res.data.uploadStatus);
+                        $(".summary-wrapper .time").html(res.data.uploadTime);
+                        $(".success-wrapper").html(res.data.successMessage);
+                        $(".error-wrapper").html(res.data.failedMessage);
+                    }
+                }
+            );*@
+            @* Linhist added 24/04/22 them upload percentage *@
+            
+            if (CanUploading) {
+            $.ajax(
+                {
+                    url: "@Url.Action(nameof(FileUploadController.Index), Uti.GetControllerName(nameof(FileUploadController)))",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: "POST",
+                    xhr: function()
+                    {
+                        myXhr = $.ajaxSettings.xhr();
+                        if(myXhr.upload)
+                        {
+                            myXhr.upload.addEventListener('progress', function (evt) {
+                                if (evt.lengthComputable) {
+                                    var pct = evt.loaded / evt.total;
+                                    pct = parseInt(pct * 1000) / 10;
+                                    pct = pct.toString() + '%';
+                                    pgrbar.css('width', pct);
+                                    pgrbar.html(pct);
+                                }
+                            }, false);
+                        }
+                        CanUploading = false;
+                        return myXhr;
+                    },
+                    success: function (res) {
+                        CanUploading = true;
+                        $('.dropify-clear').click();
+                        $("#numberFiles").text(0);
+                        uploader.removeAttr('disabled');
+                        prgss.css('display', 'none');
+
+                        if (!res || !res.data) return;
+
+                        $(".result-wrapper").removeClass("none");
+                        $(".result-wrapper").addClass("block");
+
+                        $(".summary-wrapper .status").html(res.data.uploadStatus);
+                        $(".summary-wrapper .time").html(res.data.uploadTime);
+                        $(".success-wrapper").html(res.data.successMessage);
+                        $(".error-wrapper").html(res.data.failedMessage);
+                    }
+                }
+                );
+            }
+
+            @* End Linhist added 24/04/22 them upload percentage *@
+        }
+    </script>
+}

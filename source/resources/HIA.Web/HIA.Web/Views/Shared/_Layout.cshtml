@@ -1,0 +1,575 @@
+﻿@using System.Security.Claims;
+@using HIA.Core.Languages.TitlePage;
+@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Token;
+
+@{
+    var isMaster = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.MASTER);
+    var isAdmin = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.ADMIN);
+    var isUser = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.USER);
+    var isBoyte = User.FindFirst(ClaimKey.MA_CSKCB)?.Value == "BOYTE";
+    var hospitalName = User.FindFirst(ClaimKey.MA_CSKCB)?.Value + "   " + User.FindFirst(ClaimKey.HOSPITAL_NAME)?.Value;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@TitlePageResource.WEBSITE_NAME">
+    <meta name="author" content="@TitlePageResource.WEBSITE_NAME">
+
+    <link rel="icon" type="image/x-icon" href="@Url.Content("~/fav/favicon.ico")">
+    <title>@ViewData["Title"] - @TitlePageResource.WEBSITE_NAME</title>
+
+    <link href="@Url.Content("~/lib/elite/css/style.min.css")" rel="stylesheet">
+
+    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" />
+    <link href="@Url.Content("~/lib/elite/libs/toast/jquery.toast.css")" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/css/site.css?new=92357")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/common.min.css")" />
+</head>
+<body class="skin-blue-dark fixed-layout">
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">@DisplayFieldResource.LABEL_LOADING</p>
+        </div>
+    </div>
+
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="@Url.Content("~/imgs/mtg-logo-trans.png")" height="33" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="@Url.Content("~/imgs/mtg-logo-trans.png")" height="33" alt="homepage" class="light-logo" />
+                        </b><!--span>  eGDBH</span-->
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- ============================================================== -->
+                        <!-- User Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown u-pro">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="@Url.Content("~/lib/elite/images/users/1.png")" alt="user" class=""> <span class="hidden-md-down">@User.FindFirst(ClaimKey.FULL_NAME)?.Value &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <!-- text-->
+                                <div class="dropdown-item">
+                                    @DisplayFieldResource.EMAIL: <b>@User.FindFirst(ClaimTypes.NameIdentifier)?.Value</b>
+                                </div>
+                                <!-- text-->
+                                <div class="dropdown-item">
+                                    @DisplayFieldResource.HOSPITAL: <b>@User.FindFirst(ClaimKey.HOSPITAL_NAME)?.Value</b>
+                                </div>
+                                <!-- text-->
+                                <div class="dropdown-item">
+                                    @DisplayFieldResource.ROLE: <b>@User.FindFirst(ClaimKey.ROLE_NAME)?.Value</b>
+                                </div>
+                                <!-- text-->
+                                <div class="dropdown-divider"></div>
+                                <!-- text-->
+                                <a href="javascript:void(0)" class="dropdown-item" data-toggle="modal" data-target="#changePassModal"><i class="ti-settings"></i> @DisplayFieldResource.CHANGE_PASS</a>
+                                <!-- text-->
+                                <div class="dropdown-divider"></div>
+                                <!-- text-->
+                                <a class="dropdown-item" href="@Url.Action(nameof(AuthController.SignOutAction), Uti.GetControllerName(nameof(AuthController)))"><i class="fa fa-power-off"></i> @DisplayFieldResource.SIGN_OUT</a>
+                                <!-- text-->
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End User Profile -->
+                        <!-- ============================================================== -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <!-- Haimaster bỏ Giám định 4210-->
+                        @*  <li>
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-h-square"></i><span class="hide-menu">Giám định hồ sơ</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="@Url.Action(nameof(FilesController.Index), Uti.GetControllerName(nameof(FilesController)))"><i class="fa fa-caret-right"></i>Quản lý hồ sơ</a></li>
+                                <li><a href="@Url.Action(nameof(FilesController.Counting), Uti.GetControllerName(nameof(FilesController)))"><i class="fa fa-caret-right"></i>Thống kê lỗi</a></li>
+                                <li><a href="@Url.Action(nameof(FileUploadController.Index), Uti.GetControllerName(nameof(FileUploadController)))"><i class="fa fa-caret-right"></i>Cập nhật hồ sơ</a></li>
+                                <li><a href="@Url.Action(nameof(FileDownloadController.Index), Uti.GetControllerName(nameof(FileDownloadController)))"><i class="fa fa-caret-right"></i>Tải báo cáo</a></li>
+                            </ul>
+                        </li> *@
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-h-square"></i><span class="hide-menu">Giám định 130</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="@Url.Action(nameof(Files130Controller.Index), Uti.GetControllerName(nameof(Files130Controller)))"><i class="fa fa-caret-right"></i>Quản lý hồ sơ 130</a></li>
+                                <li><a href="@Url.Action(nameof(FileUpload130Controller.Index), Uti.GetControllerName(nameof(FileUpload130Controller)))"><i class="fa fa-caret-right"></i>Cập nhật hồ sơ 130</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-layers"></i><span class="hide-menu">Danh Mục</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="@Url.Action(nameof(DMThuocController.Index), Uti.GetControllerName(nameof(DMThuocController)))"><i class="fa fa-caret-right"></i>Thuốc</a></li>
+                                <li><a href="@Url.Action(nameof(DMVTYTController.Index), Uti.GetControllerName(nameof(DMVTYTController)))"><i class="fa fa-caret-right"></i>Vật tư y tế</a></li>
+                                <li><a href="@Url.Action(nameof(DMDichVuController.Index), Uti.GetControllerName(nameof(DMDichVuController)))"><i class="fa fa-caret-right"></i>Dịch vụ</a></li>
+                                <li><a href="@Url.Action(nameof(DMDVThuCongController.Index), Uti.GetControllerName(nameof(DMDVThuCongController)))"><i class="fa fa-caret-right"></i>Dịch vụ Thủ công</a></li>
+                                <li><a href="@Url.Action(nameof(DMThietBiController.Index), Uti.GetControllerName(nameof(DMThietBiController)))"><i class="fa fa-caret-right"></i>Trang thiết bị</a></li>
+                                <li><a href="@Url.Action(nameof(DMBacSiController.Index), Uti.GetControllerName(nameof(DMBacSiController)))"><i class="fa fa-caret-right"></i>Danh Mục Nhân Viên</a></li>
+
+                                @if (!!isAdmin.Value)
+                                {
+                                    <li><a href="@Url.Action(nameof(DMError130Controller.Index), Uti.GetControllerName(nameof(DMError130Controller)))"><i class="fa fa-caret-right"></i>Danh Mục Lỗi</a></li>
+                                    @*<li><a href="@Url.Action(nameof(DMKhoaBVController.Index), Uti.GetControllerName(nameof(DMKhoaBVController)))"><i class="fa fa-caret-right"></i>Danh Mục Khoa</a></li>*@
+                                    <li><a href="@Url.Action(nameof(DMKhoaBVController.List), Uti.GetControllerName(nameof(DMKhoaBVController)))"><i class="fa fa-caret-right"></i>Danh Mục Khoa</a></li>
+
+                                }
+
+                            </ul>
+                        </li>
+
+                        @if (isMaster == true || isAdmin == true)
+                        {
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-cogs"></i><span class="hide-menu">Quy trình kỹ thuật</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a class="waves-effect waves-dark" href="@Url.Action(nameof(HDSDThuocController.Index), Uti.GetControllerName(nameof(HDSDThuocController)))"><i class="fa fa-caret-right"></i>HDSD Thuốc</a></li>
+                                    <li><a class="waves-effect waves-dark" href="@Url.Action(nameof(HDSDDichVuController.Index), Uti.GetControllerName(nameof(HDSDDichVuController)))"><i class="fa fa-caret-right"></i>HDSD Dịch vụ</a></li>
+                                    <li><a class="waves-effect waves-dark" href="@Url.Action(nameof(DichVuMaMayController.Index), Uti.GetControllerName(nameof(DichVuMaMayController)))"><i class="fa fa-caret-right"></i>Dịch vụ - Mã máy</a></li>
+                                    @if (isMaster == true)
+                                    {
+                                        <li><a class="waves-effect waves-dark" href="@Url.Action(nameof(ChiDinhDongThoiController.Index), Uti.GetControllerName(nameof(ChiDinhDongThoiController)))"><i class="fa fa-caret-right"></i>Chỉ định đồng thời</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        @if (!!isMaster.Value)
+                        {
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-users-cog"></i><span class="hide-menu">Quản trị hệ thống</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a class="waves-effect waves-dark" href="@Url.Action(nameof(UserController.Index), Uti.GetControllerName(nameof(UserController)))"><i class="fa fa-caret-right"></i>Quản lý người dùng</a></li>
+                                    <li>
+                                        <a class="waves-effect waves-dark" href="@Url.Action(nameof(HospitalController.Index), Uti.GetControllerName(nameof(HospitalController)))"><i class="fa fa-caret-right"></i>Quản lý bệnh viện</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        }
+                        else if (isBoyte)
+                        {
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-users-cog"></i><span class="hide-menu">Quản trị hệ thống</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a class="waves-effect waves-dark" href="@Url.Action(nameof(UserController.Index), Uti.GetControllerName(nameof(UserController)))"><i class="fa fa-caret-right"></i>Quản lý người dùng</a></li>
+                                    <li>
+                                        <a class="waves-effect waves-dark" href="@Url.Action(nameof(HospitalController.Index), Uti.GetControllerName(nameof(HospitalController)))"><i class="fa fa-caret-right"></i>Quản lý bệnh viện</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        }
+                        else if (!!isAdmin.Value)
+                        {
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-users-cog"></i><span class="hide-menu">Quản trị hệ thống</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li>
+                                        <a class="waves-effect waves-dark" href="@Url.Action(nameof(UserController.Index), Uti.GetControllerName(nameof(UserController)))"><i class="fa fa-caret-right"></i>Quản lý người dùng</a>
+                                    </li>
+                                    <li>
+                                        <a class="waves-effect waves-dark" href="@Url.Action(nameof(HospitalController.EditSpec), Uti.GetControllerName(nameof(HospitalController)))"><i class="fa fa-caret-right"></i>Quản lý bệnh viện</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        }
+                        @* <li>
+                            <a class="waves-effect waves-dark" href="@Url.Action(nameof(ReportController.Index), Uti.GetControllerName(nameof(ReportController)))" aria-expanded="false"><i class="fa fa-chart-bar"></i><span class="hide-menu">Báo cáo thống kê</span></a>
+                            <a class="waves-effect waves-dark" href="@Url.Action(nameof(AIMessageController.Index), Uti.GetControllerName(nameof(AIMessageController)))" aria-expanded="false"><i class="fa fa-chart-bar"></i><span class="hide-menu">Demo</span></a>
+                        </li> *@
+                        @if (isMaster == true || isAdmin == true)
+                        {
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-chart-pie"></i>Thống kê</a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li>
+                                        <a class="waves-effect waves-dark" href="@Url.Action(nameof(ReportController.Index), Uti.GetControllerName(nameof(ReportController)))"><i class="fa fa-chart-area"></i>Thống kê tổng hợp</a>
+                                    </li>
+                                    <li>
+                                        <a class="waves-effect waves-dark" href="@Url.Action(nameof(ReportController.Totalize), Uti.GetControllerName(nameof(ReportController)))"><i class="fa fa-chart-bar"></i>Thống kê hồ sơ Bệnh viện</a>
+                                    </li>
+                                    <li>
+                                        <a class="waves-effect waves-dark" href="@Url.Action(nameof(ReportController.Summary), Uti.GetControllerName(nameof(ReportController)))"><i class="fa fa-chart-line"></i>Thống kê hoạt động</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        @{
+                            var xxd = DateTime.Now.Ticks.ToString("X");
+                        }
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-users-cog"></i><span class="hide-menu">Tiện ích</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                @* <li>
+                                    <a class="waves-effect waves-dark" href="@(Url.Action(nameof(FilesController.DownloadClientInstall), Uti.GetControllerName(nameof(FilesController))) + "?" + xxd)"><i class="fa fa-server"></i>MDinsight Adaptor 4210</a>
+                                </li>
+                                <li>
+                                    <a class="waves-effect waves-dark" href="@(Url.Action(nameof(Files130Controller.DownloadClientInstall), Uti.GetControllerName(nameof(Files130Controller))) + "?" + xxd)"><i class="fa fa-server"></i>MDinsight Adaptor 4750</a>
+                                </li>
+                                <li>
+                                    <a class="waves-effect waves-dark" href="@(Url.Action(nameof(Files130Controller.DownloadProInstall), Uti.GetControllerName(nameof(Files130Controller))) + "?" + xxd)"><i class="fa fa-server"></i>MTG Adaptor Client Pro</a>
+                                </li> *@
+                                <li>
+                                    <a class="waves-effect waves-dark" href="@(Url.Action(nameof(Files130Controller.DownloadAdaptor), Uti.GetControllerName(nameof(Files130Controller))) + "?" + xxd)"><i class="fa fa-server"></i>MDI Client v2.0 &nbsp; <span class="badge badge-danger">new</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            @*  <a class="waves-effect waves-dark" href="@Url.Action(nameof(AIMessageController.Index), Uti.GetControllerName(nameof(AIMessageController)))" aria-expanded="false"><i class="fa fa-chart-bar"></i><span class="hide-menu">AI Chat (Demo)</span></a> *@
+                            @* <a href="javascript:void(0)" class="waves-effect waves-dark" data-bs-toggle="modal" data-bs-target="#"><i class="fa fa-chart-bar"></i><span class="hide-menu">AI Chat (Demo)</span></a>
+                            @Html.Partial("Index", "AIMessage") *@
+                        </li>
+
+
+                    </ul>
+
+
+
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+
+        <div class="page-wrapper">
+            @RenderBody()
+        </div>
+
+        <footer class="footer">
+            Mã CSKCB:  <b>@hospitalName</b>
+        </footer>
+    </div>
+    <div class="modal fade" id="changePassModal" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <partial name="_ChangePasswordPartial" />
+    </div>
+
+    <script src="@Url.Content("~/lib/jquery/dist/jquery.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/popper/popper.min.js")"></script>
+    <script src="@Url.Content("~/lib/bootstrap/dist/js/bootstrap.bundle.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/popper/popper.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/js/perfect-scrollbar.jquery.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/js/waves.js")"></script>
+    <script src="@Url.Content("~/lib/elite/js/sidebarmenu.js")"></script>
+    <script src="@Url.Content("~/lib/elite/js/custom.js?new=123")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/toast-master/js/jquery.toast.js")"></script>
+
+    <script src="@Url.Content("~/js/site.js")" asp-append-version="true"></script>
+    <!-- CanvasJS: try CDN first, fallback to local copy if CDN is blocked/unreachable -->
+   
+    @*<script>
+        funtion.openAIModal() {
+            $('#AiMessageModalBody').html('<p>Loading....</p>');
+            $('#AiMessageModal').modal('show');
+
+        }
+    </script>*@
+    @await RenderSectionAsync("Scripts", required: false)
+    @*<div class="moda fade" id="AiMessageModal" tabindex="-1" aria-labelledby="AiMessageModalLabel" aria-hidden="true"">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="AiMessageModalLabel">AI Chat (Demo)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="AiMessagModalBody">
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+    @if (isUser == true || isAdmin == true || isMaster == true)
+    {
+        @* LINHIST ADDED ZONE FOR CHAT*@
+        <link href="@Url.Content("~/css/chat.css?new=345346")" rel="stylesheet" />
+        <div id="chatzone">
+            <link href="chat.css" rel="stylesheet" />
+            <div class="chatbot">
+                <button class="chat-bub">
+                    MTG AI
+                </button>
+            </div>
+            <div class="chatbox hide">
+                <div class="chat-cap">
+                    <button class="icon closer"><i class="fa fa-times"></i></button>
+                    <button class="icon expder"><i class="fa fa-angle-left"></i></button>
+                    <button class="icon normer"><i class="fa fa-angle-right"></i></button>
+
+                    <div class="chat-icon"></div>
+                    <b>MTG AI Chat</b>
+                    <small>Trò chuyện với AI hỗ trợ tra cứu lỗi</small>
+                </div>
+                <iframe class="chat-frame" frameborder="0" scrolling="auto" src="/aimessage"></iframe>
+            </div>
+        </div>
+        @* LINHIST ADDED ZONE FOR CHAT*@
+
+        @* LINHIST ADDED ZONE FOR CHAT*@
+        
+            <script>
+                var chatter = (function(){
+                    var elm = $('#chatzone');
+                    elm.bot = $('.chatbot', elm);
+                    elm.box = $('.chatbox', elm);
+                    elm.clr = $('.closer', elm.box);
+                    elm.exr = $('.expder', elm.box);
+                    elm.nmr = $('.normer', elm.box);
+                    elm.frm = $('iframe', elm);
+
+                    // Keep sandbox restrictive by default
+                    try { elm.frm.attr('sandbox', 'allow-scripts'); } catch(e){ /* ignore */ }
+
+                    elm.show = function(){
+                        elm.bot.removeClass('hide');
+                        elm.box.removeClass('hide').removeClass('expd');
+                        elm.exr.show();
+                        elm.nmr.hide();
+                    };
+
+                    @*// Whitelisted iframe origins
+                    var ALLOWED_IFRAME_ORIGINS = {
+                        'https://egdbh.vn': true,
+                        'https://mdinsight.vn': true
+                    };
+
+                    function getIframeEl(){
+                        return (elm.frm && elm.frm[0]) || null;
+                    }
+
+                    function getIframeOrigin(iframeEl){
+                        try{
+                            if (!iframeEl) return null;
+                            var src = iframeEl.src || iframeEl.getAttribute('src') || '';
+                            if (!src) return null;
+                            return new URL(src, location.href).origin;
+                        }catch(e){ return null; }
+                    }
+
+                    elm.send = function(msg){
+                        if (!msg) return;
+                        var text = (typeof msg === 'string') ? msg.trim() : String(msg || '');
+                        if (!text) return;
+                        if (text.length > 2000) text = text.slice(0, 2000);
+
+                        var iframeEl = getIframeEl();
+                        var origin = getIframeOrigin(iframeEl);
+                        if (!origin || !ALLOWED_IFRAME_ORIGINS[origin]){
+                            console.warn('Blocked posting to iframe - origin not allowed:', origin);
+                            return;
+                        }
+
+                        var payload = {
+                            type: 'ai-request',
+                            text: text,
+                            timestamp: Date.now()
+                        };
+
+                        try{
+                            if (iframeEl && iframeEl.contentWindow){
+                                iframeEl.contentWindow.postMessage(payload, origin);
+                            } else if (elm.frm && elm.frm.length){
+                                // queue send after load
+                                elm.frm.one('load', function(){
+                                    var ife = getIframeEl();
+                                    try{ if (ife && ife.contentWindow) ife.contentWindow.postMessage(payload, origin); }catch(e){ console.warn(e); }
+                                });
+                            } else {
+                                console.warn('chat iframe not ready, cannot postMessage');
+                            }
+                        }catch(e){ console.error('postMessage error', e); }
+
+                        elm.show();
+                    };*@
+
+                    // UI handlers
+                    elm.bot.click(function(e){
+                        e.preventDefault();
+                        if (elm.bot.hasClass('hide')) return;
+                        elm.bot.removeClass('hide');
+                        elm.box.removeClass('hide').removeClass('expd');
+                        elm.exr.show();
+                        elm.nmr.hide();
+                    });
+                    elm.clr.click(function(e){
+                        e.preventDefault();
+                        if (elm.box.hasClass('hide')) return;
+                        elm.box.removeClass('expd').addClass('hide');
+                        elm.bot.removeClass('hide');
+                    });
+                    elm.exr.click(function(e){
+                        e.preventDefault();
+                        if (elm.box.hasClass('expd')) return;
+                        elm.box.removeClass('hide').addClass('expd');
+                        elm.exr.hide();
+                        elm.nmr.show();
+                    });
+                    elm.nmr.click(function(e){
+                        e.preventDefault();
+                        if (!elm.box.hasClass('expd')) return;
+                        elm.box.removeClass('hide').removeClass('expd');
+                        elm.exr.show();
+                        elm.nmr.hide();
+                    });
+                    $('body').on('click', '.ai-asking', function(e){
+                        e.preventDefault();
+                        if (!elm.frm[0] || !elm.frm[0].contentWindow['push_msg']) return;
+                        @*var $el = $(this);
+                        var raw = $el.attr('data-ai-msg');
+                        var fromData = (typeof raw !== 'undefined' && raw!=='null' && raw !== null) ? String(raw).trim() : '';
+                        var fromTitle = String($el.attr('title')).trim();
+                        var msg = fromData.length ? fromData : fromTitle;
+                        // Debug: show attribute/title/msg so developers can inspect why data-ai-msg may be empty
+                        try{ elm.send(String(msg)); }catch(e){ }
+                            elm.show();*@
+                        
+                        var m = $(this);
+                        var msg = `?$%: ${m.data('ai-msg')||m.attr('title')}`;
+                        try{
+                            elm.frm[0].contentWindow['push_msg'](msg);
+                            elm.show();
+                        }
+                        catch(e){}
+                    });
+
+                    // allow keyboard activation for accessibility (Enter / Space)
+                    $('body').on('keydown', '.ai-asking', function(e){
+                        var key = e.key || e.keyCode;
+                        if (key === 'Enter' || key === ' ' || key === 'Spacebar' || key === 13 || key === 32){
+                            e.preventDefault();
+                            $(this).trigger('click');
+                        }
+                    });
+
+
+                    return elm;
+                })();
+            </script>
+            <!-- Client-side anti-abuse: throttle sends and prevent auto-send via postMessage -->
+            <script>
+                (function(){
+                    // small helper to show non-blocking notification using jquery.toast if available
+                    function showClientToast(msg, heading, bgColor){
+                        try{
+                            if (window.$ && $.toast){
+                                $.toast({ heading: heading || '', text: msg || '', showHideTransition: 'fade', icon: 'info', position: 'top-right', bgColor: bgColor || '#333', hideAfter: 4000 });
+                            } else {
+                                // fallback: lightweight floating element
+                                var el = document.createElement('div');
+                                el.style.position = 'fixed';
+                                el.style.right = '18px';
+                                el.style.top = '18px';
+                                el.style.padding = '10px 14px';
+                                el.style.background = bgColor || 'rgba(0,0,0,0.85)';
+                                el.style.color = '#fff';
+                                el.style.zIndex = 99999;
+                                el.style.borderRadius = '6px';
+                                el.innerText = (heading ? heading + ': ' : '') + (msg || '');
+                                document.body.appendChild(el);
+                                setTimeout(function(){ try{ document.body.removeChild(el); }catch(e){} }, 4000);
+                            }
+                        }catch(e){ console.warn('toast failed', e); }
+                    }
+
+                    // track sends per session
+                    var sendTimestamps = [];
+                    var MAX_PER_MIN = 20; // adjust as needed
+                    var MIN_INTERVAL_MS = 1000; // at least 1s between sends
+
+                    // patch chatter.send to enforce throttle even if called programmatically
+                    try{
+                        if (window.chatter && typeof window.chatter.send === 'function'){
+                            var origSend = window.chatter.send.bind(window.chatter);
+                            window.chatter.send = function(rawMsg){
+                                var now = Date.now();
+                                // prune old timestamps
+                                sendTimestamps = sendTimestamps.filter(function(t){ return now - t < 60*1000; });
+                                if (sendTimestamps.length >= MAX_PER_MIN){
+                                    console.warn('Client throttle: too many sends in the last minute.');
+                                    showClientToast('Hành động bị tạm chặn do có quá nhiều yêu cầu. Vui lòng thử lại sau.', 'Bị tạm chặn', '#c0392b');
+                                    return;
+                                }
+                                var last = sendTimestamps.length ? sendTimestamps[sendTimestamps.length-1] : 0;
+                                if (now - last < MIN_INTERVAL_MS){
+                                    console.warn('Client throttle: sending too fast.');
+                                    showClientToast('Gửi quá nhanh, vui lòng chờ một giây giữa các lần gửi.', 'Tốc độ gửi cao', '#f39c12');
+                                    // require explicit user gesture: refuse programmatic rapid calls
+                                    // If the call originated from a click handler, it will usually be allowed.
+                                    return;
+                                }
+                                // if message originates from postMessage (auto), we will only populate input and NOT auto-send
+                                if (typeof rawMsg === 'string' && rawMsg && rawMsg.__auto === true){
+                                    // populate UI only
+                                    try{ var prompt = document.getElementById('prompt'); if(prompt) prompt.value = rawMsg.text || ''; } catch(e){}
+                                    console.info('Auto message populated; user must confirm send.');
+                                    showClientToast('Tin nhắn đã được tự động điền. Vui lòng nhấn Gửi để xác nhận.', 'Tin nhắn tự động', '#2ecc71');
+                                    return;
+                                }
+
+                                // passed checks -> record and call original
+                                sendTimestamps.push(now);
+                                return origSend(rawMsg);
+                            };
+                        }
+                    }catch(e){ console.error('Failed to patch chatter.send for throttling', e); }
+
+                    // Intercept incoming postMessage and convert to populate-only messages
+                    window.addEventListener('message', function(ev){
+                        // allowed origins mirror the iframe whitelist
+                        var allowed = ['https://egdbh.vn','https://mdinsight.vn'];
+                        try{
+                            if (!allowed.includes(ev.origin)) return;
+                            var data = ev.data;
+                            if (!data) return;
+                            // expect structured message { type: 'ai-request', text }
+                            if (typeof data === 'object' && data.type === 'ai-request'){
+                                // populate but do not auto-send
+                                if (window.chatter && typeof window.chatter.send === 'function'){
+                                    window.chatter.send({ __auto: true, text: data.text });
+                                }
+                            }
+                        }catch(ex){ /* swallow */ }
+                    }, false);
+                })();
+            </script>
+        @* LINHIST ADDED ZONE FOR CHAT*@
+    }
+</body>
+</html>

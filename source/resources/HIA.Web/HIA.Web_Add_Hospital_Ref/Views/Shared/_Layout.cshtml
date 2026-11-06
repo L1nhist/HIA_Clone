@@ -1,0 +1,274 @@
+﻿@using System.Security.Claims;
+@using HIA.Core.Languages.TitlePage;
+@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Token;
+
+@{
+    var isMaster = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.MASTER);
+    var isAdmin = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.ADMIN);
+    var isUser = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.USER);
+
+    var hospitalName = User.FindFirst(ClaimKey.MA_CSKCB)?.Value + "   " + User.FindFirst(ClaimKey.HOSPITAL_NAME)?.Value;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@TitlePageResource.WEBSITE_NAME">
+    <meta name="author" content="@TitlePageResource.WEBSITE_NAME">
+
+    <link rel="icon" type="image/x-icon" href="@Url.Content("~/fav/favicon.ico")">
+    <title>@ViewData["Title"] - @TitlePageResource.WEBSITE_NAME</title>
+
+    <link href="@Url.Content("~/lib/elite/css/style.min.css")" rel="stylesheet">
+
+    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" />
+    <link href="@Url.Content("~/lib/elite/libs/toast/jquery.toast.css")" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/css/site.css?new=3525")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/common.min.css")" />
+</head>
+<body class="skin-blue-dark fixed-layout">
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">@DisplayFieldResource.LABEL_LOADING</p>
+        </div>
+    </div>
+
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="@Url.Content("~/imgs/mtg-logo-1.png")" height="33" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="@Url.Content("~/imgs/mtg-logo-1.png")" height="33" alt="homepage" class="light-logo" />
+                        </b><!--span>  eGDBH</span-->
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- ============================================================== -->
+                        <!-- User Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown u-pro">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="@Url.Content("~/lib/elite/images/users/1.png")" alt="user" class=""> <span class="hidden-md-down">@User.FindFirst(ClaimKey.FULL_NAME)?.Value &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <!-- text-->
+                                <div class="dropdown-item">
+                                    @DisplayFieldResource.EMAIL: <b>@User.FindFirst(ClaimTypes.NameIdentifier)?.Value</b>
+                                </div>
+                                <!-- text-->
+                                <div class="dropdown-item">
+                                    @DisplayFieldResource.HOSPITAL: <b>@User.FindFirst(ClaimKey.HOSPITAL_NAME)?.Value</b>
+                                </div>
+                                <!-- text-->
+                                <div class="dropdown-item">
+                                    @DisplayFieldResource.ROLE: <b>@User.FindFirst(ClaimKey.ROLE_NAME)?.Value</b>
+                                </div>
+                                <!-- text-->
+                                <div class="dropdown-divider"></div>
+                                <!-- text-->
+                                <a href="javascript:void(0)" class="dropdown-item" data-toggle="modal" data-target="#changePassModal"><i class="ti-settings"></i> @DisplayFieldResource.CHANGE_PASS</a>
+                                <!-- text-->
+                                <div class="dropdown-divider"></div>
+                                <!-- text-->
+                                <a class="dropdown-item" href="@Url.Action(nameof(AuthController.SignOutAction), Uti.GetControllerName(nameof(AuthController)))"><i class="fa fa-power-off"></i> @DisplayFieldResource.SIGN_OUT</a>
+                                <!-- text-->
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End User Profile -->
+                        <!-- ============================================================== -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    @*<ul id="sidebarnav">
+                            @if (!!isMaster.Value || !!isAdmin.Value)
+                            {
+                                <li>
+                                    <a class="waves-effect waves-dark" href="@Url.Action(nameof(UserController.Index), Uti.GetControllerName(nameof(UserController)))" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">@DisplayFieldResource.MENU_USER_MAGEME</span></a>
+                                </li>
+                            }
+                            @if (!!isMaster.Value)
+                            {
+                                <li>
+                                    <a class="waves-effect waves-dark" href="@Url.Action(nameof(HospitalController.Index), Uti.GetControllerName(nameof(HospitalController)))" aria-expanded="false"><i class="fa fa-h-square"></i><span class="hide-menu">@DisplayFieldResource.MENU_HOSPITAL_MAGEME</span></a>
+                                </li>
+                            }
+                            <li>
+                                <a class="waves-effect waves-dark" href="@Url.Action(nameof(FilesController.Index), Uti.GetControllerName(nameof(FilesController)))" aria-expanded="false"><i class="fas fa-file-medical"></i><span class="hide-menu">@DisplayFieldResource.MENU_HOSO_MAGEME</span></a>
+                            </li>
+                            <li>
+                                <a class="waves-effect waves-dark" href="@Url.Action(nameof(FileUploadController.Index), Uti.GetControllerName(nameof(FileUploadController)))" aria-expanded="false"><i class="icon-cloud-upload"></i><span class="hide-menu">Cập nhật hồ sơ </span></a>
+                            </li>
+                            @if (!!isMaster.Value || !!isAdmin.Value)
+                            {
+                                <li>
+                                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-layers"></i><span class="hide-menu">@DisplayFieldResource.MENU_CATEGORY_MAGEME</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action(nameof(DMThuocController.Index), Uti.GetControllerName(nameof(DMThuocController)))"><i class="fa fa-caret-right"></i>Thuốc</a></li>
+                                        <li><a href="@Url.Action(nameof(DMVTYTController.Index), Uti.GetControllerName(nameof(DMVTYTController)))"><i class="fa fa-caret-right"></i>Vật tư y tế</a></li>
+                                        <li><a href="@Url.Action(nameof(DMDichVuController.Index), Uti.GetControllerName(nameof(DMDichVuController)))"><i class="fa fa-caret-right"></i>Dịch vụ</a></li>
+                                    </ul>
+                                </li>
+                            }
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-users-cog"></i><span class="hide-menu">Cấu hình</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="@Url.Action(nameof(DMErrorController.Index), Uti.GetControllerName(nameof(DMErrorController)))"><i class="fa fa-caret-right"></i>Danh Mục Lỗi</a></li>
+                                    <li><a href="@Url.Action(nameof(DMKhoaBVController.Index), Uti.GetControllerName(nameof(DMKhoaBVController)))"><i class="fa fa-caret-right"></i>Danh Mục Khoa</a></li>
+                                    @if (!!isMaster.Value)
+                                    {
+                                        <li><a href="@Url.Action(nameof(DMBacSiController.Index), Uti.GetControllerName(nameof(DMBacSiController)))"><i class="fa fa-caret-right"></i>Danh Mục Nhân Viên</a></li>
+                                    }
+                                    @if (!!isAdmin.Value)
+                                    {
+                                        <li><a href="@Url.Action(nameof(DMKhoaBVController.List), Uti.GetControllerName(nameof(DMKhoaBVController)))"><i class="fa fa-caret-right"></i>Danh Mục Khoa Mới</a></li>
+                                    }
+
+                                </ul>
+                            </li>
+                        </ul>*@
+
+
+
+                    <ul id="sidebarnav">
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-h-square"></i><span class="hide-menu">Giám định hồ sơ</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="@Url.Action(nameof(FilesController.Index), Uti.GetControllerName(nameof(FilesController)))"><i class="fa fa-caret-right"></i>Quản lý hồ sơ</a></li>
+                                <li><a href="@Url.Action(nameof(FileUploadController.Index), Uti.GetControllerName(nameof(FileUploadController)))"><i class="fa fa-caret-right"></i>Cập nhật hồ sơ</a></li>
+                                <li><a href="@Url.Action(nameof(FileDownloadController.Index), Uti.GetControllerName(nameof(FileDownloadController)))"><i class="fa fa-caret-right"></i>Tải báo cáo</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-layers"></i><span class="hide-menu">Danh Mục</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="@Url.Action(nameof(DMThuocController.Index), Uti.GetControllerName(nameof(DMThuocController)))"><i class="fa fa-caret-right"></i>Thuốc</a></li>
+                                <li><a href="@Url.Action(nameof(DMVTYTController.Index), Uti.GetControllerName(nameof(DMVTYTController)))"><i class="fa fa-caret-right"></i>Vật tư y tế</a></li>
+                                <li><a href="@Url.Action(nameof(DMDichVuController.Index), Uti.GetControllerName(nameof(DMDichVuController)))"><i class="fa fa-caret-right"></i>Dịch vụ</a></li>
+                                <li><a href="@Url.Action(nameof(DMBacSiController.Index), Uti.GetControllerName(nameof(DMBacSiController)))"><i class="fa fa-caret-right"></i>Danh Mục Nhân Viên</a></li>
+
+                                @if (!!isAdmin.Value)
+                                {
+                                    <li><a href="@Url.Action(nameof(DMErrorController.Index), Uti.GetControllerName(nameof(DMErrorController)))"><i class="fa fa-caret-right"></i>Danh Mục Lỗi</a></li>
+                                    <li><a href="@Url.Action(nameof(DMKhoaBVController.Index), Uti.GetControllerName(nameof(DMKhoaBVController)))"><i class="fa fa-caret-right"></i>Danh Mục Khoa</a></li>
+                                    <li><a href="@Url.Action(nameof(DMKhoaBVController.List), Uti.GetControllerName(nameof(DMKhoaBVController)))"><i class="fa fa-caret-right"></i>Danh Mục Khoa Mới</a></li>
+
+                                }
+
+                            </ul>
+                        </li>
+
+                        @if (isMaster == true || isAdmin == true)
+                        {
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-cogs"></i><span class="hide-menu">Quy trình kỹ thuật</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a class="waves-effect waves-dark" href="@Url.Action(nameof(HDSDThuocController.Index), Uti.GetControllerName(nameof(HDSDThuocController)))"><i class="fa fa-caret-right"></i>HDSD Thuốc</a></li>
+                                </ul>
+                            </li>
+                        }
+
+                        @if (!!isMaster.Value)
+                        {
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-users-cog"></i><span class="hide-menu">Quản trị hệ thống</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a class="waves-effect waves-dark" href="@Url.Action(nameof(UserController.Index), Uti.GetControllerName(nameof(UserController)))"><i class="fa fa-caret-right"></i>Quản lý người dùng</a></li>
+                                    <li>
+                                        <a class="waves-effect waves-dark" href="@Url.Action(nameof(HospitalController.Index), Uti.GetControllerName(nameof(HospitalController)))"><i class="fa fa-caret-right"></i>Quản lý bệnh viện</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        }
+                        @if (!!isAdmin.Value)
+                        {
+                            <li>
+                                <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-users-cog"></i><span class="hide-menu">Quản trị hệ thống</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li>
+                                        <a class="waves-effect waves-dark" href="@Url.Action(nameof(UserController.Index), Uti.GetControllerName(nameof(UserController)))"><i class="fa fa-caret-right"></i>Quản lý người dùng</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        }
+                        <li>
+                            <a class="waves-effect waves-dark" href="@Url.Action(nameof(ReportController.Index), Uti.GetControllerName(nameof(ReportController)))" aria-expanded="false"><i class="far fa-chart-bar"></i><span class="hide-menu">Báo cáo thống kê</span></a>
+                        </li>
+
+                        <li>
+                            <a class="waves-effect waves-dark" href="@Url.Action(nameof(FilesController.DownloadClientInstall), Uti.GetControllerName(nameof(FilesController)))" aria-expanded="false"><i class="far fa-file-download"></i><span class="hide-menu">Tải tiện ích</span></a>
+                        </li>
+                    </ul>
+
+
+
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+
+        <div class="page-wrapper">
+            @RenderBody()
+        </div>
+
+        <footer class="footer">
+            Mã CSKCB:  <b>@hospitalName</b>
+        </footer>
+    </div>
+    <div class="modal fade" id="changePassModal" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <partial name="_ChangePasswordPartial" />
+    </div>
+
+    <script src="@Url.Content("~/lib/jquery/dist/jquery.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/popper/popper.min.js")"></script>
+    <script src="@Url.Content("~/lib/bootstrap/dist/js/bootstrap.bundle.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/popper/popper.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/js/perfect-scrollbar.jquery.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/js/waves.js")"></script>
+    <script src="@Url.Content("~/lib/elite/js/sidebarmenu.js")"></script>
+    <script src="@Url.Content("~/lib/elite/js/custom.js?new=123")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/toast-master/js/jquery.toast.js")"></script>
+
+    <script src="@Url.Content("~/js/site.js")" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,19 @@
+# AI-managed folders stay local (not uploaded to git)
+.claude/
+.running/
+
+bin/
+obj/
+.vs/
+.idea/
+node_modules/
+.next/
+coverage/
+TestResults/
+*.user
+.env
+.env.*
+!.env.example
+
+# Large archives (GitHub limit 100MB)
+*.7z

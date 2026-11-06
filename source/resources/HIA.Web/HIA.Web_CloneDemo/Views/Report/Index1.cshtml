@@ -1,0 +1,785 @@
+﻿@using HIA.Core.Languages.TitlePage;
+@using HIA.Core.Languages.DisplayField;
+@using Nancy.Json;
+@using HIA.Core.Base;
+@using HIA.Web.Controllers;
+@model HIA.Core.Models.Diagram.Report
+
+@{
+    ViewData["Title"] = $"{TitlePageResource.REPORT_TITLE}";
+}
+@{
+    var list = new JavaScriptSerializer().Serialize(Model.report1);
+    var list2 = new JavaScriptSerializer().Serialize(Model.report2);
+
+}
+<link rel="stylesheet" href="@Url.Content("~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/elite/icons/font-awesome/css/fontawesome.css")" />
+<link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="@Url.Content("~/css/home.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/select2/select2.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/select2/select2-bootstrap.min.css")" />
+
+<!-- scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.js" integrity="sha512-SJYdL2kA5iRh/PXQY8so9DvAkBtfVPcIk5pL0aPlsYjeHE7fUNWmWSVsX3X8zldgBxffJmlhxnp1gT59ZDFYqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--[if lt IE 9 ]>
+    <script src="/Scripts/html5shiv.min.js"></script>
+    <script src="/Scripts/respond.min.js"></script>
+<![endif]-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_HOSO_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.MENU_HOSO_MAGEME</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card filter-wrapper">
+        <div class="card-body">
+            <div class="row" id="divFilters">
+                <div class="col-12 col-md-6">
+                    <div class="mb-2 form-group row" style="display:none;">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDateOut">Ngày ra</label>
+                        <div class="input-daterange input-group col-9" id="datepicker">
+                            <input id="fromDateOut" name="filterDateOut" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">đến</span>
+                            <input id="toDateOut" name="filterDateOut" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row" style="display:none;">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDateIn">Ngày vào</label>
+                        <div class="input-daterange input-group col-9" id="datepicker">
+                            <input id="fromDateIn" name="filterDateIn" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">đến</span>
+                            <input id="toDateIn" name="filterDateIn" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDateCreate">Ngày tạo</label>
+                        <div class="input-daterange input-group col-9" id="datepicker">
+                            <input id="fromDateCreate" name="filterDateCreate" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">đến</span>
+                            <input id="toDateCreate" name="filterDateCreate" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDateCreate">Ngày TT</label>
+                        <div class="input-daterange input-group col-9" id="datepicker">
+                            <input id="fromDatePaid" name="filterDatePaid" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">đến</span>
+                            <input id="toDatePaid" name="filterDatePaid" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="mb-2 select2-custom form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDepartment">Khoa</label>
+                        <div class="col-9">
+                            <select name="filterDepartment" id="filterDepartment" class="form-control select2 filter-change" multiple="multiple">
+                                @foreach (var item in ViewBag.DepartmentList)
+                                {
+                                    <option value="@item.Value">@item.Text - @item.Value</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterKCB">Loại KCB</label>
+                        <div class="col-9">
+                            <select name="filterKCB" id="filterKCB" class="form-control filter-change">
+                                <option value="0" selected>Tất cả</option>
+                                <option value="1">Khám bệnh</option>
+                                <option value="2">Điều trị ngoại trú</option>
+                                <option value="3">Điều trị nội trú</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-2 select2-custom form-group row" style="display:none;">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterError">Lỗi</label>
+                        <div class="col-9">
+                            <select name="filterError" id="filterError" class="form-control select2 filter-change" multiple="multiple">
+                                @foreach (var item in ViewBag.ErrorList)
+                                {
+                                    <option value="@item.Value" class="@(item.Quantity > 0 ? "error-option" : "")">
+                                        @item.Value - @item.Text
+                                        @if (item.Quantity > 0)
+                                        {
+                                            <b>(@item.Quantity)</b>
+                                        }
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row" style="display:none;">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterStatus">Trạng thái</label>
+                        <div class="col-9">
+                            <select name="filterStatus" id="filterStatus" class="form-control filter-change">
+                                <option value="0" selected>Tất cả mọi hồ sơ</option>
+                                <option value="1">Chỉ hồ sơ hoàn thành</option>
+                                <option value="2">Chỉ hồ sơ có lỗi</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row">
+                @* Linhist removed 03/05/22
+                        <div class="col-12 col-md-10 mb-2">
+                        <button id="toggleFilters" class="btn btn-dark display-flex right">Ẩn Bộ lọc</button>
+                    </div>
+                    <div class="col-12 col-md-2 mb-2">
+                        <a onclick="downloadFile()" id="btnDownload" class="btn btn-block btn-primary display-flex" href="#">
+                            <span class="flex-middle">Tải báo cáo</span>
+                        </a>
+                    </div>*@
+                @* Linhist added 03/05/22 *@
+                <div class="col-12 col-md-4 mb-2">
+                    <button id="toggleFilters" class="btn btn-dark btn-inline">Ẩn Bộ lọc</button>
+                </div>
+                <div class="col-12 col-md-8 mb-2 text-right">
+                    <b>Tải báo cáo:</b>
+                    <button onclick="downloadFile(0)" id="btnDownload0" class="btn btn-inline btn-primary btn-download" style="display:none;">BC Tổng hợp</button>
+                    <button onclick="downloadFile(1)" id="btnDownload1" class="btn btn-inline btn-primary btn-download" style="display:none;">BC Trùng DV</button>
+                    <button onclick="downloadFile(2)" id="btnDownload2" class="btn btn-inline btn-primary btn-download" style="display:none;">BC Thuốc & VT</button>
+                    <button onclick="downloadFile(3)" id="btnDownload3" class="btn btn-inline btn-primary btn-download" style="display:none;">BC Chỉ định</button>
+                    <button onclick="downloadFile(4)" id="btnDownload4" class="btn btn-inline btn-primary btn-download">Thống kê lỗi</button>
+                </div>
+                @* End Linhist added 03/05/22 *@
+            </div>
+        </div>
+        @* End Linhist added 10/03/22 *@
+    </div>
+</div>
+
+<div class="container-fluid container-report" style="display:none">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@TitlePageResource.REPORT_TITLE</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">@TitlePageResource.REPORT_TITLE</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card filter-wrapper">
+        <div class="card-body">
+            <div class="form-row row">
+                <div class="col-12 col-md-5 mb-2 form-group row">
+                    <label class="lbl-filter col-2 col-form-label text-right" for="filterDay">Từ ngày</label>
+                    <div class="input-daterange input-group col-10" id="datepicker">
+                        <input id="filterFromDate" type="text" class="custom-daterange form-control left-control" name="filterFromDate" placeholder="dd/mm/yyyy" />
+                        <span class="input-group-text custom-group-text">Đến ngày</span>
+                        <input id="filterToDate" type="text" class="custom-daterange form-control right-control" name="filterToDate" placeholder="dd/mm/yyyy" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 mb-2 select2-custom form-group row">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-wrapper report-wrapper" id="chartContainer"></div>
+    <div class="chart-wrapper report-wrapper" id="chartContainer2"></div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js")"></script>
+    <script src="@Url.Content("~/lib/select2/select2.min.js")"></script>
+    <script type="text/javascript">
+        $('.select2').select2({ theme: "bootstrap" });
+        var datePickrs = $('.input-daterange');
+        datePickrs.datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            clearBtn: true,
+        }).on('changeDate', function (e) {
+            var inp = $('input', this), sel = false;
+            for (var i = 0; i < inp.length; i++) {
+                if (inp.eq(i).val()) {
+                    sel = true;
+                    break;
+                }
+            }
+            var all = $('input', datePickrs);
+            if (sel) {
+                all.attr('disabled', 'disabled');
+                inp.removeAttr('disabled');
+            }
+            else {
+                all.removeAttr('disabled');
+            }
+        });
+        $('#toggleFilters').click(function (e) {
+            e.preventDefault();
+            if ($(this).html().indexOf("Ẩn") > -1) {
+                $('#divFilters').hide();
+                $(this).html($(this).html().replace('Ẩn', 'Hiện'));
+            }
+            else {
+                $('#divFilters').show();
+                $(this).html($(this).html().replace('Hiện', 'Ẩn'));
+            }
+        });
+
+        function addTextOverrideCanvasJsTrial(id) {
+            const div = document.createElement("div");
+            div.className = "override-text";
+            $(`#${id}`).append(div);
+        }
+        function calcDataTableHeight() {
+            /*67px: header, 37px: title, 60px: filter, 30px: margin bottom x 2; 32px: footer*/
+            const height = ($(window).height() - 67 - 37 - 60 - 30 - 32) / 2;
+            $(".report-wrapper").height(height);
+            return height;
+        }
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                theme: "light2",
+                animationEnabled: true,
+                title: {
+                    text: "Biểu đồ tổng hợp chi phí hồ sơ đã thanh toán các ngày trong tháng 10 năm 2021",
+                    fontFamily: "sans-serif",
+                },
+                axisY: {
+                    title: "Tổng chi phí",
+                    suffix: "mn"
+                },
+                toolTip: {
+                    shared: "true"
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                height: calcDataTableHeight(),
+                data: [{
+                    type: "spline",
+                    visible: true,
+                    showInLegend: true,
+                    yValueFormatString: "##.00m",
+                    name: "Ngoại trú BHYT",
+                    dataPoints: [
+                        { label: "1", y: Math.floor(Math.random() *  10) },
+                        { label: "2", y: Math.floor(Math.random() *  10) },
+                        { label: "3", y: Math.floor(Math.random() *  10) },
+                        { label: "4", y: Math.floor(Math.random() *  10) },
+                        { label: "5", y: Math.floor(Math.random() *  10) },
+                        { label: "6", y: Math.floor(Math.random() *  10) },
+                        { label: "7", y: Math.floor(Math.random() *  10) },
+                        { label: "8", y: Math.floor(Math.random() *  10) },
+                        { label: "9", y: Math.floor(Math.random() *  10) },
+                        { label: "10", y: Math.floor(Math.random() * 10) },
+                        { label: "11", y: Math.floor(Math.random() * 10) },
+                        { label: "12", y: Math.floor(Math.random() * 10) },
+                        { label: "13", y: Math.floor(Math.random() * 10) },
+                        { label: "14", y: Math.floor(Math.random() * 10) },
+                        { label: "15", y: Math.floor(Math.random() * 10) },
+                        { label: "16", y: Math.floor(Math.random() * 10) },
+                        { label: "17", y: Math.floor(Math.random() * 10) },
+                        { label: "18", y: Math.floor(Math.random() * 10) },
+                        { label: "19", y: Math.floor(Math.random() * 10) },
+                        { label: "20", y: Math.floor(Math.random() * 10) },
+                        { label: "21", y: Math.floor(Math.random() * 10) },
+                        { label: "22", y: Math.floor(Math.random() * 10) },
+                        { label: "23", y: Math.floor(Math.random() * 10) },
+                        { label: "24", y: Math.floor(Math.random() * 10) },
+                        { label: "25", y: Math.floor(Math.random() * 10) },
+                        { label: "26", y: Math.floor(Math.random() * 10) },
+                        { label: "27", y: Math.floor(Math.random() * 10) },
+                        { label: "28", y: Math.floor(Math.random() * 10) },
+                        { label: "29", y: Math.floor(Math.random() * 10) },
+                        { label: "30", y: Math.floor(Math.random() * 10) },
+                    ]
+                },
+                {
+                    type: "spline",
+                    showInLegend: true,
+                    visible: true,
+                    yValueFormatString: "##.00m",
+                    name: "Ngoại trú thu phí",
+                    dataPoints: [
+                        { label: "1", y: Math.floor(Math.random() *  100) },
+                        { label: "2", y: Math.floor(Math.random() *  100) },
+                        { label: "3", y: Math.floor(Math.random() *  100) },
+                        { label: "4", y: Math.floor(Math.random() *  100) },
+                        { label: "5", y: Math.floor(Math.random() *  100) },
+                        { label: "6", y: Math.floor(Math.random() *  100) },
+                        { label: "7", y: Math.floor(Math.random() *  100) },
+                        { label: "8", y: Math.floor(Math.random() *  100) },
+                        { label: "9", y: Math.floor(Math.random() *  100) },
+                        { label: "10", y: Math.floor(Math.random() * 100) },
+                        { label: "11", y: Math.floor(Math.random() * 100) },
+                        { label: "12", y: Math.floor(Math.random() * 100) },
+                        { label: "13", y: Math.floor(Math.random() * 100) },
+                        { label: "14", y: Math.floor(Math.random() * 100) },
+                        { label: "15", y: Math.floor(Math.random() * 100) },
+                        { label: "16", y: Math.floor(Math.random() * 100) },
+                        { label: "17", y: Math.floor(Math.random() * 100) },
+                        { label: "18", y: Math.floor(Math.random() * 100) },
+                        { label: "19", y: Math.floor(Math.random() * 100) },
+                        { label: "20", y: Math.floor(Math.random() * 100) },
+                        { label: "21", y: Math.floor(Math.random() * 100) },
+                        { label: "22", y: Math.floor(Math.random() * 100) },
+                        { label: "23", y: Math.floor(Math.random() * 100) },
+                        { label: "24", y: Math.floor(Math.random() * 100) },
+                        { label: "25", y: Math.floor(Math.random() * 100) },
+                        { label: "26", y: Math.floor(Math.random() * 100) },
+                        { label: "27", y: Math.floor(Math.random() * 100) },
+                        { label: "28", y: Math.floor(Math.random() * 100) },
+                        { label: "29", y: Math.floor(Math.random() * 100) },
+                        { label: "30", y: Math.floor(Math.random() * 100) },
+                    ]
+                },
+                {
+                    type: "spline",
+                    visible: true,
+                    showInLegend: true,
+                    yValueFormatString: "##.00m",
+                    name: "Ngoại trú miễn phí",
+                    dataPoints: [
+                        { label: "1", y: Math.floor(Math.random() * 10) },
+                        { label: "2", y: Math.floor(Math.random() * 10) },
+                        { label: "3", y: Math.floor(Math.random() * 10) },
+                        { label: "4", y: Math.floor(Math.random() * 10) },
+                        { label: "5", y: Math.floor(Math.random() * 10) },
+                        { label: "6", y: Math.floor(Math.random() * 10) },
+                        { label: "7", y: Math.floor(Math.random() * 10) },
+                        { label: "8", y: Math.floor(Math.random() * 10) },
+                        { label: "9", y: Math.floor(Math.random() * 10) },
+                        { label: "10", y: Math.floor(Math.random() * 10) },
+                        { label: "11", y: Math.floor(Math.random() * 10) },
+                        { label: "12", y: Math.floor(Math.random() * 10) },
+                        { label: "13", y: Math.floor(Math.random() * 10) },
+                        { label: "14", y: Math.floor(Math.random() * 10) },
+                        { label: "15", y: Math.floor(Math.random() * 10) },
+                        { label: "16", y: Math.floor(Math.random() * 10) },
+                        { label: "17", y: Math.floor(Math.random() * 10) },
+                        { label: "18", y: Math.floor(Math.random() * 10) },
+                        { label: "19", y: Math.floor(Math.random() * 10) },
+                        { label: "20", y: Math.floor(Math.random() * 10) },
+                        { label: "21", y: Math.floor(Math.random() * 10) },
+                        { label: "22", y: Math.floor(Math.random() * 10) },
+                        { label: "23", y: Math.floor(Math.random() * 10) },
+                        { label: "24", y: Math.floor(Math.random() * 10) },
+                        { label: "25", y: Math.floor(Math.random() * 10) },
+                        { label: "26", y: Math.floor(Math.random() * 10) },
+                        { label: "27", y: Math.floor(Math.random() * 10) },
+                        { label: "28", y: Math.floor(Math.random() * 10) },
+                        { label: "29", y: Math.floor(Math.random() * 10) },
+                        { label: "30", y: Math.floor(Math.random() * 10) },
+                    ]
+                },
+                {
+                    type: "spline",
+                    visible: true,
+                    showInLegend: true,
+                    yValueFormatString: "##.00m",
+                    name: "Nội trú BHYT",
+                    dataPoints: [
+                        { label: "1", y: Math.floor(Math.random() * 10) },
+                        { label: "2", y: Math.floor(Math.random() * 10) },
+                        { label: "3", y: Math.floor(Math.random() * 10) },
+                        { label: "4", y: Math.floor(Math.random() * 10) },
+                        { label: "5", y: Math.floor(Math.random() * 10) },
+                        { label: "6", y: Math.floor(Math.random() * 10) },
+                        { label: "7", y: Math.floor(Math.random() * 10) },
+                        { label: "8", y: Math.floor(Math.random() * 10) },
+                        { label: "9", y: Math.floor(Math.random() * 10) },
+                        { label: "10", y: Math.floor(Math.random() * 10) },
+                        { label: "11", y: Math.floor(Math.random() * 10) },
+                        { label: "12", y: Math.floor(Math.random() * 10) },
+                        { label: "13", y: Math.floor(Math.random() * 10) },
+                        { label: "14", y: Math.floor(Math.random() * 10) },
+                        { label: "15", y: Math.floor(Math.random() * 10) },
+                        { label: "16", y: Math.floor(Math.random() * 10) },
+                        { label: "17", y: Math.floor(Math.random() * 10) },
+                        { label: "18", y: Math.floor(Math.random() * 10) },
+                        { label: "19", y: Math.floor(Math.random() * 10) },
+                        { label: "20", y: Math.floor(Math.random() * 10) },
+                        { label: "21", y: Math.floor(Math.random() * 10) },
+                        { label: "22", y: Math.floor(Math.random() * 10) },
+                        { label: "23", y: Math.floor(Math.random() * 10) },
+                        { label: "24", y: Math.floor(Math.random() * 10) },
+                        { label: "25", y: Math.floor(Math.random() * 10) },
+                        { label: "26", y: Math.floor(Math.random() * 10) },
+                        { label: "27", y: Math.floor(Math.random() * 10) },
+                        { label: "28", y: Math.floor(Math.random() * 10) },
+                        { label: "29", y: Math.floor(Math.random() * 10) },
+                        { label: "30", y: Math.floor(Math.random() * 10) },
+                    ]
+                },
+                {
+                    type: "spline",
+                    showInLegend: true,
+                    yValueFormatString: "##.00m",
+                    name: "Nội trú thu phí",
+                    dataPoints: [
+                        { label: "1", y: Math.floor(Math.random() * 20) },
+                        { label: "2", y: Math.floor(Math.random() * 20) },
+                        { label: "3", y: Math.floor(Math.random() * 20) },
+                        { label: "4", y: Math.floor(Math.random() * 20) },
+                        { label: "5", y: Math.floor(Math.random() * 20) },
+                        { label: "6", y: Math.floor(Math.random() * 20) },
+                        { label: "7", y: Math.floor(Math.random() * 20) },
+                        { label: "8", y: Math.floor(Math.random() * 20) },
+                        { label: "9", y: Math.floor(Math.random() * 20) },
+                        { label: "10", y: Math.floor(Math.random() * 20) },
+                        { label: "11", y: Math.floor(Math.random() * 20) },
+                        { label: "12", y: Math.floor(Math.random() * 20) },
+                        { label: "13", y: Math.floor(Math.random() * 20) },
+                        { label: "14", y: Math.floor(Math.random() * 20) },
+                        { label: "15", y: Math.floor(Math.random() * 20) },
+                        { label: "16", y: Math.floor(Math.random() * 20) },
+                        { label: "17", y: Math.floor(Math.random() * 20) },
+                        { label: "18", y: Math.floor(Math.random() * 20) },
+                        { label: "19", y: Math.floor(Math.random() * 20) },
+                        { label: "20", y: Math.floor(Math.random() * 20) },
+                        { label: "21", y: Math.floor(Math.random() * 20) },
+                        { label: "22", y: Math.floor(Math.random() * 20) },
+                        { label: "23", y: Math.floor(Math.random() * 20) },
+                        { label: "24", y: Math.floor(Math.random() * 20) },
+                        { label: "25", y: Math.floor(Math.random() * 20) },
+                        { label: "26", y: Math.floor(Math.random() * 20) },
+                        { label: "27", y: Math.floor(Math.random() * 20) },
+                        { label: "28", y: Math.floor(Math.random() * 20) },
+                        { label: "29", y: Math.floor(Math.random() * 20) },
+                        { label: "30", y: Math.floor(Math.random() * 20) },
+                    ]
+                },
+                {
+                    type: "spline",
+                    showInLegend: true,
+                    yValueFormatString: "##.00m",
+                    name: "Nội trú miễn phí",
+                    dataPoints: [
+                        { label: "1", y: Math.floor(Math.random() * 20) },
+                        { label: "2", y: Math.floor(Math.random() * 20) },
+                        { label: "3", y: Math.floor(Math.random() * 20) },
+                        { label: "4", y: Math.floor(Math.random() * 20) },
+                        { label: "5", y: Math.floor(Math.random() * 20) },
+                        { label: "6", y: Math.floor(Math.random() * 20) },
+                        { label: "7", y: Math.floor(Math.random() * 20) },
+                        { label: "8", y: Math.floor(Math.random() * 20) },
+                        { label: "9", y: Math.floor(Math.random() * 20) },
+                        { label: "10", y: Math.floor(Math.random() * 20) },
+                        { label: "11", y: Math.floor(Math.random() * 20) },
+                        { label: "12", y: Math.floor(Math.random() * 20) },
+                        { label: "13", y: Math.floor(Math.random() * 20) },
+                        { label: "14", y: Math.floor(Math.random() * 20) },
+                        { label: "15", y: Math.floor(Math.random() * 20) },
+                        { label: "16", y: Math.floor(Math.random() * 20) },
+                        { label: "17", y: Math.floor(Math.random() * 20) },
+                        { label: "18", y: Math.floor(Math.random() * 20) },
+                        { label: "19", y: Math.floor(Math.random() * 20) },
+                        { label: "20", y: Math.floor(Math.random() * 20) },
+                        { label: "21", y: Math.floor(Math.random() * 20) },
+                        { label: "22", y: Math.floor(Math.random() * 20) },
+                        { label: "23", y: Math.floor(Math.random() * 20) },
+                        { label: "24", y: Math.floor(Math.random() * 20) },
+                        { label: "25", y: Math.floor(Math.random() * 20) },
+                        { label: "26", y: Math.floor(Math.random() * 20) },
+                        { label: "27", y: Math.floor(Math.random() * 20) },
+                        { label: "28", y: Math.floor(Math.random() * 20) },
+                        { label: "29", y: Math.floor(Math.random() * 20) },
+                        { label: "30", y: Math.floor(Math.random() * 20) },
+                    ]
+                }
+              ]
+            });
+            chart.render();
+            addTextOverrideCanvasJsTrial("chartContainer");
+            function toggleDataSeries(e) {
+                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                } else {
+                    e.dataSeries.visible = true;
+                }
+                chart.render();
+            }
+
+            var chart2 = new CanvasJS.Chart("chartContainer2", {
+                theme: "light2",
+                animationEnabled: true,
+                title: {
+                    text: "Biểu đồ tổng hợp số lượng hồ sơ đã thu phí trong các ngày tháng 10 năm 2021",
+                    fontFamily: "sans-serif",
+                },
+                axisY: {
+                    title: "Số lượng hồ sơ",
+                    suffix: "mn"
+                },
+                toolTip: {
+                    shared: "true"
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries2
+                },
+                height: calcDataTableHeight(),
+                data: [{
+                    type: "spline",
+                    visible: false,
+                    showInLegend: true,
+                    yValueFormatString: "##.00mn",
+                    name: "Nội trú BHYT",
+                    dataPoints: [
+                        { label: "1", y: Math.floor(Math.random() * 10) },
+                        { label: "2", y: Math.floor(Math.random() * 10) },
+                        { label: "3", y: Math.floor(Math.random() * 10) },
+                        { label: "4", y: Math.floor(Math.random() * 10) },
+                        { label: "5", y: Math.floor(Math.random() * 10) },
+                        { label: "6", y: Math.floor(Math.random() * 10) },
+                        { label: "7", y: Math.floor(Math.random() * 10) },
+                        { label: "8", y: Math.floor(Math.random() * 10) },
+                        { label: "9", y: Math.floor(Math.random() * 10) },
+                        { label: "10", y: Math.floor(Math.random() * 10) },
+                        { label: "11", y: Math.floor(Math.random() * 10) },
+                        { label: "12", y: Math.floor(Math.random() * 10) },
+                        { label: "13", y: Math.floor(Math.random() * 10) },
+                        { label: "14", y: Math.floor(Math.random() * 10) },
+                        { label: "15", y: Math.floor(Math.random() * 10) },
+                        { label: "16", y: Math.floor(Math.random() * 10) },
+                        { label: "17", y: Math.floor(Math.random() * 10) },
+                        { label: "18", y: Math.floor(Math.random() * 10) },
+                        { label: "19", y: Math.floor(Math.random() * 10) },
+                        { label: "20", y: Math.floor(Math.random() * 10) },
+                        { label: "21", y: Math.floor(Math.random() * 10) },
+                        { label: "22", y: Math.floor(Math.random() * 10) },
+                        { label: "23", y: Math.floor(Math.random() * 10) },
+                        { label: "24", y: Math.floor(Math.random() * 10) },
+                        { label: "25", y: Math.floor(Math.random() * 10) },
+                        { label: "26", y: Math.floor(Math.random() * 10) },
+                        { label: "27", y: Math.floor(Math.random() * 10) },
+                        { label: "28", y: Math.floor(Math.random() * 10) },
+                        { label: "29", y: Math.floor(Math.random() * 10) },
+                        { label: "30", y: Math.floor(Math.random() * 10) },
+                    ]
+                },
+                    {
+                        type: "spline",
+                        showInLegend: true,
+                        visible: true,
+                        yValueFormatString: "##.00m",
+                        name: "Ngoại trú thu phí",
+                        dataPoints: [
+                            { label: "1", y: Math.floor(Math.random() * 10) },
+                            { label: "2", y: Math.floor(Math.random() * 10) },
+                            { label: "3", y: Math.floor(Math.random() * 10) },
+                            { label: "4", y: Math.floor(Math.random() * 10) },
+                            { label: "5", y: Math.floor(Math.random() * 10) },
+                            { label: "6", y: Math.floor(Math.random() * 10) },
+                            { label: "7", y: Math.floor(Math.random() * 10) },
+                            { label: "8", y: Math.floor(Math.random() * 10) },
+                            { label: "9", y: Math.floor(Math.random() * 10) },
+                            { label: "10", y: Math.floor(Math.random() * 10) },
+                            { label: "11", y: Math.floor(Math.random() * 10) },
+                            { label: "12", y: Math.floor(Math.random() * 10) },
+                            { label: "13", y: Math.floor(Math.random() * 10) },
+                            { label: "14", y: Math.floor(Math.random() * 10) },
+                            { label: "15", y: Math.floor(Math.random() * 10) },
+                            { label: "16", y: Math.floor(Math.random() * 10) },
+                            { label: "17", y: Math.floor(Math.random() * 10) },
+                            { label: "18", y: Math.floor(Math.random() * 10) },
+                            { label: "19", y: Math.floor(Math.random() * 10) },
+                            { label: "20", y: Math.floor(Math.random() * 10) },
+                            { label: "21", y: Math.floor(Math.random() * 10) },
+                            { label: "22", y: Math.floor(Math.random() * 10) },
+                            { label: "23", y: Math.floor(Math.random() * 10) },
+                            { label: "24", y: Math.floor(Math.random() * 10) },
+                            { label: "25", y: Math.floor(Math.random() * 10) },
+                            { label: "26", y: Math.floor(Math.random() * 10) },
+                            { label: "27", y: Math.floor(Math.random() * 10) },
+                            { label: "28", y: Math.floor(Math.random() * 10) },
+                            { label: "29", y: Math.floor(Math.random() * 10) },
+                            { label: "30", y: Math.floor(Math.random() * 10) },
+                        ]
+                    },
+                    {
+                        type: "spline",
+                        visible: true,
+                        showInLegend: true,
+                        yValueFormatString: "##.00m",
+                        name: "Ngoại trú miễn phí",
+                        dataPoints: [
+                            { label: "1", y: Math.floor(Math.random() * 10) },
+                            { label: "2", y: Math.floor(Math.random() * 10) },
+                            { label: "3", y: Math.floor(Math.random() * 10) },
+                            { label: "4", y: Math.floor(Math.random() * 10) },
+                            { label: "5", y: Math.floor(Math.random() * 10) },
+                            { label: "6", y: Math.floor(Math.random() * 10) },
+                            { label: "7", y: Math.floor(Math.random() * 10) },
+                            { label: "8", y: Math.floor(Math.random() * 10) },
+                            { label: "9", y: Math.floor(Math.random() * 10) },
+                            { label: "10", y: Math.floor(Math.random() * 10) },
+                            { label: "11", y: Math.floor(Math.random() * 10) },
+                            { label: "12", y: Math.floor(Math.random() * 10) },
+                            { label: "13", y: Math.floor(Math.random() * 10) },
+                            { label: "14", y: Math.floor(Math.random() * 10) },
+                            { label: "15", y: Math.floor(Math.random() * 10) },
+                            { label: "16", y: Math.floor(Math.random() * 10) },
+                            { label: "17", y: Math.floor(Math.random() * 10) },
+                            { label: "18", y: Math.floor(Math.random() * 10) },
+                            { label: "19", y: Math.floor(Math.random() * 10) },
+                            { label: "20", y: Math.floor(Math.random() * 10) },
+                            { label: "21", y: Math.floor(Math.random() * 10) },
+                            { label: "22", y: Math.floor(Math.random() * 10) },
+                            { label: "23", y: Math.floor(Math.random() * 10) },
+                            { label: "24", y: Math.floor(Math.random() * 10) },
+                            { label: "25", y: Math.floor(Math.random() * 10) },
+                            { label: "26", y: Math.floor(Math.random() * 10) },
+                            { label: "27", y: Math.floor(Math.random() * 10) },
+                            { label: "28", y: Math.floor(Math.random() * 10) },
+                            { label: "29", y: Math.floor(Math.random() * 10) },
+                            { label: "30", y: Math.floor(Math.random() * 10) },
+                        ]
+                    },
+                    {
+                        type: "spline",
+                        visible: true,
+                        showInLegend: true,
+                        yValueFormatString: "##.00m",
+                        name: "Nội trú BHYT",
+                        dataPoints: [
+                            { label: "1", y: Math.floor(Math.random() * 20) },
+                            { label: "2", y: Math.floor(Math.random() * 20) },
+                            { label: "3", y: Math.floor(Math.random() * 20) },
+                            { label: "4", y: Math.floor(Math.random() * 20) },
+                            { label: "5", y: Math.floor(Math.random() * 20) },
+                            { label: "6", y: Math.floor(Math.random() * 20) },
+                            { label: "7", y: Math.floor(Math.random() * 20) },
+                            { label: "8", y: Math.floor(Math.random() * 20) },
+                            { label: "9", y: Math.floor(Math.random() * 20) },
+                            { label: "10", y: Math.floor(Math.random() * 20) },
+                            { label: "11", y: Math.floor(Math.random() * 20) },
+                            { label: "12", y: Math.floor(Math.random() * 20) },
+                            { label: "13", y: Math.floor(Math.random() * 20) },
+                            { label: "14", y: Math.floor(Math.random() * 20) },
+                            { label: "15", y: Math.floor(Math.random() * 20) },
+                            { label: "16", y: Math.floor(Math.random() * 20) },
+                            { label: "17", y: Math.floor(Math.random() * 20) },
+                            { label: "18", y: Math.floor(Math.random() * 20) },
+                            { label: "19", y: Math.floor(Math.random() * 20) },
+                            { label: "20", y: Math.floor(Math.random() * 20) },
+                            { label: "21", y: Math.floor(Math.random() * 20) },
+                            { label: "22", y: Math.floor(Math.random() * 20) },
+                            { label: "23", y: Math.floor(Math.random() * 20) },
+                            { label: "24", y: Math.floor(Math.random() * 20) },
+                            { label: "25", y: Math.floor(Math.random() * 20) },
+                            { label: "26", y: Math.floor(Math.random() * 20) },
+                            { label: "27", y: Math.floor(Math.random() * 20) },
+                            { label: "28", y: Math.floor(Math.random() * 20) },
+                            { label: "29", y: Math.floor(Math.random() * 20) },
+                            { label: "30", y: Math.floor(Math.random() * 20) },
+                        ]
+                    },
+                    {
+                        type: "spline",
+                        showInLegend: true,
+                        yValueFormatString: "##.00m",
+                        name: "Nội trú thu phí",
+                        dataPoints: [
+                            { label: "1", y: Math.floor(Math.random() * 20) },
+                            { label: "2", y: Math.floor(Math.random() * 20) },
+                            { label: "3", y: Math.floor(Math.random() * 20) },
+                            { label: "4", y: Math.floor(Math.random() * 20) },
+                            { label: "5", y: Math.floor(Math.random() * 20) },
+                            { label: "6", y: Math.floor(Math.random() * 20) },
+                            { label: "7", y: Math.floor(Math.random() * 20) },
+                            { label: "8", y: Math.floor(Math.random() * 20) },
+                            { label: "9", y: Math.floor(Math.random() * 20) },
+                            { label: "10", y: Math.floor(Math.random() * 20) },
+                            { label: "11", y: Math.floor(Math.random() * 20) },
+                            { label: "12", y: Math.floor(Math.random() * 20) },
+                            { label: "13", y: Math.floor(Math.random() * 20) },
+                            { label: "14", y: Math.floor(Math.random() * 20) },
+                            { label: "15", y: Math.floor(Math.random() * 20) },
+                            { label: "16", y: Math.floor(Math.random() * 20) },
+                            { label: "17", y: Math.floor(Math.random() * 20) },
+                            { label: "18", y: Math.floor(Math.random() * 20) },
+                            { label: "19", y: Math.floor(Math.random() * 20) },
+                            { label: "20", y: Math.floor(Math.random() * 20) },
+                            { label: "21", y: Math.floor(Math.random() * 20) },
+                            { label: "22", y: Math.floor(Math.random() * 20) },
+                            { label: "23", y: Math.floor(Math.random() * 20) },
+                            { label: "24", y: Math.floor(Math.random() * 20) },
+                            { label: "25", y: Math.floor(Math.random() * 20) },
+                            { label: "26", y: Math.floor(Math.random() * 20) },
+                            { label: "27", y: Math.floor(Math.random() * 20) },
+                            { label: "28", y: Math.floor(Math.random() * 20) },
+                            { label: "29", y: Math.floor(Math.random() * 20) },
+                            { label: "30", y: Math.floor(Math.random() * 20) },
+                        ]
+                    },
+                    {
+                        type: "spline",
+                        showInLegend: true,
+                        yValueFormatString: "##.00m",
+                        name: "Nội trú miễn phí",
+                        dataPoints: [
+                            { label: "1", y: Math.floor(Math.random() * 100) },
+                            { label: "2", y: Math.floor(Math.random() * 100) },
+                            { label: "3", y: Math.floor(Math.random() * 100) },
+                            { label: "4", y: Math.floor(Math.random() * 100) },
+                            { label: "5", y: Math.floor(Math.random() * 100) },
+                            { label: "6", y: Math.floor(Math.random() * 100) },
+                            { label: "7", y: Math.floor(Math.random() * 100) },
+                            { label: "8", y: Math.floor(Math.random() * 100) },
+                            { label: "9", y: Math.floor(Math.random() * 100) },
+                            { label: "10", y: Math.floor(Math.random() * 100) },
+                            { label: "11", y: Math.floor(Math.random() * 100) },
+                            { label: "12", y: Math.floor(Math.random() * 100) },
+                            { label: "13", y: Math.floor(Math.random() * 100) },
+                            { label: "14", y: Math.floor(Math.random() * 100) },
+                            { label: "15", y: Math.floor(Math.random() * 100) },
+                            { label: "16", y: Math.floor(Math.random() * 100) },
+                            { label: "17", y: Math.floor(Math.random() * 100) },
+                            { label: "18", y: Math.floor(Math.random() * 100) },
+                            { label: "19", y: Math.floor(Math.random() * 100) },
+                            { label: "20", y: Math.floor(Math.random() * 100) },
+                            { label: "21", y: Math.floor(Math.random() * 100) },
+                            { label: "22", y: Math.floor(Math.random() * 100) },
+                            { label: "23", y: Math.floor(Math.random() * 100) },
+                            { label: "24", y: Math.floor(Math.random() * 100) },
+                            { label: "25", y: Math.floor(Math.random() * 100) },
+                            { label: "26", y: Math.floor(Math.random() * 100) },
+                            { label: "27", y: Math.floor(Math.random() * 100) },
+                            { label: "28", y: Math.floor(Math.random() * 100) },
+                            { label: "29", y: Math.floor(Math.random() * 100) },
+                            { label: "30", y: Math.floor(Math.random() * 100) },
+                        ]
+                    }
+                ]
+            });
+            chart2.render();
+            addTextOverrideCanvasJsTrial("chartContainer2");
+            function toggleDataSeries2(e) {
+                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                } else {
+                    e.dataSeries.visible = true;
+                }
+                chart2.render();
+            }
+        }
+    </script>
+}

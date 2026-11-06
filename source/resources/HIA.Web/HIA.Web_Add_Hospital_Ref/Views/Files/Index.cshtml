@@ -1,0 +1,2096 @@
+﻿@using System.Security.Claims;
+@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Files;
+@using HIA.Core.Models.Token;
+
+@{
+    ViewData["Title"] = @DisplayFieldResource.MENU_HOSO_MAGEME;
+
+    var xml1Display = new XML1InfoModel();
+    var xml2Display = new XML2InfoModel();
+    var xml3Display = new XML3InfoModel();
+    var xml4Display = new XML4InfoModel();
+    var xml5Display = new XML5InfoModel();
+
+    var isMaster = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.MASTER);
+    var isAdmin = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.ADMIN);
+    var isUser = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.USER);
+}
+
+
+<link rel="stylesheet" href="@Url.Content("~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/select2/select2.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/select2/select2-bootstrap.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/elite/css/page/tab-page.css")" />
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/dataTables.bootstrap4.css")">
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/responsive.dataTables.min.css")">
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_HOSO_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.MENU_HOSO_MAGEME</li>
+                </ol>
+                @*<a href="@Url.Action(nameof(FilesController.Create), Uti.GetControllerName(nameof(FilesController)))" class="btn btn-info d-none d-lg-block m-l-15">
+                        <i class="fa fa-plus-circle"></i> @DisplayFieldResource.CREATE_NEW
+                    </a>*@
+            </div>
+        </div>
+    </div>
+    <div class="card filter-wrapper">
+        @* Linhist removed 10/03/22
+            <div class="card-body">
+                <div class="form-row row">
+                    <div class="col-12 col-md-5 mb-2 form-group row">
+                        <label class="lbl-filter col-2 col-form-label text-right" for="filterDay">Từ ngày</label>
+                        <div class="input-daterange input-group col-10" id="datepicker">
+                            <input id="filterFromDate" type="text" class="custom-daterange form-control left-control" name="filterFromDate" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">Đến ngày</span>
+                            <input id="filterToDate" type="text" class="custom-daterange form-control right-control" name="filterToDate" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5 mb-2 select2-custom form-group row">
+                        <label class="lbl-filter col-2 col-form-label text-right" for="filterDay">Ngày tạo</label>
+                        <div class="col-10">
+                            <select name="filterDay" id="select2FilterDate" class="form-control select2" multiple="multiple">
+                                @foreach (var item in ViewBag.CreatedDateList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                        </div>
+                        @*<div id="datepicker" class="input-group date datepicker-ui">
+                            <input type="text" class="form-control" placeholder="dd/mm/yyyy" onchange="callFilter(event)" name="filterDay">
+                            <div class="input-group-addon">
+                                <i id="datepicker-clear" class="fa fa-times icon-clear" aria-hidden="true"></i>
+                                <i class="icon-calender"></i>
+                                <i class="icon-magnifier icon-search" onclick="callFilter(event)"></i>
+                            </div>
+                        </div>* @
+                    </div>
+                </div>
+                <div class="form-row row">
+                    <div class="col-12 col-md-5 mb-2 select2-custom form-group row">
+                        <label class="lbl-filter col-2 col-form-label text-right" for="filterDepartment">Khoa</label>
+                        <div class="col-10">
+                            <select name="filterDepartment" id="select2FilterDepartment" class="form-control select2" multiple="multiple">
+                                @foreach (var item in ViewBag.DepartmentList)
+                                {
+                                    <option value="@item.Value">@item.Text - @item.Value</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5 mb-2 select2-custom form-group row">
+                        <label class="lbl-filter col-2 col-form-label text-right" for="filterError">Lỗi</label>
+                        <div class="col-10">
+                            <select name="filterError" id="select2FilterError" class="form-control select2" multiple="multiple">
+                                @foreach (var item in ViewBag.ErrorList)
+                                {
+                                    <option value="@item.Value" class="@(item.Quantity > 0 ? "error-option" : "")">
+                                        @item.Value - @item.Text
+                                        @if (item.Quantity > 0)
+                                        {
+                                            <b>(@item.Quantity)</b>
+                                        }
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-2 col-md-2 mb-2 download-file-wrapper">
+                        <a onclick="downloadFile()" id="btnDownload" class="btn btn-block btn-primary display-flex" href="#">
+                            <span class="flex-middle">Tải báo cáo</span>
+                        </a>
+                    </div>
+                </div>
+            </div> *@
+        @* Linhist added 10/03/22 *@
+        <div class="card-body">
+            <div class="row" id="divFilters">
+                <div class="col-12 col-md-6">
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDateOut">Ngày ra</label>
+                        <div class="input-daterange input-group col-9" id="datepicker">
+                            <input id="fromDateOut" name="filterDateOut" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">đến</span>
+                            <input id="toDateOut" name="filterDateOut" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDateIn">Ngày vào</label>
+                        <div class="input-daterange input-group col-9" id="datepicker">
+                            <input id="fromDateIn" name="filterDateIn" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">đến</span>
+                            <input id="toDateIn" name="filterDateIn" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDateCreate">Ngày tạo</label>
+                        <div class="input-daterange input-group col-9" id="datepicker">
+                            <input id="fromDateCreate" name="filterDateCreate" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">đến</span>
+                            <input id="toDateCreate" name="filterDateCreate" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDateCreate">Ngày TT</label>
+                        <div class="input-daterange input-group col-9" id="datepicker">
+                            <input id="fromDatePaid" name="filterDatePaid" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">đến</span>
+                            <input id="toDatePaid" name="filterDatePaid" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="mb-2 select2-custom form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDepartment">Khoa</label>
+                        <div class="col-9">
+                            <select name="filterDepartment" id="filterDepartment" class="form-control select2 filter-change" multiple="multiple">
+                                @foreach (var item in ViewBag.DepartmentList)
+                                {
+                                    <option value="@item.Value">@item.Text - @item.Value</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterKCB">Loại KCB</label>
+                        <div class="col-9">
+                            <select name="filterKCB" id="filterKCB" class="form-control filter-change">
+                                <option value="0" selected>Tất cả</option>
+                                <option value="1">Khám bệnh</option>
+                                <option value="2">Điều trị ngoại trú</option>
+                                <option value="3">Điều trị nội trú</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-2 select2-custom form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterError">Lỗi</label>
+                        <div class="col-9">
+                            <select name="filterError" id="filterError" class="form-control select2 filter-change" multiple="multiple">
+                                @foreach (var item in ViewBag.ErrorList)
+                                {
+                                    <option value="@item.Value" class="@(item.Quantity > 0 ? "error-option" : "")">
+                                        @item.Value - @item.Text
+                                        @if (item.Quantity > 0)
+                                        {
+                                            <b>(@item.Quantity)</b>
+                                        }
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterStatus">Trạng thái</label>
+                        <div class="col-9">
+                            <select name="filterStatus" id="filterStatus" class="form-control filter-change">
+                                <option value="0" selected>Tất cả mọi hồ sơ</option>
+                                <option value="1">Chỉ hồ sơ hoàn thành</option>
+                                <option value="2">Chỉ hồ sơ có lỗi</option>
+                            </select>
+                        </div>
+                    </div>
+                    @if (isMaster == true)
+                    {
+                    <div class="mb-2 select2-custom form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterStatus">Bệnh viện</label>
+                        <div class="col-9">
+                            <select name="filterHospital" id="filterHospital" class="form-control select2 filter-change">
+                                <option value="" selected>Tất cả bệnh viện</option>
+                                @foreach (var item in ViewBag.Hospitals)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            <div class="form-row row">
+                @* Linhist removed 03/05/22
+                        <div class="col-12 col-md-10 mb-2">
+                        <button id="toggleFilters" class="btn btn-dark display-flex right">Ẩn Bộ lọc</button>
+                    </div>
+                    <div class="col-12 col-md-2 mb-2">
+                        <a onclick="downloadFile()" id="btnDownload" class="btn btn-block btn-primary display-flex" href="#">
+                            <span class="flex-middle">Tải báo cáo</span>
+                        </a>
+                    </div>*@
+                @* Linhist added 03/05/22 *@
+                <div class="col-12 col-md-4 mb-2">
+                    <button id="toggleFilters" class="btn btn-dark btn-inline">Ẩn Bộ lọc</button>
+                    @if (isMaster == true)
+                    {
+                        <button id="btnRecheck" onclick="recheckAll()" class="btn btn-warning btn-inline">Ktra lại hết</button>
+                    }
+                </div>
+                <div class="col-12 col-md-8 mb-2 text-right">
+                    <b>Tải báo cáo:</b>
+                    <button onclick="downloadFile(0)" id="btnDownload0" class="btn btn-inline btn-primary btn-download">BC Tổng hợp</button>
+                    <button onclick="downloadFile(1)" id="btnDownload1" class="btn btn-inline btn-primary btn-download">BC Trùng DV</button>
+                    <button onclick="downloadFile(2)" id="btnDownload2" class="btn btn-inline btn-primary btn-download">BC Thuốc & VT</button>
+                    <button onclick="downloadFile(3)" id="btnDownload3" class="btn btn-inline btn-primary btn-download">BC Chỉ định</button>
+                    <button onclick="downloadFile(4)" id="btnDownload4" class="btn btn-inline btn-primary btn-download">Thống kê lỗi</button>
+                </div>
+                @* End Linhist added 03/05/22 *@
+            </div>
+        </div>
+        @* End Linhist added 10/03/22 *@
+    </div>
+    <div class="card files-wrapper">
+        <div class="card-body">
+            <div class="table-responsive fixed-table-custom file-management">
+                <table class="table table-bordered table-striped table-data" id="tbl_DataTable">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Stt)</th>
+                            @*Linhist removed 20/03/22 ---
+                                <th>@Html.DisplayNameFor(x => xml1Display.HospitalName)</th>
+                            *@
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_KHOA)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_LK)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.CreateDate)</th>
+
+                            <th>@Html.DisplayNameFor(x => xml1Display.HO_TEN)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_THE)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Can_NANG)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Dia_CHI)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Gioi_TINH)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Ngay_SINH)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.GT_THE_TU)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.GT_THE_DEN)</th>
+
+                            <th>@Html.DisplayNameFor(x => xml1Display.Ket_QUA_DTRI)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_BENH)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Ten_BENH)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_BENHKHAC)</th>
+
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_BN)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_CSKCB)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_DKBD)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_KHUVUC)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_LK)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_LOAI_KCB)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_LYDO_VVIEN)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_NOI_CHUYEN)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_PTTT_QT)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_TAI_NAN)</th>
+
+                            <th>@Html.DisplayNameFor(x => xml1Display.Mien_CUNG_CT)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Nam_QT)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Ngay_VAO)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Ngay_RA)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.SO_NGAY_DTRI)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Ngay_TTOAN)</th>
+
+                            <th>@Html.DisplayNameFor(x => xml1Display.Thang_QT)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Tinh_TRANG_RV)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.T_BHTT)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.T_BNCCT)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.T_BNTT)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.T_VTYT)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.T_TONGCHI)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.T_THUOC)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.T_NGUONKHAC)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.T_NGOAIDS)</th>
+
+                            <th>@Html.DisplayNameFor(x => xml1Display.FileName)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Mhtcid)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Checked)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.DanhSachLoi)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.NgayLAP)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_NOI_DI)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.MA_NOI_DEN)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.Creator)</th>
+                            <th>@Html.DisplayNameFor(x => xml1Display.HasError)</th>
+
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="detailModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-xl width-97">
+        <div class="modal-content custom-modal">
+            <div class="modal-header">
+                <h4 class="modal-title">Chi tiết hồ sơ bệnh nhân :  @xml1Display.Ten_BENH </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#xml1" role="tab">
+                            <span class="hidden-sm-up"></span> <span class="hidden-xs-down">
+                                XML 1 <span id="xml1ErrorTotal"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml2" role="tab">
+                            <span class="hidden-sm-up"></span> <span class="hidden-xs-down">
+                                XML 2 <span id="xml2ErrorTotal"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml3" role="tab">
+                            <span class="hidden-sm-up"></span> <span class="hidden-xs-down">
+                                XML 3 <span id="xml3ErrorTotal"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml4" role="tab">
+                            <span class="hidden-sm-up"></span> <span class="hidden-xs-down">
+                                XML 4 <span id="xml4ErrorTotal"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml5" role="tab">
+                            <span class="hidden-sm-up"></span> <span class="hidden-xs-down">
+                                XML 5 <span id="xml5ErrorTotal"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#xmlErr" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Danh sách lỗi</span></a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#healthCareHistory" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Lịch sử khám chữa bệnh</span></a> </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content tabcontent-border">
+                    <div class="tab-pane p-17 active" id="xml1" role="tabpanel">
+                    </div>
+                    <div class="tab-pane p-17" id="xml2" role="tabpanel">
+                        <div class="custom-box">
+                            <h1 class="title w-145">Thông tin Bệnh nhân</h1>
+                            <div class="row">
+                                <div class="col-12 col-md-4 form-group row">
+                                    <div class="flex-center col-4">
+                                        <label class="control-label">Mã bệnh nhân</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control custom-form-control maBenhNhan" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 form-group row">
+                                    <div class="flex-center col-4">
+                                        <label class="control-label">Tên bệnh nhân</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control custom-form-control tenBenhNhan" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tbl_DataTable_Xml2">
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.Stt)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.MA_LK)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.MA_THUOC)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.MA_NHOM)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.Ten_THUOC)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.Don_VI_TINH)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.Ham_LUONG)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.Duong_DUNG)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.Lieu_DUNG)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.SO_DANG_KY)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.TT_THAU)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.Pham_VI)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.Tyle_TT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.SO_LUONG)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.Don_GIA)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.Thanh_TIEN)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.Muc_HUONG)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.T_NGUONKHAC)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.T_BNTT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.T_BHTT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.T_BNCCT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.T_NGOAIDS)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.MA_KHOA)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.MA_BAC_SI)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.MA_BENH)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.Ngay_YL)</th>
+                                        <th>@Html.DisplayNameFor(x => xml2Display.MA_PTTT)</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane p-17" id="xml3" role="tabpanel">
+                        <div class="custom-box">
+                            <h1 class="title w-145">Thông tin Bệnh nhân</h1>
+                            <div class="row">
+                                <div class="col-12 col-md-4 form-group row">
+                                    <div class="flex-center col-4">
+                                        <label class="control-label">Mã bệnh nhân</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control custom-form-control maBenhNhan" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 form-group row">
+                                    <div class="flex-center col-4">
+                                        <label class="control-label">Tên bệnh nhân</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control custom-form-control tenBenhNhan" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tbl_DataTable_Xml3">
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Stt)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_LK)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_DICH_VU)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_VAT_TU)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_NHOM)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Goi_VTYT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Ten_VAT_TU)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Ten_DICH_VU)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Don_VI_TINH)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Pham_VI)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.SO_LUONG)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Don_GIA)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.TT_THAU)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Tyle_TT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Thanh_TIEN)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.T_TRANTT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Muc_HUONG)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.T_NGUONKHAC)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.T_BNTT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.T_BHTT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.T_BNCCT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.T_NGOAIDS)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_KHOA)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_GIUONG)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_BAC_SI)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_BENH)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Ngay_YL)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Ngay_KQ)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_PTTT)</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane p-17" id="xml4" role="tabpanel">
+                        <div class="custom-box">
+                            <h1 class="title w-145">Thông tin Bệnh nhân</h1>
+                            <div class="row">
+                                <div class="col-12 col-md-4 form-group row">
+                                    <div class="flex-center col-4">
+                                        <label class="control-label">Mã bệnh nhân</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control custom-form-control maBenhNhan" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 form-group row">
+                                    <div class="flex-center col-4">
+                                        <label class="control-label">Tên bệnh nhân</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control custom-form-control tenBenhNhan" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tbl_DataTable_Xml4">
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(x => xml4Display.Stt)</th>
+                                        <th>@Html.DisplayNameFor(x => xml4Display.MA_LK)</th>
+                                        <th>@Html.DisplayNameFor(x => xml4Display.MA_DICH_VU)</th>
+                                        <th>@Html.DisplayNameFor(x => xml4Display.MA_CHI_SO)</th>
+                                        <th>@Html.DisplayNameFor(x => xml4Display.Ten_CHI_SO)</th>
+                                        <th>@Html.DisplayNameFor(x => xml4Display.Gia_TRI)</th>
+                                        <th>@Html.DisplayNameFor(x => xml4Display.MA_MAY)</th>
+                                        <th>@Html.DisplayNameFor(x => xml4Display.MO_TA)</th>
+                                        <th>@Html.DisplayNameFor(x => xml4Display.Ket_LUAN)</th>
+                                        <th>@Html.DisplayNameFor(x => xml4Display.Ngay_KQ)</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane p-17" id="xml5" role="tabpanel">
+                        <div class="custom-box">
+                            <h1 class="title w-145">Thông tin Bệnh nhân</h1>
+                            <div class="row">
+                                <div class="col-12 col-md-4 form-group row">
+                                    <div class="flex-center col-4">
+                                        <label class="control-label">Mã bệnh nhân</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control custom-form-control maBenhNhan" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 form-group row">
+                                    <div class="flex-center col-4">
+                                        <label class="control-label">Tên bệnh nhân</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control custom-form-control tenBenhNhan" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tbl_DataTable_Xml5">
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(x => xml5Display.Stt)</th>
+                                        <th>@Html.DisplayNameFor(x => xml5Display.MA_LK)</th>
+                                        <th>@Html.DisplayNameFor(x => xml5Display.Dien_BIEN)</th>
+                                        <th>@Html.DisplayNameFor(x => xml5Display.Hoi_CHAN)</th>
+                                        <th>@Html.DisplayNameFor(x => xml5Display.Phau_THUAT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml5Display.Ngay_YL)</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane p-17" id="xmlErr" role="tabpanel">
+                        <div class="custom-box">
+                            <h1 class="title w-145">Thông tin Bệnh nhân</h1>
+                            <div class="row">
+                                <div class="col-12 col-md-4 form-group row">
+                                    <div class="flex-center col-4">
+                                        <label class="control-label">Mã bệnh nhân</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control custom-form-control maBenhNhan" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 form-group row">
+                                    <div class="flex-center col-4">
+                                        <label class="control-label">Tên bệnh nhân</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control custom-form-control tenBenhNhan" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive fixed-table-custom tbl-modal" id="tbl_xml1Error_wrapper">
+                        </div>
+                    </div>
+                    <div class="tab-pane p-17" id="healthCareHistory" role="tabpanel">
+                        <div class="custom-box">
+                            <h1 class="title w-145">Thông tin Bệnh nhân</h1>
+                            <div class="row">
+                                <div class="col-12 col-md-4 form-group row">
+                                    <div class="flex-center col-4">
+                                        <label class="control-label">Mã bệnh nhân</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control custom-form-control maBenhNhan" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 form-group row">
+                                    <div class="flex-center col-4">
+                                        <label class="control-label">Tên bệnh nhân</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control custom-form-control tenBenhNhan" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tbl_DataTable_HealthCareHistory">
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Stt)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_LK)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_DICH_VU)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_VAT_TU)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_NHOM)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Goi_VTYT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Ten_VAT_TU)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Ten_DICH_VU)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Don_VI_TINH)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Pham_VI)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.SO_LUONG)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Don_GIA)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.TT_THAU)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Tyle_TT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Thanh_TIEN)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.T_TRANTT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Muc_HUONG)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.T_NGUONKHAC)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.T_BNTT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.T_BHTT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.T_BNCCT)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.T_NGOAIDS)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_KHOA)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_GIUONG)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_BAC_SI)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_BENH)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Ngay_YL)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.Ngay_KQ)</th>
+                                        <th>@Html.DisplayNameFor(x => xml3Display.MA_PTTT)</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<partial name="_spinnerPartial" />
+@section Scripts {
+
+    <script src="@Url.Content("~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js")"></script>
+    <script src="@Url.Content("~/lib/select2/select2.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net-bs4/js/dataTables.responsive.min.js")"></script>
+    <script>
+        @*Linhist removed 19/04/22
+        $('.input-daterange').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            clearBtn: true,
+        });
+        //$("#datepicker-clear").click(function (event) {
+        //    event.preventDefault();
+        //    event.stopPropagation();
+        //    $('#datepicker').datepicker("update", "");
+        //    callFilter(event);
+        //});
+        *@
+
+        let currentXml1Id = 0;
+        let errorList = [];
+        let errorXml1List = [];
+        let errorXml2List = [];
+        let errorXml3List = [];
+        let errorXml4List = [];
+        let errorXml5List = [];
+        let xml1Data = {};
+
+        @* Linhist removed 10/03/22
+        // setup select2FilterDepartment
+        $("#select2FilterDepartment").select2({
+            theme: "bootstrap"
+        });
+        $("#select2FilterDepartment").on("change", function (event) {
+            callFilter(event);
+        });
+        // setup select2FilterDate
+        $("#select2FilterDate").select2({
+            theme: "bootstrap"
+        });
+        $("#select2FilterDate").on("change", function (event) {
+            callFilter(event);
+        });
+        // setup select2FilterError
+        $("#select2FilterError").select2({
+            theme: "bootstrap"
+        });
+        $("#select2FilterError").on("change", function (event) {
+            callFilter(event);
+        });
+        $("#filterFromDate").on("change", function (event) {
+            callFilter(event);
+        });
+        $("#filterToDate").on("change", function (event) {
+            callFilter(event);
+        }); *@
+
+        @* Linhist added 10/03/22 *@
+        $('.filter-change').change(function (e) { callFilter(e); });
+        $('.select2').select2({ theme: "bootstrap" });
+        @* End Linhist added 10/03/22 *@
+
+        @* Linhist added 19/04/22 *@
+        var datePickrs = $('.input-daterange');
+        datePickrs.datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            clearBtn: true,
+        }).on('changeDate', function (e) {
+            var inp = $('input', this), sel = false;
+            for (var i = 0; i < inp.length; i++) {
+                if (inp.eq(i).val()) {
+                    sel = true;
+                    break;
+                }
+            }
+            var all = $('input', datePickrs);
+            if (sel) {
+                all.attr('disabled', 'disabled');
+                inp.removeAttr('disabled');
+            }
+            else {
+                all.removeAttr('disabled');
+            }
+        });
+        $('#toggleFilters').click(function (e) {
+            e.preventDefault();
+            if ($(this).html().indexOf("Ẩn") > -1) {
+                $('#divFilters').hide();
+                $(this).html($(this).html().replace('Ẩn', 'Hiện'));
+            }
+            else {
+                $('#divFilters').show();
+                $(this).html($(this).html().replace('Hiện', 'Ẩn'));
+            }
+        });
+        @* End Linhist added 19/04/22 *@
+
+        // setup dbTable
+        const dataTbl = $('#tbl_DataTable').DataTable({
+            responsive: false,
+            processing: true,
+            serverSide: true,
+            searchDelay: 500,
+            ajax: {
+                url: "@Url.Action(nameof(FilesController.GetItems), Uti.GetControllerName(nameof(FilesController)))",
+                type: 'POST',
+                data: function (d) {
+                    @* Linhsit removed 10/03/22
+                    d.filterFromDate = $("#filterFromDate").val();
+                    d.filterToDate = $("#filterToDate").val();
+                    d.dateFilter = $("#select2FilterDate").val();
+                    d.departments = $("#select2FilterDepartment").val();
+                    d.errFilter = $("#select2FilterError").val(); *@
+
+                    @* Linhist added 10/03/22 *@
+                    d.filterDateIns = [$("#fromDateIn").val(), $('#toDateIn').val()];
+                    d.filterDateOuts = [$("#fromDateOut").val(), $('#toDateOut').val()];
+                    d.filterDateCreates = [$("#fromDateCreate").val(), $('#toDateCreate').val()];
+                    d.departments = $("#filterDepartment").val();
+                    d.filterErrors = $("#filterError").val();
+                    d.filterStatus = $('#filterStatus').val();
+                    @* End Linhist added 10/03/22 *@
+                    @* Linhist added 19/04/22 *@
+                    d.filterDatePaids = [$("#fromDatePaid").val(), $('#toDatePaid').val()];
+                    d.filterKCB = $('#filterKCB').val();
+                    @* End Linhist added 19/04/22 *@
+                    d.filterHospital = $('#filterHospital').val();
+                }
+            },
+            order: [[0, "asc"]],
+            columnDefs: [
+                    { width: 100, targets: "_all" }
+            ],
+            columns:
+            [
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Stt))", className: "w-50" },
+                @*Linhist removed 20/03/22
+                    { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.HospitalName))" },*@
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_KHOA))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_LK))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.CreateDate))", className: "xw-200"  },
+
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.HO_TEN))", className: "xw-200" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_THE))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Can_NANG))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Dia_CHI))", className: "w-650" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Gioi_TINH))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Ngay_SINH))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.GT_THE_TU))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.GT_THE_DEN))" },
+
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Ket_QUA_DTRI))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_BENH))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Ten_BENH))", className: "xw-650" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_BENHKHAC))" },
+
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_BN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_CSKCB))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_DKBD))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_KHUVUC))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_LK))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_LOAI_KCB))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_LYDO_VVIEN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_NOI_CHUYEN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_PTTT_QT))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_TAI_NAN))" },
+
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Mien_CUNG_CT))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Nam_QT))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Ngay_VAO))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Ngay_RA))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.SO_NGAY_DTRI))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Ngay_TTOAN))" },
+
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Thang_QT))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Tinh_TRANG_RV))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.T_BHTT))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.T_BNCCT))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.T_BNTT))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.T_VTYT))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.T_TONGCHI))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.T_THUOC))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.T_NGUONKHAC))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.T_NGOAIDS))" },
+
+                    { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.FileName))", className: "xw-450" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Mhtcid))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Checked))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.DanhSachLoi))" },
+               { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.NgayLAP))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_NOI_DI))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.MA_NOI_DEN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.Creator))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(xml1Display.HasError))" },
+                ],
+            createdRow: function (row, data, dataIndex) {
+                var bgColor = "";
+                if (data.checked != 99) {
+                    if (data.hasError) {
+                        bgColor = "OrangeRed";
+                    }
+                    else if (data.mhtcid) {
+                        bgColor = "LimeGreen";
+                    }
+                    $(row).css("color", bgColor);
+                }
+            },
+            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+            lengthMenu: @Html.Raw(@DataTableSettingDefault.LENGTH_MENU),
+        });
+
+        // custom filter
+        @*Linhist changed 10/06/22*@
+        var tmrFilter = 0;
+        function callFilter(event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (tmrFilter) { clearTimeout(tmrFilter); tmrFilter = 0; }
+            tmrFilter = setTimeout(function () {
+                dataTbl.ajax.reload();
+            }, 500);
+        }
+
+        // show modal
+        function setErrorTotalForTab(dataLength, eleId) {
+            if (dataLength === 0) return;
+
+            $(`#${eleId}`).removeClass("xml-text-color error valid");
+            const eleColorClass = dataLength > 0 ? "xml-text-color error" : "xml-text-color valid";
+            $(`#${eleId}`).addClass(eleColorClass);
+
+            const bTag = document.createElement("b");
+            bTag.innerText  = dataLength;
+            $(`#${eleId}`).append("(@DisplayFieldResource.LABEL_HAS ");
+            $(`#${eleId}`).append(bTag);
+            $(`#${eleId}`).append(" @DisplayFieldResource.LABEL_ERROR)");
+        }
+        function clearErrTotalForTab() {
+            $(`#xml1ErrorTotal`).html('');
+            $(`#xml2ErrorTotal`).html('');
+            $(`#xml3ErrorTotal`).html('');
+            $(`#xml4ErrorTotal`).html('');
+            $(`#xml5ErrorTotal`).html('');
+        }
+        $('#tbl_DataTable tbody').on('dblclick', 'tr', function () {
+            xml1Data = dataTbl.row(this).data();
+            currentXml1Id = xml1Data.xmL1ID;
+            $.ajax({
+                url: "@Url.Action(nameof(FilesController.GetItemsXml1Error), Uti.GetControllerName(nameof(FilesController)))" + `?xml1Id=${currentXml1Id}`,
+                method: 'GET',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+                success: function (res) {
+                    if (!res) return;
+                    clearErrTotalForTab();
+                    $("#tbl_xml1Error_wrapper").html(res.partialView);
+                    $("#detailModal").modal("show");
+
+                    errorList = res.data;
+
+                    errorXml1List = errorList.filter(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorAtXMLFile))'] === 'XML1');
+                    setErrorTotalForTab(errorXml1List?.length || 0, 'xml1ErrorTotal');
+
+                    errorXml2List = errorList.filter(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorAtXMLFile))'] === 'XML2');
+                    setErrorTotalForTab(errorXml2List?.length || 0, 'xml2ErrorTotal');
+
+                    errorXml3List = errorList.filter(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorAtXMLFile))'] === 'XML3');
+                    setErrorTotalForTab(errorXml3List?.length || 0, 'xml3ErrorTotal');
+
+                    errorXml4List = errorList.filter(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorAtXMLFile))'] === 'XML4');
+                    setErrorTotalForTab(errorXml4List?.length || 0, 'xml4ErrorTotal');
+
+                    errorXml5List = errorList.filter(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorAtXMLFile))'] === 'XML5');
+                    setErrorTotalForTab(errorXml5List?.length || 0, 'xml5ErrorTotal');
+
+                    $(".maBenhNhan").val(xml1Data.mA_BN);
+                    $(".tenBenhNhan").val(xml1Data.hO_TEN);
+
+                    getXml1Modal();
+                    xml2Tbl.ajax.reload();
+                    xml3Tbl.ajax.reload();
+                    xml4Tbl.ajax.reload();
+                    xml5Tbl.ajax.reload();
+                    healthCareHistoryTbl.ajax.reload();
+
+                    setTimeout(() => {
+                        $('#tbl_DataTable_Xml1Err').DataTable({
+                            responsive: false,
+                            bPaginate: false,
+                            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+                        });
+                    }, 0);
+                },
+                fail: function (jqXHR, textStatus) {
+                    alert("Request failed: " + textStatus);
+                }
+            });
+        });
+
+        function getXml1Modal() {
+             $.ajax({
+                url: "@Url.Action(nameof(FilesController.TransformDataToPartialXml1), Uti.GetControllerName(nameof(FilesController)))",
+                method: 'POST',
+                data: JSON.stringify({
+                    xml1Data,
+                    errorList,
+                }),
+                dataType: 'text',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+                success: function (data) {
+                    if (!data) return;
+
+                    $("#xml1").html(data);
+                },
+                fail: function (jqXHR, textStatus) {
+                    alert("Request failed: " + textStatus);
+                }
+            });
+        }
+
+        function getCellErrMes(xmlFileName, propertyName, sttNameField, row) {
+            let result = '';
+            if (!errorList?.length) return result;
+            const errors = errorList.filter(x =>
+                x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorAtXMLFile))'] === xmlFileName
+                && x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.XeErrorRow))'] === row[sttNameField]
+                && x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorAtXMLTag))'].toLowerCase() === propertyName.toLowerCase());
+            if (!errors?.length) return result;
+
+            result = errors.map(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorContent))']).join(', ');
+            return result;
+        }
+
+        function renderCell(data, xmlFileName, propertyName, sttNameField, row) {
+            const mes = getCellErrMes(xmlFileName, propertyName, sttNameField, row);
+            return mes
+                ? `${data} <i class="fas fa-exclamation-triangle error-icon" title="${mes}"></i>`
+                : data;
+        }
+
+        const xml2Tbl = $('#tbl_DataTable_Xml2').DataTable({
+            responsive: false,
+            processing: true,
+            serverSide: true,
+            searchDelay: 500,
+            ajax: {
+                url: "@Url.Action(nameof(FilesController.GetItemsXml2), Uti.GetControllerName(nameof(FilesController)))",
+                type: 'POST',
+                data: function (d) {
+                    d.xml1Id = currentXml1Id;
+                }
+            },
+            order: [[0, "asc"]],
+            columns: [
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.Stt)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                    className: "w-50"
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.MA_LK))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.MA_LK)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);;
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.MA_THUOC))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.MA_THUOC)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.MA_NHOM))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.MA_NHOM)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Ten_THUOC))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.Ten_THUOC)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Don_VI_TINH))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.Don_VI_TINH)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Ham_LUONG))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.Ham_LUONG)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Duong_DUNG))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.Duong_DUNG)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Lieu_DUNG))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.Lieu_DUNG)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.SO_DANG_KY))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.SO_DANG_KY)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.TT_THAU))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.TT_THAU)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Pham_VI))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.Pham_VI)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Tyle_TT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.Tyle_TT)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.SO_LUONG))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.SO_LUONG)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Don_GIA))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.Don_GIA)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Thanh_TIEN))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.Thanh_TIEN)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Muc_HUONG))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.Muc_HUONG)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.T_NGUONKHAC))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.T_NGUONKHAC)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.T_BNTT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.T_BNTT)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.T_BHTT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.T_BHTT)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.T_BNCCT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.T_BNCCT)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.T_NGOAIDS))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.T_NGOAIDS)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.MA_KHOA))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.MA_KHOA)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.MA_BAC_SI))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.MA_BAC_SI)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.MA_BENH))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.MA_BENH)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Ngay_YL))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.Ngay_YL)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml2Display.MA_PTTT))",
+                    render: function (data, type, row, meta) {
+                        @* Linhist sua loi nham ten truong loi: Ngay_YL -> MA_PTTT *@
+                        return renderCell(data, 'XML2', '@nameof(xml2Display.MA_PTTT)', '@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))', row);
+                    },
+                },
+            ],
+            createdRow: function (row, data, dataIndex) {
+                const errIndex = errorXml2List.findIndex(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.XeErrorRow))'] === data['@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))']);
+                if (errIndex > -1) {
+                    textColor = "OrangeRed";
+                    $(row).css("color", textColor);
+                }
+            },
+            rowCallback: function (row, data) {
+                const errCell = $(row).find('i.error-icon').parent();
+                if (!errCell?.length) return;
+
+                for (var i = 0; i < errCell.length; i++) {
+                    const ele = errCell[i];
+                    $(ele).addClass('error-row')
+                }
+            },
+            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+            lengthMenu: @Html.Raw(@DataTableSettingDefault.LENGTH_MENU),
+         });
+
+        const xml3Tbl = $('#tbl_DataTable_Xml3').DataTable({
+            responsive: false,
+            processing: true,
+            serverSide: true,
+            searchDelay: 500,
+            ajax: {
+                url: "@Url.Action(nameof(FilesController.GetItemsXml3), Uti.GetControllerName(nameof(FilesController)))",
+                type: 'POST',
+                data: function (d) {
+                    d.xml1Id = currentXml1Id;
+                }
+            },
+            order: [[0, "asc"]],
+            columns: [
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Stt)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                    className: "w-50"
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_LK))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_LK)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_DICH_VU))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_DICH_VU)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_VAT_TU))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_VAT_TU)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_NHOM))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_NHOM)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Goi_VTYT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Goi_VTYT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Ten_VAT_TU))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Ten_VAT_TU)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Ten_DICH_VU))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Ten_DICH_VU)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Don_VI_TINH))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Don_VI_TINH)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Pham_VI))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Pham_VI)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.SO_LUONG))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.SO_LUONG)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Don_GIA))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Don_GIA)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.TT_THAU))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.TT_THAU)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Tyle_TT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Tyle_TT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Thanh_TIEN))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Thanh_TIEN)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.T_TRANTT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.T_TRANTT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Muc_HUONG))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Muc_HUONG)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.T_NGUONKHAC))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.T_NGUONKHAC)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.T_BNTT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.T_BNTT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.T_BHTT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.T_BHTT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.T_BNCCT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.T_BNCCT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.T_NGOAIDS))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.T_NGOAIDS)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_KHOA))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_KHOA)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_GIUONG))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_GIUONG)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_BAC_SI))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_BAC_SI)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_BENH))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_BENH)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Ngay_YL))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Ngay_YL)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Ngay_KQ))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Ngay_KQ)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_PTTT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_PTTT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+            ],
+            createdRow: function (row, data, dataIndex) {
+                const errIndex = errorXml3List.findIndex(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.XeErrorRow))'] === data['@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))']);
+                if (errIndex > -1) {
+                    textColor = "OrangeRed";
+                    $(row).css("color", textColor);
+                }
+            },
+            rowCallback: function (row, data) {
+                const errCell = $(row).find('i.error-icon').parent();
+                if (!errCell?.length) return;
+
+                for (var i = 0; i < errCell.length; i++) {
+                    const ele = errCell[i];
+                    $(ele).addClass('error-row')
+                }
+            },
+            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+            lengthMenu: @Html.Raw(@DataTableSettingDefault.LENGTH_MENU),
+        });
+
+        const xml4Tbl = $('#tbl_DataTable_Xml4').DataTable({
+            responsive: false,
+            processing: true,
+            serverSide: true,
+            searchDelay: 500,
+            ajax: {
+                url: "@Url.Action(nameof(FilesController.GetItemsXml4), Uti.GetControllerName(nameof(FilesController)))",
+                type: 'POST',
+                data: function (d) {
+                    d.xml1Id = currentXml1Id;
+                }
+            },
+            order: [[0, "asc"]],
+            columns: [
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Stt))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML4', '@nameof(xml4Display.Stt)', '@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Stt))', row);
+                    },
+                    className: "w-50"
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml4Display.MA_LK))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML4', '@nameof(xml4Display.MA_LK)', '@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml4Display.MA_DICH_VU))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML4', '@nameof(xml4Display.MA_DICH_VU)', '@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml4Display.MA_CHI_SO))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML4', '@nameof(xml4Display.MA_CHI_SO)', '@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Ten_CHI_SO))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML4', '@nameof(xml4Display.Ten_CHI_SO)', '@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Gia_TRI))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML4', '@nameof(xml4Display.Gia_TRI)', '@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml4Display.MA_MAY))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML4', '@nameof(xml4Display.MA_MAY)', '@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml4Display.MO_TA))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML4', '@nameof(xml4Display.MO_TA)', '@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Ket_LUAN))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML4', '@nameof(xml4Display.Ket_LUAN)', '@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Ngay_KQ))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML4', '@nameof(xml4Display.Ngay_KQ)', '@Uti.SetLowerCaseFirstChar(nameof(xml4Display.Stt))', row);
+                    },
+                },
+            ],
+            createdRow: function (row, data, dataIndex) {
+                const errIndex = errorXml4List.findIndex(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.XeErrorRow))'] === data['@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))']);
+                if (errIndex > -1) {
+                    textColor = "OrangeRed";
+                    $(row).css("color", textColor);
+                }
+            },
+            rowCallback: function (row, data) {
+                const errCell = $(row).find('i.error-icon').parent();
+                if (!errCell?.length) return;
+
+                for (var i = 0; i < errCell.length; i++) {
+                    const ele = errCell[i];
+                    $(ele).addClass('error-row')
+                }
+            },
+            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+            lengthMenu: @Html.Raw(@DataTableSettingDefault.LENGTH_MENU),
+        });
+
+        const xml5Tbl = $('#tbl_DataTable_Xml5').DataTable({
+            responsive: false,
+            processing: true,
+            serverSide: true,
+            searchDelay: 500,
+            ajax: {
+                url: "@Url.Action(nameof(FilesController.GetItemsXml5), Uti.GetControllerName(nameof(FilesController)))",
+                type: 'POST',
+                data: function (d) {
+                    d.xml1Id = currentXml1Id;
+                }
+            },
+            order: [[0, "asc"]],
+            columns: [
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml5Display.Stt))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML5', '@nameof(xml5Display.Stt)', '@Uti.SetLowerCaseFirstChar(nameof(xml5Display.Stt))', row);
+                    },
+                    className: "w-50"
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml5Display.MA_LK))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML5', '@nameof(xml5Display.MA_LK)', '@Uti.SetLowerCaseFirstChar(nameof(xml5Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml5Display.Dien_BIEN))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML5', '@nameof(xml5Display.Dien_BIEN)', '@Uti.SetLowerCaseFirstChar(nameof(xml5Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml5Display.Hoi_CHAN))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML5', '@nameof(xml5Display.Hoi_CHAN)', '@Uti.SetLowerCaseFirstChar(nameof(xml5Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml5Display.Phau_THUAT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML5', '@nameof(xml5Display.Phau_THUAT)', '@Uti.SetLowerCaseFirstChar(nameof(xml5Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml5Display.Ngay_YL))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML5', '@nameof(xml5Display.Ngay_YL)', '@Uti.SetLowerCaseFirstChar(nameof(xml5Display.Stt))', row);
+                    },
+                },
+            ],
+            createdRow: function (row, data, dataIndex) {
+                const errIndex = errorXml5List.findIndex(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.XeErrorRow))'] === data['@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))']);
+                if (errIndex > -1) {
+                    textColor = "OrangeRed";
+                    $(row).css("color", textColor);
+                }
+            },
+            rowCallback: function (row, data) {
+                const errCell = $(row).find('i.error-icon').parent();
+                if (!errCell?.length) return;
+
+                for (var i = 0; i < errCell.length; i++) {
+                    const ele = errCell[i];
+                    $(ele).addClass('error-row')
+                }
+            },
+            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+            lengthMenu: @Html.Raw(@DataTableSettingDefault.LENGTH_MENU),
+        });
+
+        const healthCareHistoryTbl = $('#tbl_DataTable_HealthCareHistory').DataTable({
+            responsive: false,
+            processing: true,
+            serverSide: true,
+            searchDelay: 500,
+            ajax: {
+                url: "@Url.Action(nameof(FilesController.GetItemsHelthCareHistory), Uti.GetControllerName(nameof(FilesController)))",
+
+                type: 'POST',
+                data: function (d) {
+                    d.xml1Id = currentXml1Id;
+                }
+            },
+            order: [[0, "asc"]],
+            columns: [
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Stt)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                    className: "w-50"
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_LK))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_LK)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_DICH_VU))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_DICH_VU)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_VAT_TU))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_VAT_TU)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_NHOM))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_NHOM)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Goi_VTYT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Goi_VTYT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Ten_VAT_TU))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Ten_VAT_TU)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Ten_DICH_VU))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Ten_DICH_VU)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Don_VI_TINH))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Don_VI_TINH)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Pham_VI))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Pham_VI)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.SO_LUONG))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.SO_LUONG)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Don_GIA))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Don_GIA)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.TT_THAU))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.TT_THAU)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Tyle_TT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Tyle_TT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Thanh_TIEN))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Thanh_TIEN)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.T_TRANTT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.T_TRANTT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Muc_HUONG))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Muc_HUONG)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.T_NGUONKHAC))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.T_NGUONKHAC)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.T_BNTT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.T_BNTT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.T_BHTT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.T_BHTT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.T_BNCCT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.T_BNCCT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.T_NGOAIDS))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.T_NGOAIDS)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_KHOA))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_KHOA)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_GIUONG))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_GIUONG)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_BAC_SI))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_BAC_SI)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_BENH))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_BENH)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Ngay_YL))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Ngay_YL)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Ngay_KQ))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.Ngay_KQ)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(xml3Display.MA_PTTT))",
+                    render: function (data, type, row, meta) {
+                        return renderCell(data, 'XML3', '@nameof(xml3Display.MA_PTTT)', '@Uti.SetLowerCaseFirstChar(nameof(xml3Display.Stt))', row);
+                    },
+                },
+            ],
+            createdRow: function (row, data, dataIndex) {
+                const errIndex = errorXml3List.findIndex(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.XeErrorRow))'] === data['@Uti.SetLowerCaseFirstChar(nameof(xml2Display.Stt))']);
+                if (errIndex > -1) {
+                    textColor = "OrangeRed";
+                    $(row).css("color", textColor);
+                }
+            },
+            rowCallback: function (row, data) {
+                const errCell = $(row).find('i.error-icon').parent();
+                if (!errCell?.length) return;
+
+                for (var i = 0; i < errCell.length; i++) {
+                    const ele = errCell[i];
+                    $(ele).addClass('error-row')
+                }
+            },
+            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+            lengthMenu: @Html.Raw(@DataTableSettingDefault.LENGTH_MENU),
+        });
+
+        var downloadUrls = [
+                                '@Url.Action(nameof(FilesController.GetDownloadData1), Uti.GetControllerName(nameof(FilesController)))',
+                                '@Url.Action(nameof(FilesController.GetDownloadData2), Uti.GetControllerName(nameof(FilesController)))',
+                                '@Url.Action(nameof(FilesController.GetDownloadData3), Uti.GetControllerName(nameof(FilesController)))',
+                                '@Url.Action(nameof(FilesController.GetDownloadData4), Uti.GetControllerName(nameof(FilesController)))',
+                                '@Url.Action(nameof(FilesController.GetDownloadData5), Uti.GetControllerName(nameof(FilesController)))'
+                            ];
+        function downloadFile(idx) {
+            const xml1Length = dataTbl?.data()?.length;
+            if (!xml1Length) {
+                $.toast({
+                    heading: 'Cảnh báo',
+                    text: 'Không có dữ liệu.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 3500,
+                    stack: 6
+                });
+                return;
+            }
+            @* Linhist changed 19/04/22 *@
+            //if (!$("#select2FilterError").val()?.length && !$("#fromDateOut").val() && !$("#toDateOut").val()) {
+            //    $.toast({
+            //        heading: 'Cảnh báo',
+            //        text: 'Vui lòng chọn ngày ra viện (từ ngày nào đến ngày nào) hoặc loại lỗi để tải báo cáo.',
+            //        position: 'top-center',
+            //        loaderBg: '#ff6849',
+            //        icon: 'error',
+            //        hideAfter: 3500,
+            //        stack: 6
+            //    });
+            //    return;
+            //}
+
+            var hasDate=false;
+            var inp=$('input', datePickrs);
+            for(var i=0;i<inp.length;i++){
+                if(inp.eq(i).val()){
+                    hasDate=true;
+                    break;
+                }
+            }
+
+            if (!hasDate || !$("#filterError").val()) {
+                $.toast({
+                    heading: 'Cảnh báo',
+                    text: 'Vui lòng chọn ít nhất 1 mục ngày tháng (ngày vào, ngày ra, ngày tạo hoặc ngày thanh toán) hoặc loại lỗi để tải báo cáo.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 3500,
+                    stack: 6
+                });
+                return;
+            }
+            @* End Linhist changed 19/04/22 *@
+
+            $(".btn-download").addClass('disabled-custom');
+            $("#spinnerWrapper").modal("show");
+
+            $.ajax({
+                url: downloadUrls[idx],
+                method: "GET",
+                contentType: "application/json",
+                cache: false,
+                success: function (response) {
+                    $("#spinnerWrapper").modal("hide");
+                    $(".btn-download").removeClass('disabled-custom');
+
+                    if (response.code != 200) {
+                        $.toast({
+                            heading: 'Thất bại',
+                            text: 'Đã có lỗi hệ thống.',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                        return;
+                    }
+
+                    window.location = '@Url.Action(nameof(FilesController.Download), Uti.GetControllerName(nameof(FilesController)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    setTimeout(() => {
+                        $.toast({
+                            heading: 'Thành công',
+                            text: '',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'success',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                    }, 2000);
+                },
+                error: function (e) {
+                    $("#spinnerWrapper").modal("hide");
+                    $(".btn-download").removeClass('disabled-custom');
+
+                    $.toast({
+                        heading: 'Thất bại',
+                        text: 'Đã có lỗi hệ thống.',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 3500,
+                        stack: 6
+                    });
+                }
+            });
+        }
+
+        function downloadXml1() {
+            if (!xml1Data?.fileName || !xml1Data?.createDate) {
+                $.toast({
+                    heading: 'Cảnh báo',
+                    text: 'Dữ liệu XML1 không hợp lệ.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 3500,
+                    stack: 6
+                });
+                return;
+            }
+
+            window.location = '@Url.Action(nameof(FilesController.DownloadXml1), Uti.GetControllerName(nameof(FilesController)))' + `?fileName=${xml1Data.fileName}&date=${xml1Data.createDate}`;
+        }
+        function reloadXml1() {
+            $("#spinnerWrapper").modal("show");
+            //xml1Data = dataTbl.row(this).data();
+            //currentXml1Id = xml1Data.xmL1ID;
+            $.ajax({
+                url: "@Url.Action(nameof(FilesController.RecheckXml1Error), Uti.GetControllerName(nameof(FilesController)))" + `?xml1Id=${currentXml1Id}`,
+                method: 'GET',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+                success: function (res) {
+                    if (!res) return;
+                    clearErrTotalForTab();
+                    $("#tbl_xml1Error_wrapper").html(res.partialView);
+                    $("#detailModal").modal("show");
+
+                    errorList = res.data;
+
+                    errorXml1List = errorList.filter(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorAtXMLFile))'] === 'XML1');
+                    setErrorTotalForTab(errorXml1List?.length || 0, 'xml1ErrorTotal');
+
+                    errorXml2List = errorList.filter(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorAtXMLFile))'] === 'XML2');
+                    setErrorTotalForTab(errorXml2List?.length || 0, 'xml2ErrorTotal');
+
+                    errorXml3List = errorList.filter(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorAtXMLFile))'] === 'XML3');
+                    setErrorTotalForTab(errorXml3List?.length || 0, 'xml3ErrorTotal');
+
+                    errorXml4List = errorList.filter(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorAtXMLFile))'] === 'XML4');
+                    setErrorTotalForTab(errorXml4List?.length || 0, 'xml4ErrorTotal');
+
+                    errorXml5List = errorList.filter(x => x['@Uti.SetLowerCaseFirstChar(nameof(XML1ErrorInfoModel.ErrorAtXMLFile))'] === 'XML5');
+                    setErrorTotalForTab(errorXml5List?.length || 0, 'xml5ErrorTotal');
+
+                    //$(".maBenhNhan").val(xml1Data.mA_BN);
+                    //$(".tenBenhNhan").val(xml1Data.hO_TEN);
+                    $(".maBenhNhan").val("Đã kiểm tra lại Hồ Sơ");
+                    //$(".tenBenhNhan").val(xml1Data.hO_TEN);
+
+                    getXml1Modal();
+                    xml2Tbl.ajax.reload();
+                    xml3Tbl.ajax.reload();
+                    xml4Tbl.ajax.reload();
+                    xml5Tbl.ajax.reload();
+                    healthCareHistoryTbl.ajax.reload();
+                    $("#spinnerWrapper").modal("hide");
+                    setTimeout(() => {
+                        $('#tbl_DataTable_Xml1Err').DataTable({
+                            responsive: false,
+                            bPaginate: false,
+                            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+                        });
+                    }, 0);
+                },
+                fail: function (jqXHR, textStatus) {
+                    alert("Request failed: " + textStatus);
+                }
+            });
+        }
+
+        @*Linhist added 10/06/22 *@
+        function recheckAll() {
+            const xml1Length = dataTbl?.data()?.length;
+            if (!xml1Length || xml1Length > 3000) {
+                $.toast({
+                    heading: 'Cảnh báo',
+                    text: xml1Length ? 'Số lượng hồ sơ quá lớn (> 3000).' : 'Không có dữ liệu.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 3500,
+                    stack: 6
+                });
+                return;
+            }
+
+            var hasDate = false;
+            var inp = $('input', datePickrs);
+            for (var i = 0; i < inp.length; i++) {
+                if (inp.eq(i).val()) {
+                    hasDate = true;
+                    break;
+                }
+            }
+
+            if (!hasDate || !$("#filterError").val()) {
+                $.toast({
+                    heading: 'Cảnh báo',
+                    text: 'Vui lòng chọn ít nhất 1 mục ngày tháng (ngày vào, ngày ra, ngày tạo hoặc ngày thanh toán) hoặc loại lỗi để tải báo cáo.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 3500,
+                    stack: 6
+                });
+                return;
+            }
+
+            if (!confirm('Những hồ sơ đã chọn sẽ được đánh dấu để kiểm tra lại tự động. Bạn đã chắc chắn muốn thực hiện chức năng này???')) return;
+
+            $("#btnRecheck").addClass('disabled-custom');
+            $("#spinnerWrapper").modal("show");
+
+            var path = '@Url.Action(nameof(FilesController.SetItemsRecheck), Uti.GetControllerName(nameof(FilesController)))';
+            $.ajax({
+                url: path,
+                data: {
+                    filterDateIns: [$("#fromDateIn").val(), $('#toDateIn').val()],
+                    filterDateOuts: [$("#fromDateOut").val(), $('#toDateOut').val()],
+                    filterDateCreates: [$("#fromDateCreate").val(), $('#toDateCreate').val()],
+                    departments: $("#filterDepartment").val(),
+                    filterErrors: $("#filterError").val(),
+                    filterStatus: $('#filterStatus').val(),
+                    filterDatePaids: [$("#fromDatePaid").val(), $('#toDatePaid').val()],
+                    filterKCB: $('#filterKCB').val(),
+                    filterHospital: $('#filterHospital').val(),
+                },
+                method: "POST",
+                dataType: "json",
+                success: function (res) {
+                    $("#spinnerWrapper").modal("hide");
+                    $("#btnRecheck").removeClass('disabled-custom');
+
+                    if (!res.recordsTotal) {
+                        $.toast({
+                            heading: 'Thất bại',
+                            text: 'Đã có lỗi hệ thống.',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                    }
+                    else {
+                        $.toast({
+                            heading: 'Thành công',
+                            text: res.recordsTotal.toString() + ' hồ sơ đã vào hàng đợi, vui lòng chờ hệ thống kiểm tra lại hoàn thành',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'success',
+                            hideAfter: 5000,
+                            stack: 6
+                        });
+
+                        dataTbl.ajax.reload();
+                    }
+                },
+                error: function (e) {
+                    $("#spinnerWrapper").modal("hide");
+                    $("#btnDownload").removeClass('disabled-custom');
+
+                    $.toast({
+                        heading: 'Thất bại',
+                        text: 'Đã có lỗi hệ thống.',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 3500,
+                        stack: 6
+                    });
+                }
+            });
+        }
+
+
+    </script>
+}

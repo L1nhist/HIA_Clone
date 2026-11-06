@@ -1,0 +1,32 @@
+2026-09-29 11:06:44.476 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-29 11:06:44.527 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (11:06:44).
+2026-09-29 11:06:44.530 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-29 11:06:44.531 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (11:06:44).
+2026-09-29 11:06:44.532 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-29 11:06:44.533 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (11:06:44).
+2026-09-29 11:07:33.249 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 666666 [29/09 11:07:33]
+2026-09-29 11:07:33.327 +07:00 [Information] [BACKGROUND_SERVICE] HoSoManagementService130 - ValidateXML: Validate130: khong ton tai XML theo danh sach XML01ID gui vao, da xoa khoi XMLValidate
+2026-09-29 11:07:33.327 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Giam dinh xong 1 file cua viện 666666. Thoi gian thuc hien 75,8356
+2026-09-29 11:09:55.060 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 666666 [29/09 11:09:55]
+2026-09-29 11:09:57.408 +07:00 [Information] [BACKGROUND_SERVICE] HoSoManagementService130 - ValidateXML: Validate130: khong ton tai XML theo danh sach XML01ID gui vao, da xoa khoi XMLValidate
+2026-09-29 11:09:57.408 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Giam dinh xong 1 file cua viện 666666. Thoi gian thuc hien 2348,1656
+2026-09-29 11:10:13.314 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 666666 [29/09 11:10:13]
+2026-09-29 11:10:15.517 +07:00 [Information] [BACKGROUND_SERVICE] HoSoManagementService130 - ValidateXML: Validate130: khong ton tai XML theo danh sach XML01ID gui vao, da xoa khoi XMLValidate
+2026-09-29 11:10:15.517 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Giam dinh xong 1 file cua viện 666666. Thoi gian thuc hien 2203,0703
+2026-09-29 11:10:43.482 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 666666 [29/09 11:10:43]
+2026-09-29 11:10:49.869 +07:00 [Information] [BACKGROUND_SERVICE] HoSoManagementService130 - ValidateXML: Validate130: khong ton tai XML theo danh sach XML01ID gui vao, da xoa khoi XMLValidate
+2026-09-29 11:10:53.573 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Giam dinh xong 1 file cua viện 666666. Thoi gian thuc hien 10091,0603
+2026-09-29 11:11:33.434 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 666666 [29/09 11:11:33]
+2026-09-29 11:11:43.048 +07:00 [Information] [BACKGROUND_SERVICE] HoSoManagementService130 - ValidateXML: Validate130: khong ton tai XML theo danh sach XML01ID gui vao, da xoa khoi XMLValidate
+2026-09-29 11:11:43.048 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Giam dinh xong 1 file cua viện 666666. Thoi gian thuc hien 9613,8056
+2026-09-29 11:12:13.622 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 666666 [29/09 11:12:13]
+2026-09-29 11:12:43.452 +07:00 [Information] [BACKGROUND_SERVICE] HoSoManagementService130 - ValidateXML: Validate130: khong ton tai XML theo danh sach XML01ID gui vao, da xoa khoi XMLValidate
+2026-09-29 11:12:43.452 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Giam dinh xong 1 file cua viện 666666. Thoi gian thuc hien 29829,8006
+2026-09-29 11:12:53.954 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 666666 [29/09 11:12:53]
+2026-09-29 11:14:36.385 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Giam dinh xong 1 file cua viện 666666. Thoi gian thuc hien 102430,7853
+2026-09-29 11:25:52.964 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-29 11:25:52.999 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (11:25:52).
+2026-09-29 11:25:53.002 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-29 11:25:53.023 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (11:25:53).
+2026-09-29 11:25:53.024 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-29 11:25:53.025 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (11:25:53).

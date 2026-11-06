@@ -1,0 +1,750 @@
+﻿@using HIA.Core.Languages.TitlePage;
+@using Nancy.Json;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Token;
+@using System.Security.Claims;
+@using HIA.Core.Models.Diagram;
+@using HIA.Web.Controllers;
+@model HIA.Core.Models.Diagram.AIStatModel
+
+@{
+    ViewData["Title"] = "Báo cáo tổng hợp hoạt động";
+    var lst1 = new JavaScriptSerializer().Serialize(Model.DataLines).Replace("\"new Date", "new Date").Replace(")\"", ")").Replace("\"label\":", "x:").Replace("\"y\":", "y:");
+    var lst2 = new JavaScriptSerializer().Serialize(Model.DataBars).Replace("\"new Date", "new Date").Replace(")\"", ")").Replace("\"label\":", "x:").Replace("\"y\":", "y:");
+    var lst3 = new JavaScriptSerializer().Serialize(Model.DataPies);
+}
+
+<link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/elite/icons/font-awesome/css/fontawesome.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/elite/css/page/tab-page.css")" />
+<link rel="stylesheet" href="@Url.Content("~/css/home.min.css")" />
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/dataTables.bootstrap4.css")">
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/responsive.dataTables.min.css")">
+<style>
+    .chart-wrapper .override-text {
+        left: auto;
+        right: 10px;
+        bottom: 0;
+    }
+    .errCount {
+        border-radius: 15px;
+        font-size: 12px;
+        color: #fff;
+        background: #d00;
+        padding: 3px;
+        margin-top: -10px;
+        position: absolute;
+        display: inline-block;
+        line-height: 1em;
+    }
+    .errCount:empty {
+        display: none;
+    }
+    .raised-up {
+        height: 0;
+    }
+    .raised-up a {
+        margin-top: -80px;
+        margin-right: 30px;
+    }
+</style>
+
+<!-- scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.js" integrity="sha512-SJYdL2kA5iRh/PXQY8so9DvAkBtfVPcIk5pL0aPlsYjeHE7fUNWmWSVsX3X8zldgBxffJmlhxnp1gT59ZDFYqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--[if lt IE 9 ]>
+<script src="/Scripts/html5shiv.min.js"></script>
+<script src="/Scripts/respond.min.js"></script>
+<![endif]-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<div class="container-fluid">
+    <div class="row panel-wrapper">
+        <div class="col col-12 col-md-6 col-xl-4 panel-custom blue">
+            <div class="panel-content">
+                <div class="panel-title row">
+                    <div class="p-title-label">Hồ Sơ trong ngày</div>
+                </div>
+                <div class="p-detail">
+                    <h1 class="text-right">
+                        <b>@Model.Day.SoHoSo.ToString("#,##0")</b>
+                        <small class="text-muted"><small>hồ sơ</small></small>
+                    </h1>
+                </div>
+                <div class="p-detail row">
+                    <div class="col-12 p-detail-label">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="p-detail row">
+                    <div class="col-7 p-detail-label">
+                        So với hôm qua (@Model.Day.SoHoSoHomQua):
+                    </div>
+                    <div class="col-5 p-detail-number">
+                        <span class="text-@(Model.Day.ThayDoiHoSoVsHomQuaPct >= 0 ? "success" : "danger")">
+                            @(Model.Day.ThayDoiHoSoVsHomQuaPct == 0 ? "" : Model.Day.ThayDoiHoSoVsHomQuaPct > 0 ? "▲" : "▼")
+                            @Math.Abs(Model.Day.ThayDoiHoSoVsHomQuaPct ?? 0).ToString("##0.00")%
+                        </span>
+                    </div>
+                </div>
+                <div class="p-detail row">
+                    <div class="col-7 p-detail-label">
+                        So với bình quân (@Model.Day.SoHoSoBinhQuan):
+                    </div>
+                    <div class="col-5 p-detail-number">
+                        <span class="text-@(Model.Day.ThayDoiHoSoVsBinhQuanPct >= 0 ? "success" : "danger")">
+                            @(Model.Day.ThayDoiHoSoVsBinhQuanPct == 0 ? "" : Model.Day.ThayDoiHoSoVsBinhQuanPct > 0 ? "▲" : "▼")
+                            @Math.Abs(Model.Day.ThayDoiHoSoVsBinhQuanPct ?? 0).ToString("##0.00")%
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-12 col-md-6 col-xl-4 panel-custom green">
+            <div class="panel-content">
+                <div class="panel-title row">
+                    <div class="p-title-label">Người dùng hoạt động</div>
+                </div>
+                <div class="p-detail">
+                    <h1 class="text-right text-primary">
+                        <b>@Model.HoatDong.NguoiCoHoatDong</b>
+                        <small class="text-muted">/ @(Model.HoatDong.TongSoNguoiDung)</small>
+                    </h1>
+                </div>
+                <div class="p-detail row">
+                    <div class="col-7 p-detail-label">
+                        Tương tác trong ngày:
+                    </div>
+                    <div class="col-5 p-detail-number">
+                        <span class="text-@(Model.HoatDong.TyLeTuongTacPct >= 0 ? "success" : "danger")">
+                            @(Model.HoatDong.TyLeTuongTacPct == 0 ? "" : Model.HoatDong.TyLeTuongTacPct > 0 ? "▲" : "▼")
+                            @Math.Abs(Model.HoatDong.TyLeTuongTacPct).ToString("##0.00")%
+                        </span>
+                    </div>
+                </div>
+                <div class="p-detail">
+                    <small class="text-muted">(Lấy báo cáo hoặc hỏi AI)</small>
+                </div>
+                <div class="p-detail row">
+                    <div class="col-7 p-detail-label">
+                        Bình quân (người/ngày):
+                    </div>
+                    <div class="col-5 p-detail-number">
+                        @Model.HoatDong.NguoiCoHoatDongBinhQuan
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-12 col-md-6 col-xl-4 panel-custom red">
+            <div class="panel-content">
+                <div class="panel-title row">
+                    <div class="p-title-label">Tổng số lỗi</div>
+                </div>
+                <div class="p-detail">
+                    <h1 class="text-right">
+                        <b>@Model.ChatLuong.TongLoi.ToString("#,##0")</b>
+                        <small class="text-muted"><small>lỗi</small></small>
+                    </h1>
+                </div>
+                <div class="p-detail row">
+                    <div class="col-7 p-detail-label">
+                        So với bình quân (@Model.ChatLuong.TongLoiBinhQuan):
+                    </div>
+                    <div class="col-5 p-detail-number">
+                        <span class="text-@(Model.ChatLuong.PctHoSoCoLoiBinhQuan < 0 ? "success" : "danger")">
+                            @(Model.ChatLuong.PctHoSoCoLoiBinhQuan == 0 ? "" : Model.ChatLuong.PctHoSoCoLoiBinhQuan > 0 ? "▲" : "▼")
+                            @Math.Abs(Model.ChatLuong.PctHoSoCoLoiBinhQuan).ToString("##0.00")%
+                        </span>
+                    </div>
+                </div>
+                <div class="p-detail row">
+                    <div class="col-7 p-detail-label">
+                        Bình quân lỗi/lần:
+                    </div>
+                    <div class="col-5 p-detail-number">
+                        <span class="text-@(Model.ChatLuong.LoiMoiLanDay < 0 ? "success" : "danger")">
+                            @(Model.ChatLuong.LoiMoiLanDay == 0 ? "" : Model.ChatLuong.LoiMoiLanDay > 0 ? "▲" : "▼")
+                            @Math.Abs(Model.ChatLuong.LoiMoiLanDay).ToString("##0.00")%
+                        </span>
+                    </div>
+                </div>
+                <div class="p-detail row">
+                    <div class="col-7 p-detail-label">
+                        Tỷ lệ lỗi/hồ sơ:
+                    </div>
+                    <div class="col-5 p-detail-number">
+                        <span class="text-@(Model.ChatLuong.PctHoSoCoLoi < 0 ? "success" : "danger")">
+                            @(Model.ChatLuong.PctHoSoCoLoi == 0 ? "" : Model.ChatLuong.PctHoSoCoLoi > 0 ? "▲" : "▼")
+                            @Math.Abs(Model.ChatLuong.PctHoSoCoLoi).ToString("##0.00")%
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row panel-wrapper">
+        <div class="col col-12 col-md-8 panel-custom">
+            <div class="panel-custom">
+                <div class="panel-content">
+                    <div class="chart-wrapper" id="chartContainer1" style="height: 400px;"></div>
+                    <div class="override-text">
+                        Dữ liệu được cập nhật lúc: @Model.NgayBaoCao
+                        Tỷ lệ: <span class="text-@(Model.Day.ThayDoiHoSoVsBinhQuanPct >= 0 ? "success" : "danger")">
+                            @(Model.Day.ThayDoiHoSoVsBinhQuanPct == 0 ? "" : Model.Day.ThayDoiHoSoVsBinhQuanPct > 0 ? "▲" : "▼")
+                            @Math.Abs(Model.Day.ThayDoiHoSoVsBinhQuanPct ?? 0).ToString("#0.00")%
+                        </span> &nbsp; &nbsp; | &nbsp; &nbsp;
+                        <span class="text-@(Model.Day.ThayDoiHoSoVsHomQuaPct >= 0 ? "success" : "danger")">
+                            @(Model.Day.ThayDoiHoSoVsHomQuaPct == 0 ? "" : Model.Day.ThayDoiHoSoVsBinhQuanPct > 0 ? "▲" : "▼")
+                            @Math.Abs(Model.Day.ThayDoiHoSoVsHomQuaPct ?? 0).ToString("#0.00")%
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-12 col-md-4 panel-custom">
+            <div class="panel-custom greenleaf">
+                <div class="panel-content">
+                    <div class="panel-title row">
+                        <div class="p-title-label">Hồ sơ đã sửa</div>
+                    </div>
+                    <div class="p-detail">
+                        <h1 class="text-right"><b>@Model.DayLai.TongSoCa.ToString("#,##0")</b></h1>
+                    </div>
+                    <!--div class="p-detail row">
+                        <div class="col-8 p-detail-label text-success">
+                            Cải thiện:
+                        </div>
+                        <div class="col-4 p-detail-number text-success">
+                            @Model.DayLai.SoCaCaiThien
+                        </div>
+                    </div>
+                    <div class="p-detail row">
+                        <div class="col-8 p-detail-label">
+                            Không đổi:
+                        </div>
+                        <div class="col-4 p-detail-number">
+                            @Model.DayLai.SoCaYHet
+                        </div>
+                    </div>
+                    <div class="p-detail row">
+                        <div class="col-8 p-detail-label text-danger">
+                            Tệ hơn:
+                        </div>
+                        <div class="col-4 p-detail-number text-danger">
+                            @Model.DayLai.SoCaXauHon
+                        </div>
+                    </div-->
+                    <div class="p-detail">
+                        <div class="chart-wrapper" id="chartContainer2" style="height: 280px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-wrapper">
+        <div class="panel-custom blue">
+            <div class="panel-content">
+                <div class="panel-title row">
+                    <div class="p-title-label">Danh sách các lỗi thường xuyên lặp lại</div>
+                </div>
+                <div class="p-detail">
+                    <div style="max-height:560px;overflow-y:auto;">
+                        <div class="table-responsive" style="position:sticky;top:0;background:#fff;">
+                            <table class="table table-bordered table-striped" id="tbl1a" style="width: 100%;margin: 0;">
+                                <thead>
+                                    <tr class="bg-light">
+                                        <th style="width: 5%">Mã</th>
+                                        <th style="width: 7%">Hồ sơ</th>
+                                        <th style="width: 39%">Nội dung lỗi</th>
+                                        <th style="width: 9%">Tổng lỗi</th>
+                                        <th style="width: 9%">Hôm nay</th>
+                                        <th style="width: 9%">Bình quân</th>
+                                        <th style="width: 9%">Tỷ lệ</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped" id="tbl1b" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 5%"></th>
+                                        <th style="width: 7%"></th>
+                                        <th style="width: 39%"></th>
+                                        <th style="width: 9%"></th>
+                                        <th style="width: 9%"></th>
+                                        <th style="width: 9%"></th>
+                                        <th style="width: 9%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @if (Model.TopLoiLap?.Any() == true) 
+                                {
+                                    foreach (var e in Model.TopLoiLap)
+                                    {
+                                        <tr>
+                                            <td><b>@e.MaLoi</b></td>
+                                            <td class="text-muted">@e.FileXml</td>
+                                            <td>@e.TenLoi</td>
+                                                <td><b>@e.SoLuot lỗi</b><small class="text-muted"><br />/@e.SoHoSoDinh hồ sơ</small></td>
+                                            <td><b>@e.SoLuotHomNay lỗi</b><small class="text-muted"><br />/@e.SoHoSoDinhHomNay hồ sơ</small></td>
+                                                <td><b>@e.SoLuotBinhQuan lỗi</b><small class="text-muted"><br />/@e.SoHoSoDinhBinhQuan hồ sơ</small></td>
+                                            <td><b class="text-@(e.ThayDoiSoLuotPct < 0 ? "success" : "danger")">
+                                                    @(e.ThayDoiSoLuotPct == 0 ? "" : e.ThayDoiSoLuotPct > 0 ? "▲" : "▼")
+                                                    @Math.Abs(e.ThayDoiSoHoSoDinhPct ?? 0).ToString("#0.00")%
+                                                </b>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr />
+                    <div style="padding-top: 15px;padidng-bottom: 15px;">
+                        <ul id="navLinks" class="nav nav-tabs" role="tablist" style="padding-bottom: 10px;">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#nochg" role="tab">
+                                    <b class="text-primary">HỒ SƠ CHƯA SỬA</b>
+                                    <span class="errCount">@(Model.DayLai.DSKoChinhSua?.Count ?? 0)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#sames" role="tab">
+                                    <b class="text-warning">CÓ SỬA (không đổi)</b>
+                                    <span class="errCount">@(Model.DayLai.DSYHet?.Count ?? 0)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#better" role="tab">
+                                    <b class="text-success">CẢI THIỆN (giảm lỗi)</b>
+                                    <span class="errCount">@(Model.DayLai.DSCaiThien?.Count ?? 0)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#badly" role="tab">
+                                    <b class="text-danger">XẤU HƠN (tăng lỗi)</b>
+                                    <span class="errCount">@(Model.DayLai.DSXauHon?.Count ?? 0)</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div id="tabPanes" class="tab-content tabcontent-border">
+                            <div role="tabpanel" class="tab-pane active" id="nochg">
+                                <div class="text-right raised-up"><a class="btn btn-primary" href="@Url.Action(nameof(ReportController.Download), Uti.GetControllerName(nameof(ReportController)))?type=0" target="_blank">Tải về</a></div>
+                                <div style="height:560px;overflow-y:auto;">
+                                    <div class="table-responsive" style="position:sticky;top:0;background:#fff;">
+                                        <table class="table table-bordered table-striped" style="width: 100%;margin: 0;">
+                                            <thead>
+                                                <tr class="bg-light">
+                                                    <th style="width: 7%">Mã LK</th>
+                                                    <th style="width: 7%">Số lỗi</th>
+                                                    <th style="width: 15%">Họ tên</th>
+                                                    <th style="width: 10%">Số BHYT</th>
+                                                    <th style="width: 10%">Ngày sinh</th>
+                                                    <th style="width: 7%">Mã khoa</th>
+                                                    <th style="width: 9%">Chẩn đoán</th>
+                                                    <th style="width: 10%">Ngày vào</th>
+                                                    <th style="width: 10%">Ngày ra</th>
+                                                    <th style="width: 15%">Người dùng</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 7%"></th>
+                                                    <th style="width: 7%"></th>
+                                                    <th style="width: 15%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 7%"></th>
+                                                    <th style="width: 9%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 15%"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if (Model.DayLai.DSKoChinhSua?.Any() == true) 
+                                            {
+                                                foreach (var e in Model.DayLai.DSKoChinhSua)
+                                                {
+                                                    <tr>
+                                                        <td><b>@e.MA_LK</b></td>
+                                                        <td class="text-muted">@e.SO_LOI</td>
+                                                        <td>@e.HO_TEN</td>
+                                                        <td>@e.SO_BHYT</td>
+                                                        <td>@e.NGAY_SINH</td>
+                                                        <td>@e.MA_KHOA</td>
+                                                        <td>@e.MA_CHAN_DOAN</td>
+                                                        <td>@e.NGAY_VAO</td>
+                                                        <td>@e.NGAY_RA</td>
+                                                        <td><b>@e.NGUOI_GUI?.Ten</b><small class="text-muted"><br />@e.NGUOI_GUI?.Email</small></td>
+                                                    </tr>
+                                                }
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="sames">
+                                <div class="text-right raised-up"><a class="btn btn-warning" href="@Url.Action(nameof(ReportController.Download), Uti.GetControllerName(nameof(ReportController)))?type=1" target="_blank">Tải về</a></div>
+                                <div style="height:560px;overflow-y:auto;">
+                                    <div class="table-responsive" style="position:sticky;top:0;background:#fff;">
+                                        <table class="table table-bordered table-striped" style="width: 100%;margin: 0;">
+                                            <thead>
+                                                <tr class="bg-light">
+                                                    <th style="width: 7%">Mã LK</th>
+                                                    <th style="width: 7%">Số lỗi</th>
+                                                    <th style="width: 15%">Họ tên</th>
+                                                    <th style="width: 10%">Số BHYT</th>
+                                                    <th style="width: 10%">Ngày sinh</th>
+                                                    <th style="width: 7%">Mã khoa</th>
+                                                    <th style="width: 9%">Chẩn đoán</th>
+                                                    <th style="width: 10%">Ngày vào</th>
+                                                    <th style="width: 10%">Ngày ra</th>
+                                                    <th style="width: 15%">Người dùng</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 7%"></th>
+                                                    <th style="width: 7%"></th>
+                                                    <th style="width: 15%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 7%"></th>
+                                                    <th style="width: 9%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 15%"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if (Model.DayLai.DSYHet?.Any() == true) 
+                                            {
+                                                foreach (var e in Model.DayLai.DSYHet)
+                                                {
+                                                    <tr>
+                                                        <td><b>@e.MA_LK</b></td>
+                                                        <td class="text-muted">@e.SO_LOI</td>
+                                                        <td>@e.HO_TEN</td>
+                                                        <td>@e.SO_BHYT</td>
+                                                        <td>@e.NGAY_SINH</td>
+                                                        <td>@e.MA_KHOA</td>
+                                                        <td>@e.MA_CHAN_DOAN</td>
+                                                        <td>@e.NGAY_VAO</td>
+                                                        <td>@e.NGAY_RA</td>
+                                                        <td><b>@e.NGUOI_GUI?.Ten</b><small class="text-muted"><br />@e.NGUOI_GUI?.Email</small></td>
+                                                    </tr>
+                                                }
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="better">
+                                <div class="text-right raised-up"><a class="btn btn-success" href="@Url.Action(nameof(ReportController.Download), Uti.GetControllerName(nameof(ReportController)))?type=2" target="_blank">Tải về</a></div>
+                                <div style="height:560px;overflow-y:auto;">
+                                    <div class="table-responsive" style="position:sticky;top:0;background:#fff;">
+                                        <table class="table table-bordered table-striped" style="width: 100%;margin: 0;">
+                                            <thead>
+                                                <tr class="bg-light">
+                                                    <th style="width: 7%">Mã LK</th>
+                                                    <th style="width: 7%">Số lỗi</th>
+                                                    <th style="width: 15%">Họ tên</th>
+                                                    <th style="width: 10%">Số BHYT</th>
+                                                    <th style="width: 10%">Ngày sinh</th>
+                                                    <th style="width: 7%">Mã khoa</th>
+                                                    <th style="width: 9%">Chẩn đoán</th>
+                                                    <th style="width: 10%">Ngày vào</th>
+                                                    <th style="width: 10%">Ngày ra</th>
+                                                    <th style="width: 15%">Người dùng</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 7%"></th>
+                                                    <th style="width: 7%"></th>
+                                                    <th style="width: 15%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 7%"></th>
+                                                    <th style="width: 9%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 15%"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if (Model.DayLai.DSCaiThien?.Any() == true) 
+                                            {
+                                                foreach (var e in Model.DayLai.DSCaiThien)
+                                                {
+                                                    <tr>
+                                                        <td><b>@e.MA_LK</b></td>
+                                                        <td class="text-muted">@e.SO_LOI</td>
+                                                        <td>@e.HO_TEN</td>
+                                                        <td>@e.SO_BHYT</td>
+                                                        <td>@e.NGAY_SINH</td>
+                                                        <td>@e.MA_KHOA</td>
+                                                        <td>@e.MA_CHAN_DOAN</td>
+                                                        <td>@e.NGAY_VAO</td>
+                                                        <td>@e.NGAY_RA</td>
+                                                        <td><b>@e.NGUOI_GUI?.Ten</b><small class="text-muted"><br />@e.NGUOI_GUI?.Email</small></td>
+                                                    </tr>
+                                                }
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="badly">
+                                <div class="text-right raised-up"><a class="btn btn-danger" href="@Url.Action(nameof(ReportController.Download), Uti.GetControllerName(nameof(ReportController)))?type=3" target="_blank">Tải về</a></div>
+                                <div style="height:560px;overflow-y:auto;">
+                                    <div class="table-responsive" style="position:sticky;top:0;background:#fff;">
+                                        <table class="table table-bordered table-striped" style="width: 100%;margin: 0;">
+                                            <thead>
+                                                <tr class="bg-light">
+                                                    <th style="width: 7%">Mã LK</th>
+                                                    <th style="width: 7%">Số lỗi</th>
+                                                    <th style="width: 15%">Họ tên</th>
+                                                    <th style="width: 10%">Số BHYT</th>
+                                                    <th style="width: 10%">Ngày sinh</th>
+                                                    <th style="width: 7%">Mã khoa</th>
+                                                    <th style="width: 9%">Chẩn đoán</th>
+                                                    <th style="width: 10%">Ngày vào</th>
+                                                    <th style="width: 10%">Ngày ra</th>
+                                                    <th style="width: 15%">Người dùng</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 7%"></th>
+                                                    <th style="width: 7%"></th>
+                                                    <th style="width: 15%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 7%"></th>
+                                                    <th style="width: 9%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 10%"></th>
+                                                    <th style="width: 15%"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if (Model.DayLai.DSXauHon?.Any() == true) 
+                                            {
+                                                foreach (var e in Model.DayLai.DSXauHon)
+                                                {
+                                                    <tr>
+                                                        <td><b>@e.MA_LK</b></td>
+                                                        <td class="text-muted">@e.SO_LOI</td>
+                                                        <td>@e.HO_TEN</td>
+                                                        <td>@e.SO_BHYT</td>
+                                                        <td>@e.NGAY_SINH</td>
+                                                        <td>@e.MA_KHOA</td>
+                                                        <td>@e.MA_CHAN_DOAN</td>
+                                                        <td>@e.NGAY_VAO</td>
+                                                        <td>@e.NGAY_RA</td>
+                                                        <td><b>@e.NGUOI_GUI?.Ten</b><small class="text-muted"><br />@e.NGUOI_GUI?.Email</small></td>
+                                                    </tr>
+                                                }
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col col-12 col-md-6">
+            <div class="panel-custom green">
+                <div class="panel-content">
+                    <div class="panel-title row">
+                        <div class="p-title-label">Người dùng có hoạt động</div>
+                    </div>
+                    <div class="p-detail">
+                        <div class="table-responsive" style="height:420px;overflow-y:auto;">
+                            <div style="position:sticky;top:0;background:#fff;">
+                                <table class="table table-bordered table-striped" id="tbl2a" style="width: 100%;margin: 0;">
+                                    <thead style="position:sticky;">
+                                        <tr class="bg-light">
+                                            <th style="width:40%">Họ tên</th>
+                                            <th style="width:60%">Email</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <table class="table table-bordered table-striped" id="tbl2b" style="width: 100%">
+                                <thead style="position:sticky;">
+                                    <tr>
+                                        <th style="width:40%"></th>
+                                        <th style="width:60%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @if (Model.HoatDong.NguoiDungHoatDong?.Any() == true) 
+                                {
+                                    foreach (var e in Model.HoatDong.NguoiDungHoatDong)
+                                    {
+                                        <tr>
+                                            <td class="text-success"><b>@e.Ten</b></td>
+                                            <td class="text-muted">@e.Email</td>
+                                        </tr>
+                                    }
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-12 col-md-6">
+            <div class="panel-custom red">
+                <div class="panel-content">
+                    <div class="panel-title row">
+                        <div class="p-title-label">Người dùng không hoạt động</div>
+                    </div>
+                    <div class="p-detail">
+                        <div class="table-responsive" style="height:420px;overflow-y:auto;">
+                            <div style="position:sticky;top:0;background:#fff;">
+                                <table class="table table-bordered table-striped" id="tbl2a" style="width: 100%;margin: 0;">
+                                    <thead style="position:sticky;">
+                                        <tr class="bg-light">
+                                            <th style="width:40%">Họ tên</th>
+                                            <th style="width:60%">Email</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <table class="table table-bordered table-striped" id="tbl2b" style="width: 100%">
+                                <thead style="position:sticky;">
+                                    <tr>
+                                        <th style="width:40%"></th>
+                                        <th style="width:60%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @if (Model.HoatDong.NguoiDungKhongHoatDong?.Any() == true) 
+                                {
+                                    foreach (var e in Model.HoatDong.NguoiDungKhongHoatDong)
+                                    {
+                                        <tr>
+                                            <td class="text-danger">@e.Ten</td>
+                                            <td class="text-muted">@e.Email</td>
+                                        </tr>
+                                    }
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 50px"></div>
+@section Scripts {
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net-bs4/js/dataTables.responsive.min.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            CanvasJS.addCultureInfo('vn', {
+                decimalSeparator: ',',
+                digitGroupSeparator: '.'
+            });
+            CanvasJS.addColorSet('pieSet',[ '#007bff','#9e9a08','#d93742']);
+
+            var chart1 = new CanvasJS.Chart('chartContainer1', {
+                exportEnabled: true,
+                animationEnabled: true,
+                culture: 'vn',
+                height: 400,
+                title: {
+                    text: 'HỒ SƠ TẢI LÊN',
+                    fontFamily: 'sans-serif',
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                    padding: 10
+                },
+                axisX: {
+                    interlacedColor: '#F0F8FF',
+                    labelFontSize: 14,
+                    valueFormatString: "Ngày DD"
+                },
+                axisY: {
+                    labelFontSize: 14
+                },
+                data: [{
+                    type: 'column',
+                    name: 'Số lượt tải Hồ sơ trong ngày',
+                    showInLegend: true,
+                    dataPoints: @Html.Raw(lst1)
+                },{
+                    type: 'line',
+                    name: 'Số lượng Hồ sơ tải lên',
+                    showInLegend: true,
+                    dataPoints: @Html.Raw(lst2)
+                }]
+            });
+
+            var chart2 = new CanvasJS.Chart('chartContainer2', {
+                exportEnabled: true,
+                animationEnabled: true,
+                colorSet:  "pieSet",
+                height: 280,
+                legend: {
+                    fontSize: 14
+                },
+                data: [{
+                    type: 'pie',
+                    showInLegend: true,
+                    dataPoints: @Html.Raw(lst3)
+                }]
+            });
+
+            chart1.render();
+            chart2.render();
+        });
+    </script>
+}

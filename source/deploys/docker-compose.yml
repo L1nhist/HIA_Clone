@@ -1,0 +1,26 @@
+# Môi trường dev local — chạy: docker compose up -d
+# Backend/frontend dev chạy ngoài container (dotnet watch / npm run dev) trỏ vào services này.
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app_dev_only   # chỉ dùng local — staging/prod lấy từ secrets
+      POSTGRES_DB: appdb
+    ports: ["5432:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app -d appdb"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  seq:  # structured log viewer cho Serilog — http://localhost:5341
+    image: datalust/seq:latest
+    environment:
+      ACCEPT_EULA: "Y"
+    ports: ["5341:80"]
+
+volumes:
+  pgdata:

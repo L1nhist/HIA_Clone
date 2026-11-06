@@ -1,0 +1,12 @@
+# BuildKit đọc file này cho backend.Dockerfile (context = gốc repo): giữ context nhỏ, không đưa thư mục AI/git vào image
+.git
+.claude
+.running
+documents
+source/frontend
+source/mobile
+source/resources
+source/tests
+**/bin
+**/obj
+**/node_modules

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LinqKit" Version="1.1.26" />
+    <PackageReference Include="MailKit" Version="2.15.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
+    <PackageReference Include="NPOI" Version="2.5.4" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.13" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HIA.Core\HIA.Core.csproj" />
+    <ProjectReference Include="..\HIA.DatabaseModel\HIA.DatabaseModel.csproj" />
+    <ProjectReference Include="..\HIA.Repositories\HIA.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

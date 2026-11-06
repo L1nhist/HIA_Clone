@@ -1,0 +1,24 @@
+# Overlay cho CI/E2E và chạy thử full-stack (chạy từ gốc repo):
+# docker compose -f source/deploys/docker-compose.yml -f source/deploys/docker-compose.ci.yml up -d --build
+# Đường dẫn tương đối trong overlay tính từ thư mục của file compose ĐẦU TIÊN (source/deploys).
+services:
+  backend:
+    build:
+      context: ../..                       # gốc repo
+      dockerfile: source/deploys/backend.Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Staging
+      ConnectionStrings__Default: "Host=postgres;Database=appdb;Username=app;Password=app_dev_only"
+    ports: ["8080:8080"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ../frontend                 # source/frontend
+      dockerfile: ../deploys/frontend.Dockerfile   # tính từ context
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080
+    ports: ["3000:3000"]
+    depends_on: [backend]

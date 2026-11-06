@@ -1,0 +1,54 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@model HIA.Core.Models.Hospital.ModifyHospitalModel
+
+@{
+    ViewData["Title"] = @DisplayFieldResource.MENU_HOSPITAL_MAGEME;
+}
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_HOSPITAL_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HospitalController.Index), Uti.GetControllerName(nameof(HospitalController)))">@DisplayFieldResource.MENU_HOSPITAL_MAGEME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.DELETE</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="@nameof(HospitalController.DeleteAction)">
+                <dl class="row">
+                    @Html.HiddenFor(model => model.Id)
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Name)
+                        @Html.HiddenFor(model => model.Name)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.IsActivated)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.IsActivated)
+                        @Html.HiddenFor(model => model.IsActivated)
+                    </dd>
+                </dl>
+
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="submit" value="@DisplayFieldResource.DELETE" class="btn btn-danger" /> |
+                <a asp-action="@nameof(HospitalController.Index)">@DisplayFieldResource.BACK_TO_LIST</a>
+            </form>
+        </div>
+    </div>
+</div>
+

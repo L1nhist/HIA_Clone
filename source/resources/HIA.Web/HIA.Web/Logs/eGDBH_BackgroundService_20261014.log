@@ -1,0 +1,9 @@
+2026-10-14 10:25:33.707 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-14 10:25:34.090 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (10:25:34).
+2026-10-14 10:25:34.095 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-14 10:25:34.096 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (10:25:34).
+2026-10-14 10:25:34.098 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-14 10:25:34.099 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (10:25:34).
+2026-10-14 10:28:09.889 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 34001 [14/10 10:28:09]
+2026-10-14 10:34:04.341 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Giam dinh xong 1 file cua viện 34001. Thoi gian thuc hien 354450,1012
+2026-10-14 10:34:09.149 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 34001 [14/10 10:34:09]

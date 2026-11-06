@@ -1,0 +1,633 @@
+﻿@page
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>CHAT request</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg: #ffffff;
+			--card: #ffffff;
+			--muted: #6b7280;
+			--accent: #7c3aed;
+			--user-text: #00295c;
+			--ai-text: #000000;
+			--glass: rgba(0,0,0,0.03)
+		}
+
+		html, body {
+			height: 100%;
+			margin: 0;
+			font-family: Inter,Segoe UI,Arial,Helvetica,sans-serif;
+			font-size: 100%;
+			background: var(--bg);
+			color: var(--ai-text)
+		}
+		h1 {
+			font-size: 1.8rem;
+		}
+
+		h2 {
+			font-size: 1.6rem;
+		}
+
+		h3 {
+			font-size: 1.45rem;
+		}
+
+		h4 {
+			font-size: 1.3rem;
+		}
+
+		h5 {
+			font-size: 1.15rem;
+		}
+
+		h6 {
+			font-size: 1.05rem;
+		}
+
+		.wrap {
+			max-width: 100%;
+			margin: 0 auto;
+            /*padding: 20px;
+            display: grid;
+			grid-template-columns: 1fr 220px;
+			gap: 18px;
+			position: relative;
+			align-items: start*/
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+
+		.card {
+			background: var(--card);
+			border-radius: 14px;
+			padding: 0;
+			/*box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+			border: 1px solid rgba(15,23,42,0.04)*/
+			width: 100%;
+			height: 100%;
+		}
+
+		header.app-head {
+			display: none;
+			align-items: center;
+			gap: 12px;
+			padding: 18px 20px;
+			border-bottom: 1px solid rgba(15,23,42,0.06)
+		}
+
+		.logo {
+			width: 44px;
+			height: 44px;
+			border-radius: 10px;
+			background: linear-gradient(90deg,var(--accent),#2563eb);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 700;
+			color: white
+		}
+
+		.title {
+			font-weight: 700;
+			font-size: 16px;
+			color: #0b1220
+		}
+
+		main.chat-main {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			height: 96%;
+		}
+
+		#chat-container {
+			flex: 1;
+			padding: 18px;
+			overflow: auto;
+			display: flex;
+			flex-direction: column;
+			gap: 12px
+		}
+
+		.bubble {
+			max-width: 78%;
+			padding: 12px 14px;
+			border-radius: 12px;
+			word-wrap: break-word;
+			white-space: pre-wrap;
+			border: 1px solid rgba(15,23,42,0.04)
+		}
+			/* user: dark navy text */
+			.bubble.user {
+				align-self: flex-end;
+				background: #e9f2ff;
+				color: var(--user-text)
+			}
+			/* ai: black text on light gray bubble */
+			.bubble.ai {
+				align-self: flex-start;
+				background: #f5f5f7;
+				color: var(--ai-text)
+			}
+
+		.meta {
+			font-size: 12px;
+			color: var(--muted);
+			margin-top: 6px
+		}
+
+		.composer {
+			display: flex;
+			gap: 10px;
+			padding: 12px;
+			border-top: 1px solid rgba(15,23,42,0.04);
+			align-items: flex-end
+		}
+
+		textarea#prompt {
+			flex: 1;
+			min-height: 56px;
+			max-height: 160px;
+			padding: 12px;
+			border-radius: 10px;
+			border: 1px solid #cbd5e1;
+			background: #ffffff;
+			color: var(--user-text);
+			resize: none
+		}
+
+			textarea#prompt::placeholder {
+				color: #94a3b8
+			}
+
+		button#send-btn {
+			background: linear-gradient(90deg,var(--accent),#2563eb);
+			padding: 10px 14px;
+			border-radius: 10px;
+			border: none;
+			color: white;
+			font-weight: 600
+		}
+		/* sidebar removed */
+		.small {
+			font-size: 13px;
+			color: var(--muted)
+		}
+
+		.controls {
+			display: flex;
+			gap: 8px;
+			align-items: center
+		}
+			/* styled native combobox to match dark theme */
+			.controls select#mode-select {
+				background: linear-gradient(180deg, rgba(10,14,22,0.9), rgba(12,18,28,0.95));
+				border: 1px solid rgba(255,255,255,0.08);
+				color: #e6eef8;
+				padding: 8px 36px 8px 10px;
+				border-radius: 8px;
+				cursor: pointer;
+				appearance: none;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				position: relative
+			}
+
+				.controls select#mode-select:focus {
+					outline: none;
+					box-shadow: 0 0 0 3px rgba(124,58,237,0.12);
+					border-color: rgba(124,58,237,0.9)
+				}
+			/* caret using SVG data URI aligned to the right */
+			.controls select#mode-select {
+				background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23e6eef8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+				background-repeat: no-repeat;
+				background-position: right 10px center;
+				background-size: 14px;
+				/* Dark-themed combobox for readability */
+				background: linear-gradient(180deg, rgba(10,14,22,0.9), rgba(12,18,28,0.95));
+				border: 1px solid rgba(255,255,255,0.10);
+				padding: 8px 10px;
+				border-radius: 8px;
+				color: #e6eef8;
+				backdrop-filter: blur(4px);
+				/* remove native white background on some platforms */
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+			}
+
+		select#mode-select:focus {
+			outline: none;
+			box-shadow: 0 0 0 3px rgba(124,58,237,0.16);
+			border-color: rgba(124,58,237,0.9)
+		}
+		/* style option elements where supported */
+		select#mode-select option {
+			background: transparent;
+			color: #e6eef8
+		}
+		/* fallback: for windows/edge native popup, force contrast by setting a dark background on the select when opened */
+		select#mode-select:active, select#mode-select.open {
+			background: linear-gradient(180deg, rgba(8,12,18,0.96), rgba(10,16,24,0.98));
+		}
+		/* custom select styles (replaces native dropdown popup) */
+		.custom-select {
+			position: relative;
+			min-width: 120px;
+			font-size: 14px
+		}
+
+		.custom-select__trigger {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 8px;
+			background: linear-gradient(180deg, rgba(10,14,22,0.9), rgba(12,18,28,0.95));
+			border: 1px solid rgba(255,255,255,0.08);
+			padding: 8px 10px;
+			border-radius: 8px;
+			cursor: pointer;
+			color: #e6eef8
+		}
+
+			.custom-select__trigger:focus {
+				outline: none;
+				box-shadow: 0 0 0 3px rgba(124,58,237,0.12)
+			}
+
+		.custom-select__caret {
+			opacity: 0.8
+		}
+
+		.custom-select__options {
+			position: absolute;
+			right: 0;
+			top: calc(100% + 6px);
+			background: linear-gradient(180deg, rgba(8,12,18,0.98), rgba(6,8,12,0.98));
+			border: 1px solid rgba(255,255,255,0.06);
+			border-radius: 8px;
+			box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+			overflow: hidden;
+			z-index: 40;
+			display: none;
+			min-width: 160px
+		}
+			/* Make the options panel scrollable when there are many items and style the scrollbar */
+			.custom-select__options.scrollable {
+				max-height: 200px;
+				overflow-y: auto;
+				overflow-x: hidden
+			}
+				/* WebKit scrollbar styles */
+				.custom-select__options.scrollable::-webkit-scrollbar {
+					width: 10px
+				}
+
+				.custom-select__options.scrollable::-webkit-scrollbar-track {
+					background: transparent;
+					border-radius: 6px
+				}
+
+				.custom-select__options.scrollable::-webkit-scrollbar-thumb {
+					background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+					border-radius: 6px;
+					border: 2px solid transparent;
+					background-clip: padding-box
+				}
+			/* Firefox scrollbar sizing */
+			.custom-select__options.scrollable {
+				scrollbar-width: thin;
+				scrollbar-color: rgba(255,255,255,0.12) transparent
+			}
+
+		.custom-select__option {
+			padding: 10px 12px;
+			color: #e6eef8;
+			cursor: pointer;
+			transition: background 120ms ease,color 120ms
+		}
+
+			.custom-select__option[aria-selected="true"], .custom-select__option:hover {
+				background: rgba(255,255,255,0.07);
+				color: #ffffff
+			}
+
+		.custom-select.open .custom-select__options {
+			display: block
+		}
+
+		button.secondary {
+			background: transparent;
+			border: 1px solid rgba(255,255,255,0.04);
+			color: var(--accent);
+			padding: 8px;
+			border-radius: 8px
+		}
+		/* selected preview removed */
+	</style>
+
+	<style>
+		/* Reusable button styles matching app theme */
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 8px 12px;
+			border-radius: 10px;
+			border: none;
+			cursor: pointer;
+			font-weight: 600
+		}
+
+			.btn:disabled {
+				opacity: 0.5;
+				cursor: not-allowed
+			}
+
+		.btn-primary {
+			background: linear-gradient(90deg,var(--accent),#2563eb);
+			color: white;
+			box-shadow: 0 6px 18px rgba(124,58,237,0.12);
+			border: 1px solid rgba(255,255,255,0.04)
+		}
+
+		.btn-secondary {
+			background: transparent;
+			border: 1px solid rgba(255,255,255,0.06);
+			color: var(--accent)
+		}
+		/* smaller inline button for table row */
+		.btn-sm {
+			padding: 6px 8px;
+			border-radius: 8px;
+			font-size: 13px
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="card">
+			<main class="chat-main">
+				<div id="chat-container" role="log" aria-live="polite" aria-label="Lịch sử trò chuyện"></div>
+				<div class="composer">
+					<textarea id="prompt" placeholder="Gõ câu hỏi hoặc nội dung lỗi mà bạn muốn tra cứu..." aria-label="Nhập nội dung"></textarea>
+					<button id="send-btn">Gửi</button>
+				</div>
+			</main>
+		</div>
+	</div>
+
+
+	<script>
+		// Markdown rendering libs (loaded before app script execution)
+		// We use CDN copies for simplicity; fallback will keep original behavior if libs not available.
+		// Markdown/HTML rendering intentionally disabled: show plain text only.
+			// Keep existing behavior and IDs. Script adapted from earlier client; simplified LLM formatting (removed 'Tóm tắt').
+			const chatContainer = document.getElementById('chat-container');
+			const promptInput = document.getElementById('prompt');
+			const sendBtn = document.getElementById('send-btn');
+
+			let suppressEnable = false;
+			// selected preview element removed
+
+			// Minimal client: no token estimation, no advanced AI text cleaning/formatting.
+
+			function addMessage(text,sender, duration=null, tokens=null, meta=null, showAsPlain=null){
+				const wrap = document.createElement('div');
+				wrap.className = 'bubble ' + sender;
+				const content = document.createElement('div');
+				content.className = 'content';
+						// Always show plain text to avoid client-side HTML rendering
+						try { content.innerText = String(text || ''); } catch (e) { content.innerText = String(text || ''); }
+				wrap.appendChild(content);
+
+				// metadata line (duration, tokens, model, timestamp)
+				try{
+					const metaParts = [];
+					if (typeof duration === 'number' && !isNaN(duration)) metaParts.push(`⏱ ${duration} ms`);
+					if (typeof tokens === 'number' && !isNaN(tokens)) metaParts.push(`🔢 ${tokens} tokens`);
+					if (meta && meta.model) metaParts.push(`model: ${meta.model}`);
+					if (meta && meta.timestamp) metaParts.push(new Date(meta.timestamp).toLocaleString());
+					if (metaParts.length > 0){ const m = document.createElement('div'); m.className='meta'; m.innerText = metaParts.join(' • '); wrap.appendChild(m); }
+				}catch(e){ /* ignore meta render errors */ }
+
+				chatContainer.appendChild(wrap);
+				chatContainer.scrollTop = chatContainer.scrollHeight;
+			}
+			function createLoadingBubble()
+			{
+				const wrap = document.createElement('div');
+				wrap.className = 'bubble ai loading';
+				const content = document.createElement('div');
+				content.className = 'content';
+				content.innerText = 'Đang nhận phản hồi';
+				const dots = document.createElement('span'); dots.className = 'dots'; dots.innerText = '...';
+				content.appendChild(dots);
+				wrap.appendChild(content);
+				chatContainer.appendChild(wrap);
+				chatContainer.scrollTop = chatContainer.scrollHeight;
+				return wrap;
+			}
+			// Small safe token estimator to avoid runtime errors when tokens are not returned from server
+			function estimateTokens(text){
+				try{
+					if (!text) return 0;
+					// crude heuristic: average 4 characters per token
+					return Math.max(0, Math.ceil(String(text).length / 4));
+				}catch(e){ return 0; }
+			}
+
+			// selected preview removed
+
+			async function sendPrompt() {
+				const prompt = promptInput.value.trim();
+				if (!prompt) return;
+				addMessage(prompt, 'user');
+				promptInput.value = '';
+				if (sendBtn) sendBtn.disabled = true;
+				const start = Date.now();
+				const loading = createLoadingBubble();
+				try 
+				{
+					const res = await fetch('/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: prompt }) });
+					const textBody = await res.text();
+					let reply = textBody || '';
+					//try { const data = textBody ? JSON.parse(textBody) : null; if (data && typeof data.response === 'string') reply = data.response; } catch (e) { /* keep raw text */ }
+					//addMessage(reply, 'ai');
+					let tokens = null;
+					let parsed = null;
+
+					const contentType = res.headers.get('content-type') || '';
+
+					function tryParseJSON(s){ try { return s ? JSON.parse(s) : null; } catch(_){ return null; } }
+
+					// Handle non-OK responses (e.g. BadRequest returning { error, detail })
+					if (!res.ok) {
+						if (contentType.includes('application/json')) {
+							parsed = tryParseJSON(textBody);
+							suppressEnable=true;
+							const errMsg = (parsed && (parsed.detail || parsed.error)) || `Server trả lỗi ${res.status}`;
+							if (loading && loading.parentNode) loading.parentNode.removeChild(loading);
+							addMessage(`❌ Lỗi: ${errMsg}`, 'ai', null, null, parsed);
+							// honor Retry-After header if present
+							const retryAfter = res.headers.get('Retry-After');
+							let waitSec = null;
+							if (retryAfter) {
+							  const n = parseInt(retryAfter, 10);
+							  if (!Number.isNaN(n)) {
+								waitSec = n;
+							  } else {
+								const d = Date.parse(retryAfter);
+								if (!Number.isNaN(d)) {
+								  waitSec = Math.max(0, Math.ceil((d - Date.now()) / 1000));
+								}
+							  }
+							}
+							if (waitSec && Number.isFinite(waitSec) && sendBtn) {
+							  sendBtn.disabled = true;
+							  suppressEnable = true; // giữ khóa cho finally
+							  setTimeout(() => {
+								sendBtn.disabled = false;
+								suppressEnable = false;
+							  }, waitSec * 1000);
+							}
+							return;
+						} else {
+							if (loading && loading.parentNode) loading.parentNode.removeChild(loading);
+							addMessage(`❌ Lỗi server: ${textBody || res.statusText}`, 'ai');
+							return;
+						}
+					}
+
+					// OK responses: try parse JSON result
+					if (contentType.includes('application/json')) {
+						parsed = tryParseJSON(textBody);
+						if (parsed) {
+							if (typeof parsed.response === 'string') reply = parsed.response;
+							tokens = parsed.tokens ?? (parsed.usage && parsed.usage.total_tokens) ?? null;
+							const serverDuration = parsed.duration ?? null;
+							const duration = serverDuration ?? (Date.now() - start);
+							if (loading && loading.parentNode) loading.parentNode.removeChild(loading);
+							if (!tokens) tokens = estimateTokens(reply);
+							addMessage(reply, 'ai', duration, tokens, parsed);
+							return;
+						}
+					}
+
+					// fallback: plain text response
+					const duration = Date.now() - start;
+					if (loading && loading.parentNode) loading.parentNode.removeChild(loading);
+					if (!tokens) tokens = estimateTokens(reply);
+					addMessage(reply, 'ai', duration, tokens, parsed);
+				} catch (err) {
+					if (loading && loading.parentNode) loading.parentNode.removeChild(loading);
+					addMessage(`❌ Lỗi khi gửi yêu cầu: ${err && err.message ? err.message : String(err)}`, 'ai');
+					console.error('Lỗi:', err);
+				} finally {
+					if (sendBtn && !suppressEnable) sendBtn.disabled = false;
+				}
+			}
+
+			promptInput.addEventListener('keydown',function(e){ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendPrompt(); }});
+			sendBtn.addEventListener('click', sendPrompt);
+
+			window['push_msg']=function(tx){
+				try {
+					var j = JSON.parse(s);
+					return;
+				}
+				catch(e){}
+
+				if (!tx || tx.toString().length < 1 || tx.toString().indexOf('?$%') != 0) return;
+				text = tx.toString().trim().slice(0, 2000);
+				if (text === '[object Object]' || /^object\s*Object$/i.test(text)) return;
+				if (/<\/?[a-z][\s\S]*>/i.test(text)) return;
+				try {
+					promptInput.value = tx.replace('?$%', 'Giải thích lỗi cho người dùng');
+                    sendPrompt();
+				}
+				catch(e){}
+			};
+
+		@*SCRIPT TO RECEIVE MESSAGE FROM egdbh*@
+		@* Secure message listener: accept structured payloads and populate input only (no auto-send) *@
+		
+		@*window.addEventListener('message', function(ev){
+			var allowed = new Set(['https://egdbh.vn','https://mdinsight.vn']);
+			try{
+				try{ console.debug('postMessage received', { origin: ev.origin, dataType: typeof ev.data, sampleLen: (typeof ev.data === 'string' ? ev.data.length : (ev.data && typeof ev.data === 'object' ? Object.keys(ev.data).length : 0)) }); } catch(e){}
+				if (!allowed.has(ev.origin)) return; // ignore unknown origins
+				var data = ev.data;
+				var text = null;
+
+				function isNonEmptyString(s){ return typeof s === 'string' && s.trim().length > 0; }
+				function tryParseJSON(s){ try { return s ? JSON.parse(s) : null; } catch(_){ return null; } }
+
+				if (data == null) return;
+
+				// If sender gave a string, try to parse as JSON first, otherwise treat as raw text
+				if (typeof data === 'string') {
+					var s = data.trim();
+					// quickly reject the common meaningless representation
+					if (s === '[object Object]' || /^object\s*Object$/i.test(s)) return;
+					// try parse JSON-stringified object
+					var parsed = tryParseJSON(s);
+					if (parsed && typeof parsed === 'object') {
+						data = parsed; // fall through to object handling below
+					} else {
+						// basic HTML-like payload rejection
+						if (s.length > 0 && s.length < 2000 && !/<\/?[a-z][\s\S]*>/i.test(s)) text = s;
+					}
+				}
+
+				// If data is an object, try common shapes
+				if (text == null && typeof data === 'object') {
+					// preferred explicit shape
+					if (isNonEmptyString(data.text) && data.type === 'ai-request') text = data.text;
+					// allow { text: '...' } even without type
+					if (!text && isNonEmptyString(data.text)) text = data.text;
+					// nested payloads
+					if (!text && data.payload && isNonEmptyString(data.payload.text)) text = data.payload.text;
+					if (!text && data.payload && isNonEmptyString(data.payload.message)) text = data.payload.message;
+					// common alternate keys
+					if (!text) {
+						var keys = Object.keys(data || {});
+						for (var i=0;i<keys.length;i++){
+							var k = keys[i];
+							if (isNonEmptyString(data[k])){ text = data[k]; break; }
+						}
+					}
+					// if still no usable text, reject (this filters out empty objects like [object Object])
+					if (!isNonEmptyString(text)) return;
+				}
+
+				if (!isNonEmptyString(text)) return;
+
+				// sanitize and limit length
+				text = String(text).trim().slice(0, 2000);
+				// final guard against weird stringified objects and HTML
+				if (text === '[object Object]' || /^object\s*Object$/i.test(text)) return;
+				if (/<\/?[a-z][\s\S]*>/i.test(text)) return;
+
+				// populate prompt but DO NOT auto-send. User must press Gửi.
+				try{ promptInput.value = 'Giải thích lỗi cho người dùng: ' + text; }catch(e){}
+				// show small toast if available
+				try{ if (window.$ && $.toast) { $.toast({ heading: 'Thông báo', text: 'Tin nhắn đã được tự động điền. Vui lòng bấm Gửi để xác nhận.', showHideTransition: 'fade', icon: 'info', position: 'top-right', hideAfter: 4000 }); } } catch(e){}
+			} catch(ex){ /* swallow */ }
+		}, false);*@
+
+	</script>
+</body>
+</html>

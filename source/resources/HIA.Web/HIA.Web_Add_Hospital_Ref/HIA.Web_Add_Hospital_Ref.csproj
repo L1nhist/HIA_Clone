@@ -1,0 +1,59 @@
+﻿
+
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <Compile Remove="wwwroot\elite\**" />
+    <Content Remove="Logs\**" />
+    <Content Remove="wwwroot\elite\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <EmbeddedResource Remove="wwwroot\elite\**" />
+    <EntityDeploy Remove="wwwroot\elite\**" />
+    <None Remove="Logs\**" />
+    <None Remove="wwwroot\elite\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Files\_xml1Tab.cshtml~RFb85a36.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Nancy.Serialization.JsonNet" Version="1.4.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HIA.BackgroundServices\HIA.BackgroundServices.csproj" />
+    <ProjectReference Include="..\HIA.Core\HIA.Core.csproj" />
+    <ProjectReference Include="..\HIA.DatabaseModel\HIA.DatabaseModel.csproj" />
+    <ProjectReference Include="..\HIA.Repositories\HIA.Repositories.csproj" />
+    <ProjectReference Include="..\HIA.Services\HIA.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="Views\HDSDThuoc\Create.cshtml" />
+    <None Include="Views\HDSDThuoc\Edit.cshtml" />
+    <None Include="Views\HDSDThuoc\Index.cshtml" />
+    <None Include="wwwroot\fav\site.webmanifest" />
+    <None Include="wwwroot\lib\elite\libs\dropify\fonts\dropify.svg" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,218 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Core.Languages.TitlePage;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@model HIA.Core.Models.Categories.DMBacSiModifyModel
+
+@{
+    ViewData["Title"] = TitlePageResource.DM_NHAN_VIEN;
+}
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@TitlePageResource.DM_NHAN_VIEN</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(DMBacSiController.Index), Uti.GetControllerName(nameof(DMBacSiController)))">@TitlePageResource.DM_NHAN_VIEN</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.CREATE_NEW</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="@nameof(DMBacSiController.Create)">
+                <div class="row">
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Ma_BHXH" class="control-label col-3 text-right">Mã BHXH</label>
+                        <div class="col-9">
+                            <input asp-for="Ma_BHXH" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ma_BHXH" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Ho_TEN" class="control-label col-3 text-right">Họ Tên</label>
+                        <div class="col-9">
+                            <input asp-for="Ho_TEN" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ho_TEN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Gioi_TINH" class="control-label col-3 text-right">Giới Tính</label>
+                        <div class="col-9">
+                            <input asp-for="Gioi_TINH" class="form-control custom-form-control" />
+                            <span asp-validation-for="Gioi_TINH" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Ma_KHOA" class="control-label col-3 text-right">Mã Khoa</label>
+                        <div class="col-9">
+                            <input asp-for="Ma_KHOA" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ma_KHOA" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Ten_KHOA" class="control-label col-3 text-right">Tên Khoa</label>
+                        <div class="col-9">
+                            <input asp-for="Ten_KHOA" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ten_KHOA" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Chuc_DANH" class="control-label col-3 text-right">Chức Danh</label>
+                        <div class="col-9">
+                            <select asp-for="Chuc_DANH_NN">
+                                <option value="">-- Chọn --</option>
+                                <option value="1">Bác sỹ</option>
+                                <option value="2">Y sỹ</option>
+                                <option value="3">Điều dưỡng</option>
+                                <option value="4">Hộ sinh</option>
+                                <option value="5">Kỹ thuật y</option>
+                                <option value="6">Cử nhân TLLS</option>
+                                <option value="7">Lương y</option>
+                                <option value="8">Dược sỹ</option>
+                                <option value="9">Khác</option>
+                            </select>
+                            <span asp-validation-for="Chuc_DANH" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Vi_TRI" class="control-label col-3 text-right">Vị Trí</label>
+                        <div class="col-9">
+                            <div class="col-9">
+                                <select asp-for="Ma_VI_TRI">
+                                    <option value="">-- Chọn --</option>
+                                    <option value="1">Phụ trách Chuyên môn</option>
+                                    <option value="2">Trưởng khoa</option>
+                                    <option value="3">Trưởng khoa kiêm Chuyên môn</option>
+                                    <option value="4">Người đứng đầu</option>
+                                    <option value="5">Phụ trách thay</option>
+                                    <option value="6">Ủy quyền Chuyên môn</option>
+                                </select>
+                            <span asp-validation-for="Vi_TRI" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Ma_CCHN" class="control-label col-3 text-right">Mã CCHN</label>
+                        <div class="col-9">
+                            <input asp-for="Ma_CCHN" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ma_CCHN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Ngaycap_CCHN" class="control-label col-3 text-right">Ngày Cấp CCHN</label>
+                        <div class="col-9">
+                            <input asp-for="Ngaycap_CCHN" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ngaycap_CCHN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Noicap_CCHN" class="control-label col-3 text-right">Nơi Cấp CCHN</label>
+                        <div class="col-9">
+                            <input asp-for="Noicap_CCHN" class="form-control custom-form-control" />
+                            <span asp-validation-for="Noicap_CCHN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Phamvi_CM" class="control-label col-3 text-right">Phạm Vi CM</label>
+                        <div class="col-9">
+                            <input asp-for="Phamvi_CM" class="form-control custom-form-control" />
+                            <span asp-validation-for="Phamvi_CM" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Phamvi_CMBS" class="control-label col-3 text-right">Phạm Vi CMBS</label>
+                        <div class="col-9">
+                            <input asp-for="Phamvi_CMBS" class="form-control custom-form-control" />
+                            <span asp-validation-for="Phamvi_CMBS" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Dvkt_KHAC" class="control-label col-3 text-right">ĐVKT Khác</label>
+                        <div class="col-9">
+                            <input asp-for="Dvkt_KHAC" class="form-control custom-form-control" />
+                            <span asp-validation-for="Dvkt_KHAC" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Vb_PHANCONG" class="control-label col-3 text-right">Văn bản Phân công</label>
+                        <div class="col-9">
+                            <input asp-for="Vb_PHANCONG" class="form-control custom-form-control" />
+                            <span asp-validation-for="Vb_PHANCONG" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Tg_DANGKY" class="control-label col-3 text-right">Thời gian Đăng ký</label>
+                        <div class="col-9">
+                            <input asp-for="Tg_DANGKY" class="form-control custom-form-control" />
+                            <span asp-validation-for="Tg_DANGKY" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Tg_NGAY" class="control-label col-3 text-right">Thời gian Ngày</label>
+                        <div class="col-9">
+                            <input asp-for="Tg_NGAY" class="form-control custom-form-control" />
+                            <span asp-validation-for="Tg_NGAY" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Tg_TUAN" class="control-label col-3 text-right">Thời gian Tuần</label>
+                        <div class="col-9">
+                            <input asp-for="Tg_TUAN" class="form-control custom-form-control" />
+                            <span asp-validation-for="Tg_TUAN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Cskcb_KHAC" class="control-label col-3 text-right">CSKCB Khác</label>
+                        <div class="col-9">
+                            <input asp-for="Cskcb_KHAC" class="form-control custom-form-control" />
+                            <span asp-validation-for="Cskcb_KHAC" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Cskcb_CGKT" class="control-label col-3 text-right">CSKCB CGKT</label>
+                        <div class="col-9">
+                            <input asp-for="Cskcb_CGKT" class="form-control custom-form-control" />
+                            <span asp-validation-for="Cskcb_CGKT" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Qd_CGKT" class="control-label col-3 text-right">Quyết định CGKT</label>
+                        <div class="col-9">
+                            <input asp-for="Qd_CGKT" class="form-control custom-form-control" />
+                            <span asp-validation-for="Qd_CGKT" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Tu_NGAY" class="control-label col-3 text-right">Từ Ngày</label>
+                        <div class="col-9">
+                            <input asp-for="Tu_NGAY" class="form-control custom-form-control" />
+                            <span asp-validation-for="Tu_NGAY" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Den_NGAY" class="control-label col-3 text-right">Đến ngày</label>
+                        <div class="col-9">
+                            <input asp-for="Den_NGAY" class="form-control custom-form-control" />
+                            <span asp-validation-for="Den_NGAY" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group text-center">
+                    <a asp-action="@nameof(DMBacSiController.Index)" class="btn btn-outline-primary">@DisplayFieldResource.BACK_TO_LIST</a>
+                    <input type="submit" value="@DisplayFieldResource.CREATE_NEW" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

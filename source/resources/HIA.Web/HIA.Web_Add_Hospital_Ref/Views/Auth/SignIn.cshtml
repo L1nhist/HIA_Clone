@@ -1,0 +1,162 @@
+﻿@using HIA.Core.Languages.TitlePage;
+@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Models.User;
+@using HIA.Core.Base;
+
+@model SignInModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="icon" type="image/x-icon" href="@Url.Content("~/fav/favicon.ico")">
+    <title>@TitlePageResource.SIGN_IN - @TitlePageResource.WEBSITE_NAME</title>
+
+    <link href="@Url.Content("~/lib/elite/css/page/login-register-lock.css")" rel="stylesheet">
+    <link href="@Url.Content("~/lib/elite/css/style.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/lib/elite/libs/toast/jquery.toast.css")" rel="stylesheet">
+</head>
+<body>
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Loading Data...</p>
+        </div>
+    </div>
+
+    <section id="wrapper">
+        <div class="login-register" style="background-image:url(@Url.Content("~/lib/elite/images/background/10.jpg"));">
+            <div class="login-box card">
+                <div class="card-body">
+                    <form class="form-horizontal form-material" id="loginform" asp-action="@nameof(AuthController.SignIn)">
+                        <h3 class="text-center m-b-20">@DisplayFieldResource.SIGN_IN</h3>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input asp-for="Email" class="form-control" placeholder="@DisplayFieldResource.EMAIL" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input asp-for="Password" type="password" class="form-control" placeholder="@DisplayFieldResource.PASSWORD" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="d-flex no-block align-items-center">
+                                    @*<div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">@DisplayFieldResource.REMEMBER_ME</label>
+                                    </div>*@
+                                    <div class="ml-auto">
+                                        <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fas fa-lock m-r-5"></i> @DisplayFieldResource.FORGOT_PWD</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group text-center">
+                            <div class="col-xs-12 p-b-20">
+                                <input type="submit" value="@DisplayFieldResource.SIGN_IN" class="btn btn-block btn-lg btn-info btn-rounded" />
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal" id="recoverform">
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <h3>@DisplayFieldResource.RECOVER_PWD</h3>
+                                <p class="text-muted">@DisplayFieldResource.RECOVER_TEXT </p>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="@nameof(ForgotPassModel.EmailForgot)" id="@nameof(ForgotPassModel.EmailForgot)" placeholder="@DisplayFieldResource.EMAIL">
+                                <span id="forgotPassError" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group text-center m-t-20">
+                            <div class="col-xs-12">
+                                <button id="submitRecoverform" class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="button">@DisplayFieldResource.RECOVER_SUBMIT</button>
+                            </div>
+                        </div>
+                        <a href="#" id="to-login" class="btn-rounded waves-effect waves-light m-b-40" style="color: #038fcd;">@DisplayFieldResource.BACK_TO_LOGIN</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="signin-footer">
+            @TitlePageResource.FOOTER_SIGN_IN
+        </div>
+    </section>
+
+    <script src="@Url.Content("~/lib/jquery/dist/jquery.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/popper/popper.min.js")"></script>
+    <script src="@Url.Content("~/lib/bootstrap/dist/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/toast/jquery.toast.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".preloader").fadeOut();
+        });
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+        $('#to-recover').on("click", function () {
+            $("#loginform").slideUp();
+            $("#recoverform").fadeIn();
+        });
+        $('#to-login').on("click", function () {
+            goToLogin();
+        });
+        $(function () {
+            $('#submitRecoverform').on("click", function () {
+                $('#forgotPassError').text('');
+                const forgotData = { emailForgot: $('#EmailForgot').val()}
+                $.ajax({
+                    url: "@Url.Action(nameof(AuthController.ForgotPassword), Uti.GetControllerName(nameof(AuthController)))",
+                    method: 'POST',
+                    data: forgotData,
+                    cache: false,
+                    success: function (data) {
+                        if (data?.code !== 200) {
+                            $('#forgotPassError').text(data.message);
+                            return;
+                        }
+
+                        $.toast({
+                            heading: 'Thành công',
+                            text: 'Vui lòng kiểm tra email. Nếu không thấy, vui lòng kiểm tra hòm thư SPAM.',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'success',
+                            hideAfter: 5000,
+                            stack: 6
+                        });
+
+                        $('#forgotPassError').text('');
+                        $('#EmailForgot').val('');
+                        goToLogin();
+                    },
+                    fail: function (jqXHR, textStatus) {
+                        alert("Request failed: " + textStatus);
+                    }
+                });
+            });
+        });
+        function goToLogin() {
+            $("#loginform").fadeIn();
+            $("#recoverform").slideUp();
+        }
+    </script>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
+</html>

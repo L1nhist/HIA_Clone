@@ -1,0 +1,90 @@
+2026-09-22 10:01:42.734 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 10:01:43.157 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (10:01:43).
+2026-09-22 10:01:43.377 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 10:01:43.495 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (10:01:43).
+2026-09-22 10:01:43.624 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 10:01:43.625 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (10:01:43).
+2026-09-22 10:08:36.524 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 10:08:36.751 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (10:08:36).
+2026-09-22 10:08:36.754 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 10:08:36.756 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (10:08:36).
+2026-09-22 10:08:36.758 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 10:08:36.759 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (10:08:36).
+2026-09-22 10:25:35.245 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 10:25:35.349 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (10:25:35).
+2026-09-22 10:25:35.352 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 10:25:35.354 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (10:25:35).
+2026-09-22 10:25:35.357 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 10:25:35.358 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (10:25:35).
+2026-09-22 10:29:47.308 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 10:29:47.616 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (10:29:47).
+2026-09-22 10:29:47.619 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 10:29:47.620 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (10:29:47).
+2026-09-22 10:29:47.622 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 10:29:47.624 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (10:29:47).
+2026-09-22 10:44:04.683 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 10:44:04.717 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (10:44:04).
+2026-09-22 10:44:04.720 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 10:44:04.721 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (10:44:04).
+2026-09-22 10:44:04.723 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 10:44:04.724 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (10:44:04).
+2026-09-22 10:47:30.986 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 10:47:31.019 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (10:47:31).
+2026-09-22 10:47:31.021 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 10:47:31.023 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (10:47:31).
+2026-09-22 10:47:31.025 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 10:47:31.026 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (10:47:31).
+2026-09-22 16:27:04.860 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 16:27:04.888 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:27:04).
+2026-09-22 16:27:04.891 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:27:04.892 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:27:04).
+2026-09-22 16:27:04.896 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:27:04.898 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:27:04).
+2026-09-22 16:27:56.186 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 16:27:56.218 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:27:56).
+2026-09-22 16:27:56.220 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:27:56.221 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:27:56).
+2026-09-22 16:27:56.223 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:27:56.224 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:27:56).
+2026-09-22 16:28:24.241 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 16:28:24.261 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:28:24).
+2026-09-22 16:28:24.263 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:28:24.264 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:28:24).
+2026-09-22 16:28:24.265 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:28:24.266 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:28:24).
+2026-09-22 16:31:37.920 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 16:31:37.948 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:31:37).
+2026-09-22 16:31:37.951 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:31:37.952 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:31:37).
+2026-09-22 16:31:37.954 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:31:37.955 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:31:37).
+2026-09-22 16:32:42.349 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 16:32:42.369 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:32:42).
+2026-09-22 16:32:42.371 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:32:42.372 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:32:42).
+2026-09-22 16:32:42.373 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:32:42.375 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:32:42).
+2026-09-22 16:36:35.696 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 16:36:35.717 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:36:35).
+2026-09-22 16:36:35.718 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:36:35.719 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:36:35).
+2026-09-22 16:36:35.720 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:36:35.721 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:36:35).
+2026-09-22 16:45:14.805 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 16:45:14.834 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:45:14).
+2026-09-22 16:45:14.836 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:45:14.837 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:45:14).
+2026-09-22 16:45:14.838 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:45:14.839 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:45:14).
+2026-09-22 16:49:06.608 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 16:49:06.639 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:49:06).
+2026-09-22 16:49:06.642 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:49:06.644 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:49:06).
+2026-09-22 16:49:06.645 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:49:06.646 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:49:06).
+2026-09-22 16:49:44.183 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-22 16:49:44.209 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:49:44).
+2026-09-22 16:49:44.212 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:49:44.213 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:49:44).
+2026-09-22 16:49:44.215 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-22 16:49:44.216 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:49:44).

@@ -1,0 +1,266 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Token;
+@using System.Security.Claims;
+@model HIA.Core.Models.HDSD.ModifyHDSDThuocModel
+@{
+    ViewData["Title"] = @DisplayFieldResource.MENU_HDSDTHUOC_MAGEME;
+
+    var curCSKCB = User.FindFirst(ClaimKey.MA_CSKCB)?.Value;
+    var isMaster = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.MASTER);
+    var isAdmin = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.ADMIN);
+    var isEditable = (isMaster == true) || (isAdmin == true && Model.Ma_CSKCB == curCSKCB);
+}
+
+<link rel="stylesheet" href="@Url.Content("~/lib/select2/select2.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/select2/select2-bootstrap.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/css/tagslist.css")" />
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_HDSDTHUOC_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HDSDThuocController.Index), Uti.GetControllerName(nameof(HDSDThuocController)))">@DisplayFieldResource.MENU_HDSDTHUOC_MAGEME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.UPDATE</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            @if (!isEditable)
+            {
+            <div class="alert alert-danger">Bạn không có quyền chỉnh sửa nội dung này!</div>
+            }
+            <form asp-action="@nameof(HDSDThuocController.Edit)">
+                @Html.HiddenFor(model => model.Id)
+                <div class="container-fluid">
+                    <div class="form-group">
+                        <div class="col-9 offset-3">
+                            <div class="custom-control custom-switch rule-switch">
+                                <input asp-for="Chi_DINH" class="custom-control-input">
+                                <label asp-for="Chi_DINH" id="lblChiDinh" class="custom-control-label"><span></span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Ma_THUOC" class="control-label col-2 text-right"></label>
+                        <div class="col-4">
+                            <input asp-for="Ma_THUOC" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ma_THUOC" class="text-danger"></span>
+                        </div>
+                        <label asp-for="Duong_DUNG" class="control-label col-2 text-right"></label>
+                        <div class="col-3 select2-custom">
+                            <select asp-for="Duong_DUNG" class="form-control select2 filter-change">
+                                <option value="">0 - Tất cả</option>
+                                <option value="1.01">1.01 - Uống</option>
+                                <option value="1.02">1.02 - Ngậm</option>
+                                <option value="1.03">1.03 - Nhai</option>
+                                <option value="1.04">1.04 - Đặt dưới lưỡi</option>
+                                <option value="1.05">1.05 - Ngậm dưới lưỡi</option>
+                                <option value="2.01">2.01 - Tiêm bắp</option>
+                                <option value="2.02">2.02 - Tiêm dưới da</option>
+                                <option value="2.03">2.03 - Tiêm trong da</option>
+                                <option value="2.04">2.04 - Tiêm tĩnh mạch</option>
+                                <option value="2.05">2.05 - Tiêm truyền tĩnh mạch</option>
+                                <option value="2.06">2.06 - Tiêm vào ổ khớp</option>
+                                <option value="2.07">2.07 - Tiêm nội nhãn cầu</option>
+                                <option value="2.08">2.08 - Tiêm trong dịch kính của mắt</option>
+                                <option value="2.09">2.09 - Tiêm vào các khoang của cơ thể</option>
+                                <option value="2.10">2.10 - Tiêm</option>
+                                <option value="2.11">2.11 - Tiêm động mạch khối u</option>
+                                <option value="2.12">2.12 - Tiêm vào khoang tự nhiên</option>
+                                <option value="2.13">2.13 - Tiêm vào khối u</option>
+                                <option value="2.14">2.14 - Truyền tĩnh mạch</option>
+                                <option value="2.15">2.15 - Tiêm truyền</option>
+                                <option value="3.01">3.01 - Bôi</option>
+                                <option value="3.02">3.02 - Xoa ngoài</option>
+                                <option value="3.03">3.03 - Dán trên da</option>
+                                <option value="3.04">3.04 - Xịt ngoài da</option>
+                                <option value="3.05">3.05 - Dùng ngoài</option>
+                                <option value="4.01">4.01 - Đặt âm đạo</option>
+                                <option value="4.02">4.02 - Đặt hậu môn</option>
+                                <option value="4.03">4.03 - Thụt hậu môn - trực tràng</option>
+                                <option value="4.04">4.04 - Đặt</option>
+                                <option value="4.05">4.05 - Đặt tử cung</option>
+                                <option value="4.06">4.06 - Thụt</option>
+                                <option value="5.01">5.01 - Phun mù</option>
+                                <option value="5.02">5.02 - Dạng hít</option>
+                                <option value="5.03">5.03 - Bột hít</option>
+                                <option value="5.04">5.04 - Xịt</option>
+                                <option value="5.05">5.05 - Khí dung</option>
+                                <option value="5.06">5.06 - Đường hô hấp</option>
+                                <option value="5.07">5.07 - Xịt mũi</option>
+                                <option value="5.08">5.08 - Xịt họng</option>
+                                <option value="5.09">5.09 - Thuốc mũi</option>
+                                <option value="5.10">5.10 - Nhỏ mũi</option>
+                                <option value="6.01">6.01 - Nhỏ mắt</option>
+                                <option value="6.02">6.02 - Tra mắt</option>
+                                <option value="6.03">6.03 - Thuốc mắt</option>
+                                <option value="6.04">6.04 - Nhỏ tai</option>
+                                <option value="9.01">9.01 - Áp ngoài da</option>
+                                <option value="9.02">9.02 - Áp sát khối u</option>
+                                <option value="9.03">9.03 - Bình khí lỏng hoặc nén</option>
+                                <option value="9.04">9.04 - Bình khí nén</option>
+                                <option value="9.05">9.05 - Bôi trực tràng</option>
+                                <option value="9.06">9.06 - Đánh tưa lưỡi</option>
+                                <option value="9.07">9.07 - Cấy vào khối u</option>
+                                <option value="9.08">9.08 - Chiếu ngoài</option>
+                                <option value="9.09">9.09 - Dung dịch</option>
+                                <option value="9.10">9.10 - Dung dịch rửa</option>
+                                <option value="9.11">9.11 - Dung dịch thẩm phân</option>
+                                <option value="9.12">9.12 - Phun</option>
+                                <option value="9.13">9.13 - Túi</option>
+                                <option value="9.14">9.14 - Hỗn dịch</option>
+                                <option value="9.15">9.15 - Bột đông khô để pha hỗn dịch</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Ten_THUOC" class="control-label col-2 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Ten_THUOC" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ten_THUOC" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Do_TUOI" class="control-label col-2 text-right"></label>
+                        <div class="col-4">
+                            <input asp-for="Do_TUOI" class="form-control custom-form-control" />
+                        </div>
+                        <div class="col-2 offset-1">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Co_THAI" /> @Html.DisplayNameFor(model => model.Co_THAI)
+                            </label>
+                        </div>
+                        <div class="col-3">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Cho_CON_BU" /> @Html.DisplayNameFor(model => model.Cho_CON_BU)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Ten_BENH" class="control-label col-2 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Ten_BENH" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ten_BENH" class="text-danger"></span>
+                            <small class="text-warning">Nhập thông tin cần bổ sung cho tên bệnh cần kiểm tra</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Ma_BENH" class="control-label col-2 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Ma_BENH" class="form-control custom-form-control" />
+                            <small class="text-warning">Vui lòng nhập mã theo định dạng [A1.2] hoặc [B6.7*] hoặc [C8.*]</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Thuoc_KHAC" class="control-label col-2 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Thuoc_KHAC" class="form-control custom-form-control" />
+                            <small class="text-warning">Vui lòng nhập mã theo định dạng [40.234] hoặc [56.7*] hoặc [18.*]</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Dich_VU" class="control-label col-2 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Dich_VU" class="form-control custom-form-control" />
+                            <small class="text-warning">Vui lòng nhập mã theo định dạng [21.0234.4363] hoặc [36.7*] hoặc [78.4367.*]</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Tien_SU_BENH" class="control-label col-2 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Tien_SU_BENH" class="form-control custom-form-control" />
+                            <small class="text-warning">Vui lòng nhập mã theo định dạng [A1.2] hoặc [B6.7*] hoặc [C8.*]</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Tre_SO_SINH" class="control-label col-2 text-right"></label>
+                        <div class="col-2">
+                            <input asp-for="Tre_SO_SINH" class="form-control custom-form-control" />
+
+                        </div>
+                        <div class="col-2"><i>(ngày tuổi)</i></div>
+                        <label asp-for="Thoi_GIAN_TOI_THIEU" class="control-label col-2 text-right"></label>
+                        <div class="col-2">
+                            <input asp-for="Thoi_GIAN_TOI_THIEU" class="form-control custom-form-control" />
+                        </div>
+                        <div class="col-1"><i>(ngày)</i></div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Tyle_TT" class="control-label col-2 text-right"></label>
+                        <div class="col-2">
+                            <input asp-for="Tyle_TT" class="form-control custom-form-control" />
+                        </div>
+                        <div class="col-2"><i>%</i></div>
+                    </div>
+                    <hr />
+                    <div class="text-danger text-center mb-30">
+                        * Chọn [Tạo lỗi mới] để thêm mã lỗi mới<br />
+                        * Chọn mã lỗi đã có và nhập nội dung mới cần thay đổi vào ô Nội dung lỗi để cập nhật mã lỗi
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Ma_LOI" class="control-label col-2 text-right">Mã lỗi:</label>
+                        <div class="col-9 select2-custom">
+                            <select asp-for="Ma_LOI" class="form-control select2 filter-change">
+                                <option value="0">Tạo lỗi mới</option>
+                                @foreach (var item in ViewBag.DMErrors)
+                                {
+                                    @if (item.ErrorCode == Model.Ma_LOI)
+                                    {
+                                        <option value="@item.ErrorCode" selected>@item.ErrorCode | @item.Message</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.ErrorCode">@item.ErrorCode | @item.Message</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Noi_DUNG_LOI" class="control-label col-2 text-right">Nội dung lỗi:</label>
+                        <div class="col-9">
+                            <input asp-for="Noi_DUNG_LOI" class="form-control custom-form-control" />
+                        </div>
+                    </div>
+                    @if (isMaster == true)
+                    {
+                        <div class="form-group row">
+                            <label asp-for="Ma_CSKCB" class="control-label col-2 text-right"></label>
+                            <div class="col-9">
+                                <input asp-for="Ma_CSKCB" class="form-control custom-form-control" />
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group text-center">
+                    <a asp-action="@nameof(HospitalController.Index)" class="btn btn-outline-primary">@DisplayFieldResource.BACK_TO_LIST</a>
+                    @if (isEditable)
+                    {
+                    <input type="submit" value="@DisplayFieldResource.UPDATE" class="btn btn-primary" />
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="@Url.Content("~/lib/select2/select2.min.js")"></script>
+    <script src="@Url.Content("~/js/tagslist.js")"></script>
+    <script>
+        $('.select2').select2({ theme: "bootstrap" });
+        var mb = new TagsInput({ selector: 'Ma_BENH' }), tk = new TagsInput({ selector: 'Thuoc_KHAC' }), dv = new TagsInput({ selector: 'Dich_VU' }), ts = new TagsInput({ selector: 'Tien_SU_BENH' });
+    </script>
+}

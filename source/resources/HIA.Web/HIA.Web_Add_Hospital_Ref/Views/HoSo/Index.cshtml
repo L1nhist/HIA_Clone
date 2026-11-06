@@ -1,0 +1,167 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.User;
+@using HIA.DatabaseModel.Entites;
+@model List<XML1>
+@{
+    ViewData["Title"] = @DisplayFieldResource.MENU_USER_MAGEME;
+}
+
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/dataTables.bootstrap4.css")">
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/responsive.dataTables.min.css")">
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_USER_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.MENU_USER_MAGEME</li>
+                </ol>
+                <a href="@Url.Action(nameof(UserController.Create), Uti.GetControllerName(nameof(UserController)))" class="btn btn-info d-none d-lg-block m-l-15">
+                    <i class="fa fa-plus-circle"></i> @DisplayFieldResource.CREATE_NEW
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="config-table" class="table display table-bordered table-striped no-wrap">
+                    <thead>
+                        <tr>
+                            <th>@DisplayFieldResource.NO</th>
+                            <th>HO_TEN</th>
+                            <th>MA_THE </th>
+                            <th>CAN_NANG</th>
+                            <th>DIA_CHI</th>
+                            <th>GIOI_TINH </th>
+                            <th>GT_THE_DEN </th>
+                            <th>GT_THE_TU</th>
+                            <th>KET_QUA_DTRI </th>
+                            <th>MA_BENH = </th>
+                            <th>MA_BENHKHAC = </th>
+                            <th>MA_BN = </th>
+                            <th>MA_CSKCB = </th>
+                            <th>MA_DKBD = </th>
+                            <th>MA_KHOA = </th>
+                            <th>MA_KHUVUC = </th>
+                            <th>MA_LK = </th>
+                            <th>MA_LOAI_KCB = </th>
+                            <th>MA_LYDO_VVIEN = </th>
+                            <th>MA_NOI_CHUYEN = </th>
+                            <th>MA_PTTT_QT = </th>
+                            <th>MA_TAI_NAN = </th>
+                            <th>MIEN_CUNG_CT = </th>
+                            <th>NAM_QT = xml1.NAM_QT;
+                            <th>NGAY_RA </th>
+                            <th>NGAY_SINH </th>
+                            <th>NGAY_TTOAN </th>
+                            <th>NGAY_VAO </th>
+                            <th>SO_NGAY_DTRI </th>
+                            <th>STT </th>
+                            <th>TEN_BENH </th>
+                            <th>THANG_QT </th>
+                            <th>TINH_TRANG_RV </th>
+                            <th>T_BHTT </th>
+                            <th>T_BNCCT </th>
+                            <th>T_BNTT </th>
+                            <th>T_VTYT </th>
+                            <th>T_TONGCHI </th>
+                            <th>T_THUOC </th>
+                            <th>T_NGUONKHAC </th>
+                            <th>T_NGOAIDS </th>
+                            <th>FileName </th>
+                            <th>MIEN_CUNG_CT </th>
+                            <th>MA_TAI_NAN </th>
+                            <th>T_NGUONKHAC </th>
+                            <th>T_NGOAIDS </th>
+                            <th>MA_PTTT_QT </th>
+                            <th>@DisplayFieldResource.STATUS</th>
+                            <th>@DisplayFieldResource.ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Any())
+                        {
+                            for (int i = 0; i < Model.Count; i++)
+                            {
+                                var item = Model[i];
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td>@item.HO_TEN</td>
+                            <td>@item.MA_THE </td>
+                            <td>@item.CAN_NANG</td>
+                            <td>@item.DIA_CHI</td>
+                            <td>@item.GIOI_TINH </td>
+                            <td>@item.GT_THE_DEN </td>
+                            <td>@item.GT_THE_TU</td>
+                            <td>@item.KET_QUA_DTRI </td>
+                            <td>@item.MA_BENH = </td>
+                            <td>@item.MA_BENHKHAC = </td>
+                            <td>@item.MA_BN = </td>
+                            <td>@item.MA_CSKCB = </td>
+                            <td>@item.MA_DKBD = </td>
+                            <td>@item.MA_KHOA = </td>
+                            <td>@item.MA_KHUVUC = </td>
+                            <td>@item.MA_LK = </td>
+                            <td>@item.MA_LOAI_KCB = </td>
+                            <td>@item.MA_LYDO_VVIEN = </td>
+                            <td>@item.MA_NOI_CHUYEN = </td>
+                            <td>@item.MA_PTTT_QT = </td>
+                            <td>@item.MA_TAI_NAN = </td>
+                            <td>@item.MIEN_CUNG_CT = </td>
+                            <td>@item.NAM_QT = xml1.NAM_QT;
+                            <td>@item.NGAY_RA </td>
+                            <td>@item.NGAY_SINH </td>
+                            <td>@item.NGAY_TTOAN </td>
+                            <td>@item.NGAY_VAO </td>
+                            <td>@item.SO_NGAY_DTRI </td>
+                            <td>@item.STT </td>
+                            <td>@item.TEN_BENH </td>
+                            <td>@item.THANG_QT </td>
+                            <td>@item.TINH_TRANG_RV </td>
+                            <td>@item.T_BHTT </td>
+                            <td>@item.T_BNCCT </td>
+                            <td>@item.T_BNTT </td>
+                            <td>@item.T_VTYT </td>
+                            <td>@item.T_TONGCHI </td>
+                            <td>@item.T_THUOC </td>
+                            <td>@item.T_NGUONKHAC </td>
+                            <td>@item.T_NGOAIDS </td>
+                            <td>@item.FileName </td>
+                            <td>@item.MIEN_CUNG_CT </td>
+                            <td>@item.MA_TAI_NAN </td>
+                            <td>@item.T_NGUONKHAC </td>
+                            <td>@item.T_NGOAIDS </td>
+                            <td>@item.MA_PTTT_QT </td>
+                            <td class="txt-none-line">
+                                <a href="@Url.Action(nameof(UserController.Edit), Uti.GetControllerName(nameof(UserController)), new { userId = item.XML1ID})"><i class="icon-note"></i></a>
+                                <a href="@Url.Action(nameof(UserController.DeleteAction), Uti.GetControllerName(nameof(UserController)), new { userId = item.XML1ID})"><i class="icon-trash"></i></a>
+                            </td>
+                        </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net-bs4/js/dataTables.responsive.min.js")"></script>
+    <script>
+        // responsive table
+        $('#config-table').DataTable({
+            responsive: true
+        });
+    </script>
+}

@@ -1,0 +1,361 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Core.Languages.TitlePage;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Categories;
+
+@{
+    ViewData["Title"] = TitlePageResource.DM_NHAN_VIEN;
+    var modelDisplay = new DMBacSiInfoModel();
+}
+
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/dataTables.bootstrap4.css")">
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/responsive.dataTables.min.css")">
+<link rel="stylesheet" href="@Url.Content("~/lib/elite/libs/dropify/dropify.min.css")">
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@TitlePageResource.DM_NHAN_VIEN</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">@TitlePageResource.DM_NHAN_VIEN</li>
+                </ol>
+                <a href="@Url.Action(nameof(DMBacSiController.Create), Uti.GetControllerName(nameof(DMBacSiController)))" class="btn btn-light d-none d-lg-block m-l-15 btn-add">
+                    <i class="fa fa-plus-circle"></i> @DisplayFieldResource.CREATE_NEW
+                </a>
+                @*if (ViewBag.AllowImport)
+                {
+                    <button class="btn btn-light d-none d-lg-block m-l-15 btn-add" onclick="importData()">
+                        <i class="fa fa-sync-alt"></i> Đồng bộ
+                    </button>
+                }*@
+            </div>
+        </div>
+    </div>
+    <div class="card upload-file-wrapper">
+        <div class="card-body">
+            <div class="row handle-file display-flex">
+                <div class="col-10 drop-wrapper">
+                    <input type="file" id="fileupload" class="dropify " data-allowed-file-extensions='["xls", "xlsx"]' />
+                </div>
+                <div class="col-2 button-wrapper flex-middle">
+                    <button type="button" class="btn btn-block btn-info" onclick="uploadFile()"><i class="icon-cloud-upload"></i> @DisplayFieldResource.UPLOAD_TEXT</button>
+                    <button type="button" onclick="downloadFile()" id="btnDownload" class="btn btn-block btn-primary"><i class="icon-cloud-download"></i> @DisplayFieldResource.DOWNLOAD_TEXT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive fixed-table-custom has-upload fixed-column">
+                <table class="stripe table table-bordered table-striped" id="tbl_DataTable">
+                    <thead>
+                        <tr>
+                            <th>@DisplayFieldResource.NO</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Ma_BHXH) ?? "Mã BHXH")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Ho_TEN) ?? "Họ tên")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Gioi_TINH) ?? "Giới tính")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Ma_KHOA) ?? "Mã Khoa")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Ten_KHOA) ?? "Tên Khoa")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Chuc_DANH) ?? "Chức danh")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Vi_TRI) ?? "Vị trí")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Ma_CCHN) ?? "Mã CCHN")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Ngaycap_CCHN) ?? "Ngày cấp CCHN")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Noicap_CCHN) ?? "Nơi cấp CCHN")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Phamvi_CM) ?? "Phạm vi CM")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Phamvi_CMBS) ?? "Phạm vi CMBS")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Dvkt_KHAC) ?? "DVKT Khác")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Vb_PHANCONG) ?? "Văn bản phân công")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Tg_DANGKY) ?? "Thời gian đăng ký")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Tg_NGAY) ?? "Thời gian ngày")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Tg_TUAN) ?? "Thời gian tuần")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Cskcb_KHAC) ?? "Cskcb khác")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Cskcb_CGKT) ?? "Cskcb CGKT")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Qd_CGKT) ?? "Quyết định CGKT")</th>                                                                                                                                                                                                                                                    )</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Tu_NGAY) ?? "Từ ngày")</th>
+                            <th>@(Html.DisplayNameFor(x => modelDisplay.Den_NGAY) ?? "Đến Nngày")</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Ma_CSKCB)</th>
+                            <th>@DisplayFieldResource.ACTIONS</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_spinnerPartial" />
+@section Scripts {
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/dataTables.fixedColumns.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net-bs4/js/dataTables.responsive.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/dropify/dropify.min.js")"></script>
+    <script>
+        $('.dropify').dropify({
+            messages: @Html.Raw(DropifySettingDefault.MESSAGES),
+            error: @Html.Raw(DropifySettingDefault.ERROR),
+        });
+        function calcDataTableHeight() {
+            /*68px: header, 37px: title, 5px: mgbttom-top, 106: upload, 20px: 2 paddtop-bot 10; 32px: footer, 10px: bottom margin*/
+            const height = $(window).height() - 68 - 37 - 5 - 106 - 20 - 32 - 5 - 120;
+            return height;
+        }
+        const dataTbl = $('#tbl_DataTable').DataTable({
+            responsive: false,
+            processing: true,
+            serverSide: true,
+            searchDelay: 500,
+            ajax: {
+                url: "@Url.Action(nameof(DMBacSiController.GetItems), Uti.GetControllerName(nameof(DMBacSiController)))",
+                type: 'POST',
+            },
+            columnDefs: [
+                { width: 100, targets: "_all" }
+            ],
+            order: [[1, "asc"]], // set default sort is column 1
+            columns: [
+                {
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
+
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_BHXH))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ho_TEN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Gioi_TINH))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_KHOA))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_KHOA))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_BHXH))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Chuc_DANH))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Vi_TRI))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_CCHN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ngaycap_CCHN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Noicap_CCHN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Phamvi_CM))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Phamvi_CMBS))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Dvkt_KHAC))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Vb_PHANCONG))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tg_DANGKY))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tg_NGAY))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tg_TUAN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Cskcb_KHAC))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Cskcb_CGKT))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Qd_CGKT))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tu_NGAY))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Den_NGAY))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_CSKCB))" },
+                {
+                    render: function (data, type, row, meta) {
+                        const editUrl = '@Url.Action(nameof(DMBacSiController.Edit), Uti.GetControllerName(nameof(DMBacSiController)))' + `?id=${row.bacSiID}`;
+                        const delUrl = '@Url.Action(nameof(DMBacSiController.DeleteAction), Uti.GetControllerName(nameof(DMBacSiController)))' + `?id=${row.bacSiID}`;
+                        return `<a href="${editUrl}" class="edit-icon"><i class="icon-note"></i></a> <a href="${delUrl}" class="del-icon"><i class="icon-trash"></i></a>`;
+                    }
+                },
+            ],
+            scrollX: true,
+            sScrollY: calcDataTableHeight(),
+            scrollCollapse: true,
+            fixedColumns: {
+                leftColumns: 0,
+                rightColumns: 1,
+            },
+            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+            lengthMenu: @Html.Raw(@DataTableSettingDefault.LENGTH_MENU),
+        });
+        function uploadFile() {
+            const fileExtension = ['xls', 'xlsx'];
+            const filename = $('#fileupload').val();
+
+            if (filename.length == 0) return;
+
+
+            const extension = filename.replace(/^.*\./, '');
+            if ($.inArray(extension, fileExtension) == -1) {
+                $.toast({
+                    heading: 'Add file Fail',
+                    text: 'Please select only excel files.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 2000,
+                    stack: 6
+                });
+                return ;
+            }
+
+            const fileUpload = $("#fileupload").get(0);
+            const file = fileUpload.files[0];
+            const maxSize = 10 * 1024 * 1024;
+            if (!file || file.size > maxSize) {
+                $.toast({
+                    heading: 'Add file Fail',
+                    text: 'Please select file smaller 10Mb.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 2000,
+                    stack: 6
+                });
+                return;
+            }
+            var fdata = new FormData();
+            fdata.append(file.name, file);
+            $("#spinnerWrapper").modal("show");
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action(nameof(DMBacSiController.Upload), Uti.GetControllerName(nameof(DMBacSiController)))",
+                data: fdata,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $("#spinnerWrapper").modal("hide");
+                    if (response?.code !== 200) {
+                        $.toast({
+                            heading: 'Upload Fail',
+                            text: 'Some error occured while uploading - ' + response.message,
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 2000,
+                            stack: 6
+                        });
+                        return;
+                    }
+
+                    dataTbl.ajax.reload();
+                    $(".dropify-clear").trigger("click");
+                    $.toast({
+                        heading: 'Upload success',
+                        text: '',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'success',
+                        hideAfter: 2000,
+                        stack: 6
+                    });
+                },
+                error: function (e) {
+                    $("#spinnerWrapper").modal("hide");
+                    $.toast({
+                        heading: 'Upload Fail',
+                        text: 'Some error occured while uploading',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 2000,
+                        stack: 6
+                    });
+                }
+            });
+        }
+        function downloadFile() {
+            $("#btnDownload").addClass('disabled-custom');
+            $("#spinnerWrapper").modal("show");
+            $.ajax({
+                url: "@Url.Action(nameof(DMBacSiController.GetDownloadData), Uti.GetControllerName(nameof(DMBacSiController)))",
+                method: "GET",
+                contentType: "application/json",
+                cache: false,
+                success: function (response) {
+                    if (response.code != 200) {
+                        $("#spinnerWrapper").modal("hide");
+                        $("#btnDownload").removeClass('disabled-custom');
+                        $.toast({
+                            heading: 'Thất bại',
+                            text: 'Đã có lỗi hệ thống.',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 2000,
+                            stack: 6
+                        });
+                        return;
+                    }
+
+                    window.location = '@Url.Action(nameof(DMBacSiController.Download), Uti.GetControllerName(nameof(DMBacSiController)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    setTimeout(() => {
+                        $("#spinnerWrapper").modal("hide");
+                        $("#btnDownload").removeClass('disabled-custom');
+
+                        $.toast({
+                            heading: 'Thành công',
+                            text: '',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'success',
+                            hideAfter: 2000,
+                            stack: 6
+                        });
+                    }, 2000);
+                },
+                error: function (e) {
+                    $("#spinnerWrapper").modal("hide");
+                    $("#btnDownload").removeClass('disabled-custom');
+                    $.toast({
+                        heading: 'Thất bại',
+                        text: 'Đã có lỗi hệ thống.',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 2000,
+                        stack: 6
+                    });
+                }
+            });
+        }
+        function importData() {
+            $("#spinnerWrapper").modal("show");
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action(nameof(DMBacSiController.Upload), Uti.GetControllerName(nameof(DMBacSiController)))",
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $("#spinnerWrapper").modal("hide");
+                    if (response?.code !== 200) {
+                        $.toast({
+                            heading: 'Đồng bộ Danh mục',
+                            text: response.message ?? 'Không thể đồng bộ dữ liệu',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 6000,
+                            stack: 6
+                        });
+                        return;
+                    }
+
+                    dataTbl.ajax.reload();
+                    $(".dropify-clear").trigger("click");
+                    $.toast({
+                        heading: 'Đồng bộ Danh mục',
+                        text: 'Đã đồng bộ thành công dữ liệu từ cổng Bảo hiểm',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'success',
+                        hideAfter: 6000,
+                        stack: 6
+                    });
+                },
+                error: function (e) {
+                    $("#spinnerWrapper").modal("hide");
+                    $.toast({
+                        heading: 'Đồng bộ Danh mục',
+                        text: 'Không thể đồng bộ dữ liệu',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 6000,
+                        stack: 6
+                    });
+                }
+            });
+        }
+    </script>
+}

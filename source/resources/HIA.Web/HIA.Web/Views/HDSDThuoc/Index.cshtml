@@ -1,0 +1,173 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.HDSD;
+@using HIA.Core.Models.Token;
+@using System.Security.Claims;
+@{
+    ViewData["Title"] = @DisplayFieldResource.MENU_HDSDTHUOC_MAGEME;
+
+    var modelDisplay = new HDSDThuocInfoModel();
+    var curCSKCB = User.FindFirst(ClaimKey.MA_CSKCB)?.Value;
+    var isMaster = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.MASTER);
+    var isAdmin = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.ADMIN);
+}
+
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/dataTables.bootstrap4.css")">
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/responsive.dataTables.min.css")">
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_HDSDTHUOC_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.MENU_HDSDTHUOC_MAGEME</li>
+                </ol>
+                <a href="@Url.Action(nameof(HDSDThuocController.Create), Uti.GetControllerName(nameof(HDSDThuocController)))" class="btn btn-light d-none d-lg-block m-l-15 btn-add">
+                    <i class="fa fa-plus-circle"></i> @DisplayFieldResource.CREATE_NEW
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive fixed-table-custom table-sticky">
+                <table class="table table-bordered table-striped" id="tbl_DataTable">
+                    <thead>
+                        <tr>
+                            <th>@DisplayFieldResource.ACTIONS</th>
+                            <th>@DisplayFieldResource.NO</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Ma_THUOC)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Ten_THUOC)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Duong_DUNG)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Chi_DINH)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Do_TUOI)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Co_THAI)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Cho_CON_BU)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Ma_BENH)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Ten_BENH)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Thuoc_KHAC)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Dich_VU)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Tien_SU_BENH)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Tyle_TT)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Tre_SO_SINH)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Thoi_GIAN_TOI_THIEU)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Noi_DUNG_LOI)</th>
+                            <th>Hiệu lực</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net-bs4/js/dataTables.responsive.min.js")"></script>
+    <script>
+        $('#tbl_DataTable').DataTable({
+            responsive: false,
+            processing: true,
+            serverSide: true,
+            searchDelay: 500,
+            ajax: {
+                url: "@Url.Action(nameof(HDSDThuocController.GetItems), Uti.GetControllerName(nameof(HDSDThuocController)))",
+                type: 'POST'
+            },
+            language: {
+                "search": "",
+                "searchPlaceholder": "Search..."
+            },
+            columnDefs: [
+                    { width: 80, targets: "_all" }
+            ],
+            order: [[0, "asc"]],
+            columns: [
+                {
+                    render: function (data, type, row, meta) {
+                        console.trace(row);
+                        @if (isAdmin == true)
+                        {
+                            <text>
+                                if (row.ma_CSKCB != '@curCSKCB') return '';
+                            </text>
+                        }
+                        var actSts = row.hieu_LUC ? 'pause' : 'play';
+                        var actTit = row.hieu_LUC ? 'Hủy bỏ hiệu lực của HDSD Thuốc' : 'Kích hoạt hiệu lực cho HDSD Thuốc';
+                        return `<a href="@Url.Action(nameof(HDSDThuocController.Edit), Uti.GetControllerName(nameof(HDSDThuocController)))?id=${row.id}" class="edit-icon" title="Chỉnh sửa nội dung HDSD Thuốc"><i class="icon-note"></i></a>` + ' &nbsp; ' +
+                            `<a href="@Url.Action(nameof(HDSDThuocController.Activate), Uti.GetControllerName(nameof(HDSDThuocController)))?id=${row.id}&sts=${!row.hieu_LUC}" class="del-icon" title="${actTit}"><i class="icon-control-${actSts}"></i></a>`;
+                    },
+                    className: "w-50"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    },
+                    className: "w-50"
+                },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_THUOC))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_THUOC))", className: "w-200" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Duong_DUNG))", className: "w-50" },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Chi_DINH))",
+                    render: function(data, type, row, meta) {
+                        return data ? '&#10004;' : '&#10006;';
+                    },
+                    className: "w-50"
+                },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Do_TUOI))", className: "w-50" },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Co_THAI))",
+                    render: function(data, type, row, meta) {
+                        return data ? '&#10004;' : '';
+                    },
+                    className: "w-50"
+                },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Cho_CON_BU))",
+                    render: function(data, type, row, meta) {
+                        return data ? '&#10004;' : '';
+                    },
+                    className: "w-50"
+                },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_BENH))", className: "w-650" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_BENH))", className: "w-200" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Thuoc_KHAC))", className: "w-350" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Dich_VU))", className: "w-350" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tien_SU_BENH))", className: "w-350" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tyle_TT))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tre_SO_SINH))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Thoi_GIAN_TOI_THIEU))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Noi_DUNG_LOI))", className: "w-650" },
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Hieu_LUC))",
+                    name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Hieu_LUC))",
+                    autoWidth: true,
+                    render: function (data, type, row, meta) {
+                        const isActived = "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Hieu_LUC))";
+                        return row[isActived]
+                            ? `<span class="status-active">@DisplayFieldResource.ACTIVE</span>`
+                            : `<span class="status-inactive">@DisplayFieldResource.INACTIVE</span>`;
+                    },
+                    className: "w-50"
+                },
+            ],
+            createdRow: function (row, data, dataIndex) {
+                if (data.hieu_LUC)
+                {
+                    var bgColor = data.chi_DINH ? "LimeGreen" : "OrangeRed";
+                    $(row).css("color", bgColor);
+                }
+            },
+            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+            lengthMenu: @Html.Raw(@DataTableSettingDefault.LENGTH_MENU),
+        });
+    </script>
+}

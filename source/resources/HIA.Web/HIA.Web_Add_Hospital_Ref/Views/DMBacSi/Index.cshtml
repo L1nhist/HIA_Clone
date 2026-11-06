@@ -1,0 +1,309 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Core.Languages.TitlePage;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Categories;
+
+@{
+    ViewData["Title"] = TitlePageResource.DM_NHAN_VIEN;
+    var modelDisplay = new DMBacSiInfoModel();
+}
+
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/dataTables.bootstrap4.css")">
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/responsive.dataTables.min.css")">
+<link rel="stylesheet" href="@Url.Content("~/lib/elite/libs/dropify/dropify.min.css")">
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@TitlePageResource.DM_NHAN_VIEN</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">@TitlePageResource.DM_NHAN_VIEN</li>
+                </ol>
+                <a href="@Url.Action(nameof(DMBacSiController.Create), Uti.GetControllerName(nameof(DMBacSiController)))" class="btn btn-light d-none d-lg-block m-l-15 btn-add">
+                    <i class="fa fa-plus-circle"></i> @DisplayFieldResource.CREATE_NEW
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card upload-file-wrapper">
+        <div class="card-body">
+            <div class="row handle-file display-flex">
+                <div class="col-10 drop-wrapper">
+                    <input type="file" id="fileupload" class="dropify " data-allowed-file-extensions='["xls", "xlsx"]' />
+                </div>
+                <div class="col-2 button-wrapper flex-middle">
+                    <button type="button" class="btn btn-block btn-info" onclick="uploadFile()"><i class="icon-cloud-upload"></i> @DisplayFieldResource.UPLOAD_TEXT</button>
+                    <button type="button" onclick="downloadFile()" id="btnDownload" class="btn btn-block btn-primary"><i class="icon-cloud-download"></i> @DisplayFieldResource.DOWNLOAD_TEXT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive fixed-table-custom has-upload fixed-column">
+                <table class="stripe table table-bordered table-striped" id="tbl_DataTable">
+                    <thead>
+                        <tr>
+                            <th>@DisplayFieldResource.NO</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.MA_KHOA)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.MaNhanVien)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Ten_NHANVIEN)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Ten_VIETTAT)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Gioi_TINH)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Ngay_SINH)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Dia_CHI)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Dien_THOAI)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Email)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.HocHam_HOCVI)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.MA_CHUYENNGANH)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Loai)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.ChucDanh)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.MaCCHN)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.NgayCap_CCHN)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.NoiCap_CCHN)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.TuNgay)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.DenNgay)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.VanBangCM)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.ThoiGian_DK)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.ThoiGian_NGAY)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.ThoiGian_TUAN)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.ChungChi_KHAC)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Khoa_BOPHAN)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.MA_CSKCB)</th>
+                            <th>@DisplayFieldResource.ACTIONS</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_spinnerPartial" />
+@section Scripts {
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/dataTables.fixedColumns.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net-bs4/js/dataTables.responsive.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/dropify/dropify.min.js")"></script>
+    <script>
+        $('.dropify').dropify({
+            messages: @Html.Raw(DropifySettingDefault.MESSAGES),
+            error: @Html.Raw(DropifySettingDefault.ERROR),
+        });
+        function calcDataTableHeight() {
+            /*68px: header, 37px: title, 5px: mgbttom-top, 106: upload, 20px: 2 paddtop-bot 10; 32px: footer, 10px: bottom margin*/
+            const height = $(window).height() - 68 - 37 - 5 - 106 - 20 - 32 - 5 - 120;
+            return height;
+        }
+        const dataTbl = $('#tbl_DataTable').DataTable({
+            responsive: false,
+            processing: true,
+            serverSide: true,
+            searchDelay: 500,
+            ajax: {
+                url: "@Url.Action(nameof(DMBacSiController.GetItems), Uti.GetControllerName(nameof(DMBacSiController)))",
+                type: 'POST',
+            },
+            columnDefs: [
+                { width: 100, targets: "_all" }
+            ],
+            order: [[1, "asc"]], // set default sort is column 1
+            columns: [
+                {
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MA_KHOA))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MaNhanVien))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_NHANVIEN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_VIETTAT))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Gioi_TINH))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ngay_SINH))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Dia_CHI))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Dien_THOAI))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Email))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.HocHam_HOCVI))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MA_CHUYENNGANH))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Loai))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.ChucDanh))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MaCCHN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.NgayCap_CCHN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.NoiCap_CCHN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.TuNgay))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.DenNgay))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.VanBangCM))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.ThoiGian_DK))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.ThoiGian_NGAY))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.ThoiGian_TUAN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.ChungChi_KHAC))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Khoa_BOPHAN))" },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MA_CSKCB))" },
+                {
+                    render: function (data, type, row, meta) {
+                        const editUrl = '@Url.Action(nameof(DMBacSiController.Edit), Uti.GetControllerName(nameof(DMBacSiController)))' + `?id=${row.bacSiID}`;
+                        const delUrl = '@Url.Action(nameof(DMBacSiController.DeleteAction), Uti.GetControllerName(nameof(DMBacSiController)))' + `?id=${row.bacSiID}`;
+                        return `<a href="${editUrl}" class="edit-icon"><i class="icon-note"></i></a> <a href="${delUrl}" class="del-icon"><i class="icon-trash"></i></a>`;
+                    }
+                },
+            ],
+            scrollX: true,
+            sScrollY: calcDataTableHeight(),
+            scrollCollapse: true,
+            fixedColumns: {
+                leftColumns: 0,
+                rightColumns: 1,
+            },
+            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+            lengthMenu: @Html.Raw(@DataTableSettingDefault.LENGTH_MENU),
+        });
+        function uploadFile() {
+            const fileExtension = ['xls', 'xlsx'];
+            const filename = $('#fileupload').val();
+
+            if (filename.length == 0) return;
+
+
+            const extension = filename.replace(/^.*\./, '');
+            if ($.inArray(extension, fileExtension) == -1) {
+                $.toast({
+                    heading: 'Add file Fail',
+                    text: 'Please select only excel files.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 2000,
+                    stack: 6
+                });
+                return ;
+            }
+
+            const fileUpload = $("#fileupload").get(0);
+            const file = fileUpload.files[0];
+            const maxSize = 10 * 1024 * 1024;
+            if (!file || file.size > maxSize) {
+                $.toast({
+                    heading: 'Add file Fail',
+                    text: 'Please select file smaller 10Mb.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 2000,
+                    stack: 6
+                });
+                return;
+            }
+            var fdata = new FormData();
+            fdata.append(file.name, file);
+            $("#spinnerWrapper").modal("show");
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action(nameof(DMBacSiController.Upload), Uti.GetControllerName(nameof(DMBacSiController)))",
+                data: fdata,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $("#spinnerWrapper").modal("hide");
+                    if (response?.code !== 200) {
+                        $.toast({
+                            heading: 'Upload Fail',
+                            text: 'Some error occured while uploading - ' + response.message,
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 2000,
+                            stack: 6
+                        });
+                        return;
+                    }
+
+                    dataTbl.ajax.reload();
+                    $(".dropify-clear").trigger("click");
+                    $.toast({
+                        heading: 'Upload success',
+                        text: '',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'success',
+                        hideAfter: 2000,
+                        stack: 6
+                    });
+                },
+                error: function (e) {
+                    $("#spinnerWrapper").modal("hide");
+                    $.toast({
+                        heading: 'Upload Fail',
+                        text: 'Some error occured while uploading',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 2000,
+                        stack: 6
+                    });
+                }
+            });
+        }
+        function downloadFile() {
+            $("#btnDownload").addClass('disabled-custom');
+            $("#spinnerWrapper").modal("show");
+            $.ajax({
+                url: "@Url.Action(nameof(DMBacSiController.GetDownloadData), Uti.GetControllerName(nameof(DMBacSiController)))",
+                method: "GET",
+                contentType: "application/json",
+                cache: false,
+                success: function (response) {
+                    if (response.code != 200) {
+                        $("#spinnerWrapper").modal("hide");
+                        $("#btnDownload").removeClass('disabled-custom');
+                        $.toast({
+                            heading: 'Thất bại',
+                            text: 'Đã có lỗi hệ thống.',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 2000,
+                            stack: 6
+                        });
+                        return;
+                    }
+
+                    window.location = '@Url.Action(nameof(DMBacSiController.Download), Uti.GetControllerName(nameof(DMBacSiController)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    setTimeout(() => {
+                        $("#spinnerWrapper").modal("hide");
+                        $("#btnDownload").removeClass('disabled-custom');
+
+                        $.toast({
+                            heading: 'Thành công',
+                            text: '',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'success',
+                            hideAfter: 2000,
+                            stack: 6
+                        });
+                    }, 2000);
+                },
+                error: function (e) {
+                    $("#spinnerWrapper").modal("hide");
+                    $("#btnDownload").removeClass('disabled-custom');
+                    $.toast({
+                        heading: 'Thất bại',
+                        text: 'Đã có lỗi hệ thống.',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 2000,
+                        stack: 6
+                    });
+                }
+            });
+        }
+    </script>
+}

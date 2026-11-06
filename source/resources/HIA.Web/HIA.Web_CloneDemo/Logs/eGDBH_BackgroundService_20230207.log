@@ -1,0 +1,194 @@
+2023-02-07 00:02:12.226 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:02:12.253 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:02:12.254 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:02:12.254 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:02:12.493 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-07 00:02:12.494 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (12:02:12).
+2023-02-07 00:02:12.496 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-07 00:02:12.497 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (12:02:12).
+2023-02-07 00:03:32.931 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:03:32.973 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:03:32.973 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:03:32.973 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:03:33.322 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-07 00:03:33.324 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (12:03:33).
+2023-02-07 00:03:33.326 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-07 00:03:33.328 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (12:03:33).
+2023-02-07 00:03:39.584 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXML1: Validate job start: Thread 1
+2023-02-07 00:03:39.584 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  1   (12:03:39).
+2023-02-07 00:03:39.584 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (12:03:39).
+2023-02-07 00:03:39.941 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (12:03:39).
+2023-02-07 00:03:39.941 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.1 Get HS:  Thread 7 ma_CSKCB: 19666  (12:03:39).
+2023-02-07 00:03:39.941 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.2 Get 300 HS, chuan bi VALIDATE   19666    (12:03:39).
+2023-02-07 00:03:40.129 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua1:  (12:03:40).
+2023-02-07 00:03:40.444 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua2  (12:03:40).
+2023-02-07 00:03:41.148 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S110. Haimaster Check API get Data:19666 Validated - Total time: 703.0932
+2023-02-07 00:03:41.366 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data19666: Get All Data - Total time: 218.3441
+2023-02-07 00:03:50.895 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data19666: After Validated - Total time: 9747.0621
+2023-02-07 00:03:53.446 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu19666: After Validated - Total time: 2550.9444
+2023-02-07 00:04:14.864 +07:00 [Error] Failed executing DbCommand ("18"ms) [Parameters=["@p0='?' (Size = 10), @p1='?' (DbType = Int32), @p2='?' (DbType = Double), @p3='?' (Size = 1) (DbType = Byte), @p4='?' (DbType = DateTime), @p5='?' (DbType = Int32), @p6='?' (Size = 1024), @p7='?' (Size = 4000), @p8='?' (Size = 250), @p9='?' (Size = 1) (DbType = Byte), @p10='?' (Size = 255), @p11='?' (Size = 255), @p12='?' (Size = 255), @p13='?' (Size = 36) (DbType = AnsiString), @p14='?' (Size = 1) (DbType = Byte), @p15='?' (Size = 255), @p16='?' (Size = 255), @p17='?' (Size = 100), @p18='?' (Size = 255), @p19='?' (Size = 15), @p20='?' (Size = 15), @p21='?' (Size = 100), @p22='?' (Size = 1) (DbType = Byte), @p23='?' (Size = 1) (DbType = Byte), @p24='?' (Size = 5), @p25='?' (Size = 5), @p26='?' (Size = 5), @p27='?' (Size = 255), @p28='?' (DbType = Byte), @p29='?' (Size = 255), @p30='?' (Size = 50), @p31='?' (Size = 255), @p32='?' (DbType = Int32), @p33='?' (DbType = DateTime), @p34='?' (DbType = DateTime), @p35='?' (DbType = DateTime), @p36='?' (DbType = DateTime), @p37='?' (DbType = DateTime), @p38='?' (DbType = Int32), @p39='?' (DbType = Int32), @p40='?' (Size = 4000), @p41='?' (Size = 1) (DbType = Byte), @p42='?' (Size = 1) (DbType = Byte), @p43='?' (DbType = Double), @p44='?' (DbType = Double), @p45='?' (DbType = Double), @p46='?' (DbType = Double), @p47='?' (DbType = Double), @p48='?' (DbType = Double), @p49='?' (DbType = Double), @p50='?' (DbType = Double), @p51='?' (DbType = DateTime), @p52='?' (DbType = Boolean)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [XML1] ([MA_CSKCB], [XML1ID], [CAN_NANG], [CHECKED], [CreateDate], [Creator], [DIA_CHI], [DanhSachLoi], [FileName], [GIOI_TINH], [GT_THE_DEN], [GT_THE_TU], [HO_TEN], [HospitalId], [KET_QUA_DTRI], [MA_BENH], [MA_BENHKHAC], [MA_BN], [MA_DKBD], [MA_KHOA], [MA_KHUVUC], [MA_LK], [MA_LOAI_KCB], [MA_LYDO_VVIEN], [MA_NOI_CHUYEN], [MA_NOI_DEN], [MA_NOI_DI], [MA_PTTT_QT], [MA_TAI_NAN], [MA_THE], [MHTCID], [MIEN_CUNG_CT], [NAM_QT], [NGAYLAP], [NGAY_RA], [NGAY_SINH], [NGAY_TTOAN], [NGAY_VAO], [SO_NGAY_DTRI], [STT], [TEN_BENH], [THANG_QT], [TINH_TRANG_RV], [T_BHTT], [T_BNCCT], [T_BNTT], [T_NGOAIDS], [T_NGUONKHAC], [T_THUOC], [T_TONGCHI], [T_VTYT], [UpdateDate], [isDelete])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37, @p38, @p39, @p40, @p41, @p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51, @p52);"
+2023-02-07 00:04:14.884 +07:00 [Error] An exception occurred in the database while saving changes for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'XML1' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:7545cf44-3131-4551-9198-205c49651fbd
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'XML1' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:7545cf44-3131-4551-9198-205c49651fbd
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-02-07 00:06:29.648 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:06:29.686 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:06:29.686 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:06:29.686 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:06:30.026 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-07 00:06:30.027 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (12:06:30).
+2023-02-07 00:06:30.030 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-07 00:06:30.031 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (12:06:30).
+2023-02-07 00:06:31.910 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXML1: Validate job start: Thread 1
+2023-02-07 00:06:31.910 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  1   (12:06:31).
+2023-02-07 00:06:31.910 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (12:06:31).
+2023-02-07 00:06:32.399 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (12:06:32).
+2023-02-07 00:06:32.399 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.1 Get HS:  Thread 6 ma_CSKCB: 19666  (12:06:32).
+2023-02-07 00:06:32.399 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.2 Get 300 HS, chuan bi VALIDATE   19666    (12:06:32).
+2023-02-07 00:06:32.487 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua1:  (12:06:32).
+2023-02-07 00:06:32.716 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua2  (12:06:32).
+2023-02-07 00:06:33.117 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S110. Haimaster Check API get Data:19666 Validated - Total time: 400.6205
+2023-02-07 00:06:33.168 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data19666: Get All Data - Total time: 50.4201
+2023-02-07 00:06:33.226 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data19666: After Validated - Total time: 108.6376
+2023-02-07 00:06:33.227 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu19666: After Validated - Total time: 1.508
+2023-02-07 00:08:51.654 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:08:51.674 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:08:51.674 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:08:51.674 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:08:52.024 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-07 00:08:52.026 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (12:08:52).
+2023-02-07 00:08:52.027 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-07 00:08:52.028 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (12:08:52).
+2023-02-07 00:08:53.314 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXML1: Validate job start: Thread 1
+2023-02-07 00:08:53.314 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  1   (12:08:53).
+2023-02-07 00:08:53.314 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (12:08:53).
+2023-02-07 00:08:53.785 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (12:08:53).
+2023-02-07 00:08:53.785 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.1 Get HS:  Thread 9 ma_CSKCB: 19666  (12:08:53).
+2023-02-07 00:08:53.785 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.2 Get 300 HS, chuan bi VALIDATE   19666    (12:08:53).
+2023-02-07 00:08:53.898 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua1:  (12:08:53).
+2023-02-07 00:08:54.132 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua2  (12:08:54).
+2023-02-07 00:08:54.503 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S110. Haimaster Check API get Data:19666 Validated - Total time: 371.0308
+2023-02-07 00:08:54.565 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data19666: Get All Data - Total time: 61.1852
+2023-02-07 00:08:54.611 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data19666: After Validated - Total time: 107.5813
+2023-02-07 00:08:54.614 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu19666: After Validated - Total time: 2.3925
+2023-02-07 00:09:16.429 +07:00 [Error] An exception occurred in the database while saving changes for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'XML2' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreResults(Boolean& moreResults)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryNextResult(Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.NextResultAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](AAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:ac175880-15b7-471d-bc37-c9ea53dfef1d
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'XML2' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreResults(Boolean& moreResults)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryNextResult(Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.NextResultAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](AAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:ac175880-15b7-471d-bc37-c9ea53dfef1d
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-02-07 00:13:44.293 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:13:44.315 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:13:44.315 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:13:44.315 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-07 00:13:44.598 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-07 00:13:44.600 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (12:13:44).
+2023-02-07 00:13:44.601 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-07 00:13:44.602 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (12:13:44).
+2023-02-07 00:13:46.052 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXML1: Validate job start: Thread 1
+2023-02-07 00:13:46.052 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  1   (12:13:46).
+2023-02-07 00:13:46.052 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (12:13:46).
+2023-02-07 00:13:46.475 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (12:13:46).
+2023-02-07 00:13:46.475 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.1 Get HS:  Thread 8 ma_CSKCB: 19666  (12:13:46).
+2023-02-07 00:13:46.475 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.2 Get 300 HS, chuan bi VALIDATE   19666    (12:13:46).
+2023-02-07 00:13:46.576 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua1:  (12:13:46).
+2023-02-07 00:13:46.866 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua2  (12:13:46).
+2023-02-07 00:13:47.236 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S110. Haimaster Check API get Data:19666 Validated - Total time: 369.7125
+2023-02-07 00:13:47.291 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data19666: Get All Data - Total time: 55.8532
+2023-02-07 00:13:47.339 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data19666: After Validated - Total time: 103.357
+2023-02-07 00:13:47.342 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu19666: After Validated - Total time: 3.0401

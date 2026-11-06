@@ -1,0 +1,254 @@
+2026-10-13 11:00:17.138 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 11:00:17.182 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (11:00:17).
+2026-10-13 11:00:17.184 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 11:00:17.186 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (11:00:17).
+2026-10-13 11:00:17.187 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 11:00:17.188 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (11:00:17).
+2026-10-13 11:06:02.483 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 11:06:02.517 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (11:06:02).
+2026-10-13 11:06:02.520 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 11:06:02.521 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (11:06:02).
+2026-10-13 11:06:02.524 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 11:06:02.525 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (11:06:02).
+2026-10-13 11:07:33.306 +07:00 [Error] DichVuMaMayService - Update: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ThrowAggregateUpdateConcurrencyException(Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithoutPropagationAsync(Int32 commandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at HIA.Services.HDSDManagement.DichVuMaMayService.Update(DichVuMaMayModifyModel request) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\HDSDManagement\DichVuMaMayService.cs:line 185
+2026-10-13 11:13:24.601 +07:00 [Error] DichVuMaMayService - Update: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ThrowAggregateUpdateConcurrencyException(Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithoutPropagationAsync(Int32 commandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at HIA.Services.HDSDManagement.DichVuMaMayService.Update(DichVuMaMayModifyModel request) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\HDSDManagement\DichVuMaMayService.cs:line 185
+2026-10-13 11:25:27.913 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 11:25:27.979 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (11:25:27).
+2026-10-13 11:25:27.984 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 11:25:27.986 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (11:25:27).
+2026-10-13 11:25:27.988 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 11:25:27.989 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (11:25:27).
+2026-10-13 11:26:02.945 +07:00 [Error] DichVuMaMayService - Update: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ThrowAggregateUpdateConcurrencyException(Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithoutPropagationAsync(Int32 commandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at HIA.Repositories.Base.BaseRepository`1.SaveChangesAsync() in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Repositories\Base\BaseRepository.cs:line 437
+   at HIA.Services.HDSDManagement.DichVuMaMayService.Update(DichVuMaMayModifyModel request) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\HDSDManagement\DichVuMaMayService.cs:line 186
+2026-10-13 11:34:59.618 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 11:34:59.659 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (11:34:59).
+2026-10-13 11:34:59.661 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 11:34:59.663 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (11:34:59).
+2026-10-13 11:34:59.665 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 11:34:59.666 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (11:34:59).
+2026-10-13 14:31:57.313 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 14:31:57.372 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (02:31:57).
+2026-10-13 14:31:57.374 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 14:31:57.376 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (02:31:57).
+2026-10-13 14:31:57.378 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 14:31:57.379 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (02:31:57).
+2026-10-13 14:40:31.912 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 14:40:31.953 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (02:40:31).
+2026-10-13 14:40:31.957 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 14:40:31.958 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (02:40:31).
+2026-10-13 14:40:31.960 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 14:40:31.961 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (02:40:31).
+2026-10-13 14:43:30.272 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 14:43:30.302 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (02:43:30).
+2026-10-13 14:43:30.304 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 14:43:30.305 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (02:43:30).
+2026-10-13 14:43:30.306 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 14:43:30.307 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (02:43:30).
+2026-10-13 14:44:34.860 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 14:44:34.892 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (02:44:34).
+2026-10-13 14:44:34.896 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 14:44:34.897 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (02:44:34).
+2026-10-13 14:44:34.899 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 14:44:34.900 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (02:44:34).
+2026-10-13 16:05:57.349 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 16:05:57.413 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:05:57).
+2026-10-13 16:05:57.416 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 16:05:57.417 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:05:57).
+2026-10-13 16:05:57.419 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 16:05:57.420 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:05:57).
+2026-10-13 16:15:51.118 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 16:15:51.147 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:15:51).
+2026-10-13 16:15:51.150 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 16:15:51.152 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:15:51).
+2026-10-13 16:15:51.153 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 16:15:51.154 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:15:51).
+2026-10-13 16:51:17.413 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 16:51:17.439 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:51:17).
+2026-10-13 16:51:17.443 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 16:51:17.443 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:51:17).
+2026-10-13 16:51:17.445 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 16:51:17.446 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:51:17).
+2026-10-13 16:53:38.658 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 16:53:38.685 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:53:38).
+2026-10-13 16:53:38.687 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 16:53:38.688 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:53:38).
+2026-10-13 16:53:38.691 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 16:53:38.692 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:53:38).
+2026-10-13 16:53:55.866 +07:00 [Error] Failed executing DbCommand ("86"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (Size = 50) (DbType = AnsiString), @p2='?' (Size = 3000), @p3='?' (Size = 4000)"], CommandType='Text', CommandTimeout='180']"
+""SET NOCOUNT ON;
+INSERT INTO [DichVuMaMay] ([DVMMID], [MA_CSKCB], [MA_DICH_VU], [MA_MAY])
+VALUES (@p0, @p1, @p2, @p3);"
+2026-10-13 16:53:56.096 +07:00 [Error] An exception occurred in the database while saving changes for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'DichVuMaMay' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:aa804912-7398-4b0e-b2e6-b9ae07e66c6e
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'DichVuMaMay' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:aa804912-7398-4b0e-b2e6-b9ae07e66c6e
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-10-13 16:53:56.187 +07:00 [Error] DichVuMaMayService - Create: An error occurred while updating the entries. See the inner exception for details.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'DichVuMaMay' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:aa804912-7398-4b0e-b2e6-b9ae07e66c6e
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at HIA.Repositories.Base.BaseRepository`1.SaveChangesAsync() in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Repositories\Base\BaseRepository.cs:line 437
+   at HIA.Services.HDSDManagement.DichVuMaMayService.Create(DichVuMaMayModifyModel request) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\HDSDManagement\DichVuMaMayService.cs:line 154
+2026-10-13 16:54:45.166 +07:00 [Error] Failed executing DbCommand ("78"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (Size = 50) (DbType = AnsiString), @p2='?' (Size = 3000), @p3='?' (Size = 4000)"], CommandType='Text', CommandTimeout='180']"
+""SET NOCOUNT ON;
+INSERT INTO [DichVuMaMay] ([DVMMID], [MA_CSKCB], [MA_DICH_VU], [MA_MAY])
+VALUES (@p0, @p1, @p2, @p3);"
+2026-10-13 16:54:45.353 +07:00 [Error] An exception occurred in the database while saving changes for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'DichVuMaMay' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:aa804912-7398-4b0e-b2e6-b9ae07e66c6e
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'DichVuMaMay' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:aa804912-7398-4b0e-b2e6-b9ae07e66c6e
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-10-13 16:55:33.471 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-13 16:55:33.518 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:55:33).
+2026-10-13 16:55:33.520 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 16:55:33.523 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:55:33).
+2026-10-13 16:55:33.525 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-13 16:55:33.526 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:55:33).

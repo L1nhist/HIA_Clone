@@ -1,0 +1,134 @@
+2026-09-10 16:12:57.626 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-10 16:12:57.673 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:12:57).
+2026-09-10 16:12:57.675 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 16:12:57.676 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:12:57).
+2026-09-10 16:12:57.677 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 16:12:57.678 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:12:57).
+2026-09-10 16:13:10.734 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 34014 [10/09 04:13:10]
+2026-09-10 16:21:48.314 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-10 16:21:48.332 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:21:48).
+2026-09-10 16:21:48.334 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 16:21:48.335 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:21:48).
+2026-09-10 16:21:48.336 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 16:21:48.337 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:21:48).
+2026-09-10 16:21:54.361 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 34014 [10/09 04:21:54]
+2026-09-10 16:23:24.465 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-10 16:23:24.491 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:23:24).
+2026-09-10 16:23:24.494 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 16:23:24.496 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:23:24).
+2026-09-10 16:23:24.497 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 16:23:24.498 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:23:24).
+2026-09-10 16:23:30.949 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 34014 [10/09 04:23:30]
+2026-09-10 16:24:52.378 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-10 16:24:52.413 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:24:52).
+2026-09-10 16:24:52.416 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 16:24:52.417 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:24:52).
+2026-09-10 16:24:52.419 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 16:24:52.420 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:24:52).
+2026-09-10 16:24:58.621 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 34014 [10/09 04:24:58]
+2026-09-10 16:25:36.580 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Giam dinh xong 1 file cua viện 34014. Thoi gian thuc hien 37956,9216
+2026-09-10 17:54:46.827 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-10 17:54:46.850 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:54:46).
+2026-09-10 17:54:46.852 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 17:54:46.853 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:54:46).
+2026-09-10 17:54:46.854 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 17:54:46.855 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (05:54:46).
+2026-09-10 17:54:54.188 +07:00 [Error] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'HIA.Services.HDSDManagement.IChiDinhDongThoiService' while attempting to activate 'HIA.Web.Controllers.ChiDinhDongThoiController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method142(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2026-09-10 17:56:24.963 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-10 17:56:24.991 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:56:24).
+2026-09-10 17:56:24.994 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 17:56:24.995 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:56:24).
+2026-09-10 17:56:24.997 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 17:56:24.998 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (05:56:24).
+2026-09-10 17:56:36.895 +07:00 [Error] The view '"Index"' was not found. Searched locations: ["/Views/ChiDinhDongThoi/Index.vi.cshtml", "/Views/ChiDinhDongThoi/Index.cshtml", "/Views/Shared/Index.vi.cshtml", "/Views/Shared/Index.cshtml"]
+2026-09-10 17:56:37.307 +07:00 [Error] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/ChiDinhDongThoi/Index.vi.cshtml
+/Views/ChiDinhDongThoi/Index.cshtml
+/Views/Shared/Index.vi.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2026-09-10 17:57:57.590 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-10 17:57:57.617 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:57:57).
+2026-09-10 17:57:57.620 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 17:57:57.621 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:57:57).
+2026-09-10 17:57:57.623 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-10 17:57:57.623 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (05:57:57).
+2026-09-10 17:58:07.108 +07:00 [Error] The view '"Index"' was not found. Searched locations: ["/Views/ChiDinhDongThoi/Index.vi.cshtml", "/Views/ChiDinhDongThoi/Index.cshtml", "/Views/Shared/Index.vi.cshtml", "/Views/Shared/Index.cshtml"]
+2026-09-10 17:58:07.621 +07:00 [Error] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/ChiDinhDongThoi/Index.vi.cshtml
+/Views/ChiDinhDongThoi/Index.cshtml
+/Views/Shared/Index.vi.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)

@@ -1,0 +1,413 @@
+2026-07-30 16:30:33.736 +07:00 [Error] Failed executing DbCommand ("181,146"ms) [Parameters=["@__pattern_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='180']"
+""SELECT COUNT(*)
+FROM [XML01] AS [x]
+WHERE (([x].[IsDelete] <> CAST(1 AS bit)) OR [x].[IsDelete] IS NULL) AND (((([x].[MA_THE_BHYT] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_THE_BHYT]) > 0))) OR ([x].[MA_LK] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_LK]) > 0)))) OR ([x].[MA_BN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_BN]) > 0)))) OR ([x].[HO_TEN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[HO_TEN]) > 0))))"
+2026-07-30 16:30:36.565 +07:00 [Error] Failed executing DbCommand ("182,312"ms) [Parameters=["@__pattern_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='180']"
+""SELECT COUNT(*)
+FROM [XML01] AS [x]
+WHERE (([x].[IsDelete] <> CAST(1 AS bit)) OR [x].[IsDelete] IS NULL) AND (((([x].[MA_THE_BHYT] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_THE_BHYT]) > 0))) OR ([x].[MA_LK] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_LK]) > 0)))) OR ([x].[MA_BN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_BN]) > 0)))) OR ([x].[HO_TEN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[HO_TEN]) > 0))))"
+2026-07-30 16:30:37.445 +07:00 [Error] Failed executing DbCommand ("182,373"ms) [Parameters=["@__pattern_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='180']"
+""SELECT COUNT(*)
+FROM [XML01] AS [x]
+WHERE (([x].[IsDelete] <> CAST(1 AS bit)) OR [x].[IsDelete] IS NULL) AND (((([x].[MA_THE_BHYT] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_THE_BHYT]) > 0))) OR ([x].[MA_LK] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_LK]) > 0)))) OR ([x].[MA_BN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_BN]) > 0)))) OR ([x].[HO_TEN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[HO_TEN]) > 0))))"
+2026-07-30 16:30:37.875 +07:00 [Error] Failed executing DbCommand ("181,508"ms) [Parameters=["@__pattern_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='180']"
+""SELECT COUNT(*)
+FROM [XML01] AS [x]
+WHERE (([x].[IsDelete] <> CAST(1 AS bit)) OR [x].[IsDelete] IS NULL) AND (((([x].[MA_THE_BHYT] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_THE_BHYT]) > 0))) OR ([x].[MA_LK] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_LK]) > 0)))) OR ([x].[MA_BN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_BN]) > 0)))) OR ([x].[HO_TEN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[HO_TEN]) > 0))))"
+2026-07-30 16:30:38.039 +07:00 [Error] An exception occurred while iterating over the results of a query for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:5b68e974-426b-497c-8451-fdba67510a56
+Error Number:-2,State:0,Class:11"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:5b68e974-426b-497c-8451-fdba67510a56
+Error Number:-2,State:0,Class:11
+2026-07-30 16:30:38.039 +07:00 [Error] An exception occurred while iterating over the results of a query for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:98322959-d6de-40a1-a454-0cdc605257f8
+Error Number:-2,State:0,Class:11"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:98322959-d6de-40a1-a454-0cdc605257f8
+Error Number:-2,State:0,Class:11
+2026-07-30 16:30:38.045 +07:00 [Error] An exception occurred while iterating over the results of a query for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:1a36ff7d-b6ef-4fb0-9986-230692040244
+Error Number:-2,State:0,Class:11"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:1a36ff7d-b6ef-4fb0-9986-230692040244
+Error Number:-2,State:0,Class:11
+2026-07-30 16:30:38.051 +07:00 [Error] An exception occurred while iterating over the results of a query for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:de024eed-945d-4005-bc41-cd89c7fc0ee6
+Error Number:-2,State:0,Class:11"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:de024eed-945d-4005-bc41-cd89c7fc0ee6
+Error Number:-2,State:0,Class:11
+2026-07-30 16:30:45.804 +07:00 [Error] Failed executing DbCommand ("181,443"ms) [Parameters=["@__pattern_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='180']"
+""SELECT COUNT(*)
+FROM [XML01] AS [x]
+WHERE (([x].[IsDelete] <> CAST(1 AS bit)) OR [x].[IsDelete] IS NULL) AND (((([x].[MA_THE_BHYT] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_THE_BHYT]) > 0))) OR ([x].[MA_LK] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_LK]) > 0)))) OR ([x].[MA_BN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_BN]) > 0)))) OR ([x].[HO_TEN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[HO_TEN]) > 0))))"
+2026-07-30 16:30:46.091 +07:00 [Error] Failed executing DbCommand ("197,364"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='180']"
+""SELECT [t].[XML01ID], [t].[MA_CSKCB], [t].[CAN_NANG], [t].[CAN_NANG_CON], [t].[CHAN_DOAN_RV], [t].[CHAN_DOAN_VAO], [t].[CreateDate], [t].[CreatorID], [t].[DIA_CHI], [t].[DIEN_THOAI], [t].[DU_PHONG], [t].[FileName], [t].[GHI_CHU], [t].[GIAY_CHUYEN_TUYEN], [t].[GIOI_TINH], [t].[GT_THE_DEN], [t].[GT_THE_TU], [t].[HO_TEN], [t].[HasFiles], [t].[HospitalID], [t].[IsDelete], [t].[IsUpload], [t].[KET_QUA_DTRI], [t].[LY_DO_VNT], [t].[LY_DO_VV], [t].[MAHUYEN_CU_TRU], [t].[MATINH_CU_TRU], [t].[MAXA_CU_TRU], [t].[MA_BENH_CHINH], [t].[MA_BENH_KT], [t].[MA_BENH_YHCT], [t].[MA_BN], [t].[MA_DANTOC], [t].[MA_DKBD], [t].[MA_DOITUONG_KCB], [t].[MA_HSBA], [t].[MA_KHOA], [t].[MA_KHUVUC], [t].[MA_LK], [t].[MA_LOAI_KCB], [t].[MA_LOAI_RV], [t].[MA_LY_DO_VNT], [t].[MA_NGHE_NGHIEP], [t].[MA_NOI_DEN], [t].[MA_NOI_DI], [t].[MA_PTTT_QT], [t].[MA_QUOCTICH], [t].[MA_TAI_NAN], [t].[MA_THE_BHYT], [t].[MA_TTDV], [t].[NAM_NAM_LIEN_TUC], [t].[NAM_QT], [t].[NGAY_LAP], [t].[NGAY_MIEN_CCT], [t].[NGAY_RA], [t].[NGAY_SINH], [t].[NGAY_TAI_KHAM], [t].[NGAY_TTOAN], [t].[NGAY_VAO], [t].[NGAY_VAO_NOI_TRU], [t].[NHOM_MAU], [t].[PP_DIEU_TRI], [t].[SO_CCCD], [t].[SO_NGAY_DTRI], [t].[STT], [t].[THANG_QT], [t].[T_BHTT], [t].[T_BHTT_GDV], [t].[T_BNCCT], [t].[T_BNTT], [t].[T_NGUONKHAC], [t].[T_THUOC], [t].[T_TONGCHI_BH], [t].[T_TONGCHI_BV], [t].[T_VTYT], [x0].[XML01ID], [x0].[LastValidate], [x0].[LastVerify], [x0].[MA_CSKCB], [x0].[TotalAlerts], [x0].[TotalErrors], [x0].[VerifyResult]
+FROM (
+    SELECT [x].[XML01ID], [x].[MA_CSKCB], [x].[CAN_NANG], [x].[CAN_NANG_CON], [x].[CHAN_DOAN_RV], [x].[CHAN_DOAN_VAO], [x].[CreateDate], [x].[CreatorID], [x].[DIA_CHI], [x].[DIEN_THOAI], [x].[DU_PHONG], [x].[FileName], [x].[GHI_CHU], [x].[GIAY_CHUYEN_TUYEN], [x].[GIOI_TINH], [x].[GT_THE_DEN], [x].[GT_THE_TU], [x].[HO_TEN], [x].[HasFiles], [x].[HospitalID], [x].[IsDelete], [x].[IsUpload], [x].[KET_QUA_DTRI], [x].[LY_DO_VNT], [x].[LY_DO_VV], [x].[MAHUYEN_CU_TRU], [x].[MATINH_CU_TRU], [x].[MAXA_CU_TRU], [x].[MA_BENH_CHINH], [x].[MA_BENH_KT], [x].[MA_BENH_YHCT], [x].[MA_BN], [x].[MA_DANTOC], [x].[MA_DKBD], [x].[MA_DOITUONG_KCB], [x].[MA_HSBA], [x].[MA_KHOA], [x].[MA_KHUVUC], [x].[MA_LK], [x].[MA_LOAI_KCB], [x].[MA_LOAI_RV], [x].[MA_LY_DO_VNT], [x].[MA_NGHE_NGHIEP], [x].[MA_NOI_DEN], [x].[MA_NOI_DI], [x].[MA_PTTT_QT], [x].[MA_QUOCTICH], [x].[MA_TAI_NAN], [x].[MA_THE_BHYT], [x].[MA_TTDV], [x].[NAM_NAM_LIEN_TUC], [x].[NAM_QT], [x].[NGAY_LAP], [x].[NGAY_MIEN_CCT], [x].[NGAY_RA], [x].[NGAY_SINH], [x].[NGAY_TAI_KHAM], [x].[NGAY_TTOAN], [x].[NGAY_VAO], [x].[NGAY_VAO_NOI_TRU], [x].[NHOM_MAU], [x].[PP_DIEU_TRI], [x].[SO_CCCD], [x].[SO_NGAY_DTRI], [x].[STT], [x].[THANG_QT], [x].[T_BHTT], [x].[T_BHTT_GDV], [x].[T_BNCCT], [x].[T_BNTT], [x].[T_NGUONKHAC], [x].[T_THUOC], [x].[T_TONGCHI_BH], [x].[T_TONGCHI_BV], [x].[T_VTYT]
+    FROM [XML01] AS [x]
+    WHERE ([x].[IsDelete] <> CAST(1 AS bit)) OR [x].[IsDelete] IS NULL
+    ORDER BY [x].[CreateDate] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [XMLState] AS [x0] ON ([t].[XML01ID] = [x0].[XML01ID]) AND ([t].[MA_CSKCB] = [x0].[MA_CSKCB])
+ORDER BY [t].[CreateDate] DESC"
+2026-07-30 16:30:46.568 +07:00 [Error] An exception occurred while iterating over the results of a query for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:4b8d2dca-fc7c-4078-a102-d92eccfdf537
+Error Number:-2,State:0,Class:11"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:4b8d2dca-fc7c-4078-a102-d92eccfdf537
+Error Number:-2,State:0,Class:11
+2026-07-30 16:30:47.051 +07:00 [Error] An exception occurred while iterating over the results of a query for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:25faeabd-d825-4bf1-8036-6195c6481527
+Error Number:-2,State:0,Class:11"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:25faeabd-d825-4bf1-8036-6195c6481527
+Error Number:-2,State:0,Class:11
+2026-07-30 16:30:55.534 +07:00 [Error] Failed executing DbCommand ("181,673"ms) [Parameters=["@__pattern_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='180']"
+""SELECT COUNT(*)
+FROM [XML01] AS [x]
+WHERE (([x].[IsDelete] <> CAST(1 AS bit)) OR [x].[IsDelete] IS NULL) AND (((([x].[MA_THE_BHYT] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_THE_BHYT]) > 0))) OR ([x].[MA_LK] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_LK]) > 0)))) OR ([x].[MA_BN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_BN]) > 0)))) OR ([x].[HO_TEN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[HO_TEN]) > 0))))"
+2026-07-30 16:30:55.937 +07:00 [Error] An exception occurred while iterating over the results of a query for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:37b3fee3-a7a3-456a-bb0d-09af0545d302
+Error Number:-2,State:0,Class:11"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:37b3fee3-a7a3-456a-bb0d-09af0545d302
+Error Number:-2,State:0,Class:11
+2026-07-30 16:31:05.578 +07:00 [Error] Failed executing DbCommand ("181,354"ms) [Parameters=["@__pattern_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='180']"
+""SELECT COUNT(*)
+FROM [XML01] AS [x]
+WHERE (([x].[IsDelete] <> CAST(1 AS bit)) OR [x].[IsDelete] IS NULL) AND (((([x].[MA_THE_BHYT] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_THE_BHYT]) > 0))) OR ([x].[MA_LK] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_LK]) > 0)))) OR ([x].[MA_BN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_BN]) > 0)))) OR ([x].[HO_TEN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[HO_TEN]) > 0))))"
+2026-07-30 16:31:05.881 +07:00 [Error] An exception occurred while iterating over the results of a query for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:ab76edfd-315f-41ba-9d3b-8f59d8264381
+Error Number:-2,State:0,Class:11"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:ab76edfd-315f-41ba-9d3b-8f59d8264381
+Error Number:-2,State:0,Class:11
+2026-07-30 16:31:34.435 +07:00 [Error] Failed executing DbCommand ("184,409"ms) [Parameters=["@__pattern_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='180']"
+""SELECT [t].[XML01ID], [t].[MA_CSKCB], [t].[CAN_NANG], [t].[CAN_NANG_CON], [t].[CHAN_DOAN_RV], [t].[CHAN_DOAN_VAO], [t].[CreateDate], [t].[CreatorID], [t].[DIA_CHI], [t].[DIEN_THOAI], [t].[DU_PHONG], [t].[FileName], [t].[GHI_CHU], [t].[GIAY_CHUYEN_TUYEN], [t].[GIOI_TINH], [t].[GT_THE_DEN], [t].[GT_THE_TU], [t].[HO_TEN], [t].[HasFiles], [t].[HospitalID], [t].[IsDelete], [t].[IsUpload], [t].[KET_QUA_DTRI], [t].[LY_DO_VNT], [t].[LY_DO_VV], [t].[MAHUYEN_CU_TRU], [t].[MATINH_CU_TRU], [t].[MAXA_CU_TRU], [t].[MA_BENH_CHINH], [t].[MA_BENH_KT], [t].[MA_BENH_YHCT], [t].[MA_BN], [t].[MA_DANTOC], [t].[MA_DKBD], [t].[MA_DOITUONG_KCB], [t].[MA_HSBA], [t].[MA_KHOA], [t].[MA_KHUVUC], [t].[MA_LK], [t].[MA_LOAI_KCB], [t].[MA_LOAI_RV], [t].[MA_LY_DO_VNT], [t].[MA_NGHE_NGHIEP], [t].[MA_NOI_DEN], [t].[MA_NOI_DI], [t].[MA_PTTT_QT], [t].[MA_QUOCTICH], [t].[MA_TAI_NAN], [t].[MA_THE_BHYT], [t].[MA_TTDV], [t].[NAM_NAM_LIEN_TUC], [t].[NAM_QT], [t].[NGAY_LAP], [t].[NGAY_MIEN_CCT], [t].[NGAY_RA], [t].[NGAY_SINH], [t].[NGAY_TAI_KHAM], [t].[NGAY_TTOAN], [t].[NGAY_VAO], [t].[NGAY_VAO_NOI_TRU], [t].[NHOM_MAU], [t].[PP_DIEU_TRI], [t].[SO_CCCD], [t].[SO_NGAY_DTRI], [t].[STT], [t].[THANG_QT], [t].[T_BHTT], [t].[T_BHTT_GDV], [t].[T_BNCCT], [t].[T_BNTT], [t].[T_NGUONKHAC], [t].[T_THUOC], [t].[T_TONGCHI_BH], [t].[T_TONGCHI_BV], [t].[T_VTYT], [x0].[XML01ID], [x0].[LastValidate], [x0].[LastVerify], [x0].[MA_CSKCB], [x0].[TotalAlerts], [x0].[TotalErrors], [x0].[VerifyResult]
+FROM (
+    SELECT [x].[XML01ID], [x].[MA_CSKCB], [x].[CAN_NANG], [x].[CAN_NANG_CON], [x].[CHAN_DOAN_RV], [x].[CHAN_DOAN_VAO], [x].[CreateDate], [x].[CreatorID], [x].[DIA_CHI], [x].[DIEN_THOAI], [x].[DU_PHONG], [x].[FileName], [x].[GHI_CHU], [x].[GIAY_CHUYEN_TUYEN], [x].[GIOI_TINH], [x].[GT_THE_DEN], [x].[GT_THE_TU], [x].[HO_TEN], [x].[HasFiles], [x].[HospitalID], [x].[IsDelete], [x].[IsUpload], [x].[KET_QUA_DTRI], [x].[LY_DO_VNT], [x].[LY_DO_VV], [x].[MAHUYEN_CU_TRU], [x].[MATINH_CU_TRU], [x].[MAXA_CU_TRU], [x].[MA_BENH_CHINH], [x].[MA_BENH_KT], [x].[MA_BENH_YHCT], [x].[MA_BN], [x].[MA_DANTOC], [x].[MA_DKBD], [x].[MA_DOITUONG_KCB], [x].[MA_HSBA], [x].[MA_KHOA], [x].[MA_KHUVUC], [x].[MA_LK], [x].[MA_LOAI_KCB], [x].[MA_LOAI_RV], [x].[MA_LY_DO_VNT], [x].[MA_NGHE_NGHIEP], [x].[MA_NOI_DEN], [x].[MA_NOI_DI], [x].[MA_PTTT_QT], [x].[MA_QUOCTICH], [x].[MA_TAI_NAN], [x].[MA_THE_BHYT], [x].[MA_TTDV], [x].[NAM_NAM_LIEN_TUC], [x].[NAM_QT], [x].[NGAY_LAP], [x].[NGAY_MIEN_CCT], [x].[NGAY_RA], [x].[NGAY_SINH], [x].[NGAY_TAI_KHAM], [x].[NGAY_TTOAN], [x].[NGAY_VAO], [x].[NGAY_VAO_NOI_TRU], [x].[NHOM_MAU], [x].[PP_DIEU_TRI], [x].[SO_CCCD], [x].[SO_NGAY_DTRI], [x].[STT], [x].[THANG_QT], [x].[T_BHTT], [x].[T_BHTT_GDV], [x].[T_BNCCT], [x].[T_BNTT], [x].[T_NGUONKHAC], [x].[T_THUOC], [x].[T_TONGCHI_BH], [x].[T_TONGCHI_BV], [x].[T_VTYT]
+    FROM [XML01] AS [x]
+    WHERE (([x].[IsDelete] <> CAST(1 AS bit)) OR [x].[IsDelete] IS NULL) AND (((([x].[MA_THE_BHYT] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_THE_BHYT]) > 0))) OR ([x].[MA_LK] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_LK]) > 0)))) OR ([x].[MA_BN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[MA_BN]) > 0)))) OR ([x].[HO_TEN] IS NOT NULL AND ((@__pattern_0 LIKE N'') OR (CHARINDEX(@__pattern_0, [x].[HO_TEN]) > 0))))
+    ORDER BY [x].[CreateDate] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [XMLState] AS [x0] ON ([t].[XML01ID] = [x0].[XML01ID]) AND ([t].[MA_CSKCB] = [x0].[MA_CSKCB])
+ORDER BY [t].[CreateDate] DESC"
+2026-07-30 16:31:35.444 +07:00 [Error] An exception occurred while iterating over the results of a query for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:35be112b-8cc3-4c15-8b9e-78577cbfe9ca
+Error Number:-2,State:0,Class:11"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:35be112b-8cc3-4c15-8b9e-78577cbfe9ca
+Error Number:-2,State:0,Class:11

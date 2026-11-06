@@ -1,0 +1,76 @@
+2023-02-17 21:46:29.481 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-17 21:46:29.509 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-17 21:46:29.510 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-17 21:46:29.510 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-17 21:46:29.818 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-17 21:46:29.819 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (09:46:29).
+2023-02-17 21:46:29.833 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-17 21:46:29.834 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (09:46:29).
+2023-02-17 21:48:20.005 +07:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'data')
+   at MimeKit.AttachmentCollection.Add(String fileName, Byte[] data, ContentType contentType)
+   at HIA.Services.Email.EmailService.SendEmailAttachmentWithBytes(String toEmail, FileContentModel fileContent) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Email\EmailService.cs:line 60
+   at HIA.Web.Controllers.FileDownloadController.Index(List`1 dateIns, List`1 dateOuts, List`1 dateCreates, List`1 datePaids, List`1 departments, List`1 listErrors, Nullable`1 loaiKCB, Nullable`1 status, String hospital, Nullable`1 fileType) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Web\Controllers\FileDownloadController.cs:line 140
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-02-17 21:51:07.247 +07:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'data')
+   at MimeKit.AttachmentCollection.Add(String fileName, Byte[] data, ContentType contentType)
+   at HIA.Services.Email.EmailService.SendEmailAttachmentWithBytes(String toEmail, FileContentModel fileContent) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Email\EmailService.cs:line 60
+   at HIA.Web.Controllers.FileDownloadController.Index(List`1 dateIns, List`1 dateOuts, List`1 dateCreates, List`1 datePaids, List`1 departments, List`1 listErrors, Nullable`1 loaiKCB, Nullable`1 status, String hospital, Nullable`1 fileType) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Web\Controllers\FileDownloadController.cs:line 140
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-02-17 21:54:35.633 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-17 21:54:35.677 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-17 21:54:35.677 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-17 21:54:35.677 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-17 21:54:36.073 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-17 21:54:36.074 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (09:54:36).
+2023-02-17 21:54:36.086 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-17 21:54:36.086 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (09:54:36).
+2023-02-17 21:56:36.450 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-17 21:56:36.475 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-17 21:56:36.475 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-17 21:56:36.475 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-17 21:56:36.795 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-17 21:56:36.796 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (09:56:36).
+2023-02-17 21:56:36.809 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-17 21:56:36.810 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (09:56:36).

@@ -1,0 +1,408 @@
+2023-03-02 22:17:18.256 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-03-02 22:17:18.296 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-03-02 22:17:18.297 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-03-02 22:17:18.297 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-03-02 22:17:18.801 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-03-02 22:17:18.803 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (10:17:18).
+2023-03-02 22:17:18.832 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-03-02 22:17:18.833 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (10:17:18).
+2023-03-02 22:18:08.989 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S3.Haimaster Check API: Save XML to SDD) (66666) - Total time: 2,0991
+2023-03-02 22:18:08.996 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S3.Haimaster Check API: Save XML to SDD) (66666) - Total time: 1,6848
+2023-03-02 22:18:09.773 +07:00 [Information] [BACKGROUND_SERVICE] CreateNewHoSo: C3. CreateNewHoSo:  Haimaster Insert XML to DB: 66666 - Total time: 774,9062
+2023-03-02 22:18:09.773 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S3.Haimaster Check API: Create Ho So (Save to DB) (66666) - Total time: 777
+2023-03-02 22:18:51.172 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-03-02 22:18:51.194 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-03-02 22:18:51.194 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-03-02 22:18:51.194 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-03-02 22:18:51.430 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-03-02 22:18:51.431 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (10:18:51).
+2023-03-02 22:18:51.449 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-03-02 22:18:51.451 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (10:18:51).
+2023-03-02 22:18:51.453 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXML1: Validate job start: Thread 1
+2023-03-02 22:18:51.453 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  1   (10:18:51).
+2023-03-02 22:18:51.453 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:18:51).
+2023-03-02 22:18:52.175 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:18:52).
+2023-03-02 22:18:52.175 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.1 Get HS:  Thread 4 ma_CSKCB: 10061  (10:18:52).
+2023-03-02 22:18:52.175 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.2 Get 300 HS, chuan bi VALIDATE   10061    (10:18:52).
+2023-03-02 22:18:52.290 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua1:  (10:18:52).
+2023-03-02 22:18:56.890 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: Cuacua. GetAllListXmlReferenceLe Files: 2  MA_CSKCB 10061 Validated - Total time: 4600.3908
+2023-03-02 22:18:57.175 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua2  (10:18:57).
+2023-03-02 22:18:57.829 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S110. Haimaster Check API get Data:10061 Validated - Total time: 654.1675
+2023-03-02 22:18:57.909 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data10061: Get All Data - Total time: 80.4549
+2023-03-02 22:19:44.052 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data10061: After Validated - Total time: 46222.573
+2023-03-02 22:19:44.052 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: VE01. Validate done, begin Save DB - HOSO 865337 BV 10061.
+2023-03-02 22:19:44.716 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: VE01. Validate done, completed Save DB - HOSO 865337 BV 10061. Time: 0.6645391
+2023-03-02 22:19:45.141 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data10061: After Validated - Total time: 47311.9071
+2023-03-02 22:19:45.141 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: VE01. Validate done, begin Save DB - HOSO 908413 BV 10061.
+2023-03-02 22:19:45.229 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: VE01. Validate done, completed Save DB - HOSO 908413 BV 10061. Time: 0.0879091
+2023-03-02 22:19:45.715 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B5. Validate for:  Thread 4 10061 Total: files / Time excuted: 53539.8964
+2023-03-02 22:19:48.380 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: H1. Xong buoc chuan bi Filter    (10:19:48).
+2023-03-02 22:19:49.869 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:19:49.869 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  13   (10:19:49).
+2023-03-02 22:19:49.869 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:19:49).
+2023-03-02 22:19:50.758 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:19:50).
+2023-03-02 22:19:51.308 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: H2.Haimaster Load XML1 DS) () - Total time: 2926,2681
+2023-03-02 22:19:53.759 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:19:53.759 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:19:53).
+2023-03-02 22:19:53.759 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:19:53).
+2023-03-02 22:19:53.779 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:19:53).
+2023-03-02 22:19:56.788 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:19:56.788 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:19:56).
+2023-03-02 22:19:56.788 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:19:56).
+2023-03-02 22:19:56.809 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:19:56).
+2023-03-02 22:19:59.814 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:19:59.815 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:19:59).
+2023-03-02 22:19:59.815 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:19:59).
+2023-03-02 22:19:59.835 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:19:59).
+2023-03-02 22:20:02.842 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:02.842 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:20:02).
+2023-03-02 22:20:02.842 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:02).
+2023-03-02 22:20:02.864 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:02).
+2023-03-02 22:20:05.865 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:05.865 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:20:05).
+2023-03-02 22:20:05.865 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:05).
+2023-03-02 22:20:05.886 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:05).
+2023-03-02 22:20:08.887 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:08.887 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:20:08).
+2023-03-02 22:20:08.887 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:08).
+2023-03-02 22:20:08.910 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:08).
+2023-03-02 22:20:11.911 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:11.911 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:20:11).
+2023-03-02 22:20:11.911 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:11).
+2023-03-02 22:20:11.932 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:11).
+2023-03-02 22:20:14.943 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:14.943 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:20:14).
+2023-03-02 22:20:14.943 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:14).
+2023-03-02 22:20:14.964 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:14).
+2023-03-02 22:20:17.974 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:17.974 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:20:17).
+2023-03-02 22:20:17.974 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:17).
+2023-03-02 22:20:17.995 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:17).
+2023-03-02 22:20:21.004 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:21.004 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:20:21).
+2023-03-02 22:20:21.004 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:21).
+2023-03-02 22:20:21.025 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:21).
+2023-03-02 22:20:24.034 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:24.034 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:20:24).
+2023-03-02 22:20:24.034 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:24).
+2023-03-02 22:20:24.055 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:24).
+2023-03-02 22:20:27.057 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:27.057 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:20:27).
+2023-03-02 22:20:27.057 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:27).
+2023-03-02 22:20:27.077 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:27).
+2023-03-02 22:20:30.078 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:30.078 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:20:30).
+2023-03-02 22:20:30.078 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:30).
+2023-03-02 22:20:30.099 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:30).
+2023-03-02 22:20:33.100 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:33.100 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:20:33).
+2023-03-02 22:20:33.100 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:33).
+2023-03-02 22:20:33.121 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:33).
+2023-03-02 22:20:36.121 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:36.121 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:20:36).
+2023-03-02 22:20:36.121 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:36).
+2023-03-02 22:20:36.142 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:36).
+2023-03-02 22:20:39.156 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:39.156 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:20:39).
+2023-03-02 22:20:39.156 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:39).
+2023-03-02 22:20:39.176 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:39).
+2023-03-02 22:20:42.177 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:42.177 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  9   (10:20:42).
+2023-03-02 22:20:42.177 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:42).
+2023-03-02 22:20:42.198 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:42).
+2023-03-02 22:20:45.198 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:45.199 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:20:45).
+2023-03-02 22:20:45.199 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:45).
+2023-03-02 22:20:45.219 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:45).
+2023-03-02 22:20:48.231 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:48.231 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:20:48).
+2023-03-02 22:20:48.231 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:48).
+2023-03-02 22:20:48.251 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:48).
+2023-03-02 22:20:49.872 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: H1. Xong buoc chuan bi Filter    (10:20:49).
+2023-03-02 22:20:51.370 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:51.370 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:20:51).
+2023-03-02 22:20:51.370 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:51).
+2023-03-02 22:20:52.665 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:52).
+2023-03-02 22:20:56.021 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:20:56.021 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  13   (10:20:56).
+2023-03-02 22:20:56.021 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:20:56).
+2023-03-02 22:20:57.102 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:20:57).
+2023-03-02 22:20:58.349 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: H2.Haimaster Load XML1 DS) () - Total time: 8477,4941
+2023-03-02 22:21:00.100 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:00.100 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:21:00).
+2023-03-02 22:21:00.100 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:00).
+2023-03-02 22:21:00.122 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:00).
+2023-03-02 22:21:03.122 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:03.122 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:21:03).
+2023-03-02 22:21:03.122 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:03).
+2023-03-02 22:21:03.143 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:03).
+2023-03-02 22:21:06.144 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:06.144 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:21:06).
+2023-03-02 22:21:06.144 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:06).
+2023-03-02 22:21:06.166 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:06).
+2023-03-02 22:21:09.166 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:09.167 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:21:09).
+2023-03-02 22:21:09.167 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:09).
+2023-03-02 22:21:09.187 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:09).
+2023-03-02 22:21:12.199 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:12.199 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:21:12).
+2023-03-02 22:21:12.199 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:12).
+2023-03-02 22:21:12.220 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:12).
+2023-03-02 22:21:15.224 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:15.224 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:21:15).
+2023-03-02 22:21:15.224 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:15).
+2023-03-02 22:21:15.245 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:15).
+2023-03-02 22:21:32.135 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-03-02 22:21:32.155 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-03-02 22:21:32.155 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-03-02 22:21:32.155 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-03-02 22:21:32.402 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-03-02 22:21:32.403 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (10:21:32).
+2023-03-02 22:21:32.414 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-03-02 22:21:32.415 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (10:21:32).
+2023-03-02 22:21:32.416 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXML1: Validate job start: Thread 1
+2023-03-02 22:21:32.416 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  1   (10:21:32).
+2023-03-02 22:21:32.416 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:32).
+2023-03-02 22:21:32.923 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:32).
+2023-03-02 22:21:35.920 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:35.920 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  17   (10:21:35).
+2023-03-02 22:21:35.920 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:35).
+2023-03-02 22:21:36.259 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:36).
+2023-03-02 22:21:39.263 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:39.263 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:21:39).
+2023-03-02 22:21:39.263 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:39).
+2023-03-02 22:21:39.322 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:39).
+2023-03-02 22:21:42.324 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:42.324 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  17   (10:21:42).
+2023-03-02 22:21:42.324 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:42).
+2023-03-02 22:21:42.346 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:42).
+2023-03-02 22:21:45.347 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:45.347 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:21:45).
+2023-03-02 22:21:45.347 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:45).
+2023-03-02 22:21:45.368 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:45).
+2023-03-02 22:21:48.369 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:48.369 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:21:48).
+2023-03-02 22:21:48.369 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:48).
+2023-03-02 22:21:48.390 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:48).
+2023-03-02 22:21:51.385 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:51.385 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:21:51).
+2023-03-02 22:21:51.385 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:51).
+2023-03-02 22:21:51.699 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:51).
+2023-03-02 22:21:54.706 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:54.706 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:21:54).
+2023-03-02 22:21:54.706 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:54).
+2023-03-02 22:21:54.728 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:54).
+2023-03-02 22:21:57.729 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:21:57.729 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:21:57).
+2023-03-02 22:21:57.729 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:21:57).
+2023-03-02 22:21:57.752 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:21:57).
+2023-03-02 22:22:00.754 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:00.754 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:22:00).
+2023-03-02 22:22:00.754 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:00).
+2023-03-02 22:22:00.778 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:00).
+2023-03-02 22:22:03.779 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:03.779 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:22:03).
+2023-03-02 22:22:03.779 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:03).
+2023-03-02 22:22:03.803 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:03).
+2023-03-02 22:22:06.809 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:06.809 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:22:06).
+2023-03-02 22:22:06.809 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:06).
+2023-03-02 22:22:06.829 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:06).
+2023-03-02 22:22:09.474 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S3.Haimaster Check API: Save XML to SDD) (10061) - Total time: 2,5434
+2023-03-02 22:22:09.481 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S3.Haimaster Check API: Save XML to SDD) (10061) - Total time: 1,7924
+2023-03-02 22:22:09.833 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:09.833 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  9   (10:22:09).
+2023-03-02 22:22:09.833 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:09).
+2023-03-02 22:22:09.861 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:09).
+2023-03-02 22:22:10.066 +07:00 [Information] [BACKGROUND_SERVICE] CreateNewHoSo: C3. CreateNewHoSo:  Haimaster Insert XML to DB: 10061 - Total time: 583,9407
+2023-03-02 22:22:10.066 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S3.Haimaster Check API: Create Ho So (Save to DB) (10061) - Total time: 585,3662
+2023-03-02 22:22:12.867 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:12.867 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:22:12).
+2023-03-02 22:22:12.867 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:12).
+2023-03-02 22:22:12.887 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:12).
+2023-03-02 22:22:13.907 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: H1. Xong buoc chuan bi Filter    (10:22:13).
+2023-03-02 22:22:14.695 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: H2.Haimaster Load XML1 DS) () - Total time: 787,795
+2023-03-02 22:22:15.896 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:15.896 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:22:15).
+2023-03-02 22:22:15.896 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:15).
+2023-03-02 22:22:15.916 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:15).
+2023-03-02 22:22:15.916 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.1 Get HS:  Thread 4 ma_CSKCB: 10061  (10:22:15).
+2023-03-02 22:22:15.916 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.2 Get 300 HS, chuan bi VALIDATE   10061    (10:22:15).
+2023-03-02 22:22:15.950 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua1:  (10:22:15).
+2023-03-02 22:22:16.637 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: Cuacua. GetAllListXmlReferenceLe Files: 2  MA_CSKCB 10061 Validated - Total time: 686.8902
+2023-03-02 22:22:16.743 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua2  (10:22:16).
+2023-03-02 22:22:17.009 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S110. Haimaster Check API get Data:10061 Validated - Total time: 265.3698
+2023-03-02 22:22:17.040 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data10061: Get All Data - Total time: 31.1632
+2023-03-02 22:22:17.094 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data10061: After Validated - Total time: 85.5663
+2023-03-02 22:22:17.094 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: VE01. Validate done, begin Save DB - HOSO 865337 BV 10061.
+2023-03-02 22:22:17.356 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: VE01. Validate done, completed Save DB - HOSO 865337 BV 10061. Time: 0.261156
+2023-03-02 22:22:17.712 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data10061: After Validated - Total time: 702.8219
+2023-03-02 22:22:17.712 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: VE01. Validate done, begin Save DB - HOSO 908413 BV 10061.
+2023-03-02 22:22:17.779 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: VE01. Validate done, completed Save DB - HOSO 908413 BV 10061. Time: 0.0671311
+2023-03-02 22:22:18.020 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: H1. Xong buoc chuan bi Filter    (10:22:18).
+2023-03-02 22:22:18.285 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B5. Validate for:  Thread 14 10061 Total: files / Time excuted: 2368.6765
+2023-03-02 22:22:18.840 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: H2.Haimaster Load XML1 DS) () - Total time: 819,4387
+2023-03-02 22:22:22.289 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:22.289 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  9   (10:22:22).
+2023-03-02 22:22:22.289 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:22).
+2023-03-02 22:22:22.310 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:22).
+2023-03-02 22:22:25.310 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:25.310 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:22:25).
+2023-03-02 22:22:25.310 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:25).
+2023-03-02 22:22:25.333 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:25).
+2023-03-02 22:22:28.333 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:28.333 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:22:28).
+2023-03-02 22:22:28.333 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:28).
+2023-03-02 22:22:28.354 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:28).
+2023-03-02 22:22:31.354 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:31.354 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:22:31).
+2023-03-02 22:22:31.354 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:31).
+2023-03-02 22:22:31.375 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:31).
+2023-03-02 22:22:34.376 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:34.376 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:22:34).
+2023-03-02 22:22:34.376 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:34).
+2023-03-02 22:22:34.397 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:34).
+2023-03-02 22:22:37.403 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:37.403 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:22:37).
+2023-03-02 22:22:37.403 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:37).
+2023-03-02 22:22:37.424 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:37).
+2023-03-02 22:22:40.425 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:40.425 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:22:40).
+2023-03-02 22:22:40.425 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:40).
+2023-03-02 22:22:40.445 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:40).
+2023-03-02 22:22:43.450 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:43.450 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:22:43).
+2023-03-02 22:22:43.450 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:43).
+2023-03-02 22:22:43.471 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:43).
+2023-03-02 22:22:46.481 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:46.481 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:22:46).
+2023-03-02 22:22:46.481 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:46).
+2023-03-02 22:22:46.502 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:46).
+2023-03-02 22:22:49.502 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:49.502 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:22:49).
+2023-03-02 22:22:49.502 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:49).
+2023-03-02 22:22:49.523 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:49).
+2023-03-02 22:22:52.523 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:52.523 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:22:52).
+2023-03-02 22:22:52.523 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:52).
+2023-03-02 22:22:52.543 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:52).
+2023-03-02 22:22:55.544 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:55.544 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:22:55).
+2023-03-02 22:22:55.544 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:55).
+2023-03-02 22:22:55.565 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:55).
+2023-03-02 22:22:58.565 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:22:58.565 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:22:58).
+2023-03-02 22:22:58.565 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:22:58).
+2023-03-02 22:22:58.586 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:22:58).
+2023-03-02 22:23:01.586 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:01.586 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:01).
+2023-03-02 22:23:01.586 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:01).
+2023-03-02 22:23:01.606 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:01).
+2023-03-02 22:23:04.607 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:04.607 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:04).
+2023-03-02 22:23:04.607 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:04).
+2023-03-02 22:23:04.629 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:04).
+2023-03-02 22:23:07.633 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:07.633 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:07).
+2023-03-02 22:23:07.633 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:07).
+2023-03-02 22:23:07.653 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:07).
+2023-03-02 22:23:10.661 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:10.661 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:23:10).
+2023-03-02 22:23:10.661 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:10).
+2023-03-02 22:23:10.681 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:10).
+2023-03-02 22:23:13.697 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:13.697 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:13).
+2023-03-02 22:23:13.697 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:13).
+2023-03-02 22:23:13.717 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:13).
+2023-03-02 22:23:16.722 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:16.722 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:23:16).
+2023-03-02 22:23:16.722 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:16).
+2023-03-02 22:23:16.742 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:16).
+2023-03-02 22:23:19.737 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:19.737 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:19).
+2023-03-02 22:23:19.737 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:19).
+2023-03-02 22:23:19.758 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:19).
+2023-03-02 22:23:22.761 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:22.761 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:22).
+2023-03-02 22:23:22.761 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:22).
+2023-03-02 22:23:22.781 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:22).
+2023-03-02 22:23:25.791 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:25.791 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:23:25).
+2023-03-02 22:23:25.791 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:25).
+2023-03-02 22:23:25.812 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:25).
+2023-03-02 22:23:28.814 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:28.814 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:28).
+2023-03-02 22:23:28.814 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:28).
+2023-03-02 22:23:28.835 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:28).
+2023-03-02 22:23:31.835 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:31.835 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:23:31).
+2023-03-02 22:23:31.835 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:31).
+2023-03-02 22:23:31.856 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:31).
+2023-03-02 22:23:34.856 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:34.856 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:34).
+2023-03-02 22:23:34.856 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:34).
+2023-03-02 22:23:34.877 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:34).
+2023-03-02 22:23:37.877 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:37.877 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:37).
+2023-03-02 22:23:37.877 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:37).
+2023-03-02 22:23:37.898 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:37).
+2023-03-02 22:23:40.899 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:40.899 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  9   (10:23:40).
+2023-03-02 22:23:40.899 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:40).
+2023-03-02 22:23:40.919 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:40).
+2023-03-02 22:23:43.933 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:43.933 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:43).
+2023-03-02 22:23:43.933 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:43).
+2023-03-02 22:23:43.954 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:43).
+2023-03-02 22:23:46.964 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:46.964 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:46).
+2023-03-02 22:23:46.964 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:46).
+2023-03-02 22:23:46.984 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:46).
+2023-03-02 22:23:49.984 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:49.985 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:23:49).
+2023-03-02 22:23:49.985 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:49).
+2023-03-02 22:23:50.005 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:50).
+2023-03-02 22:23:53.005 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:53.005 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:53).
+2023-03-02 22:23:53.005 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:53).
+2023-03-02 22:23:53.026 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:53).
+2023-03-02 22:23:56.032 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:56.032 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  9   (10:23:56).
+2023-03-02 22:23:56.032 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:56).
+2023-03-02 22:23:56.052 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:56).
+2023-03-02 22:23:59.053 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:23:59.053 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:23:59).
+2023-03-02 22:23:59.053 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:23:59).
+2023-03-02 22:23:59.076 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:23:59).
+2023-03-02 22:24:02.085 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:24:02.085 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:24:02).
+2023-03-02 22:24:02.085 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:24:02).
+2023-03-02 22:24:02.106 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:24:02).
+2023-03-02 22:24:05.106 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:24:05.106 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:24:05).
+2023-03-02 22:24:05.106 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:24:05).
+2023-03-02 22:24:05.127 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:24:05).
+2023-03-02 22:24:08.127 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:24:08.127 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  9   (10:24:08).
+2023-03-02 22:24:08.127 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:24:08).
+2023-03-02 22:24:08.152 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:24:08).
+2023-03-02 22:24:11.152 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:24:11.152 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:24:11).
+2023-03-02 22:24:11.152 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:24:11).
+2023-03-02 22:24:11.172 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:24:11).
+2023-03-02 22:24:14.173 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:24:14.173 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:24:14).
+2023-03-02 22:24:14.173 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:24:14).
+2023-03-02 22:24:14.197 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:24:14).
+2023-03-02 22:24:17.198 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:24:17.198 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:24:17).
+2023-03-02 22:24:17.198 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:24:17).
+2023-03-02 22:24:17.226 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:24:17).
+2023-03-02 22:24:20.226 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:24:20.226 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:24:20).
+2023-03-02 22:24:20.226 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:24:20).
+2023-03-02 22:24:20.254 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:24:20).
+2023-03-02 22:24:23.265 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-03-02 22:24:23.265 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:24:23).
+2023-03-02 22:24:23.265 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:24:23).
+2023-03-02 22:24:23.286 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:24:23).

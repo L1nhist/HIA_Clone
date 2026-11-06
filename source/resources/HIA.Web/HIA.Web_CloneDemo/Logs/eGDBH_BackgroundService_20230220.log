@@ -1,0 +1,51 @@
+2023-02-20 21:33:24.592 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-20 21:33:24.617 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-20 21:33:24.617 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-20 21:33:24.618 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-20 21:33:24.928 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-20 21:33:24.929 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (09:33:24).
+2023-02-20 21:33:24.941 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-20 21:33:24.942 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (09:33:24).
+2023-02-20 21:33:51.453 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-20 21:33:51.474 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-20 21:33:51.474 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-20 21:33:51.474 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-20 21:33:51.708 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-20 21:33:51.709 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (09:33:51).
+2023-02-20 21:33:51.721 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-20 21:33:51.721 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (09:33:51).
+2023-02-20 21:33:51.722 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXML1: Validate job start: Thread 1
+2023-02-20 21:33:51.722 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  1   (09:33:51).
+2023-02-20 21:33:51.722 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (09:33:51).
+2023-02-20 21:33:52.332 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (09:33:52).
+2023-02-20 21:33:52.332 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.1 Get HS:  Thread 7 ma_CSKCB: 31313  (09:33:52).
+2023-02-20 21:33:52.332 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.2 Get 300 HS, chuan bi VALIDATE   31313    (09:33:52).
+2023-02-20 21:33:52.408 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua1:  (09:33:52).
+2023-02-20 21:33:55.227 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua2  (09:33:55).
+2023-02-20 21:33:55.793 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S110. Haimaster Check API get Data:31313 Validated - Total time: 565.083
+2023-02-20 21:33:55.846 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data31313: Get All Data - Total time: 52.5216
+2023-02-20 21:33:56.184 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data31313: After Validated - Total time: 390.6894
+2023-02-20 21:33:56.184 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: VE01. Validate done, begin Save DB - HOSO TN.2302.0066740 BV 31313.
+2023-02-20 21:35:09.471 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-20 21:35:09.492 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-20 21:35:09.492 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-20 21:35:09.492 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-20 21:35:09.746 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-20 21:35:09.747 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (09:35:09).
+2023-02-20 21:35:09.757 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-20 21:35:09.758 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (09:35:09).
+2023-02-20 21:35:09.759 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXML1: Validate job start: Thread 1
+2023-02-20 21:35:09.759 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  1   (09:35:09).
+2023-02-20 21:35:09.759 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (09:35:09).
+2023-02-20 21:35:10.307 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (09:35:10).
+2023-02-20 21:35:10.307 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.1 Get HS:  Thread 9 ma_CSKCB: 31313  (09:35:10).
+2023-02-20 21:35:10.307 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.2 Get 300 HS, chuan bi VALIDATE   31313    (09:35:10).
+2023-02-20 21:35:10.419 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua1:  (09:35:10).
+2023-02-20 21:35:13.253 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua2  (09:35:13).
+2023-02-20 21:35:13.688 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S110. Haimaster Check API get Data:31313 Validated - Total time: 434.9907
+2023-02-20 21:35:13.727 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data31313: Get All Data - Total time: 38.7178
+2023-02-20 21:35:14.112 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data31313: After Validated - Total time: 423.4081
+2023-02-20 21:35:14.112 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: VE01. Validate done, begin Save DB - HOSO TN.2302.0066740 BV 31313.
+2023-02-20 21:35:32.306 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: VE01. Validate done, completed Save DB - HOSO TN.2302.0066740 BV 31313. Time: 17.4120728
+2023-02-20 21:35:33.911 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data31313: After Validated - Total time: 20223.1144
+2023-02-20 21:35:33.911 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: VE01. Validate done, begin Save DB - HOSO TN.2302.0066766 BV 31313.

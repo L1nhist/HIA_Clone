@@ -1,0 +1,8 @@
+2026-09-03 17:23:22.812 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-09-03 17:23:22.849 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:23:22).
+2026-09-03 17:23:22.851 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-03 17:23:22.852 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:23:22).
+2026-09-03 17:23:22.854 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-09-03 17:23:22.854 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (05:23:22).
+2026-09-03 17:24:47.678 +07:00 [Warning] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+2026-09-03 17:24:47.681 +07:00 [Warning] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.

@@ -1,0 +1,98 @@
+﻿@* @inherits LayoutComponentBase
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div> *@
+
+ @using AntDesign
+ @inherits LayoutComponentBase
+
+<div>
+
+    <Layout>
+        <Sider @bind-Collapsed=@collapsed NoTrigger OnCollapse="OnCollapse">
+            <div class="logo"><img src="https://mdinsight.vn/imgs/mtg-logo-trans.png" width="135" height="30" /></div>
+            <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Inline" DefaultSelectedKeys=@(new[]{"1"})>
+                <MenuItem Key="1">
+                    <Icon Type="@IconType.Outline.User" />
+                    <span>nav 1</span>
+                </MenuItem>
+                <MenuItem Key="2">
+                    <Icon Type="@IconType.Outline.VideoCamera" />
+                    <span>nav 2</span>
+                </MenuItem>
+                <MenuItem Key="3">
+                    <Icon Type="@IconType.Outline.Upload" />
+                    <span>nav 3</span>
+                </MenuItem>
+            </Menu>
+        </Sider>
+        <Layout Class="site-layout">
+            <Header Class="site-layout-background" Style="padding: 1;">
+                @if (collapsed)
+                {
+                    <Icon Type="@IconType.Outline.MenuUnfold" Class="trigger" OnClick="toggle" />
+                }
+                else
+                {
+                    <Icon Type="@IconType.Outline.MenuFold" Class="trigger" OnClick="toggle" />
+                }
+            </Header>
+            <Content Class="site-layout-background" Style="margin: 3px 3px;padding: 3px;min-height: 100%;">
+                Content here
+            </Content>
+        </Layout>
+    </Layout>
+
+    
+</div>
+<style>
+    #components-layout-demo-custom-trigger .trigger {
+        font-size: 18px;
+        line-height: 64px;
+        padding: 0 24px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+        #components-layout-demo-custom-trigger .trigger:hover {
+            color: #1890ff;
+        }
+
+    #components-layout-demo-custom-trigger .logo {
+        height: 32px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 16px;
+    }
+
+    .site-layout .site-layout-background {
+        background: #fff;
+    }
+</style>
+
+
+@code {
+    bool collapsed;
+
+    void toggle()
+    {
+        collapsed = !collapsed;
+    }
+
+    void OnCollapse(bool isCollapsed)
+    {
+        Console.WriteLine($"Collapsed: {isCollapsed}");
+    }
+
+}

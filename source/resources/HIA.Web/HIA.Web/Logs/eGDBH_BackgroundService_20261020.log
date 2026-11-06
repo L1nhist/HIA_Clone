@@ -1,0 +1,64 @@
+2026-10-20 16:05:44.308 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-20 16:05:44.500 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:05:44).
+2026-10-20 16:05:44.503 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-20 16:05:44.504 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:05:44).
+2026-10-20 16:05:44.506 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-20 16:05:44.507 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:05:44).
+2026-10-20 16:41:43.331 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-20 16:41:43.364 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:41:43).
+2026-10-20 16:41:43.367 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-20 16:41:43.379 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:41:43).
+2026-10-20 16:41:43.382 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-20 16:41:43.383 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:41:43).
+2026-10-20 16:52:02.098 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-20 16:52:02.125 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:52:02).
+2026-10-20 16:52:02.127 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-20 16:52:02.128 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:52:02).
+2026-10-20 16:52:02.130 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-20 16:52:02.130 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:52:02).
+2026-10-20 16:52:08.375 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 74201 [20/10 04:52:08]
+2026-10-20 16:58:59.472 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-20 16:58:59.497 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:58:59).
+2026-10-20 16:58:59.500 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-20 16:58:59.502 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:58:59).
+2026-10-20 16:58:59.503 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-20 16:58:59.505 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:58:59).
+2026-10-20 17:00:59.230 +07:00 [Error] Failed executing DbCommand ("135"ms) [Parameters=["@__user_Hospital_MA_CSKCB_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='180']"
+""SELECT [d].[GID], [d].[MA_CSKCB], [d].[DEN_NGAY], [d].[HIEU_LUC], [d].[LOAII_GIUONG], [d].[MA_GIUONG], [d].[MA_KHOA], [d].[MIEU_TA], [d].[TEN_GIUONG], [d].[TU_NGAY]
+FROM [DMMaGiuong] AS [d]
+WHERE [d].[MA_CSKCB] = @__user_Hospital_MA_CSKCB_0"
+2026-10-20 17:00:59.368 +07:00 [Error] An exception occurred while iterating over the results of a query for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'LOAII_GIUONG'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:ca6fe6af-5e72-49f2-999f-c1ee083fce39
+Error Number:207,State:1,Class:16"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'LOAII_GIUONG'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:ca6fe6af-5e72-49f2-999f-c1ee083fce39
+Error Number:207,State:1,Class:16
+2026-10-20 17:02:23.786 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-20 17:02:23.845 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:02:23).
+2026-10-20 17:02:23.848 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-20 17:02:23.850 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:02:23).
+2026-10-20 17:02:23.851 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-20 17:02:23.852 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (05:02:23).

@@ -1,0 +1,543 @@
+2023-02-06 22:42:38.472 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 22:42:38.501 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 22:42:38.502 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 22:42:38.502 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 22:42:38.949 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-06 22:42:38.951 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (10:42:38).
+2023-02-06 22:42:38.954 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-06 22:42:38.955 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (10:42:38).
+2023-02-06 22:42:38.957 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXML1: Validate job start: Thread 1
+2023-02-06 22:42:38.957 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  1   (10:42:38).
+2023-02-06 22:42:38.957 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:42:38).
+2023-02-06 22:42:39.959 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:42:39).
+2023-02-06 22:42:42.959 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:42:42.959 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  9   (10:42:42).
+2023-02-06 22:42:42.959 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:42:42).
+2023-02-06 22:42:43.242 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:42:43).
+2023-02-06 22:42:46.255 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:42:46.255 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:42:46).
+2023-02-06 22:42:46.255 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:42:46).
+2023-02-06 22:42:46.464 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:42:46).
+2023-02-06 22:42:49.465 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:42:49.465 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:42:49).
+2023-02-06 22:42:49.465 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:42:49).
+2023-02-06 22:42:49.653 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:42:49).
+2023-02-06 22:42:52.655 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:42:52.655 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:42:52).
+2023-02-06 22:42:52.655 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:42:52).
+2023-02-06 22:42:52.874 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:42:52).
+2023-02-06 22:42:55.875 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:42:55.875 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:42:55).
+2023-02-06 22:42:55.875 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:42:55).
+2023-02-06 22:42:56.075 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:42:56).
+2023-02-06 22:42:59.076 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:42:59.076 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:42:59).
+2023-02-06 22:42:59.076 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:42:59).
+2023-02-06 22:42:59.295 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:42:59).
+2023-02-06 22:43:01.972 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S3.Haimaster Check API: Save XML to SDD) (19666) - Total time: 2,884
+2023-02-06 22:43:02.304 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:02.304 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:43:02).
+2023-02-06 22:43:02.304 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:02).
+2023-02-06 22:43:02.560 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:02).
+2023-02-06 22:43:02.810 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S50. Haimaster Insert XML to DB: 19666- Total time: 835,2772 - Validated 05042022_0746_2200070942_VU-VAN-DUONG_0000966958_KCB19666_2DF940DE-F85D-461A-B7FA-16FC24BBD9AB.xml - Total time: 835,2772
+2023-02-06 22:43:02.810 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S3.Haimaster Check API: Create Ho So (Save to DB) (19666) - Total time: 837,2223
+2023-02-06 22:43:05.560 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:05.560 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  4   (10:43:05).
+2023-02-06 22:43:05.560 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:05).
+2023-02-06 22:43:05.749 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:05).
+2023-02-06 22:43:08.758 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:08.758 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:43:08).
+2023-02-06 22:43:08.758 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:08).
+2023-02-06 22:43:08.979 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:08).
+2023-02-06 22:43:11.981 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:11.982 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:43:11).
+2023-02-06 22:43:11.982 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:11).
+2023-02-06 22:43:12.196 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:12).
+2023-02-06 22:43:15.197 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:15.197 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:43:15).
+2023-02-06 22:43:15.197 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:15).
+2023-02-06 22:43:15.392 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:15).
+2023-02-06 22:43:18.393 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:18.393 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:43:18).
+2023-02-06 22:43:18.393 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:18).
+2023-02-06 22:43:18.611 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:18).
+2023-02-06 22:43:21.612 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:21.612 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:43:21).
+2023-02-06 22:43:21.612 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:21).
+2023-02-06 22:43:21.809 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:21).
+2023-02-06 22:43:24.810 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:24.810 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:43:24).
+2023-02-06 22:43:24.810 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:24).
+2023-02-06 22:43:25.046 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:25).
+2023-02-06 22:43:28.047 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:28.047 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:43:28).
+2023-02-06 22:43:28.047 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:28).
+2023-02-06 22:43:28.244 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:28).
+2023-02-06 22:43:31.245 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:31.245 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:43:31).
+2023-02-06 22:43:31.245 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:31).
+2023-02-06 22:43:31.431 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:31).
+2023-02-06 22:43:34.431 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:34.431 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:43:34).
+2023-02-06 22:43:34.431 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:34).
+2023-02-06 22:43:34.650 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:34).
+2023-02-06 22:43:37.651 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:37.651 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:43:37).
+2023-02-06 22:43:37.651 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:37).
+2023-02-06 22:43:37.853 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:37).
+2023-02-06 22:43:40.853 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:40.853 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:43:40).
+2023-02-06 22:43:40.853 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:40).
+2023-02-06 22:43:41.048 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:41).
+2023-02-06 22:43:44.058 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:44.058 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:43:44).
+2023-02-06 22:43:44.058 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:44).
+2023-02-06 22:43:44.266 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:44).
+2023-02-06 22:43:47.274 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:47.274 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:43:47).
+2023-02-06 22:43:47.274 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:47).
+2023-02-06 22:43:47.479 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:47).
+2023-02-06 22:43:50.479 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:50.480 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:43:50).
+2023-02-06 22:43:50.480 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:50).
+2023-02-06 22:43:50.670 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:50).
+2023-02-06 22:43:53.671 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:53.671 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:43:53).
+2023-02-06 22:43:53.671 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:53).
+2023-02-06 22:43:53.886 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:53).
+2023-02-06 22:43:56.886 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:43:56.886 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:43:56).
+2023-02-06 22:43:56.886 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:43:56).
+2023-02-06 22:43:57.088 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:43:57).
+2023-02-06 22:44:00.088 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:00.088 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:44:00).
+2023-02-06 22:44:00.088 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:00).
+2023-02-06 22:44:00.316 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:00).
+2023-02-06 22:44:03.317 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:03.317 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:44:03).
+2023-02-06 22:44:03.317 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:03).
+2023-02-06 22:44:03.518 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:03).
+2023-02-06 22:44:06.519 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:06.519 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:44:06).
+2023-02-06 22:44:06.519 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:06).
+2023-02-06 22:44:06.725 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:06).
+2023-02-06 22:44:09.725 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:09.725 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:44:09).
+2023-02-06 22:44:09.725 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:09).
+2023-02-06 22:44:09.931 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:09).
+2023-02-06 22:44:12.931 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:12.931 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:44:12).
+2023-02-06 22:44:12.931 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:12).
+2023-02-06 22:44:13.136 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:13).
+2023-02-06 22:44:16.137 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:16.137 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:44:16).
+2023-02-06 22:44:16.137 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:16).
+2023-02-06 22:44:16.332 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:16).
+2023-02-06 22:44:19.341 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:19.341 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:44:19).
+2023-02-06 22:44:19.341 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:19).
+2023-02-06 22:44:19.549 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:19).
+2023-02-06 22:44:22.550 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:22.550 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:44:22).
+2023-02-06 22:44:22.550 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:22).
+2023-02-06 22:44:22.754 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:22).
+2023-02-06 22:44:25.755 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:25.755 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:44:25).
+2023-02-06 22:44:25.755 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:25).
+2023-02-06 22:44:25.952 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:25).
+2023-02-06 22:44:28.953 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:28.953 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:44:28).
+2023-02-06 22:44:28.953 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:28).
+2023-02-06 22:44:29.171 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:29).
+2023-02-06 22:44:32.171 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:32.171 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:44:32).
+2023-02-06 22:44:32.171 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:32).
+2023-02-06 22:44:32.383 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:32).
+2023-02-06 22:44:35.383 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:35.383 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:44:35).
+2023-02-06 22:44:35.383 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:35).
+2023-02-06 22:44:35.576 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:35).
+2023-02-06 22:44:38.581 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:38.581 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:44:38).
+2023-02-06 22:44:38.581 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:38).
+2023-02-06 22:44:38.775 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:38).
+2023-02-06 22:44:41.776 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:41.776 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:44:41).
+2023-02-06 22:44:41.776 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:41).
+2023-02-06 22:44:41.982 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:41).
+2023-02-06 22:44:44.983 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:44.983 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:44:44).
+2023-02-06 22:44:44.983 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:44).
+2023-02-06 22:44:45.177 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:45).
+2023-02-06 22:44:48.177 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:48.177 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:44:48).
+2023-02-06 22:44:48.177 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:48).
+2023-02-06 22:44:48.377 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:48).
+2023-02-06 22:44:51.385 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:51.386 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:44:51).
+2023-02-06 22:44:51.386 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:51).
+2023-02-06 22:44:52.092 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:52).
+2023-02-06 22:44:55.097 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:55.097 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:44:55).
+2023-02-06 22:44:55.097 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:55).
+2023-02-06 22:44:56.387 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:56).
+2023-02-06 22:44:59.387 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:44:59.387 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:44:59).
+2023-02-06 22:44:59.387 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:44:59).
+2023-02-06 22:44:59.847 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:44:59).
+2023-02-06 22:45:02.847 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:02.847 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:02).
+2023-02-06 22:45:02.847 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:02).
+2023-02-06 22:45:03.208 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:03).
+2023-02-06 22:45:06.208 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:06.208 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:06).
+2023-02-06 22:45:06.208 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:06).
+2023-02-06 22:45:06.624 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:06).
+2023-02-06 22:45:09.625 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:09.625 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:09).
+2023-02-06 22:45:09.625 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:09).
+2023-02-06 22:45:10.022 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:10).
+2023-02-06 22:45:13.025 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:13.025 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:13).
+2023-02-06 22:45:13.025 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:13).
+2023-02-06 22:45:13.686 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:13).
+2023-02-06 22:45:16.697 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:16.697 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:16).
+2023-02-06 22:45:16.697 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:16).
+2023-02-06 22:45:17.024 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:17).
+2023-02-06 22:45:20.035 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:20.035 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:20).
+2023-02-06 22:45:20.035 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:20).
+2023-02-06 22:45:20.522 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:20).
+2023-02-06 22:45:23.544 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:23.544 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:23).
+2023-02-06 22:45:23.544 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:23).
+2023-02-06 22:45:23.941 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:23).
+2023-02-06 22:45:26.942 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:26.942 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:26).
+2023-02-06 22:45:26.942 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:26).
+2023-02-06 22:45:27.315 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:27).
+2023-02-06 22:45:30.315 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:30.316 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:30).
+2023-02-06 22:45:30.316 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:30).
+2023-02-06 22:45:30.725 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:30).
+2023-02-06 22:45:33.725 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:33.725 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:33).
+2023-02-06 22:45:33.725 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:33).
+2023-02-06 22:45:34.073 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:34).
+2023-02-06 22:45:37.073 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:37.073 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:37).
+2023-02-06 22:45:37.073 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:37).
+2023-02-06 22:45:37.454 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:37).
+2023-02-06 22:45:40.454 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:40.454 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:40).
+2023-02-06 22:45:40.454 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:40).
+2023-02-06 22:45:40.835 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:40).
+2023-02-06 22:45:43.835 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:43.835 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:45:43).
+2023-02-06 22:45:43.835 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:43).
+2023-02-06 22:45:44.215 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:44).
+2023-02-06 22:45:47.216 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:47.216 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:45:47).
+2023-02-06 22:45:47.216 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:47).
+2023-02-06 22:45:47.590 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:47).
+2023-02-06 22:45:50.590 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:50.590 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:45:50).
+2023-02-06 22:45:50.590 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:50).
+2023-02-06 22:45:50.997 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:50).
+2023-02-06 22:45:54.139 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:54.139 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:45:54).
+2023-02-06 22:45:54.139 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:54).
+2023-02-06 22:45:54.412 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:54).
+2023-02-06 22:45:57.473 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:45:57.474 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  7   (10:45:57).
+2023-02-06 22:45:57.474 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:45:57).
+2023-02-06 22:45:57.777 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:45:57).
+2023-02-06 22:46:00.810 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:46:00.810 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:46:00).
+2023-02-06 22:46:00.810 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:46:00).
+2023-02-06 22:46:01.166 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:46:01).
+2023-02-06 22:46:04.258 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:46:04.258 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:46:04).
+2023-02-06 22:46:04.258 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:46:04).
+2023-02-06 22:46:04.534 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:46:04).
+2023-02-06 22:46:07.539 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:46:07.539 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:46:07).
+2023-02-06 22:46:07.539 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:46:07).
+2023-02-06 22:46:07.910 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:46:07).
+2023-02-06 22:46:10.911 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:46:10.911 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:46:10).
+2023-02-06 22:46:10.911 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:46:10).
+2023-02-06 22:46:11.299 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:46:11).
+2023-02-06 22:46:14.300 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:46:14.300 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  6   (10:46:14).
+2023-02-06 22:46:14.300 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:46:14).
+2023-02-06 22:46:14.728 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:46:14).
+2023-02-06 22:46:17.729 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B6. End Validate, wait next.
+2023-02-06 22:46:17.729 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  8   (10:46:17).
+2023-02-06 22:46:17.729 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (10:46:17).
+2023-02-06 22:46:18.091 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (10:46:18).
+2023-02-06 23:48:57.434 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 23:48:57.452 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 23:48:57.452 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 23:48:57.452 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 23:48:57.749 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-06 23:48:57.751 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (11:48:57).
+2023-02-06 23:48:57.752 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-06 23:48:57.753 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (11:48:57).
+2023-02-06 23:48:57.754 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXML1: Validate job start: Thread 1
+2023-02-06 23:48:57.754 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  1   (11:48:57).
+2023-02-06 23:48:57.754 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (11:48:57).
+2023-02-06 23:48:58.246 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (11:48:58).
+2023-02-06 23:48:58.246 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.1 Get HS:  Thread 4 ma_CSKCB: 19666  (11:48:58).
+2023-02-06 23:48:58.246 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.2 Get 300 HS, chuan bi VALIDATE   19666    (11:48:58).
+2023-02-06 23:48:58.348 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua1:  (11:48:58).
+2023-02-06 23:48:58.604 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua2  (11:48:58).
+2023-02-06 23:48:58.942 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S110. Haimaster Check API get Data:19666 Validated - Total time: 337.1903
+2023-02-06 23:48:59.019 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data19666: Get All Data - Total time: 76.6056
+2023-02-06 23:48:59.052 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data19666: After Validated - Total time: 109.9645
+2023-02-06 23:48:59.054 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu19666: After Validated - Total time: 1.4346
+2023-02-06 23:49:00.264 +07:00 [Error] Failed executing DbCommand ("68"ms) [Parameters=["@p0='?' (Size = 10), @p1='?' (DbType = Int32), @p2='?' (DbType = Double), @p3='?' (Size = 1) (DbType = Byte), @p4='?' (DbType = DateTime), @p5='?' (DbType = Int32), @p6='?' (Size = 1024), @p7='?' (Size = 4000), @p8='?' (Size = 250), @p9='?' (Size = 1) (DbType = Byte), @p10='?' (Size = 255), @p11='?' (Size = 255), @p12='?' (Size = 255), @p13='?' (Size = 36) (DbType = AnsiString), @p14='?' (Size = 1) (DbType = Byte), @p15='?' (Size = 255), @p16='?' (Size = 255), @p17='?' (Size = 100), @p18='?' (Size = 255), @p19='?' (Size = 15), @p20='?' (Size = 15), @p21='?' (Size = 100), @p22='?' (Size = 1) (DbType = Byte), @p23='?' (Size = 1) (DbType = Byte), @p24='?' (Size = 5), @p25='?' (Size = 5), @p26='?' (Size = 5), @p27='?' (Size = 255), @p28='?' (DbType = Byte), @p29='?' (Size = 255), @p30='?' (Size = 50), @p31='?' (Size = 255), @p32='?' (DbType = Int32), @p33='?' (DbType = DateTime), @p34='?' (DbType = DateTime), @p35='?' (DbType = DateTime), @p36='?' (DbType = DateTime), @p37='?' (DbType = DateTime), @p38='?' (DbType = Int32), @p39='?' (DbType = Int32), @p40='?' (Size = 4000), @p41='?' (Size = 1) (DbType = Byte), @p42='?' (Size = 1) (DbType = Byte), @p43='?' (DbType = Double), @p44='?' (DbType = Double), @p45='?' (DbType = Double), @p46='?' (DbType = Double), @p47='?' (DbType = Double), @p48='?' (DbType = Double), @p49='?' (DbType = Double), @p50='?' (DbType = Double), @p51='?' (DbType = DateTime), @p52='?' (DbType = Boolean), @p105='?' (DbType = Int32), @p53='?' (DbType = Double), @p54='?' (Size = 1) (DbType = Byte), @p55='?' (DbType = DateTime), @p56='?' (DbType = Int32), @p57='?' (Size = 1024), @p58='?' (Size = 4000), @p59='?' (Size = 250), @p60='?' (Size = 1) (DbType = Byte), @p61='?' (Size = 255), @p62='?' (Size = 255), @p63='?' (Size = 255), @p64='?' (Size = 36) (DbType = AnsiString), @p65='?' (Size = 1) (DbType = Byte), @p66='?' (Size = 255), @p67='?' (Size = 255), @p68='?' (Size = 100), @p69='?' (Size = 10), @p70='?' (Size = 255), @p71='?' (Size = 15), @p72='?' (Size = 15), @p73='?' (Size = 100), @p74='?' (Size = 1) (DbType = Byte), @p75='?' (Size = 1) (DbType = Byte), @p76='?' (Size = 5), @p77='?' (Size = 5), @p78='?' (Size = 5), @p79='?' (Size = 255), @p80='?' (DbType = Byte), @p81='?' (Size = 255), @p82='?' (Size = 50), @p83='?' (Size = 255), @p84='?' (DbType = Int32), @p85='?' (DbType = DateTime), @p86='?' (DbType = DateTime), @p87='?' (DbType = DateTime), @p88='?' (DbType = DateTime), @p89='?' (DbType = DateTime), @p90='?' (DbType = Int32), @p91='?' (DbType = Int32), @p92='?' (Size = 4000), @p93='?' (Size = 1) (DbType = Byte), @p94='?' (Size = 1) (DbType = Byte), @p95='?' (DbType = Double), @p96='?' (DbType = Double), @p97='?' (DbType = Double), @p98='?' (DbType = Double), @p99='?' (DbType = Double), @p100='?' (DbType = Double), @p101='?' (DbType = Double), @p102='?' (DbType = Double), @p103='?' (DbType = DateTime), @p104='?' (DbType = Boolean), @p136='?' (DbType = Int32), @p106='?' (DbType = Double), @p107='?' (Size = 50), @p108='?' (Size = 10), @p109='?' (Size = 1024), @p110='?' (Size = 255), @p111='?' (Size = 255), @p112='?' (Size = 255), @p113='?' (Size = 10) (DbType = AnsiString), @p114='?' (Size = 15), @p115='?' (Size = 100), @p116='?' (Size = 1) (DbType = Byte), @p117='?' (Size = 1) (DbType = Byte), @p118='?' (Size = 255), @p119='?' (Size = 1) (DbType = Byte), @p120='?' (DbType = DateTime), @p121='?' (Size = 1) (DbType = Byte), @p122='?' (Size = 255), @p123='?' (DbType = Double), @p124='?' (DbType = Int32), @p125='?' (Size = 1024), @p126='?' (DbType = Double), @p127='?' (Size = 250), @p128='?' (Size = 1) (DbType = Byte), @p129='?' (DbType = Double), @p130='?' (DbType = Double), @p131='?' (DbType = Double), @p132='?' (DbType = Double), @p133='?' (DbType = Double), @p134='?' (DbType = Int32), @p135='?' (DbType = Boolean), @p167='?' (DbType = Int32), @p137='?' (DbType = Double), @p138='?' (Size = 50), @p139='?' (Size = 10), @p140='?' (Size = 1024), @p141='?' (Size = 255), @p142='?' (Size = 255), @p143='?' (Size = 255), @p144='?' (Size = 10) (DbType = AnsiString), @p145='?' (Size = 15), @p146='?' (Size = 100), @p147='?' (Size = 1) (DbType = Byte), @p148='?' (Size = 1) (DbType = Byte), @p149='?' (Size = 255), @p150='?' (Size = 1) (DbType = Byte), @p151='?' (DbType = DateTime), @p152='?' (Size = 1) (DbType = Byte), @p153='?' (Size = 255), @p154='?' (DbType = Double), @p155='?' (DbType = Int32), @p156='?' (Size = 1024), @p157='?' (DbType = Double), @p158='?' (Size = 250), @p159='?' (Size = 1) (DbType = Byte), @p160='?' (DbType = Double), @p161='?' (DbType = Double), @p162='?' (DbType = Double), @p163='?' (DbType = Double), @p164='?' (DbType = Double), @p165='?' (DbType = Int32), @p166='?' (DbType = Boolean), @p200='?' (DbType = Int32), @p168='?' (DbType = Double), @p169='?' (Size = 50), @p170='?' (Size = 200), @p171='?' (Size = 255), @p172='?' (Size = 255), @p173='?' (Size = 10) (DbType = AnsiString), @p174='?' (Size = 255), @p175='?' (Size = 14), @p176='?' (Size = 15), @p177='?' (Size = 100), @p178='?' (Size = 1) (DbType = Byte), @p179='?' (Size = 1) (DbType = Byte), @p180='?' (Size = 255), @p181='?' (Size = 1) (DbType = Byte), @p182='?' (DbType = DateTime), @p183='?' (DbType = DateTime), @p184='?' (DbType = Byte), @p185='?' (DbType = Double), @p186='?' (DbType = Int32), @p187='?' (Size = 1024), @p188='?' (Size = 1024), @p189='?' (DbType = Double), @p190='?' (Size = 250), @p191='?' (Size = 1) (DbType = Byte), @p192='?' (DbType = Double), @p193='?' (DbType = Double), @p194='?' (DbType = Double), @p195='?' (DbType = Double), @p196='?' (DbType = Double), @p197='?' (DbType = Double), @p198='?' (DbType = Int32), @p199='?' (DbType = Boolean)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [XML1] ([MA_CSKCB], [XML1ID], [CAN_NANG], [CHECKED], [CreateDate], [Creator], [DIA_CHI], [DanhSachLoi], [FileName], [GIOI_TINH], [GT_THE_DEN], [GT_THE_TU], [HO_TEN], [HospitalId], [KET_QUA_DTRI], [MA_BENH], [MA_BENHKHAC], [MA_BN], [MA_DKBD], [MA_KHOA], [MA_KHUVUC], [MA_LK], [MA_LOAI_KCB], [MA_LYDO_VVIEN], [MA_NOI_CHUYEN], [MA_NOI_DEN], [MA_NOI_DI], [MA_PTTT_QT], [MA_TAI_NAN], [MA_THE], [MHTCID], [MIEN_CUNG_CT], [NAM_QT], [NGAYLAP], [NGAY_RA], [NGAY_SINH], [NGAY_TTOAN], [NGAY_VAO], [SO_NGAY_DTRI], [STT], [TEN_BENH], [THANG_QT], [TINH_TRANG_RV], [T_BHTT], [T_BNCCT], [T_BNTT], [T_NGOAIDS], [T_NGUONKHAC], [T_THUOC], [T_TONGCHI], [T_VTYT], [UpdateDate], [isDelete])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37, @p38, @p39, @p40, @p41, @p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51, @p52);
+UPDATE [XML1_Temp] SET [CAN_NANG] = @p53, [CHECKED] = @p54, [CreateDate] = @p55, [Creator] = @p56, [DIA_CHI] = @p57, [DanhSachLoi] = @p58, [FileName] = @p59, [GIOI_TINH] = @p60, [GT_THE_DEN] = @p61, [GT_THE_TU] = @p62, [HO_TEN] = @p63, [HospitalId] = @p64, [KET_QUA_DTRI] = @p65, [MA_BENH] = @p66, [MA_BENHKHAC] = @p67, [MA_BN] = @p68, [MA_CSKCB] = @p69, [MA_DKBD] = @p70, [MA_KHOA] = @p71, [MA_KHUVUC] = @p72, [MA_LK] = @p73, [MA_LOAI_KCB] = @p74, [MA_LYDO_VVIEN] = @p75, [MA_NOI_CHUYEN] = @p76, [MA_NOI_DEN] = @p77, [MA_NOI_DI] = @p78, [MA_PTTT_QT] = @p79, [MA_TAI_NAN] = @p80, [MA_THE] = @p81, [MHTCID] = @p82, [MIEN_CUNG_CT] = @p83, [NAM_QT] = @p84, [NGAYLAP] = @p85, [NGAY_RA] = @p86, [NGAY_SINH] = @p87, [NGAY_TTOAN] = @p88, [NGAY_VAO] = @p89, [SO_NGAY_DTRI] = @p90, [STT] = @p91, [TEN_BENH] = @p92, [THANG_QT] = @p93, [TINH_TRANG_RV] = @p94, [T_BHTT] = @p95, [T_BNCCT] = @p96, [T_BNTT] = @p97, [T_NGOAIDS] = @p98, [T_NGUONKHAC] = @p99, [T_THUOC] = @p100, [T_TONGCHI] = @p101, [T_VTYT] = @p102, [UpdateDate] = @p103, [isDelete] = @p104
+WHERE [XML1ID] = @p105;
+SELECT @@ROWCOUNT;
+
+UPDATE [XML2_Temp] SET [DON_GIA] = @p106, [DON_VI_TINH] = @p107, [DUONG_DUNG] = @p108, [HAM_LUONG] = @p109, [LIEU_DUNG] = @p110, [MA_BAC_SI] = @p111, [MA_BENH] = @p112, [MA_CSKCB] = @p113, [MA_KHOA] = @p114, [MA_LK] = @p115, [MA_NHOM] = @p116, [MA_PTTT] = @p117, [MA_THUOC] = @p118, [MUC_HUONG] = @p119, [NGAY_YL] = @p120, [PHAM_VI] = @p121, [SO_DANG_KY] = @p122, [SO_LUONG] = @p123, [STT] = @p124, [TEN_THUOC] = @p125, [THANH_TIEN] = @p126, [TT_THAU] = @p127, [TYLE_TT] = @p128, [T_BHTT] = @p129, [T_BNCCT] = @p130, [T_BNTT] = @p131, [T_NGOAIDS] = @p132, [T_NGUONKHAC] = @p133, [XML1ID] = @p134, [isDelete] = @p135
+WHERE [XML2ID] = @p136;
+SELECT @@ROWCOUNT;
+
+UPDATE [XML2_Temp] SET [DON_GIA] = @p137, [DON_VI_TINH] = @p138, [DUONG_DUNG] = @p139, [HAM_LUONG] = @p140, [LIEU_DUNG] = @p141, [MA_BAC_SI] = @p142, [MA_BENH] = @p143, [MA_CSKCB] = @p144, [MA_KHOA] = @p145, [MA_LK] = @p146, [MA_NHOM] = @p147, [MA_PTTT] = @p148, [MA_THUOC] = @p149, [MUC_HUONG] = @p150, [NGAY_YL] = @p151, [PHAM_VI] = @p152, [SO_DANG_KY] = @p153, [SO_LUONG] = @p154, [STT] = @p155, [TEN_THUOC] = @p156, [THANH_TIEN] = @p157, [TT_THAU] = @p158, [TYLE_TT] = @p159, [T_BHTT] = @p160, [T_BNCCT] = @p161, [T_BNTT] = @p162, [T_NGOAIDS] = @p163, [T_NGUONKHAC] = @p164, [XML1ID] = @p165, [isDelete] = @p166
+WHERE [XML2ID] = @p167;
+SELECT @@ROWCOUNT;
+
+UPDATE [XML3_Temp] SET [DON_GIA] = @p168, [DON_VI_TINH] = @p169, [GOI_VTYT] = @p170, [MA_BAC_SI] = @p171, [MA_BENH] = @p172, [MA_CSKCB] = @p173, [MA_DICH_VU] = @p174, [MA_GIUONG] = @p175, [MA_KHOA] = @p176, [MA_LK] = @p177, [MA_NHOM] = @p178, [MA_PTTT] = @p179, [MA_VAT_TU] = @p180, [MUC_HUONG] = @p181, [NGAY_KQ] = @p182, [NGAY_YL] = @p183, [PHAM_VI] = @p184, [SO_LUONG] = @p185, [STT] = @p186, [TEN_DICH_VU] = @p187, [TEN_VAT_TU] = @p188, [THANH_TIEN] = @p189, [TT_THAU] = @p190, [TYLE_TT] = @p191, [T_BHTT] = @p192, [T_BNCCT] = @p193, [T_BNTT] = @p194, [T_NGOAIDS] = @p195, [T_NGUONKHAC] = @p196, [T_TRANTT] = @p197, [XML1ID] = @p198, [isDelete] = @p199
+WHERE [XML3ID] = @p200;
+SELECT @@ROWCOUNT;"
+2023-02-06 23:49:00.313 +07:00 [Error] An exception occurred in the database while saving changes for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'XML1' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:662612d1-e6d8-44e4-9d0d-637edef30fe0
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'XML1' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:662612d1-e6d8-44e4-9d0d-637edef30fe0
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-02-06 23:50:03.402 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 23:50:03.420 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 23:50:03.421 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 23:50:03.421 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 23:50:03.815 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-06 23:50:03.816 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (11:50:03).
+2023-02-06 23:50:03.817 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-06 23:50:03.817 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (11:50:03).
+2023-02-06 23:50:03.818 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXML1: Validate job start: Thread 1
+2023-02-06 23:50:03.818 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  1   (11:50:03).
+2023-02-06 23:50:03.818 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (11:50:03).
+2023-02-06 23:50:04.200 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (11:50:04).
+2023-02-06 23:50:04.200 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.1 Get HS:  Thread 8 ma_CSKCB: 19666  (11:50:04).
+2023-02-06 23:50:04.200 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.2 Get 300 HS, chuan bi VALIDATE   19666    (11:50:04).
+2023-02-06 23:50:04.280 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua1:  (11:50:04).
+2023-02-06 23:50:04.490 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua2  (11:50:04).
+2023-02-06 23:50:04.744 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S110. Haimaster Check API get Data:19666 Validated - Total time: 253.4648
+2023-02-06 23:50:04.822 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data19666: Get All Data - Total time: 78.6407
+2023-02-06 23:50:04.859 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data19666: After Validated - Total time: 115.0817
+2023-02-06 23:50:04.861 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu19666: After Validated - Total time: 2.046
+2023-02-06 23:50:05.832 +07:00 [Error] Failed executing DbCommand ("4"ms) [Parameters=["@p0='?' (Size = 10), @p1='?' (DbType = Int32), @p2='?' (DbType = Double), @p3='?' (Size = 1) (DbType = Byte), @p4='?' (DbType = DateTime), @p5='?' (DbType = Int32), @p6='?' (Size = 1024), @p7='?' (Size = 4000), @p8='?' (Size = 250), @p9='?' (Size = 1) (DbType = Byte), @p10='?' (Size = 255), @p11='?' (Size = 255), @p12='?' (Size = 255), @p13='?' (Size = 36) (DbType = AnsiString), @p14='?' (Size = 1) (DbType = Byte), @p15='?' (Size = 255), @p16='?' (Size = 255), @p17='?' (Size = 100), @p18='?' (Size = 255), @p19='?' (Size = 15), @p20='?' (Size = 15), @p21='?' (Size = 100), @p22='?' (Size = 1) (DbType = Byte), @p23='?' (Size = 1) (DbType = Byte), @p24='?' (Size = 5), @p25='?' (Size = 5), @p26='?' (Size = 5), @p27='?' (Size = 255), @p28='?' (DbType = Byte), @p29='?' (Size = 255), @p30='?' (Size = 50), @p31='?' (Size = 255), @p32='?' (DbType = Int32), @p33='?' (DbType = DateTime), @p34='?' (DbType = DateTime), @p35='?' (DbType = DateTime), @p36='?' (DbType = DateTime), @p37='?' (DbType = DateTime), @p38='?' (DbType = Int32), @p39='?' (DbType = Int32), @p40='?' (Size = 4000), @p41='?' (Size = 1) (DbType = Byte), @p42='?' (Size = 1) (DbType = Byte), @p43='?' (DbType = Double), @p44='?' (DbType = Double), @p45='?' (DbType = Double), @p46='?' (DbType = Double), @p47='?' (DbType = Double), @p48='?' (DbType = Double), @p49='?' (DbType = Double), @p50='?' (DbType = Double), @p51='?' (DbType = DateTime), @p52='?' (DbType = Boolean), @p105='?' (DbType = Int32), @p53='?' (DbType = Double), @p54='?' (Size = 1) (DbType = Byte), @p55='?' (DbType = DateTime), @p56='?' (DbType = Int32), @p57='?' (Size = 1024), @p58='?' (Size = 4000), @p59='?' (Size = 250), @p60='?' (Size = 1) (DbType = Byte), @p61='?' (Size = 255), @p62='?' (Size = 255), @p63='?' (Size = 255), @p64='?' (Size = 36) (DbType = AnsiString), @p65='?' (Size = 1) (DbType = Byte), @p66='?' (Size = 255), @p67='?' (Size = 255), @p68='?' (Size = 100), @p69='?' (Size = 10), @p70='?' (Size = 255), @p71='?' (Size = 15), @p72='?' (Size = 15), @p73='?' (Size = 100), @p74='?' (Size = 1) (DbType = Byte), @p75='?' (Size = 1) (DbType = Byte), @p76='?' (Size = 5), @p77='?' (Size = 5), @p78='?' (Size = 5), @p79='?' (Size = 255), @p80='?' (DbType = Byte), @p81='?' (Size = 255), @p82='?' (Size = 50), @p83='?' (Size = 255), @p84='?' (DbType = Int32), @p85='?' (DbType = DateTime), @p86='?' (DbType = DateTime), @p87='?' (DbType = DateTime), @p88='?' (DbType = DateTime), @p89='?' (DbType = DateTime), @p90='?' (DbType = Int32), @p91='?' (DbType = Int32), @p92='?' (Size = 4000), @p93='?' (Size = 1) (DbType = Byte), @p94='?' (Size = 1) (DbType = Byte), @p95='?' (DbType = Double), @p96='?' (DbType = Double), @p97='?' (DbType = Double), @p98='?' (DbType = Double), @p99='?' (DbType = Double), @p100='?' (DbType = Double), @p101='?' (DbType = Double), @p102='?' (DbType = Double), @p103='?' (DbType = DateTime), @p104='?' (DbType = Boolean), @p136='?' (DbType = Int32), @p106='?' (DbType = Double), @p107='?' (Size = 50), @p108='?' (Size = 10), @p109='?' (Size = 1024), @p110='?' (Size = 255), @p111='?' (Size = 255), @p112='?' (Size = 255), @p113='?' (Size = 10) (DbType = AnsiString), @p114='?' (Size = 15), @p115='?' (Size = 100), @p116='?' (Size = 1) (DbType = Byte), @p117='?' (Size = 1) (DbType = Byte), @p118='?' (Size = 255), @p119='?' (Size = 1) (DbType = Byte), @p120='?' (DbType = DateTime), @p121='?' (Size = 1) (DbType = Byte), @p122='?' (Size = 255), @p123='?' (DbType = Double), @p124='?' (DbType = Int32), @p125='?' (Size = 1024), @p126='?' (DbType = Double), @p127='?' (Size = 250), @p128='?' (Size = 1) (DbType = Byte), @p129='?' (DbType = Double), @p130='?' (DbType = Double), @p131='?' (DbType = Double), @p132='?' (DbType = Double), @p133='?' (DbType = Double), @p134='?' (DbType = Int32), @p135='?' (DbType = Boolean), @p167='?' (DbType = Int32), @p137='?' (DbType = Double), @p138='?' (Size = 50), @p139='?' (Size = 10), @p140='?' (Size = 1024), @p141='?' (Size = 255), @p142='?' (Size = 255), @p143='?' (Size = 255), @p144='?' (Size = 10) (DbType = AnsiString), @p145='?' (Size = 15), @p146='?' (Size = 100), @p147='?' (Size = 1) (DbType = Byte), @p148='?' (Size = 1) (DbType = Byte), @p149='?' (Size = 255), @p150='?' (Size = 1) (DbType = Byte), @p151='?' (DbType = DateTime), @p152='?' (Size = 1) (DbType = Byte), @p153='?' (Size = 255), @p154='?' (DbType = Double), @p155='?' (DbType = Int32), @p156='?' (Size = 1024), @p157='?' (DbType = Double), @p158='?' (Size = 250), @p159='?' (Size = 1) (DbType = Byte), @p160='?' (DbType = Double), @p161='?' (DbType = Double), @p162='?' (DbType = Double), @p163='?' (DbType = Double), @p164='?' (DbType = Double), @p165='?' (DbType = Int32), @p166='?' (DbType = Boolean), @p200='?' (DbType = Int32), @p168='?' (DbType = Double), @p169='?' (Size = 50), @p170='?' (Size = 200), @p171='?' (Size = 255), @p172='?' (Size = 255), @p173='?' (Size = 10) (DbType = AnsiString), @p174='?' (Size = 255), @p175='?' (Size = 14), @p176='?' (Size = 15), @p177='?' (Size = 100), @p178='?' (Size = 1) (DbType = Byte), @p179='?' (Size = 1) (DbType = Byte), @p180='?' (Size = 255), @p181='?' (Size = 1) (DbType = Byte), @p182='?' (DbType = DateTime), @p183='?' (DbType = DateTime), @p184='?' (DbType = Byte), @p185='?' (DbType = Double), @p186='?' (DbType = Int32), @p187='?' (Size = 1024), @p188='?' (Size = 1024), @p189='?' (DbType = Double), @p190='?' (Size = 250), @p191='?' (Size = 1) (DbType = Byte), @p192='?' (DbType = Double), @p193='?' (DbType = Double), @p194='?' (DbType = Double), @p195='?' (DbType = Double), @p196='?' (DbType = Double), @p197='?' (DbType = Double), @p198='?' (DbType = Int32), @p199='?' (DbType = Boolean)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [XML1] ([MA_CSKCB], [XML1ID], [CAN_NANG], [CHECKED], [CreateDate], [Creator], [DIA_CHI], [DanhSachLoi], [FileName], [GIOI_TINH], [GT_THE_DEN], [GT_THE_TU], [HO_TEN], [HospitalId], [KET_QUA_DTRI], [MA_BENH], [MA_BENHKHAC], [MA_BN], [MA_DKBD], [MA_KHOA], [MA_KHUVUC], [MA_LK], [MA_LOAI_KCB], [MA_LYDO_VVIEN], [MA_NOI_CHUYEN], [MA_NOI_DEN], [MA_NOI_DI], [MA_PTTT_QT], [MA_TAI_NAN], [MA_THE], [MHTCID], [MIEN_CUNG_CT], [NAM_QT], [NGAYLAP], [NGAY_RA], [NGAY_SINH], [NGAY_TTOAN], [NGAY_VAO], [SO_NGAY_DTRI], [STT], [TEN_BENH], [THANG_QT], [TINH_TRANG_RV], [T_BHTT], [T_BNCCT], [T_BNTT], [T_NGOAIDS], [T_NGUONKHAC], [T_THUOC], [T_TONGCHI], [T_VTYT], [UpdateDate], [isDelete])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37, @p38, @p39, @p40, @p41, @p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51, @p52);
+UPDATE [XML1_Temp] SET [CAN_NANG] = @p53, [CHECKED] = @p54, [CreateDate] = @p55, [Creator] = @p56, [DIA_CHI] = @p57, [DanhSachLoi] = @p58, [FileName] = @p59, [GIOI_TINH] = @p60, [GT_THE_DEN] = @p61, [GT_THE_TU] = @p62, [HO_TEN] = @p63, [HospitalId] = @p64, [KET_QUA_DTRI] = @p65, [MA_BENH] = @p66, [MA_BENHKHAC] = @p67, [MA_BN] = @p68, [MA_CSKCB] = @p69, [MA_DKBD] = @p70, [MA_KHOA] = @p71, [MA_KHUVUC] = @p72, [MA_LK] = @p73, [MA_LOAI_KCB] = @p74, [MA_LYDO_VVIEN] = @p75, [MA_NOI_CHUYEN] = @p76, [MA_NOI_DEN] = @p77, [MA_NOI_DI] = @p78, [MA_PTTT_QT] = @p79, [MA_TAI_NAN] = @p80, [MA_THE] = @p81, [MHTCID] = @p82, [MIEN_CUNG_CT] = @p83, [NAM_QT] = @p84, [NGAYLAP] = @p85, [NGAY_RA] = @p86, [NGAY_SINH] = @p87, [NGAY_TTOAN] = @p88, [NGAY_VAO] = @p89, [SO_NGAY_DTRI] = @p90, [STT] = @p91, [TEN_BENH] = @p92, [THANG_QT] = @p93, [TINH_TRANG_RV] = @p94, [T_BHTT] = @p95, [T_BNCCT] = @p96, [T_BNTT] = @p97, [T_NGOAIDS] = @p98, [T_NGUONKHAC] = @p99, [T_THUOC] = @p100, [T_TONGCHI] = @p101, [T_VTYT] = @p102, [UpdateDate] = @p103, [isDelete] = @p104
+WHERE [XML1ID] = @p105;
+SELECT @@ROWCOUNT;
+
+UPDATE [XML2_Temp] SET [DON_GIA] = @p106, [DON_VI_TINH] = @p107, [DUONG_DUNG] = @p108, [HAM_LUONG] = @p109, [LIEU_DUNG] = @p110, [MA_BAC_SI] = @p111, [MA_BENH] = @p112, [MA_CSKCB] = @p113, [MA_KHOA] = @p114, [MA_LK] = @p115, [MA_NHOM] = @p116, [MA_PTTT] = @p117, [MA_THUOC] = @p118, [MUC_HUONG] = @p119, [NGAY_YL] = @p120, [PHAM_VI] = @p121, [SO_DANG_KY] = @p122, [SO_LUONG] = @p123, [STT] = @p124, [TEN_THUOC] = @p125, [THANH_TIEN] = @p126, [TT_THAU] = @p127, [TYLE_TT] = @p128, [T_BHTT] = @p129, [T_BNCCT] = @p130, [T_BNTT] = @p131, [T_NGOAIDS] = @p132, [T_NGUONKHAC] = @p133, [XML1ID] = @p134, [isDelete] = @p135
+WHERE [XML2ID] = @p136;
+SELECT @@ROWCOUNT;
+
+UPDATE [XML2_Temp] SET [DON_GIA] = @p137, [DON_VI_TINH] = @p138, [DUONG_DUNG] = @p139, [HAM_LUONG] = @p140, [LIEU_DUNG] = @p141, [MA_BAC_SI] = @p142, [MA_BENH] = @p143, [MA_CSKCB] = @p144, [MA_KHOA] = @p145, [MA_LK] = @p146, [MA_NHOM] = @p147, [MA_PTTT] = @p148, [MA_THUOC] = @p149, [MUC_HUONG] = @p150, [NGAY_YL] = @p151, [PHAM_VI] = @p152, [SO_DANG_KY] = @p153, [SO_LUONG] = @p154, [STT] = @p155, [TEN_THUOC] = @p156, [THANH_TIEN] = @p157, [TT_THAU] = @p158, [TYLE_TT] = @p159, [T_BHTT] = @p160, [T_BNCCT] = @p161, [T_BNTT] = @p162, [T_NGOAIDS] = @p163, [T_NGUONKHAC] = @p164, [XML1ID] = @p165, [isDelete] = @p166
+WHERE [XML2ID] = @p167;
+SELECT @@ROWCOUNT;
+
+UPDATE [XML3_Temp] SET [DON_GIA] = @p168, [DON_VI_TINH] = @p169, [GOI_VTYT] = @p170, [MA_BAC_SI] = @p171, [MA_BENH] = @p172, [MA_CSKCB] = @p173, [MA_DICH_VU] = @p174, [MA_GIUONG] = @p175, [MA_KHOA] = @p176, [MA_LK] = @p177, [MA_NHOM] = @p178, [MA_PTTT] = @p179, [MA_VAT_TU] = @p180, [MUC_HUONG] = @p181, [NGAY_KQ] = @p182, [NGAY_YL] = @p183, [PHAM_VI] = @p184, [SO_LUONG] = @p185, [STT] = @p186, [TEN_DICH_VU] = @p187, [TEN_VAT_TU] = @p188, [THANH_TIEN] = @p189, [TT_THAU] = @p190, [TYLE_TT] = @p191, [T_BHTT] = @p192, [T_BNCCT] = @p193, [T_BNTT] = @p194, [T_NGOAIDS] = @p195, [T_NGUONKHAC] = @p196, [T_TRANTT] = @p197, [XML1ID] = @p198, [isDelete] = @p199
+WHERE [XML3ID] = @p200;
+SELECT @@ROWCOUNT;"
+2023-02-06 23:50:05.919 +07:00 [Error] An exception occurred in the database while saving changes for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'XML1' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:f9d29536-2464-46d5-83c9-6b7322922fb0
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'XML1' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:f9d29536-2464-46d5-83c9-6b7322922fb0
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-02-06 23:50:51.451 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 23:50:51.471 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 23:50:51.471 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 23:50:51.471 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-06 23:50:51.782 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-06 23:50:51.784 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (11:50:51).
+2023-02-06 23:50:51.787 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-06 23:50:51.788 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (11:50:51).
+2023-02-06 23:50:55.216 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXML1: Validate job start: Thread 1
+2023-02-06 23:50:59.349 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B1. ValidateNewXML  1   (11:50:59).
+2023-02-06 23:51:07.750 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B2. ValidateNewXML: Goi ham GetListPagin,total file chua validate     (11:51:07).
+2023-02-06 23:51:20.837 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B3. ValidateNewXML: Goi ham Gropu by  ma_CSKCB:   (11:51:20).
+2023-02-06 23:51:24.542 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.1 Get HS:  Thread 10 ma_CSKCB: 19666  (11:51:24).
+2023-02-06 23:51:24.894 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: B4.2 Get 300 HS, chuan bi VALIDATE   19666    (11:51:24).
+2023-02-06 23:52:17.295 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua1:  (11:52:17).
+2023-02-06 23:52:50.180 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: cua2  (11:52:50).
+2023-02-06 23:53:05.738 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S110. Haimaster Check API get Data:19666 Validated - Total time: 8303.5035
+2023-02-06 23:53:52.044 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data19666: Get All Data - Total time: 39051.3603
+2023-02-06 23:55:05.759 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data19666: After Validated - Total time: 112766.8201
+2023-02-06 23:55:19.446 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu19666: After Validated - Total time: 12642.3702
+2023-02-06 23:57:33.821 +07:00 [Error] Failed executing DbCommand ("3"ms) [Parameters=["@p0='?' (Size = 10), @p1='?' (DbType = Int32), @p2='?' (DbType = Double), @p3='?' (Size = 1) (DbType = Byte), @p4='?' (DbType = DateTime), @p5='?' (DbType = Int32), @p6='?' (Size = 1024), @p7='?' (Size = 4000), @p8='?' (Size = 250), @p9='?' (Size = 1) (DbType = Byte), @p10='?' (Size = 255), @p11='?' (Size = 255), @p12='?' (Size = 255), @p13='?' (Size = 36) (DbType = AnsiString), @p14='?' (Size = 1) (DbType = Byte), @p15='?' (Size = 255), @p16='?' (Size = 255), @p17='?' (Size = 100), @p18='?' (Size = 255), @p19='?' (Size = 15), @p20='?' (Size = 15), @p21='?' (Size = 100), @p22='?' (Size = 1) (DbType = Byte), @p23='?' (Size = 1) (DbType = Byte), @p24='?' (Size = 5), @p25='?' (Size = 5), @p26='?' (Size = 5), @p27='?' (Size = 255), @p28='?' (DbType = Byte), @p29='?' (Size = 255), @p30='?' (Size = 50), @p31='?' (Size = 255), @p32='?' (DbType = Int32), @p33='?' (DbType = DateTime), @p34='?' (DbType = DateTime), @p35='?' (DbType = DateTime), @p36='?' (DbType = DateTime), @p37='?' (DbType = DateTime), @p38='?' (DbType = Int32), @p39='?' (DbType = Int32), @p40='?' (Size = 4000), @p41='?' (Size = 1) (DbType = Byte), @p42='?' (Size = 1) (DbType = Byte), @p43='?' (DbType = Double), @p44='?' (DbType = Double), @p45='?' (DbType = Double), @p46='?' (DbType = Double), @p47='?' (DbType = Double), @p48='?' (DbType = Double), @p49='?' (DbType = Double), @p50='?' (DbType = Double), @p51='?' (DbType = DateTime), @p52='?' (DbType = Boolean), @p105='?' (DbType = Int32), @p53='?' (DbType = Double), @p54='?' (Size = 1) (DbType = Byte), @p55='?' (DbType = DateTime), @p56='?' (DbType = Int32), @p57='?' (Size = 1024), @p58='?' (Size = 4000), @p59='?' (Size = 250), @p60='?' (Size = 1) (DbType = Byte), @p61='?' (Size = 255), @p62='?' (Size = 255), @p63='?' (Size = 255), @p64='?' (Size = 36) (DbType = AnsiString), @p65='?' (Size = 1) (DbType = Byte), @p66='?' (Size = 255), @p67='?' (Size = 255), @p68='?' (Size = 100), @p69='?' (Size = 10), @p70='?' (Size = 255), @p71='?' (Size = 15), @p72='?' (Size = 15), @p73='?' (Size = 100), @p74='?' (Size = 1) (DbType = Byte), @p75='?' (Size = 1) (DbType = Byte), @p76='?' (Size = 5), @p77='?' (Size = 5), @p78='?' (Size = 5), @p79='?' (Size = 255), @p80='?' (DbType = Byte), @p81='?' (Size = 255), @p82='?' (Size = 50), @p83='?' (Size = 255), @p84='?' (DbType = Int32), @p85='?' (DbType = DateTime), @p86='?' (DbType = DateTime), @p87='?' (DbType = DateTime), @p88='?' (DbType = DateTime), @p89='?' (DbType = DateTime), @p90='?' (DbType = Int32), @p91='?' (DbType = Int32), @p92='?' (Size = 4000), @p93='?' (Size = 1) (DbType = Byte), @p94='?' (Size = 1) (DbType = Byte), @p95='?' (DbType = Double), @p96='?' (DbType = Double), @p97='?' (DbType = Double), @p98='?' (DbType = Double), @p99='?' (DbType = Double), @p100='?' (DbType = Double), @p101='?' (DbType = Double), @p102='?' (DbType = Double), @p103='?' (DbType = DateTime), @p104='?' (DbType = Boolean), @p136='?' (DbType = Int32), @p106='?' (DbType = Double), @p107='?' (Size = 50), @p108='?' (Size = 10), @p109='?' (Size = 1024), @p110='?' (Size = 255), @p111='?' (Size = 255), @p112='?' (Size = 255), @p113='?' (Size = 10) (DbType = AnsiString), @p114='?' (Size = 15), @p115='?' (Size = 100), @p116='?' (Size = 1) (DbType = Byte), @p117='?' (Size = 1) (DbType = Byte), @p118='?' (Size = 255), @p119='?' (Size = 1) (DbType = Byte), @p120='?' (DbType = DateTime), @p121='?' (Size = 1) (DbType = Byte), @p122='?' (Size = 255), @p123='?' (DbType = Double), @p124='?' (DbType = Int32), @p125='?' (Size = 1024), @p126='?' (DbType = Double), @p127='?' (Size = 250), @p128='?' (Size = 1) (DbType = Byte), @p129='?' (DbType = Double), @p130='?' (DbType = Double), @p131='?' (DbType = Double), @p132='?' (DbType = Double), @p133='?' (DbType = Double), @p134='?' (DbType = Int32), @p135='?' (DbType = Boolean), @p167='?' (DbType = Int32), @p137='?' (DbType = Double), @p138='?' (Size = 50), @p139='?' (Size = 10), @p140='?' (Size = 1024), @p141='?' (Size = 255), @p142='?' (Size = 255), @p143='?' (Size = 255), @p144='?' (Size = 10) (DbType = AnsiString), @p145='?' (Size = 15), @p146='?' (Size = 100), @p147='?' (Size = 1) (DbType = Byte), @p148='?' (Size = 1) (DbType = Byte), @p149='?' (Size = 255), @p150='?' (Size = 1) (DbType = Byte), @p151='?' (DbType = DateTime), @p152='?' (Size = 1) (DbType = Byte), @p153='?' (Size = 255), @p154='?' (DbType = Double), @p155='?' (DbType = Int32), @p156='?' (Size = 1024), @p157='?' (DbType = Double), @p158='?' (Size = 250), @p159='?' (Size = 1) (DbType = Byte), @p160='?' (DbType = Double), @p161='?' (DbType = Double), @p162='?' (DbType = Double), @p163='?' (DbType = Double), @p164='?' (DbType = Double), @p165='?' (DbType = Int32), @p166='?' (DbType = Boolean), @p200='?' (DbType = Int32), @p168='?' (DbType = Double), @p169='?' (Size = 50), @p170='?' (Size = 200), @p171='?' (Size = 255), @p172='?' (Size = 255), @p173='?' (Size = 10) (DbType = AnsiString), @p174='?' (Size = 255), @p175='?' (Size = 14), @p176='?' (Size = 15), @p177='?' (Size = 100), @p178='?' (Size = 1) (DbType = Byte), @p179='?' (Size = 1) (DbType = Byte), @p180='?' (Size = 255), @p181='?' (Size = 1) (DbType = Byte), @p182='?' (DbType = DateTime), @p183='?' (DbType = DateTime), @p184='?' (DbType = Byte), @p185='?' (DbType = Double), @p186='?' (DbType = Int32), @p187='?' (Size = 1024), @p188='?' (Size = 1024), @p189='?' (DbType = Double), @p190='?' (Size = 250), @p191='?' (Size = 1) (DbType = Byte), @p192='?' (DbType = Double), @p193='?' (DbType = Double), @p194='?' (DbType = Double), @p195='?' (DbType = Double), @p196='?' (DbType = Double), @p197='?' (DbType = Double), @p198='?' (DbType = Int32), @p199='?' (DbType = Boolean)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [XML1] ([MA_CSKCB], [XML1ID], [CAN_NANG], [CHECKED], [CreateDate], [Creator], [DIA_CHI], [DanhSachLoi], [FileName], [GIOI_TINH], [GT_THE_DEN], [GT_THE_TU], [HO_TEN], [HospitalId], [KET_QUA_DTRI], [MA_BENH], [MA_BENHKHAC], [MA_BN], [MA_DKBD], [MA_KHOA], [MA_KHUVUC], [MA_LK], [MA_LOAI_KCB], [MA_LYDO_VVIEN], [MA_NOI_CHUYEN], [MA_NOI_DEN], [MA_NOI_DI], [MA_PTTT_QT], [MA_TAI_NAN], [MA_THE], [MHTCID], [MIEN_CUNG_CT], [NAM_QT], [NGAYLAP], [NGAY_RA], [NGAY_SINH], [NGAY_TTOAN], [NGAY_VAO], [SO_NGAY_DTRI], [STT], [TEN_BENH], [THANG_QT], [TINH_TRANG_RV], [T_BHTT], [T_BNCCT], [T_BNTT], [T_NGOAIDS], [T_NGUONKHAC], [T_THUOC], [T_TONGCHI], [T_VTYT], [UpdateDate], [isDelete])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37, @p38, @p39, @p40, @p41, @p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51, @p52);
+UPDATE [XML1_Temp] SET [CAN_NANG] = @p53, [CHECKED] = @p54, [CreateDate] = @p55, [Creator] = @p56, [DIA_CHI] = @p57, [DanhSachLoi] = @p58, [FileName] = @p59, [GIOI_TINH] = @p60, [GT_THE_DEN] = @p61, [GT_THE_TU] = @p62, [HO_TEN] = @p63, [HospitalId] = @p64, [KET_QUA_DTRI] = @p65, [MA_BENH] = @p66, [MA_BENHKHAC] = @p67, [MA_BN] = @p68, [MA_CSKCB] = @p69, [MA_DKBD] = @p70, [MA_KHOA] = @p71, [MA_KHUVUC] = @p72, [MA_LK] = @p73, [MA_LOAI_KCB] = @p74, [MA_LYDO_VVIEN] = @p75, [MA_NOI_CHUYEN] = @p76, [MA_NOI_DEN] = @p77, [MA_NOI_DI] = @p78, [MA_PTTT_QT] = @p79, [MA_TAI_NAN] = @p80, [MA_THE] = @p81, [MHTCID] = @p82, [MIEN_CUNG_CT] = @p83, [NAM_QT] = @p84, [NGAYLAP] = @p85, [NGAY_RA] = @p86, [NGAY_SINH] = @p87, [NGAY_TTOAN] = @p88, [NGAY_VAO] = @p89, [SO_NGAY_DTRI] = @p90, [STT] = @p91, [TEN_BENH] = @p92, [THANG_QT] = @p93, [TINH_TRANG_RV] = @p94, [T_BHTT] = @p95, [T_BNCCT] = @p96, [T_BNTT] = @p97, [T_NGOAIDS] = @p98, [T_NGUONKHAC] = @p99, [T_THUOC] = @p100, [T_TONGCHI] = @p101, [T_VTYT] = @p102, [UpdateDate] = @p103, [isDelete] = @p104
+WHERE [XML1ID] = @p105;
+SELECT @@ROWCOUNT;
+
+UPDATE [XML2_Temp] SET [DON_GIA] = @p106, [DON_VI_TINH] = @p107, [DUONG_DUNG] = @p108, [HAM_LUONG] = @p109, [LIEU_DUNG] = @p110, [MA_BAC_SI] = @p111, [MA_BENH] = @p112, [MA_CSKCB] = @p113, [MA_KHOA] = @p114, [MA_LK] = @p115, [MA_NHOM] = @p116, [MA_PTTT] = @p117, [MA_THUOC] = @p118, [MUC_HUONG] = @p119, [NGAY_YL] = @p120, [PHAM_VI] = @p121, [SO_DANG_KY] = @p122, [SO_LUONG] = @p123, [STT] = @p124, [TEN_THUOC] = @p125, [THANH_TIEN] = @p126, [TT_THAU] = @p127, [TYLE_TT] = @p128, [T_BHTT] = @p129, [T_BNCCT] = @p130, [T_BNTT] = @p131, [T_NGOAIDS] = @p132, [T_NGUONKHAC] = @p133, [XML1ID] = @p134, [isDelete] = @p135
+WHERE [XML2ID] = @p136;
+SELECT @@ROWCOUNT;
+
+UPDATE [XML2_Temp] SET [DON_GIA] = @p137, [DON_VI_TINH] = @p138, [DUONG_DUNG] = @p139, [HAM_LUONG] = @p140, [LIEU_DUNG] = @p141, [MA_BAC_SI] = @p142, [MA_BENH] = @p143, [MA_CSKCB] = @p144, [MA_KHOA] = @p145, [MA_LK] = @p146, [MA_NHOM] = @p147, [MA_PTTT] = @p148, [MA_THUOC] = @p149, [MUC_HUONG] = @p150, [NGAY_YL] = @p151, [PHAM_VI] = @p152, [SO_DANG_KY] = @p153, [SO_LUONG] = @p154, [STT] = @p155, [TEN_THUOC] = @p156, [THANH_TIEN] = @p157, [TT_THAU] = @p158, [TYLE_TT] = @p159, [T_BHTT] = @p160, [T_BNCCT] = @p161, [T_BNTT] = @p162, [T_NGOAIDS] = @p163, [T_NGUONKHAC] = @p164, [XML1ID] = @p165, [isDelete] = @p166
+WHERE [XML2ID] = @p167;
+SELECT @@ROWCOUNT;
+
+UPDATE [XML3_Temp] SET [DON_GIA] = @p168, [DON_VI_TINH] = @p169, [GOI_VTYT] = @p170, [MA_BAC_SI] = @p171, [MA_BENH] = @p172, [MA_CSKCB] = @p173, [MA_DICH_VU] = @p174, [MA_GIUONG] = @p175, [MA_KHOA] = @p176, [MA_LK] = @p177, [MA_NHOM] = @p178, [MA_PTTT] = @p179, [MA_VAT_TU] = @p180, [MUC_HUONG] = @p181, [NGAY_KQ] = @p182, [NGAY_YL] = @p183, [PHAM_VI] = @p184, [SO_LUONG] = @p185, [STT] = @p186, [TEN_DICH_VU] = @p187, [TEN_VAT_TU] = @p188, [THANH_TIEN] = @p189, [TT_THAU] = @p190, [TYLE_TT] = @p191, [T_BHTT] = @p192, [T_BNCCT] = @p193, [T_BNTT] = @p194, [T_NGOAIDS] = @p195, [T_NGUONKHAC] = @p196, [T_TRANTT] = @p197, [XML1ID] = @p198, [isDelete] = @p199
+WHERE [XML3ID] = @p200;
+SELECT @@ROWCOUNT;"
+2023-02-06 23:57:33.843 +07:00 [Error] An exception occurred in the database while saving changes for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'XML1' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:6307f301-4893-4efa-ac54-e27b3a2ec211
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'XML1' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:6307f301-4893-4efa-ac54-e27b3a2ec211
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)

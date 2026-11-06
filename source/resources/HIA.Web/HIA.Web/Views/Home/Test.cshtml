@@ -1,0 +1,40 @@
+﻿@using HIA.Core.Base
+@{
+    Layout = null;
+    TimePeriod per1 = TimePeriod.OfficialTime;
+
+    TimePeriod per2 = new TimePeriod("[7:30-12:00;13:30-17:00][7:00-11:30-13:00-16:30]01/05-30/09");
+
+    TimePeriod per3 = new TimePeriod("[7:00-12:00;13:00-16:30][6:30-11:30;13:30-17:00]16/04-15/10");
+
+    DateTime now = DateTime.Now;
+    DateTime d1 = new DateTime(2023, 3, 1, 12, 35, 0);
+    DateTime d2 = new DateTime(2023, 2, 21, 7, 25, 0);
+    DateTime d3 = new DateTime(2023, 6, 15, 16, 0, 0);
+}
+
+@Json.Serialize(per1).ToString()
+<br />
+<br />
+@Json.Serialize(per2).ToString()
+<br />
+<br />
+Test @now with P1: [@per1.InRange(now)] ? false
+<br />
+Test @now with P2: [@per2.InRange(now)] ? true
+<br />
+<br />
+Test @d1 with P1: [@per1.InRange(d1)] ? false
+<br />
+Test @d2 with P1: [@per1.InRange(d2)] ? true
+<br />
+Test @d3 with P1: [@per1.InRange(d3)] ? true
+<br />
+<br />
+Test @d1 with P2: [@per2.InRange(d1)] ? false
+<br />
+Test @d2 with P2: [@per2.InRange(d2)] ? false
+<br />
+Test @d3 with P2: [@per2.InRange(d3)] ? false
+<br />
+<br />
