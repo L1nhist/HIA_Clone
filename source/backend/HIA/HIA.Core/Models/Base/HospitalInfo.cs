@@ -14,7 +14,7 @@ public class HospitalInfo
 
     public HospitalInfo() { }
 
-    public HospitalInfo(HIA.Data.Entities.Hospital hospital)
+    public HospitalInfo(Data.Auths.Hospital hospital)
     {
         MaCSKCB = hospital.MA_CSKCB;
         Name = hospital.Name;
@@ -39,7 +39,7 @@ public class HospitalAIInfo
 
     public HospitalAIInfo() { }
 
-    public HospitalAIInfo(HIA.Data.Entities.Hospital hospital)
+    public HospitalAIInfo(Data.Auths.Hospital hospital)
     {
         MaCSKCB = hospital.MA_CSKCB;
         Name = hospital.Name;

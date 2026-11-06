@@ -1,4 +1,4 @@
-using HIA.Data.Entities;
+using HIA.Data.Reports;
 using HIA.Repositories.Base;
 
 namespace HIA.Repositories.ThongKe;

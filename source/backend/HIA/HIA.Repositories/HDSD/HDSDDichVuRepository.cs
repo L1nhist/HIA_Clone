@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
 using HIA.Core.Base;
 using HIA.Core.Models.Pagination;
-using HIA.Data.Entities;
+using HIA.Data.Rules;
 using HIA.Repositories.Base;
 using LinqKit;
 using Microsoft.AspNetCore.Http;

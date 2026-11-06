@@ -1,6 +1,6 @@
 using HIA.Core.Base;
 using HIA.Data.Base;
-using HIA.Data.Entities;
+using HIA.Data.Records;
 
 namespace HIA.Core.Models.Files130;
 

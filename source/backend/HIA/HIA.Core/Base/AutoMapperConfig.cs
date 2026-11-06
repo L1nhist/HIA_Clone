@@ -5,8 +5,11 @@ using HIA.Core.Models.Hospital;
 using HIA.Core.Models.Pagination;
 using HIA.Core.Models.User;
 using HIA.Core.Models.HDSD;
-using HIA.Data.Entities;
 using HIA.Core.Models.FileUploads130;
+using HIA.Data.Catalogs;
+using HIA.Data.Records;
+using HIA.Data.Rules;
+using HIA.Data.Auths;
 
 namespace HIA.Core.Base;
 
