@@ -1,5 +1,15 @@
 # Template hệ thống: .NET · PostgreSQL · Next.js · (LLM qua cổng trừu tượng)
 
+## Dự án HIA — yêu cầu tổng thể
+Chuyển hệ thống HIA (ASP.NET net5.0, EF Core 5, SQL Server; nguồn tham chiếu trong `source/resources/HIA.Web`) sang .NET 10, theo ba giai đoạn:
+1. **Port sang .NET 10:** năm project trong `source/backend/HIA/` làm lần lượt Data (từ DatabaseModel) -> Core -> Repositories -> Services -> Web. Chỉ SQL Server, dọn code, đổi Newtonsoft.Json sang System.Text.Json (property lowercase, parse không phân biệt hoa thường), Nullable bật. Kiểm chứng bằng build, chưa viết test.
+2. **Hỗ trợ cả PostgreSQL và SQL Server**, kèm migration DB cho cả hai.
+3. **Docker và giải pháp triển khai độc lập** trên máy lẻ.
+
+Chi tiết, thứ tự và các quy tắc ghi đè nằm trong `CLAUDE.md`; kế hoạch từng bước trong `documents/plans/`.
+
+---
+
 Claude chính (orchestrator, kiêm Tech Lead + PM) nhận yêu cầu từ bạn (PO), phỏng vấn khi chưa rõ, lập plan chờ bạn duyệt, rồi giao việc cho agent phụ theo vùng ghi riêng. Luật đầy đủ: `CLAUDE.md`. Profile dự án: `documents/PROJECT.md`.
 
 ## Cấu trúc
