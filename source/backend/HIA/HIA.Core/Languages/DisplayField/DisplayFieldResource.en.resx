@@ -1,0 +1,888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACTIONS" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="ACTIVE" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="BACK_TO_HOME" xml:space="preserve">
+    <value>Back to home</value>
+  </data>
+  <data name="BACK_TO_LIST" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="BACK_TO_LOGIN" xml:space="preserve">
+    <value>Back to login</value>
+  </data>
+  <data name="CAN_NANG" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="CHECKED" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="CREATED_DATE" xml:space="preserve">
+    <value>Created date</value>
+  </data>
+  <data name="CREATE_NEW" xml:space="preserve">
+    <value>Create New</value>
+  </data>
+  <data name="CREATOR" xml:space="preserve">
+    <value>Creator</value>
+  </data>
+  <data name="DANH_SACH_LOI" xml:space="preserve">
+    <value>Error list</value>
+  </data>
+  <data name="DELETE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DELETE_USER" xml:space="preserve">
+    <value>Delete User</value>
+  </data>
+  <data name="DIA_CHI" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="DIEN_BIEN" xml:space="preserve">
+    <value>Developments</value>
+  </data>
+  <data name="DON_GIA" xml:space="preserve">
+    <value>Unit price</value>
+  </data>
+  <data name="DON_VI_TINH" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="DUONG_DUNG" xml:space="preserve">
+    <value>Usage route</value>
+  </data>
+  <data name="EMAIL" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="FILE_NAME" xml:space="preserve">
+    <value>Filename</value>
+  </data>
+  <data name="FORGOT_PWD" xml:space="preserve">
+    <value>Forgot pwd?</value>
+  </data>
+  <data name="FULLNAME" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="GIA_TRI" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="GIOI_TINH" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="GOI_VTYT" xml:space="preserve">
+    <value>Package VTYT</value>
+  </data>
+  <data name="GT_THE_DEN" xml:space="preserve">
+    <value>Incoming card value</value>
+  </data>
+  <data name="GT_THE_TU" xml:space="preserve">
+    <value>Magnetic card value</value>
+  </data>
+  <data name="HAM_LUONG" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="HOI_CHAN" xml:space="preserve">
+    <value>Consultation</value>
+  </data>
+  <data name="HOME" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="HOSPITAL" xml:space="preserve">
+    <value>Hospital</value>
+  </data>
+  <data name="HO_TEN" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="INACTIVE" xml:space="preserve">
+    <value>InActive</value>
+  </data>
+  <data name="KET_LUAN" xml:space="preserve">
+    <value>Conclusion</value>
+  </data>
+  <data name="KET_QUA_DTRI" xml:space="preserve">
+    <value>Treatment results</value>
+  </data>
+  <data name="LIEU_DUNG" xml:space="preserve">
+    <value>Dosage</value>
+  </data>
+  <data name="MA_BAC_SI" xml:space="preserve">
+    <value>Doctor code</value>
+  </data>
+  <data name="MA_BENH" xml:space="preserve">
+    <value>Disease code</value>
+  </data>
+  <data name="MA_BENHKHAC" xml:space="preserve">
+    <value>Other disease codes</value>
+  </data>
+  <data name="MA_BN" xml:space="preserve">
+    <value>Patient code</value>
+  </data>
+  <data name="MA_CHI_SO" xml:space="preserve">
+    <value>Index code</value>
+  </data>
+  <data name="MA_CSKCB" xml:space="preserve">
+    <value>Code CSKCB</value>
+  </data>
+  <data name="MA_DICH_VU" xml:space="preserve">
+    <value>Service code</value>
+  </data>
+  <data name="MA_DKBD" xml:space="preserve">
+    <value>Place of registration</value>
+  </data>
+  <data name="MA_GIUONG" xml:space="preserve">
+    <value>Bed code</value>
+  </data>
+  <data name="MA_KHOA" xml:space="preserve">
+    <value>Faculty Code</value>
+  </data>
+  <data name="MA_KHUVUC" xml:space="preserve">
+    <value>Area code</value>
+  </data>
+  <data name="MA_LK" xml:space="preserve">
+    <value>Visit code</value>
+  </data>
+  <data name="MA_LOAI_KCB" xml:space="preserve">
+    <value>Type KCB</value>
+  </data>
+  <data name="MA_LYDO_VVIEN" xml:space="preserve">
+    <value>Reason for admission</value>
+  </data>
+  <data name="MA_MAY" xml:space="preserve">
+    <value>Machine code</value>
+  </data>
+  <data name="MA_NHOM" xml:space="preserve">
+    <value>Group code</value>
+  </data>
+  <data name="MA_NOI_CHUYEN" xml:space="preserve">
+    <value>Transfer place</value>
+  </data>
+  <data name="MA_NOI_DEN" xml:space="preserve">
+    <value>Destination code</value>
+  </data>
+  <data name="MA_NOI_DI" xml:space="preserve">
+    <value>Where to go code</value>
+  </data>
+  <data name="MA_PTTT" xml:space="preserve">
+    <value>Code PTTT</value>
+  </data>
+  <data name="MA_PTTT_QT" xml:space="preserve">
+    <value>PTTT code QT</value>
+  </data>
+  <data name="MA_TAI_NAN" xml:space="preserve">
+    <value>Accident code</value>
+  </data>
+  <data name="MA_THE" xml:space="preserve">
+    <value>ID Card</value>
+  </data>
+  <data name="MA_THUOC" xml:space="preserve">
+    <value>Drug code BV</value>
+  </data>
+  <data name="MA_VAT_TU" xml:space="preserve">
+    <value>Material code</value>
+  </data>
+  <data name="MENU_CATEGORY_MAGEME" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="MENU_DEPARTMENT_MAGEME" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="MENU_HOSO_MAGEME" xml:space="preserve">
+    <value>Ho So Management</value>
+  </data>
+  <data name="MENU_HOSPITAL_MAGEME" xml:space="preserve">
+    <value>Hospital Management</value>
+  </data>
+  <data name="MENU_USER_MAGEME" xml:space="preserve">
+    <value>User Management</value>
+  </data>
+  <data name="MHTCID" xml:space="preserve">
+    <value>Present value of MHTCID</value>
+  </data>
+  <data name="MIEN_CUNG_CT" xml:space="preserve">
+    <value>CCT-free</value>
+  </data>
+  <data name="MO_TA" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="MUC_HUONG" xml:space="preserve">
+    <value>Benefit level</value>
+  </data>
+  <data name="NAM_QT" xml:space="preserve">
+    <value>Year of settlement</value>
+  </data>
+  <data name="NGAY_KQ" xml:space="preserve">
+    <value>Result date</value>
+  </data>
+  <data name="NGAY_LAP" xml:space="preserve">
+    <value>Date founded</value>
+  </data>
+  <data name="NGAY_RA" xml:space="preserve">
+    <value>Date out</value>
+  </data>
+  <data name="NGAY_SINH" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="NGAY_TTOAN" xml:space="preserve">
+    <value>Date of payment</value>
+  </data>
+  <data name="NGAY_VAO" xml:space="preserve">
+    <value>Day in</value>
+  </data>
+  <data name="NGAY_YL" xml:space="preserve">
+    <value>Order date</value>
+  </data>
+  <data name="NO" xml:space="preserve">
+    <value>No.</value>
+  </data>
+  <data name="OR_TEXT" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="PASSWORD" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PHAM_VI" xml:space="preserve">
+    <value>Limit</value>
+  </data>
+  <data name="PHAU_THUAT" xml:space="preserve">
+    <value>Surgery</value>
+  </data>
+  <data name="PHONE_NUMBER" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="RECOVER_PWD" xml:space="preserve">
+    <value>Recover Password</value>
+  </data>
+  <data name="RECOVER_SUBMIT" xml:space="preserve">
+    <value>Submit request</value>
+  </data>
+  <data name="RECOVER_TEXT" xml:space="preserve">
+    <value>Enter your Email and instructions will be sent to you!</value>
+  </data>
+  <data name="REMEMBER_ME" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="ROLE" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="SEARCH" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SIGN_IN" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="SIGN_OUT" xml:space="preserve">
+    <value>Sign Out</value>
+  </data>
+  <data name="SO_DANG_KY" xml:space="preserve">
+    <value>Registration number</value>
+  </data>
+  <data name="SO_LUONG" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="SO_NGAY_DTRI" xml:space="preserve">
+    <value>Number of days of treatment</value>
+  </data>
+  <data name="STATUS" xml:space="preserve">
+    <value>status</value>
+  </data>
+  <data name="Ten_BENH" xml:space="preserve">
+    <value>Name of disease</value>
+  </data>
+  <data name="TEN_CHI_SO" xml:space="preserve">
+    <value>Index name</value>
+  </data>
+  <data name="TEN_DICH_VU" xml:space="preserve">
+    <value>Service name</value>
+  </data>
+  <data name="TEN_KHOA" xml:space="preserve">
+    <value>Faculty name</value>
+  </data>
+  <data name="TEN_THUOC" xml:space="preserve">
+    <value>Drug name</value>
+  </data>
+  <data name="TEN_VAT_TU" xml:space="preserve">
+    <value>Name VTYT</value>
+  </data>
+  <data name="THANG_QT" xml:space="preserve">
+    <value>Settlement month</value>
+  </data>
+  <data name="THANH_TIEN" xml:space="preserve">
+    <value>into money</value>
+  </data>
+  <data name="TINH_TRANG_RV" xml:space="preserve">
+    <value>Month of settlementShould discharge status</value>
+  </data>
+  <data name="TT_THAU" xml:space="preserve">
+    <value>TT Contractor</value>
+  </data>
+  <data name="TYLE_TT" xml:space="preserve">
+    <value>Ratio of TT</value>
+  </data>
+  <data name="T_BHTT" xml:space="preserve">
+    <value>BHTT money</value>
+  </data>
+  <data name="T_BNCCT" xml:space="preserve">
+    <value>money BNCCT</value>
+  </data>
+  <data name="T_BNTT" xml:space="preserve">
+    <value>TT patient</value>
+  </data>
+  <data name="T_NGOAIDS" xml:space="preserve">
+    <value>In addition to fixed rate</value>
+  </data>
+  <data name="T_NGUONKHAC" xml:space="preserve">
+    <value>Other souces</value>
+  </data>
+  <data name="T_THUOC" xml:space="preserve">
+    <value>Drugs</value>
+  </data>
+  <data name="T_TONGCHI" xml:space="preserve">
+    <value>Total expenditure</value>
+  </data>
+  <data name="T_TRANTT" xml:space="preserve">
+    <value>Tran TT</value>
+  </data>
+  <data name="T_VTYT" xml:space="preserve">
+    <value>money VTYT</value>
+  </data>
+  <data name="UPDATE" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UPDATE_USER" xml:space="preserve">
+    <value>Update user</value>
+  </data>
+  <data name="XEErrorCode" xml:space="preserve">
+    <value>Error Code</value>
+  </data>
+  <data name="XEErrorRow" xml:space="preserve">
+    <value>Error Row</value>
+  </data>
+  <data name="ErrorAtXMLFile" xml:space="preserve">
+    <value>Error At XML File</value>
+  </data>
+  <data name="ErrorAtXMLTag" xml:space="preserve">
+    <value>Error At XML Tag</value>
+  </data>
+  <data name="ErrorContent" xml:space="preserve">
+    <value>Error Content</value>
+  </data>
+  <data name="ErrorComment" xml:space="preserve">
+    <value>Error Comment</value>
+  </data>
+  <data name="DOWNLOAD_TEXT" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="TITLE_UPLOAD_CATEGORY" xml:space="preserve">
+    <value>Upload excel (.xls or .xlsx)</value>
+  </data>
+  <data name="UPLOAD_TEXT" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="PENDING" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="CONFIRM_PASSWORD" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="UPDATE_1" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="USERNAME" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="CHANGE_PASS" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="CLOSE" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CURRENT_PASSWORD" xml:space="preserve">
+    <value>Current Password</value>
+  </data>
+  <data name="NEW_PASSWORD" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="ErrorType" xml:space="preserve">
+    <value>Error Type</value>
+  </data>
+  <data name="SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="CONG_BO" xml:space="preserve">
+    <value>Announced</value>
+  </data>
+  <data name="DINH_MUC" xml:space="preserve">
+    <value>Quota</value>
+  </data>
+  <data name="Dong_GOI" xml:space="preserve">
+    <value>Pack</value>
+  </data>
+  <data name="Don_GIA_TT" xml:space="preserve">
+    <value>Unit price TT</value>
+  </data>
+  <data name="DUONGDUNG_AX" xml:space="preserve">
+    <value>Route using AX</value>
+  </data>
+  <data name="DVKTC" xml:space="preserve">
+    <value>Is DVKTC</value>
+  </data>
+  <data name="GIA_AX" xml:space="preserve">
+    <value>Mapping price</value>
+  </data>
+  <data name="Gia_TRAN" xml:space="preserve">
+    <value>Ceiling price</value>
+  </data>
+  <data name="GOI_THAU" xml:space="preserve">
+    <value>Package</value>
+  </data>
+  <data name="Hamluong_AX" xml:space="preserve">
+    <value>AX content</value>
+  </data>
+  <data name="Hang_SX" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="HIEULUC" xml:space="preserve">
+    <value>Effective</value>
+  </data>
+  <data name="Hoatchat_AX" xml:space="preserve">
+    <value>Active ingredient AX</value>
+  </data>
+  <data name="Hoat_CHAT" xml:space="preserve">
+    <value>Active ingredient</value>
+  </data>
+  <data name="KETQUA" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="LOAI_THAU" xml:space="preserve">
+    <value>Bid type</value>
+  </data>
+  <data name="LOAI_THUOC" xml:space="preserve">
+    <value>Type of medicine</value>
+  </data>
+  <data name="LYDOTUCHOI" xml:space="preserve">
+    <value>Reason for refusal</value>
+  </data>
+  <data name="MANHOM_9324" xml:space="preserve">
+    <value>Old group code</value>
+  </data>
+  <data name="MA_AX" xml:space="preserve">
+    <value>Mapping code</value>
+  </data>
+  <data name="MA_COSOKCB" xml:space="preserve">
+    <value>CSKCB Code</value>
+  </data>
+  <data name="MA_DUONGDUNG_AX" xml:space="preserve">
+    <value>Route code AX</value>
+  </data>
+  <data name="MA_DUONG_DUNG" xml:space="preserve">
+    <value>Route code</value>
+  </data>
+  <data name="MA_DVKT" xml:space="preserve">
+    <value>Service code</value>
+  </data>
+  <data name="MA_GIA" xml:space="preserve">
+    <value>Price code</value>
+  </data>
+  <data name="MA_HIEU" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="MA_HOAT_CHAT" xml:space="preserve">
+    <value>Active ingredient code</value>
+  </data>
+  <data name="MA_NHOM_AX" xml:space="preserve">
+    <value>Mapping code</value>
+  </data>
+  <data name="MA_NHOM_VTYT" xml:space="preserve">
+    <value>Group code</value>
+  </data>
+  <data name="MA_THUOC_BV" xml:space="preserve">
+    <value>Drug code BV</value>
+  </data>
+  <data name="MA_VTYT_BV" xml:space="preserve">
+    <value>Code of VTYT Hospital</value>
+  </data>
+  <data name="Nha_THAU" xml:space="preserve">
+    <value>Contractors</value>
+  </data>
+  <data name="NHOM_THAU" xml:space="preserve">
+    <value>Contractor group</value>
+  </data>
+  <data name="Nuoc_SX" xml:space="preserve">
+    <value>Country of manufacture</value>
+  </data>
+  <data name="Quyet_DINH" xml:space="preserve">
+    <value>Decision</value>
+  </data>
+  <data name="QUY_CACH" xml:space="preserve">
+    <value>Specifications</value>
+  </data>
+  <data name="Sodangky_AX" xml:space="preserve">
+    <value>Registration number AX</value>
+  </data>
+  <data name="Tenthuoc_AX" xml:space="preserve">
+    <value>Drug name AX</value>
+  </data>
+  <data name="TEN_AX" xml:space="preserve">
+    <value>Mapping name</value>
+  </data>
+  <data name="TEN_DVKT" xml:space="preserve">
+    <value>Service name</value>
+  </data>
+  <data name="TEN_NHOM_AX" xml:space="preserve">
+    <value>Mapping name</value>
+  </data>
+  <data name="TEN_NHOM_VTYT" xml:space="preserve">
+    <value>Group name</value>
+  </data>
+  <data name="TEN_VTYT_BV" xml:space="preserve">
+    <value>Name of VTYT Hospital</value>
+  </data>
+  <data name="DataTable_EMPTY_TABLE" xml:space="preserve">
+    <value>No data available in table</value>
+  </data>
+  <data name="DataTable_ENTRIES" xml:space="preserve">
+    <value>entries</value>
+  </data>
+  <data name="DataTable_FIRST" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="DataTable_LAST" xml:space="preserve">
+    <value>Last</value>
+  </data>
+  <data name="DataTable_LOADING" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="DataTable_NEXT" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="DataTable_OF" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="DataTable_PREVIOUS" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="DataTable_PROCESSING" xml:space="preserve">
+    <value>Processing...</value>
+  </data>
+  <data name="DataTable_SEARCH" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="DataTable_SHOW" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="DataTable_SHOWING" xml:space="preserve">
+    <value>Showing</value>
+  </data>
+  <data name="DataTable_TO" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="CHUCDANH" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="CHUNGCHI_KHAC" xml:space="preserve">
+    <value>Other Certificates</value>
+  </data>
+  <data name="DENNGAY" xml:space="preserve">
+    <value>To date</value>
+  </data>
+  <data name="DIEN_THOAI" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
+  <data name="HOCHAM_HOCVI" xml:space="preserve">
+    <value>Academic title, degree</value>
+  </data>
+  <data name="KHOA_BOPHAN" xml:space="preserve">
+    <value>Faculty - Department</value>
+  </data>
+  <data name="LOAI" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="MACCHN" xml:space="preserve">
+    <value>CCHN Code</value>
+  </data>
+  <data name="MANHANVIEN" xml:space="preserve">
+    <value>Employee code</value>
+  </data>
+  <data name="MA_CHUYENNGANH" xml:space="preserve">
+    <value>Specialized code</value>
+  </data>
+  <data name="NGAYCAP_CCHN" xml:space="preserve">
+    <value>Date of issuance of CCHN</value>
+  </data>
+  <data name="NOICAP_CCHN" xml:space="preserve">
+    <value>Place of issuance of CCHN</value>
+  </data>
+  <data name="TEN_NHANVIEN" xml:space="preserve">
+    <value>First and last name</value>
+  </data>
+  <data name="TEN_VIETTAT" xml:space="preserve">
+    <value>Abbreviations</value>
+  </data>
+  <data name="THOIGIAN_DK" xml:space="preserve">
+    <value>Registration time</value>
+  </data>
+  <data name="THOIGIAN_NGAY" xml:space="preserve">
+    <value>Time of day</value>
+  </data>
+  <data name="THOIGIAN_TUAN" xml:space="preserve">
+    <value>Week time</value>
+  </data>
+  <data name="TUNGAY" xml:space="preserve">
+    <value>Since</value>
+  </data>
+  <data name="VANBANGCM" xml:space="preserve">
+    <value>Diploma of CM</value>
+  </data>
+  <data name="LABEL_ERROR" xml:space="preserve">
+    <value>error(s)</value>
+  </data>
+  <data name="LABEL_HAS" xml:space="preserve">
+    <value>Has</value>
+  </data>
+  <data name="TITLE_UPLOAD_ERROR_CATEGORY" xml:space="preserve">
+    <value>Ooops, something wrong happended.</value>
+  </data>
+  <data name="TITLE_UPLOAD_ERROR_FILE_SIZE" xml:space="preserve">
+    <value>The file size is too big ({{ value }} max).</value>
+  </data>
+  <data name="TITLE_UPLOAD_ERROR_FORMAT" xml:space="preserve">
+    <value>The image format is not allowed ({{ value }} only).</value>
+  </data>
+  <data name="TITLE_UPLOAD_ERROR_MAX_HEIGHT" xml:space="preserve">
+    <value>The image height is too big ({{ value }}px max).</value>
+  </data>
+  <data name="TITLE_UPLOAD_ERROR_MAX_WIDTH" xml:space="preserve">
+    <value>The image width is too big ({{ value }}}px max).</value>
+  </data>
+  <data name="TITLE_UPLOAD_ERROR_MIN_HEIGHT" xml:space="preserve">
+    <value>The image height is too small ({{ value }}}px min).</value>
+  </data>
+  <data name="TITLE_UPLOAD_ERROR_MIN_WIDTH" xml:space="preserve">
+    <value>The image width is too small ({{ value }}}px min).</value>
+  </data>
+  <data name="TITLE_UPLOAD_REPLACE_CATEGORY" xml:space="preserve">
+    <value>Drag and drop or click to replace</value>
+  </data>
+  <data name="TITLE_UPLOAD_XML_CATEGORY" xml:space="preserve">
+    <value>Upload xml (.xml)</value>
+  </data>
+  <data name="LABEL_LOADING" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="PASSWORD_MINISTRY_HEALTH" xml:space="preserve">
+    <value>Password in Ministry Health System</value>
+  </data>
+  <data name="USERNAME_MINISTRY_HEALTH" xml:space="preserve">
+    <value>Username in Ministry Health System</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Loai_Tuyen" xml:space="preserve">
+    <value>Line Type</value>
+  </data>
+  <data name="MANHOM_5937" xml:space="preserve">
+    <value>Group code</value>
+  </data>
+  <data name="CHO_CON_BU" xml:space="preserve">
+    <value>Breast-feeding</value>
+  </data>
+  <data name="CO_THAI" xml:space="preserve">
+    <value>Pregnant</value>
+  </data>
+  <data name="DICH_VU" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="MENU_HDSDTHUOC_MAGEME" xml:space="preserve">
+    <value>Medical Rules Management</value>
+  </data>
+  <data name="THOI_GIAN_TOI_THIEU" xml:space="preserve">
+    <value>Minimal Period</value>
+  </data>
+  <data name="THUOC_KHAC" xml:space="preserve">
+    <value>Other drug</value>
+  </data>
+  <data name="TIEN_SU_BENH" xml:space="preserve">
+    <value>Medical history</value>
+  </data>
+  <data name="TRE_SO_SINH" xml:space="preserve">
+    <value>Baby</value>
+  </data>
+  <data name="CHI_DINH" xml:space="preserve">
+    <value>Assign</value>
+  </data>
+  <data name="DO_TUOI" xml:space="preserve">
+    <value>Ages</value>
+  </data>
+  <data name="TUOI" xml:space="preserve">
+    <value>Ages</value>
+  </data>
+  <data name="DICH_VU_KHAC" xml:space="preserve">
+    <value>Other Services</value>
+  </data>
+  <data name="THOI_GIAN_THUC_HIEN" xml:space="preserve">
+    <value>Operation Time</value>
+  </data>
+  <data name="MENU_HDSDDICHVU_MAGEME" xml:space="preserve">
+    <value>Service Rules Management</value>
+  </data>
+  <data name="CONGTY_SX" xml:space="preserve">
+    <value>Factory</value>
+  </data>
+  <data name="HD_DEN" xml:space="preserve">
+    <value>Date To</value>
+  </data>
+  <data name="HD_TU" xml:space="preserve">
+    <value>Date From</value>
+  </data>
+  <data name="KY_HIEU" xml:space="preserve">
+    <value>Device code</value>
+  </data>
+  <data name="NAM_SD" xml:space="preserve">
+    <value>Expired Year</value>
+  </data>
+  <data name="NAM_SX" xml:space="preserve">
+    <value>Factured Year</value>
+  </data>
+  <data name="SO_LUU_HANH" xml:space="preserve">
+    <value>Serial No</value>
+  </data>
+  <data name="TEN_THIET_BI" xml:space="preserve">
+    <value>Device name</value>
+  </data>
+  <data name="NGAY_DE_NGHI" xml:space="preserve">
+    <value>Apply date</value>
+  </data>
+  <data name="PP_CHE_BIEN" xml:space="preserve">
+    <value>Processing method</value>
+  </data>
+  <data name="HT_THAU" xml:space="preserve">
+    <value>Bidding type</value>
+  </data>
+  <data name="DON_GIA_BH" xml:space="preserve">
+    <value>Insurrance price</value>
+  </data>
+  <data name="DANG_BAO_CHE" xml:space="preserve">
+    <value>Dosage</value>
+  </data>
+</root>
