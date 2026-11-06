@@ -1,0 +1,1989 @@
+﻿@using System.Security.Claims;
+@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Categories;
+@using HIA.Core.Models.Files;
+@using HIA.Core.Models.Token;
+@using Microsoft.AspNetCore.Hosting
+@inject IWebHostEnvironment Env
+
+@{
+    ViewData["Title"] = DisplayFieldResource.MENU_HOSO_MAGEME + " 130";
+    var isMaster = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.MASTER);
+    var isAdmin = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.ADMIN);
+    var isUser = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.USER);
+    var currentMaCSKCB = User.FindFirst(ClaimKey.MA_CSKCB).Value;
+}
+
+<link rel="stylesheet" href="@Url.Content("~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/select2/select2.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/select2/select2-bootstrap.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/elite/css/page/tab-page.css")" />
+<link rel="stylesheet" type="text/css"
+href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/dataTables.bootstrap4.css")">
+<link rel="stylesheet" type="text/css"
+href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/responsive.dataTables.min.css")">
+
+<style>
+    .errCount {
+    border-radius: 15px;
+    font-size: 12px;
+    color: #fff;
+    background: #d00;
+    padding: 3px;
+    margin-top: -10px;
+    position: absolute;
+    display: inline-block;
+    line-height: 1em;
+    }
+
+    .errCount:empty {
+    display: none;
+    }
+
+    .clx {
+    display: block;
+    line-height: 20px;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@ViewData["Title"]</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card filter-wrapper">
+        <div class="card-body">
+            <div class="row" id="divFilters">
+                <div class="col-12 col-md-6">
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDateOut">Ngày ra</label>
+                        <div class="input-daterange input-group col-9" id="datepicker">
+                            <input id="fromDateOut" name="filterDateOut" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">đến</span>
+                            <input id="toDateOut" name="filterDateOut" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDateIn">Ngày vào</label>
+                        <div class="input-daterange input-group col-9" id="datepicker">
+                            <input id="fromDateIn" name="filterDateIn" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">đến</span>
+                            <input id="toDateIn" name="filterDateIn" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDateCreate" style="max-height: unset;">Ngày tạo/<br />Chấm công</label>
+                        <div class="input-daterange input-group col-9" id="datepicker">
+                            <input id="fromDateCreate" name="filterDateCreate" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">đến</span>
+                            <input id="toDateCreate" name="filterDateCreate" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDateCreate">Ngày TT</label>
+                        <div class="input-daterange input-group col-9" id="datepicker">
+                            <input id="fromDatePaid" name="filterDatePaid" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                            <span class="input-group-text custom-group-text">đến</span>
+                            <input id="toDatePaid" name="filterDatePaid" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="mb-2 select2-custom form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterDepartment">Khoa</label>
+                        <div class="col-9">
+                            <select name="filterDepartment" id="filterDepartment" class="form-control select2 filter-change" multiple="multiple">
+                                @foreach (var item in ViewBag.DepartmentList)
+                                {
+                                    <option value="@item.Value">@item.Text - @item.Value</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterKCB">Loại KCB</label>
+                        <div class="col-9">
+                            <select name="filterKCB" id="filterKCB" class="form-control filter-change">
+                                <option value="" selected>Tất cả</option>
+                                <option value="01">Khám bệnh</option>
+                                <option value="02">Điều trị ngoại trú</option>
+                                <option value="03">Điều trị nội trú</option>
+                                <option value="04">Nội trú ban ngày</option>
+                                <option value="05">Ngoại trú các bệnh mãn tính dài ngày, khám bệnh và lấy thuốc</option>
+                                <option value="06">Điều trị lưu tại Trạm y tế xã, phòng khám đa khoa khu vực</option>
+                                <option value="07">Nhận thuốc theo hẹn</option>
+                                <option value="08">Ngoại trú các bệnh mãn tính dài ngày, khám bệnh và lấy thuốc, có thực hiện các dịch vụ kỹ thuật</option>
+                                <option value="09">Điều trị nội trú dưới 4h</option>
+                                <option value="10">Các TH khác</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-2 select2-custom form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterError">Lỗi</label>
+                        <div class="col-9">
+                            <select name="filterError" id="filterError" class="form-control select2 filter-change" multiple="multiple">
+                                @foreach (var err in ViewBag.ErrorList)
+                                {
+                                    <option value="@err.ErrorCode" class="error-option">
+                                        [@err.ErrorAtXMLFile] @err.ErrorCode - @err.ErrorContent
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="filterStatus">Trạng thái</label>
+                        <div class="col-9">
+                            <select name="filterStatus" id="filterStatus" class="form-control filter-change">
+                                <option value="0" selected>Tất cả mọi hồ sơ</option>
+                                <option value="1">Chỉ hồ sơ hoàn thành</option>
+                                <option value="2">Chỉ hồ sơ có lỗi</option>
+                            </select>
+                        </div>
+                    </div>
+                    @if (isMaster == true)
+                    {
+                        <div class="mb-2 select2-custom form-group row">
+                            <label class="lbl-filter col-3 col-form-label text-right" for="filterStatus">Bệnh viện</label>
+                            <div class="col-9">
+                                <select name="filterHospital" id="filterHospital" class="form-control select2 filter-change">
+                                    <option value="" selected>Tất cả bệnh viện</option>
+                                    @foreach (var item in ViewBag.Hospitals)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <input type="hidden" name="hospitalCode" id="filterHospital" value="@currentMaCSKCB" />
+                    }
+                </div>
+            </div>
+            <div class="form-row row">
+                <div class="col-12 col-md-4 mb-2">
+                    <button id="toggleFilters" class="btn btn-dark btn-inline">Ẩn Bộ lọc</button>
+                    @if (isAdmin == true)
+                    {
+                        <button id="btnDublicate" onclick="dedublicate()" class="btn btn-warning btn-inline">Xóa HS trùng</button>
+                    }
+                    @if (isMaster == true)
+                    {
+                        <button id="btnRecheck" onclick="recheckAll()" class="btn btn-warning btn-inline">Ktra lại hết</button>
+                    }
+                </div>
+                <div class="col-12 col-md-8 mb-2 text-right">
+                    <b>Tải báo cáo:</b>
+                    <button onclick="downloadFile(0)" id="btnDownload0" class="btn btn-inline btn-primary btn-download">BC Tổng hợp</button>
+                    <button onclick="downloadFile(1)" id="btnDownload1" class="btn btn-inline btn-primary btn-download">BC Trùng DV</button>
+                    <button onclick="downloadFile(2)" id="btnDownload2" class="btn btn-inline btn-primary btn-download">BC Thuốc & VT</button>
+                    <button onclick="downloadFile(3)" id="btnDownload3" class="btn btn-inline btn-primary btn-download">BC Chỉ định</button>
+                    <div class="clearfix" style="height: 10px;"></div>
+                    <button onclick="downloadFile(5)" id="btnDownload5" class="btn btn-inline btn-primary btn-download">BC Trùng XML4</button>
+                    <button onclick="downloadFile(4)" id="btnDownload4" class="btn btn-inline btn-primary btn-download">Thống kê lỗi</button>
+                    <button onclick="downloadFile(6)" id="btnDownload6" class="btn btn-inline btn-primary btn-download">Chấm công</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card files-wrapper">
+        <div class="card-body">
+            <div class="table-responsive fixed-table-custom file-management">
+                <table class="table table-bordered table-striped table-data" id="tblXML1">
+                    <thead>
+                        <tr></tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="detailModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-xl width-97">
+        <div class="modal-content custom-modal">
+            <div class="modal-header">
+                <h4 class="modal-title">Chi tiết hồ sơ bệnh nhân</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <ul id="navLinks" class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#xml1" role="tab">
+                            XML1 <span class="errCount" id="xml1ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml2" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML02), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML2 <span class="errCount" id="xml2ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml3" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML03), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML3 <span class="errCount" id="xml3ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml4" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML04), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML4 <span class="errCount" id="xml4ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml5" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML05), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML5 <span class="errCount" id="xml5ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml6" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML06), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML6 <span class="errCount" id="xml6ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml7" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML07), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML7 <span class="errCount" id="xml7ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml8" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML08), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML8 <span class="errCount" id="xml8ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml9" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML09), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML9 <span class="errCount" id="xml9ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml10" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML10), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML10 <span class="errCount" id="xml10ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml11" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML11), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML11 <span class="errCount" id="xml11ErrorTotal"></span>
+                        </a>
+                    </li>
+                    @*<li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#xml12" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML12), Uti.GetControllerName(nameof(Files130Controller)))">
+                    XML12 <span class="errCount" id="xml12ErrorTotal"></span>
+                    </a>
+                    </li>*@
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml13" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML13), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML13 <span class="errCount" id="xml13ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml14" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML14), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML14 <span class="errCount" id="xml14ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#xml15" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXML15), Uti.GetControllerName(nameof(Files130Controller)))">
+                            XML15 <span class="errCount" id="xml15ErrorTotal"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#error" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetXmlError), Uti.GetControllerName(nameof(Files130Controller)))">
+                            Danh sách lỗi
+                        </a>
+                    </li>
+                    @*<li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#history" role="tab" data-path="@Url.Action(nameof(Files130Controller.GetHistory), Uti.GetControllerName(nameof(Files130Controller)))">
+                    Lịch sử khám chữa bệnh
+                    </a>
+                    </li>*@
+                </ul>
+
+                <div id="tabPanes" class="tab-content tabcontent-border">
+                    <div class="p-17">
+                        <div id="preXML1" class="custom-box">
+                            <h1 class="title w-145">Thông tin Bệnh nhân</h1>
+                            <div class="row">
+                                <div class="col-12 col-md-4 form-group row">
+                                    <label for="MA_LK" class="control-label" style="margin-right: 10px;"></label>
+                                    <input id="MA_LK" class="form-control custom-form-control col-8" readonly />
+                                </div>
+                                <div class="col-12 col-md-4 form-group row">
+                                    <label for="MA_BN" class="control-label" style="margin-right: 10px;"></label>
+                                    <input id="MA_BN" class="form-control custom-form-control col-8" readonly />
+                                </div>
+                                <div class="col-12 col-md-4 form-group row">
+                                    <label class="control-label" style="margin-right: 10px;">Tên bệnh nhân</label>
+                                    <input id="HO_TEN" class="form-control custom-form-control col-8" readonly />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane p-17 active" id="xml1" role="tabpanel">
+                        <div id="frmXML1" class="modal-main-content">
+                            <div class="custom-box">
+                                <h1 class="title w-145">Thông tin hành chính</h1>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="SO_CCCD" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="SO_CCCD" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="NGAY_SINH" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="NGAY_SINH" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="GIOI_TINH" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="GIOI_TINH" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="DIA_CHI" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="DIA_CHI" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_QUOCTICH" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_QUOCTICH" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_KHUVUC" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_KHUVUC" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="DIEN_THOAI" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="DIEN_THOAI" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_DANTOC" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_DANTOC" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_NGHE_NGHIEP" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_NGHE_NGHIEP" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MATINH_CU_TRU" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MATINH_CU_TRU" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MAHUYEN_CU_TRU" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MAHUYEN_CU_TRU" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MAXA_CU_TRU" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MAXA_CU_TRU" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_THE_BHYT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_THE_BHYT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_DKBD" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_DKBD" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="NGAY_MIEN_CCT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="NGAY_MIEN_CCT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_CSKCB" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_CSKCB" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="GT_THE_TU" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="GT_THE_TU" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="GT_THE_DEN" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="GT_THE_DEN" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="NAM_NAM_LIEN_TUC" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="NAM_NAM_LIEN_TUC" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_HSBA" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_HSBA" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_TTDV" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_TTDV" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="FILE_NAME" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="FILE_NAME" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="NGAY_LAP" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="NGAY_LAP" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="NGAY_TAO" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="NGAY_TAO" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clx"></div>
+                            <div class="custom-box">
+                                <h1 class="title w-182">Thông tin khám chữa bệnh</h1>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="NHOM_MAU" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="NHOM_MAU" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="CAN_NANG" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="CAN_NANG" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="CAN_NANG_CON" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="CAN_NANG_CON" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="LY_DO_VV" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="LY_DO_VV" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="LY_DO_VNT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="LY_DO_VNT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_LY_DO_VNT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_LY_DO_VNT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_BENH_CHINH" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_BENH_CHINH" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_BENH_KT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_BENH_KT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_BENH_YHCT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_BENH_YHCT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_KHOA" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_KHOA" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_LOAI_KCB" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_LOAI_KCB" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_DOITUONG_KCB" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_DOITUONG_KCB" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_TAI_NAN" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_TAI_NAN" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_NOI_DI" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_NOI_DI" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_NOI_DEN" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_NOI_DEN" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="NGAY_VAO" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="NGAY_VAO" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="NGAY_VAO_NOI_TRU" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="NGAY_VAO_NOI_TRU" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="NGAY_RA" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="NGAY_RA" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="NGAY_TAI_KHAM" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="NGAY_TAI_KHAM" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="CHAN_DOAN_VAO" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="CHAN_DOAN_VAO" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="CHAN_DOAN_RV" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="CHAN_DOAN_RV" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="SO_NGAY_DTRI" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="SO_NGAY_DTRI" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="PP_DIEU_TRI" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="PP_DIEU_TRI" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="KET_QUA_DTRI" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="KET_QUA_DTRI" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_LOAI_RV" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_LOAI_RV" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="GIAY_CHUYEN_TUYEN" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="GIAY_CHUYEN_TUYEN" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="MA_PTTT_QT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="MA_PTTT_QT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clx"></div>
+                            <div class="custom-box">
+                                <h1 class="title w-182">Thông tin thanh toán</h1>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="NGAY_TTOAN" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="NGAY_TTOAN" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="NAM_QT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="NAM_QT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="THANG_QT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="THANG_QT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="T_THUOC" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="T_THUOC" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="T_VTYT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="T_VTYT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="T_NGUONKHAC" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="T_NGUONKHAC" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="T_BNTT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="T_BNTT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="T_BHTT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="T_BHTT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="T_BNCCT" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="T_BNCCT" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="T_TONGCHI_BV" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="T_TONGCHI_BV" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="T_TONGCHI_BH" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="T_TONGCHI_BH" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group row">
+                                        <div class="flex-center col-4">
+                                            <label for="T_BHTT_GDV" class="control-label"></label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input id="T_BHTT_GDV" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 form-group row">
+                                        <div class="flex-center col-2">
+                                            <label for="GHI_CHU" class="control-label"></label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input id="GHI_CHU" class="form-control custom-form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clx"></div>
+                            <div class="row">
+                                <a onclick="downloadXML()" id="btnDownloadXml1" class="btn btn-primary col-md-6 text-md-center" href="#">
+                                    <span class="float-start">Tải Xml1</span>
+                                </a>
+
+                                <a onclick="recheckXML()" id="btnReloadXml1" class="btn btn-info col-md-6 text-md-center" href="#">
+                                    <span class="col-md-6 text-right">Kiểm tra lại</span>
+                                </a>
+                                @if (isAdmin == true)
+                                {
+                                    @*   <a onclick="" id="btnEditXML" href="#">
+                                    <span style="background-color: #0078D4; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; transition-duration: 0.4s;" >Edit XML (Demo)</span>
+                                </a> *@
+
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml2" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML2">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml3" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML3">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml4" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML4">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml5" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML5">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml6" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML6">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml7" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML7">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml8" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML8">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml9" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML9">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml10" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML10">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml11" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML11">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml12" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML12">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml13" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML13">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml14" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML14">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="xml15" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblXML15">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="error" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblError">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane p-17" id="history" role="tabpanel">
+                        <div class="table-responsive fixed-table-custom tbl-modal">
+                            <table class="table table-bordered table-striped" id="tblHistory">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* LINHIST ADDED ZONE FOR CHAT*@
+    <link href="/css/chat.css" rel="stylesheet" />
+    <div id="chatzone">
+        <link href="chat.css" rel="stylesheet" />
+        <div class="chatbot">
+            <button class="chat-bub">
+                HỖ TRỢ
+            </button>
+        </div>
+        <div class="chatbox hide">
+            <div class="chat-cap">
+                <button class="icon closer"><i class="fa fa-times"></i></button>
+                <button class="icon expder"><i class="fa fa-angle-left"></i></button>
+                <button class="icon normer"><i class="fa fa-angle-right"></i></button>
+
+                <div class="chat-icon"></div>
+                <b>MTG AI Chat</b>
+                <small>Trò chuyện với AI hỗ trợ tra cứu lỗi</small>
+            </div>
+            <iframe class="chat-frame" frameborder="0" scrolling="auto" src="http://localhost:5136/inter.html"></iframe>
+        </div>
+    </div>
+@* LINHIST ADDED ZONE FOR CHAT*@
+
+
+<partial name="_spinnerPartial" />
+
+
+@section Scripts {
+
+    <script src="@Url.Content("~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js")"></script>
+    <script src="@Url.Content("~/lib/select2/select2.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net-bs4/js/dataTables.responsive.min.js")"></script>
+    <script>
+        const lang = {
+            BDDT_ARV: 'Bắt đầu điều trị ARV', CACH_DUNG: 'Cách dùng', CAN_NANG: 'Cân nặng', CAN_NANG_CON: 'Cân nặng con', CHAN_DOAN_RV: 'Chẩn đoán ra viện',
+            CHAN_DOAN_VAO: 'Chẩn đoán vào', CHUC_DANH_NGUOI_HT: 'Chức danh người hộ tống', CHUCDANH_NGUOI_HT: 'Chức danh người hộ tống', CHUC_VU: 'Chức vụ',
+            COMMENT: 'Ghi chú', DANG_BAO_CHE: 'Dạng bào chế', DANG_HUONG_CHE_DO: 'Đang hưởng chế độ', DAU_HIEU_LS: 'Dấu hiệu lâm sàng', 
+            DANG_KHUYETTAT: 'Dạng khuyết tật', DE_NGHI: 'Đề nghị', DEN_NGAY: 'Đến ngày', DIA_CHI: 'Địa chỉ', DIEN_BIEN_LS: 'Diễn biến lâm sàng',
+            DIEN_THOAI: 'Điện thoại', DON_GIA: 'Đơn giá', DON_GIA_BH: 'Đơn giá BH', DON_GIA_BV: 'Đơn giá BV', DON_VI: 'Đơn vị', DON_VI_DO: 'Đơn vị đo',
+            DON_VI_TINH: 'Đơn vị tính', DU_PHONG: 'Dự phòng', DUOC_XACDINH: 'Được xác đinh', DUONG_DUNG: 'Đường dùng', FILE_NAME: 'Tên tệp hồ sơ',
+            ERROR_CODE: 'Mã lỗi', ERROR_ROW: 'Dòng lỗi', ERROR_FILE: 'Hồ sơ lỗi', ERROR_TAG: 'Trường lỗi', ERROR_CONTENT: 'Nội dung lỗi',
+            ERROR_COMMENT: 'Ghi chú', GHI_CHU: 'Ghi chú', GIA_TRI: 'Giá trị', GIAI_DOAN_BENH: 'Giai đoạn bệnh', GIAY_CHUYEN_TUYEN: 'Giấy chuyển tuyến',
+            GIOI_THIEU_CUA: 'Giới thiệu của', GIOI_TINH: 'Giới tính', GIOI_TINH_CON: 'Giới tính con', GOI_VTYT: 'Gói Vật tư', GT_THE_DEN: 'GT thẻ đến',
+            GT_THE_TU: 'GT thẻ từ', HAM_LUONG: 'Hàm lượng', HO_TEN: 'Họ tên', HO_TEN_CHA: 'Họ tên cha', HO_TEN_CON: 'Họ tên con',
+            HO_TEN_ME: 'Họ tên mẹ', HO_TEN_NND: 'Họ tên người nuôi', HO_TEN_NGUOI_HT: 'Họ tên người hộ tống', HOTEN_NGUOI_HT: 'Họ tên người hộ tống',
+            HOI_CHAN: 'Hội chẩn',
+            HUONG_DIEU_TRI: 'Hướng điều trị', KET_LUAN: 'Kết luận', KET_QUA_DTRI: 'Kết quả điều trị', KET_QUA_DTRI_LAO: 'Kết quả điều trị lao',
+            KET_QUA_KHAM: 'Kết quả khám', KHAM_GIAM_DINH: 'Khám giám định', KQ_XNTL_VR: 'Kết quả Xét nghiệm TLVR', LAN_SINH: 'Lần sinh',
+            LAN_XN_PCR: 'Lần Xét nghiệm PCR', LIEU_DUNG: 'Liều dùng', LOAI_DTRI_LAO: 'Loại điều trị lao', LY_DO_VNT: 'Lý do vào nội trú',
+            LY_DO_VV: 'Lý do vào viện', MA_BAC_PHAC_DO: 'Mã bậc phác đồ', MA_BAC_PHAC_DO_BD: 'Mã bậc phác đồ BD', MA_BAC_SI: 'Mã Bác sĩ',
+            MA_BENH: 'Mã bệnh', MA_BENH_CHINH: 'Mã bệnh chính', MA_BENH_KT: 'Mã bệnh kèm theo', MA_BENH_YHCT: 'Mã bệnh YHCT', MA_BHXH: 'Mã BHXH',
+            MA_BHXH_NND: 'Mã BHXH người nuôi', MA_BN: 'Mã Bệnh nhân', MA_BS: 'Mã bác sĩ', MA_BS_DOC_KQ: 'Mã BS đọc KQ', MA_CHA: 'Mã cha',
+            MA_CHI_SO: 'Mã chỉ số', MA_CSKCB: 'Mã CSKCB', MA_CSKCB_DEN: 'Mã CSKCB đến', MA_CSKCB_DI: 'Mã CSKCB đi', MA_CSKCB_THUOC: 'Mã CSKCB thuốc',
+            MA_DANTOC: 'Mã Dân tộc', MA_DANTOC_NND: 'Mã Dân tộc người nuôi',
+            MA_DICH_VU: 'Mã Dịch vụ', MA_DINH_CHI_THAI: 'Mã đình chỉ thai', MA_DKBD: 'Mã ĐKBĐ', MA_DOI_TUONG: 'Mã đối tượng',
+            MA_DOITUONG_KCB: 'Mã đối tượng KCB', MA_DONVI: 'Mã đơn vị', MA_GIUONG: 'Mã giường', MA_HIEU_SP: 'Mã hiệu SP', MA_HSBA: 'Mã HSBA',
+            MA_KHOA: 'Mã khoa', MA_KHOA_RV: 'Mã khoa ra viện', MA_KHUVUC: 'Mã khu vực', MA_KQ_XN_PCR: 'Mã kết quả Xét nghiệm PCR',
+            MA_LK: 'Mã liên kết', MA_LOAI_BN: 'Mã loại bệnh nhân', MA_LOAI_KCB: 'Mã loại KCB', MA_LOAI_RV: 'Mã loại ra viện',
+            MA_LY_DO_VNT: 'Mã lý do vào nội trú', MA_LYDO_DTRI: 'Mã lý do điều trị', MA_LYDO_XNTL_VR: 'Mã lý do Xét nghiệm TLVR',
+            MA_LY_DO_CT: 'Mã lý do chuyển tuyến', MA_LYDO_CT: 'Mã lý do chuyển tuyến', MA_MAY: 'Mã máy', MA_ME: 'Mã mẹ', MA_NGHE_NGHIEP: 'Mã nghề nghiệp',
+            MA_NHOM: 'Mã nhóm', MA_NOI_DEN: 'Mã nơi đến', MA_NOI_DI: 'Mã nơi đi', MA_PHAC_DO_DIEU_TRI: 'Mã phác đồ điều trị',
+            MA_PHAC_DO_DIEU_TRI_BD: 'Mã phác đồ điều trị BD', MA_PP_CHEBIEN: 'Mã PP chế biến', MA_PTTT: 'Mã PTTT', MA_PTTT_QT: 'Mã PTTT Quốc tế',
+            MA_QUOCTICH: 'Mã Quốc tịch', MA_TAI_NAN: 'Mã tai nạn', MA_THE_BHYT: 'Mã thẻ BHYT', MA_THE_NND: 'Mã thẻ người nuôi', MA_THE_TAM: 'Mã thẻ tạm',
+            MA_THUOC: 'Mã Thuốc', MA_TINH_TRANG_DK: 'Mã tình trạng đến khám', MA_TTDV: 'Mã TTDV', MA_VAT_TU: 'Mã Vật tư', MA_XANG_DAU: 'Mã xăng dầu',
+            MA_XU_TRI: 'Mã xử trí', MA_YTE: 'Mã y tế', MAHUYEN_CU_TRU: 'Mã huyện cư trú', MATINH_CU_TRU: 'Mã tỉnh cư trú', MAU_SO: 'Mẫu số',
+            MAXA_CU_TRU: 'Mã xã cư trú', MESSAGE: 'Nội dung lỗi', MO_TA: 'Mô tả', MUC_DO_KHUYETTAT: 'Mức độ khuyết tật', MUC_HUONG: 'Mức hưởng',
+            NAM_NAM_LIEN_TUC: 'Năm năm liên tục', NAM_QT: 'Năm quyết toán',
+            NGAY_BAT_DAU_DT_CTX: 'Ngày bắt đầu điều trị CTX', NGAY_BAT_DAU_XU_TRI: 'Ngày bắt đầu xử trí', NGAY_CAP_CCCD: 'Ngày cấp CCCD',
+            NGAY_CHUNG_TU: 'Ngày chứng từ', NGAY_CONCHET: 'Ngày con chết', NGAY_CT: 'Ngày chứng từ', NGAY_DE_NGHI: 'Ngày đề nghị', NGAY_HEN_KL: 'Ngày hẹn khám lại', 
+            NGAY_HOP: 'Ngày họp', NGAY_KET_THUC_XU_TRI: 'Ngày kết thúc xử trí', NGAY_KQ: 'Ngày kết quả', NGAY_KQ_XN_PCR: 'Ngày kết quả Xét nghiệm PCR',
+            NGAY_KQ_XN_TLVR: 'Ngày kết quả Xét nghiệm TLVR', NGAY_MIEN_CCT: 'Ngày miễn CCT', NGAY_NHAN_TT_MANG_THAI: 'Ngày nhận TT mang thai', NGAY_LAP: 'Ngày lập',
+            NGAY_RA: 'Ngày ra', NGAY_SINH: 'Ngày sinh', NGAY_SINH_CON: 'Ngày sinh con', NGAY_SINHCON: 'Ngày sinh con', NGAY_TAI_KHAM: 'Ngày tái khám', NGAY_TAO: 'Ngày tạo',
+            NGAY_TH_YL: 'Ngày thực hiện YL', NGAY_TTOAN: 'Ngày thanh toán', NGAY_VAO: 'Ngày vào', NGAY_VAO_NOI_TRU: 'Ngày vào nội trú',
+            NGAY_XN_PCR: 'Ngày Xét nghiệm PCR', NGAY_XN_TLVR: 'Ngày Xét nghiệm TLVR', NGAY_YL: 'Ngày y lệnh', NGAYBD_DTRI_LAO: 'Ngày bắt đầu điều trị lao',
+            NGAYCAP_CCCD_NND: 'Ngày cấp CCCD người nuôi', NGAYKD_HIV: 'Ngày khẳng định HIV', NGAYKT_DTRI_LAO: 'Ngày kết thúc điều trị lao',
+            NGAYSINH_NND: 'Ngày sinh người nuôi', NGHE_NGHIEP: 'Nghề nghiệp', NGOAITRU_DENNGAY: 'Ngoại trú đến ngày', NGOAITRU_TUNGAY: 'Ngoại trú từ ngày',
+            NGUOI_CHU_TRI: 'Người chủ trì', NGUOI_DO_DE: 'Người đỡ đẻ', NGUOI_GHI_PHIEU: 'Người nghi phiếu', NGUOI_GIAM_HO: 'Người giám hộ',
+            NGUOI_THUC_HIEN: 'Người thực hiện', NGUON_CTRA: 'Nguồn chi trả', NGUYENNHAN_DINHCHI: 'Nguyên nhân đình chỉ', NHOM_MAU: 'Nhóm máu',
+            NOI_CAP_CCCD: 'Nơi cấp CCCD', NOI_CU_TRU_NND: 'Nơi cư trú người nuôi', NOI_SINH_CON: 'Nơi sinh con', NOICAP_CCCD_NND: 'Nơi cấp CCCD người nuôi',
+            PHACDO_DTRI_LAO: 'Phác đồ điều trị lao', PHAM_VI: 'Phạm vị', PHAU_THUAT: 'Phẫu thuật', PHANLOAI_LAO_VITRI: 'Phân loại lao theo vị trí',
+            PHANLOAI_LAO_TS: 'Phân loại lao theo tiền sử', PHANLOAI_LAO_HIV: 'Phân loại lao HIV', PHANLOAI_LAO_VK: 'Phân loại lao theo vi khuẩn',
+            PHANLOAI_LAO_KT: 'Phân loại lao theo kháng thuốc', PHUONG_TIEN_VC: 'Phương tiện vận chuyển', PHUONGTIEN_VC: 'Phương tiện vận chuyển',
+            PP_DIEU_TRI: 'Phương pháp điều trị', PP_DIEUTRI: 'Phương pháp điều trị', PP_VO_CAM: 'Phương pháp vô cảm',
+            QT_BENHLY: 'Quá trình bệnh lý', QUYEN_SO: 'Quyển số',
+            SINHCON_DUOI32TUAN: 'Sinh con dưới 32 tuổi', SINHCON_PHAUTHUAT: 'Sinh con phẫu thuật', SO: 'Số', SO_BIEN_BAN: 'Số biên bản',
+            SO_CCCD: 'Số CCCD', SO_CCCD_NND: 'Số CCCD người nuôi', SO_CON: 'Số con chết', SO_CON_SONG: 'Số con sống', SO_CONCHET: 'Số con chết',
+            SO_CHUYENTUYEN: 'Số chuyển tuyến', SO_CT: 'Số chứng từ', SO_DANG_KY: 'Số đăng ký', SO_GIAY_GIOI_THIEU: 'Số giấy giới thiệu',
+            SO_GIAYHEN_KL: 'Số giấy hẹn khám lại', SO_HOSO: 'Số hồ sơ', SO_KCB: 'Số KCB', SO_LUONG: 'Số lượng',
+            SO_LUU_TRU: 'Số lưu trữ', SO_NGAY: 'Số ngày', SO_NGAY_CAP_THUOC_ARV: 'Số ngày cấp thuốc ARV', SO_NGAY_DTRI: 'Số ngày điều trị',
+            SO_NGAY_NGHI: 'Số ngày nghỉ', SO_SERI: 'Số seri', SO_VAN_BAN_CAN_CU: 'Số văn bản căn cứ', TEN_BN: 'Tên bệnh nhân', T_BHTT: 'Tiền BHTT',
+            T_BHTT_GDV: 'Tiền BHTT GDV', T_BNCCT: 'Tiền BNCCT', T_BNTT: 'Tiền BNTT', T_NGUONKHAC: 'Nguồn khác', T_NGUONKHAC_CL: 'Nguồn khác CL',
+            T_NGUONKHAC_NSNN: 'Nguồn khác NSNN', T_NGUONKHAC_VTNN: 'Nguồn khác VTNN', T_NGUONKHAC_VTTN: 'Nguồn khác VTTN', T_THUOC: 'Tiền thuốc',
+            T_TONGCHI_BH: 'Tổng chi BH', T_TONGCHI_BV: 'Tổng chi BV', T_TRANTT: 'Trần thanh toán', T_VTYT: 'Tiền VTYT', TAI_SU_DUNG: 'Tái sử dụng',
+            TEN_BS: 'Tên bác sĩ', TEN_CHI_SO: 'Tên chỉ số', TEN_DICH_VU: 'Tên Dịch vụ', TEN_THUOC: 'Tên Thuốc', TEN_VAT_TU: 'Tên Vật tư',
+            THANG_QT: 'Tháng quyết toán', THANH_TIEN_BH: 'Thành tiền BH', THANH_TIEN_BV: 'Thành tiền BV', THOI_DIEM_DBLS: 'Thời điểm DBLS',
+            THOIGIAN_DINHCHI: 'Thời gian đình chỉ', TINH_TRANG_CT: 'Tình trạng chữa trị', TINH_TRANG_CON: 'Tình trạng con',
+            TOMTAT_KQ: 'Tóm tắt kết quả', TONG_TYLE_TTCT: 'Tổng tỷ lệ tổn thương',
+            TT_THAU: 'Thông tin thầu', TU_NGAY: 'Từ ngày', TUOI_THAI: 'Tuổi thai', TYLE_TT_BH: 'Tỷ lệ TTBH', TYLE_TT_DV: 'Tỷ lệ TTDV',
+            TYLE_TTCT_CU: 'Tỷ lệ tổn thương cũ', TYLE_TTCT_MOI: 'Tỷ lệ tổn thương mới', VET_THUONG_TP: 'Vết thương tái phát', VI_TRI_TH_DVKT: 'Vị trí thực hiện DVKT',
+            getName: function (key) { return (this[key] || key).replace(/\_/gi, ' '); }
+        };
+        const errors = [
+        @{
+            var fst = false;
+            foreach (var err in ViewBag.ErrorList)
+            {
+                if (!fst)
+                {
+                    Html.Raw(", ");
+                }
+                Html.Raw($"{{error:{err.ErrorCode},tag:'{err.ErrorAtXMLTag}',message:'{(err.ErrorContent??"").Replace("'", "\\'")}',warning:{(err.IsAlarm ? 1 : 0)}}}");
+            }
+        }
+                ];
+
+        const headCaps = {
+            xml1: [
+                'STT', 'NGAY_TAO', 'MA_LK', 'HO_TEN', 'SO_CCCD', 'NGAY_SINH', 'GIOI_TINH', 'NHOM_MAU', 'MA_QUOCTICH', 'MA_DANTOC', 'MA_NGHE_NGHIEP', 'DIA_CHI',
+                'MATINH_CU_TRU', 'MAHUYEN_CU_TRU', 'MAXA_CU_TRU', 'DIEN_THOAI', 'MA_THE_BHYT', 'MA_DKBD', 'GT_THE_TU', 'GT_THE_DEN', 'NGAY_MIEN_CCT',
+                'LY_DO_VV', 'LY_DO_VNT', 'MA_LY_DO_VNT', 'CHAN_DOAN_VAO', 'CHAN_DOAN_RV', 'MA_BENH_CHINH', 'MA_BENH_KT', 'MA_BENH_YHCT', 'MA_PTTT_QT',
+                'MA_DOITUONG_KCB', 'MA_NOI_DI', 'MA_NOI_DEN', 'MA_TAI_NAN', 'NGAY_VAO', 'NGAY_VAO_NOI_TRU', 'NGAY_RA', 'GIAY_CHUYEN_TUYEN', 'SO_NGAY_DTRI',
+                'PP_DIEU_TRI', 'KET_QUA_DTRI', 'MA_LOAI_RV', 'GHI_CHU', 'NGAY_TTOAN', 'T_THUOC', 'T_VTYT', 'T_TONGCHI_BV', 'T_TONGCHI_BH', 'T_BNTT',
+                'T_BNCCT', 'T_BHTT', 'T_NGUONKHAC', 'T_BHTT_GDV', 'NAM_QT', 'THANG_QT', 'MA_LOAI_KCB', 'MA_KHOA', 'MA_CSKCB', 'MA_KHUVUC', 'CAN_NANG',
+                'CAN_NANG_CON', 'NAM_NAM_LIEN_TUC', 'NGAY_TAI_KHAM', 'MA_HSBA', 'MA_TTDV', 'DU_PHONG'
+            ],
+            xml2: [
+                'STT', 'MA_THUOC', 'MA_PP_CHEBIEN', 'MA_CSKCB_THUOC', 'MA_NHOM', 'TEN_THUOC', 'DON_VI_TINH', 'HAM_LUONG', 'DUONG_DUNG', 'DANG_BAO_CHE', 'LIEU_DUNG',
+                'CACH_DUNG', 'SO_DANG_KY', 'TT_THAU', 'PHAM_VI', 'TYLE_TT_BH', 'SO_LUONG', 'DON_GIA', 'THANH_TIEN_BV', 'THANH_TIEN_BH', 'T_NGUONKHAC_NSNN',
+                'T_NGUONKHAC_VTNN', 'T_NGUONKHAC_VTTN', 'T_NGUONKHAC_CL', 'T_NGUONKHAC', 'MUC_HUONG', 'T_BNTT', 'T_BNCCT', 'T_BHTT', 'MA_KHOA', 'MA_BAC_SI',
+                'MA_DICH_VU', 'NGAY_YL', 'NGAY_TH_YL', 'MA_PTTT', 'NGUON_CTRA', 'VET_THUONG_TP', 'DU_PHONG'
+            ],
+            xml3: [
+                'STT', 'MA_DICH_VU', 'MA_PTTT_QT', 'MA_VAT_TU', 'MA_NHOM', 'GOI_VTYT', 'TEN_VAT_TU', 'TEN_DICH_VU', 'MA_XANG_DAU', 'DON_VI_TINH', 'PHAM_VI', 'SO_LUONG',
+                'DON_GIA_BV', 'DON_GIA_BH', 'TT_THAU', 'TYLE_TT_DV', 'TYLE_TT_BH', 'THANH_TIEN_BV', 'THANH_TIEN_BH', 'T_TRANTT', 'MUC_HUONG', 'T_NGUONKHAC_NSNN',
+                'T_NGUONKHAC_VTNN', 'T_NGUONKHAC_VTTN', 'T_NGUONKHAC_CL', 'T_NGUONKHAC', 'T_BNTT', 'T_BNCCT', 'T_BHTT', 'MA_KHOA', 'MA_GIUONG', 'MA_BAC_SI',
+                'NGUOI_THUC_HIEN', 'MA_BENH', 'MA_BENH_YHCT', 'NGAY_YL', 'NGAY_TH_YL', 'NGAY_KQ', 'MA_PTTT', 'VET_THUONG_TP', 'PP_VO_CAM', 'VI_TRI_TH_DVKT',
+                'MA_MAY', 'MA_HIEU_SP', 'TAI_SU_DUNG', 'DU_PHONG'
+            ],
+            xml4: [
+                'STT', 'MA_DICH_VU', 'MA_CHI_SO', 'TEN_CHI_SO', 'GIA_TRI', 'DON_VI_DO', 'MO_TA', 'KET_LUAN', 'NGAY_KQ', 'MA_BS_DOC_KQ', 'DU_PHONG'
+            ],
+            xml5: [
+                'STT', 'DIEN_BIEN_LS', 'GIAI_DOAN_BENH', 'HOI_CHAN', 'PHAU_THUAT', 'THOI_DIEM_DBLS', 'NGUOI_THUC_HIEN', 'DU_PHONG'
+            ],
+            xml6: [
+                'MA_THE_BHYT', 'SO_CCCD', 'NGAY_SINH', 'GIOI_TINH', 'DIA_CHI', 'MATINH_CU_TRU', 'MAHUYEN_CU_TRU', 'MAXA_CU_TRU', 'NGAYKD_HIV', 'NOI_LAY_MAU_XN',
+                'NOI_XN_KD', 'NOI_BDDT_ARV', 'BDDT_ARV', 'MA_PHAC_DO_DIEU_TRI_BD', 'MA_BAC_PHAC_DO_BD', 'MA_LYDO_DTRI', 'LOAI_DTRI_LAO', 'SANG_LOC_LAO',
+                'PHACDO_DTRI_LAO', 'NGAYBD_DTRI_LAO', 'NGAYKT_DTRI_LAO', 'KQ_DTRI_LAO', 'MA_LYDO_XNTL_VR', 'NGAY_XN_TLVR', 'KQ_XNTL_VR', 'NGAY_KQ_XN_TLVR',
+                'MA_LOAI_BN', 'GIAI_DOAN_LAM_SANG', 'NHOM_DOI_TUONG', 'MA_TINH_TRANG_DK', 'LAN_XN_PCR', 'NGAY_XN_PCR', 'NGAY_KQ_XN_PCR', 'MA_KQ_XN_PCR',
+                'NGAY_NHAN_TT_MANG_THAI', 'NGAY_BAT_DAU_DT_CTX', 'MA_XU_TRI', 'NGAY_BAT_DAU_XU_TRI', 'NGAY_KET_THUC_XU_TRI', 'MA_PHAC_DO_DIEU_TRI',
+                'MA_BAC_PHAC_DO', 'SO_NGAY_CAP_THUOC_ARV', 'NGAY_CHUYEN_PHAC_DO', 'LY_DO_CHUYEN_PHAC_DO', 'DU_PHONG'
+            ],
+            xml7: [
+                'SO_LUU_TRU', 'MA_YTE', 'MA_KHOA_RV', 'NGAY_VAO', 'NGAY_RA', 'MA_DINH_CHI_THAI', 'NGUYENNHAN_DINHCHI', 'THOIGIAN_DINHCHI', 'TUOI_THAI', 'CHAN_DOAN_RV',
+                'PP_DIEUTRI', 'GHI_CHU', 'MA_TTDV', 'MA_BS', 'TEN_BS', 'NGAY_CT', 'MA_CHA', 'MA_ME', 'MA_THE_TAM', 'HO_TEN_CHA', 'HO_TEN_ME', 'SO_NGAY_NGHI',
+                'NGOAITRU_TUNGAY', 'NGOAITRU_DENNGAY', 'DU_PHONG'
+            ],
+            xml8: [
+                'MA_LOAI_KCB', 'HO_TEN_CHA', 'HO_TEN_ME', 'NGUOI_GIAM_HO', 'DON_VI', 'NGAY_VAO', 'NGAY_RA', 'CHAN_DOAN_VAO', 'CHAN_DOAN_RV', 'QT_BENHLY', 'TOMTAT_KQ',
+                'PP_DIEUTRI', 'NGAY_SINHCON', 'NGAY_CONCHET', 'SO_CONCHET', 'KET_QUA_DTRI', 'GHI_CHU', 'MA_TTDV', 'NGAY_CT', 'MA_THE_TAM', 'DU_PHONG'
+            ],
+            xml9: [
+                'MA_BHXH_NND', 'MA_THE_NND', 'HO_TEN_NND', 'NGAYSINH_NND', 'MA_DANTOC_NND', 'SO_CCCD_NND', 'NGAYCAP_CCCD_NND', 'NOICAP_CCCD_NND', 'NOI_CU_TRU_NND',
+                'MA_QUOCTICH', 'MATINH_CU_TRU', 'MAHUYEN_CU_TRU', 'MAXA_CU_TRU', 'HO_TEN_CHA', 'MA_THE_TAM', 'HO_TEN_CON', 'GIOI_TINH_CON', 'SO_CON', 'LAN_SINH',
+                'SO_CON_SONG', 'CAN_NANG_CON', 'NGAY_SINH_CON', 'NOI_SINH_CON', 'TINH_TRANG_CON', 'SINHCON_PHAUTHUAT', 'SINHCON_DUOI32TUAN', 'GHI_CHU',
+                'NGUOI_DO_DE', 'NGUOI_GHI_PHIEU', 'NGAY_CT', 'SO', 'QUYEN_SO', 'MA_TTDV', 'DU_PHONG'
+            ],
+            xml10: [
+                'SO_SERI', 'SO_CT', 'SO_NGAY', 'DON_VI', 'CHAN_DOAN_RV', 'TU_NGAY', 'DEN_NGAY', 'MA_TTDV', 'TEN_BS', 'MA_BS', 'NGAY_CT', 'DU_PHONG'
+            ],
+            xml11: [
+                'SO_CT', 'SO_SERI', 'SO_KCB', 'DON_VI', 'MA_BHXH', 'MA_THE_BHYT', 'CHAN_DOAN_RV', 'PP_DIEUTRI', 'MA_DINH_CHI_THAI', 'NGUYENNHAN_DINHCHI', 'TUOI_THAI',
+                'SO_NGAY_NGHI', 'TU_NGAY', 'DEN_NGAY', 'HO_TEN_CHA', 'HO_TEN_ME', 'MA_TTDV', 'MA_BS', 'NGAY_CT', 'MA_THE_TAM', 'MAU_SO', 'DU_PHONG'
+            ],
+            /*xml12: [
+                'NGUOI_CHU_TRI', 'CHUC_VU', 'NGAY_HOP', 'HO_TEN', 'NGAY_SINH', 'SO_CCCD', 'NGAY_CAP_CCCD', 'NOI_CAP_CCCD', 'DIA_CHI', 'MATINH_CU_TRU', 'MAHUYEN_CU_TRU',
+                'MAXA_CU_TRU', 'MA_BHXH', 'MA_THE_BHYT', 'NGHE_NGHIEP', 'DIEN_THOAI', 'MA_DOI_TUONG', 'KHAM_GIAM_DINH', 'SO_BIEN_BAN', 'TYLE_TTCT_CU',
+                'DANG_HUONG_CHE_DO', 'NGAY_CHUNG_TU', 'SO_GIAY_GIOI_THIEU', 'NGAY_DE_NGHI', 'MA_DONVI', 'GIOI_THIEU_CUA', 'KET_QUA_KHAM', 'SO_VAN_BAN_CAN_CU',
+                'TYLE_TTCT_MOI', 'TONG_TYLE_TTCT', 'DANG_KHUYETTAT', 'MUC_DO_KHUYETTAT', 'DE_NGHI', 'DUOC_XACDINH', 'DU_PHONG'
+            ],*/
+            xml13: [
+                'SO_HOSO', 'SO_CHUYENTUYEN', 'GIAY_CHUYEN_TUYEN', 'MA_NOI_DI', 'MA_NOI_DEN', 'MA_CSKCB_DI', 'MA_CSKCB_DEN', 'HO_TEN', 'NGAY_SINH', 'GIOI_TINH', 'MA_QUOCTICH', 'MA_DANTOC',
+                'MA_NGHE_NGHIEP', 'DIA_CHI', 'MA_THE_BHYT', 'GT_THE_DEN', 'NGAY_VAO', 'NGAY_VAO_NOI_TRU', 'NGAY_RA', 'DAU_HIEU_LS', 'CHAN_DOAN_RV', 'QT_BENHLY',
+                'TOMTAT_KQ', 'PP_DIEUTRI', 'MA_BENH_CHINH', 'MA_BENH_KT', 'MA_BENH_YHCT', 'TEN_DICH_VU', 'TEN_THUOC', 'PP_DIEU_TRI', 'TINH_TRANG_CT', 'MA_LOAI_RV', 'MA_LYDO_CT',
+                'HUONG_DIEU_TRI', 'PHUONGTIEN_VC', 'HOTEN_NGUOI_HT', 'CHUCDANH_NGUOI_HT', 'MA_BAC_SI', 'MA_TTDV', 'DU_PHONG'
+            ],
+            xml14: [
+                'SO_GIAYHEN_KL', 'HO_TEN', 'NGAY_SINH', 'GIOI_TINH', 'DIA_CHI', 'MA_THE_BHYT', 'GT_THE_DEN', 'NGAY_VAO', 'NGAY_VAO_NOI_TRU', 'NGAY_RA',
+                'NGAY_HEN_KL', 'CHAN_DOAN_RV', 'MA_BENH_CHINH', 'MA_BENH_KT', 'MA_BENH_YHCT', 'MA_DOITUONG_KCB', 'MA_BAC_SI', 'MA_TTDV', 'NGAY_CT', 'DU_PHONG'
+            ],
+            xml15: [
+                'STT', 'HO_TEN', 'SO_CCCD', 'PHANLOAI_LAO_VITRI', 'PHANLOAI_LAO_TS', 'PHANLOAI_LAO_HIV', 'PHANLOAI_LAO_VK', 'PHANLOAI_LAO_KT', 'LOAI_DTRI_LAO',
+                'NGAYBD_DTRI_LAO', 'PHACDO_DTRI_LAO', 'NGAYKT_DTRI_LAO', 'KET_QUA_DTRI_LAO', 'MA_CSKCB', 'NGAYKD_HIV', 'BDDT_ARV', 'NGAY_BAT_DAU_DT_CTX', 'DU_PHONG'
+            ],
+            error: [
+                'ERROR_CODE', 'ERROR_ROW', 'ERROR_FILE', 'ERROR_TAG', 'MESSAGE', 'COMMENT'
+            ],
+            history: [
+                'STT', 'MA_DICH_VU', 'MA_PTTT_QT', 'MA_VAT_TU', 'MA_NHOM', 'GOI_VTYT', 'TEN_VAT_TU', 'TEN_DICH_VU', 'MA_XANG_DAU', 'DON_VI_TINH', 'PHAM_VI', 'SO_LUONG',
+                'DON_GIA_BV', 'DON_GIA_BH', 'TT_THAU', 'TYLE_TT_DV', 'TYLE_TT_BH', 'THANH_TIEN_BV', 'THANH_TIEN_BH', 'T_TRANTT', 'MUC_HUONG', 'T_NGUONKHAC_NSNN',
+                'T_NGUONKHAC_VTNN', 'T_NGUONKHAC_VTTN', 'T_NGUONKHAC_CL', 'T_NGUONKHAC', 'T_BNTT', 'T_BNCCT', 'T_BHTT', 'MA_KHOA', 'MA_GIUONG', 'MA_BAC_SI',
+                'NGUOI_THUC_HIEN', 'MA_BENH', 'MA_BENH_YHCT', 'NGAY_YL', 'NGAY_TH_YL', 'NGAY_KQ', 'MA_PTTT', 'VET_THUONG_TP', 'PP_VO_CAM', 'VI_TRI_TH_DVKT',
+                'MA_MAY', 'MA_HIEU_SP', 'TAI_SU_DUNG', 'DU_PHONG'
+            ],
+        };
+
+        var curXml1 = 0;
+
+        function mapLabelName(lbl) {
+            var nme = lang.getName(lbl.attr('for') || '');
+            if (nme) { lbl.html(nme); }
+        }
+        (function () {
+            for (var p in headCaps) {
+                var tbl = $('#tbl' + (p == 'error' ? 'Error' : (p == 'history' ? 'History' : p.toUpperCase())));
+                if (tbl && tbl.length) {
+                    var hrow = $('thead tr', tbl);
+                    if (!hrow) {
+                        hrow = $('<tr></tr>').appendTo($('<thead></thead>').appendTo(tbl));
+                    }
+
+                    var caps = headCaps[p];
+                    if (caps && caps.length) {
+                        for (var i = 0; i < caps.length; i++) {
+                            $('<th>' + lang.getName(caps[i]) + '</th>').appendTo(hrow);
+                        }
+                    }
+                }
+            }
+
+            $('#preXML1 label').each(function () { mapLabelName($(this)); });
+            $('#frmXML1 label').each(function () { mapLabelName($(this)); });
+        })();
+
+        $('.filter-change').change(function (e) { callFilter(e); });
+        $('.select2').select2({ theme: "bootstrap" });
+        var datePickrs = $('.input-daterange').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            clearBtn: true,
+        }).on('changeDate', function (e) {
+            var inp = $('input', this), sel = false;
+            for (var i = 0; i < inp.length; i++) {
+                if (inp.eq(i).val()) {
+                    sel = true;
+                    break;
+                }
+            }
+            var all = $('.input-daterange input');
+            if (sel) {
+                all.attr('disabled', 'disabled');
+                inp.removeAttr('disabled');
+            }
+            else {
+                all.removeAttr('disabled');
+            }
+        });
+        $('#toggleFilters').click(function (e) {
+            e.preventDefault();
+            var self = $(this);
+            if (self.html().indexOf("Ẩn") > -1) {
+                $('#divFilters').hide();
+                self.html(self.html().replace('Ẩn', 'Hiện'));
+            }
+            else {
+                $('#divFilters').show();
+                self.html(self.html().replace('Hiện', 'Ẩn'));
+            }
+        });
+
+        var cols = [];
+        for (var i = 0; i < headCaps.xml1.length; i++) {
+            var c = {
+                data: headCaps.xml1[i].toLowerCase(),
+                render: function (data, type, row, meta) {
+                    if (meta.col < 3)
+                    {
+                        var elm = headCaps.xml1;
+                        if (elm[meta.col].toLowerCase() == 'stt') return (++x1idx).toString();// + ' |' + data;
+                    }
+                    return data;
+                }
+            };
+            if (c.data == 'stt') { c.className = 'w-50'; }
+            if (c.data == 'ho_ten') { c.className = 'w-200'; }
+            if (c.data == 'filename') { c.className = 'w-450'; }
+            if (c.data == 'dia_chi' || c.data == 'ten_benh') { c.className = 'w-650'; }
+            cols.push(c);
+        }
+
+        var x1idx = 0;
+        var tblData = $('#tblXML1').DataTable({
+            responsive: false,
+            processing: true,
+            serverSide: true,
+            searchDelay: 500,
+            ajax: {
+                url: "@Url.Action(nameof(Files130Controller.GetXML01), Uti.GetControllerName(nameof(Files130Controller)))",
+                type: 'POST',
+                data: function (d) {
+                    x1idx = 0;
+                    d.filterDateIns = [$("#fromDateIn").val(), $('#toDateIn').val()];
+                    d.filterDateOuts = [$("#fromDateOut").val(), $('#toDateOut').val()];
+                    d.filterDateCreates = [$("#fromDateCreate").val(), $('#toDateCreate').val()];
+                    d.departments = $("#filterDepartment").val();
+                    d.filterErrors = $("#filterError").val();
+                    d.filterStatus = $('#filterStatus').val();
+                    d.filterDatePaids = [$("#fromDatePaid").val(), $('#toDatePaid').val()];
+                    d.filterKCB = $('#filterKCB').val();
+                    d.filterHospital = $('#filterHospital').val();
+                }
+            },
+            order: [],
+            columns: cols,
+            createdRow: function (row, data, dataIndex) {
+                if (data.is_valid) {
+                    $(row).css("color", data.has_errors ? "OrangeRed" : data.has_alerts ? "Goldenrod" : "LimeGreen");
+                }
+            },
+            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+            lengthMenu: @Html.Raw(@DataTableSettingDefault.LENGTH_MENU),
+        });
+
+        var tmrFilt = 0;
+        function callFilter(evt) {
+            evt.preventDefault();
+            evt.stopPropagation();
+            if (tmrFilt) { clearTimeout(tmrFilt); tmrFilt = 0; }
+            tmrFilt = setTimeout(function () { tblData.ajax.reload(); }, 500);
+        }
+
+        function renderCell(data, xml, property, row) {
+            data = data == null || data == undefined ? '' : data;
+            var lst = errLst ? (errLst[xml] || []) : [], errs = [];
+            if (lst && lst.length) {
+                for (var i = 0; i < lst.length; i++) {
+                    var e = lst[i];
+                    if (e.error_row === row.stt && e.error_tag.toLowerCase() === property.toLowerCase()) errs.push(e);
+                }
+            }
+            if (!errs.length) return data;
+
+            var msg = errs.map(e => e.message).join(', ');
+            var desc = errs.map(e => e.error_desc).join(', ');
+            return errs.some(e => !e.is_alert) ? `${data} <i class="fas fa-exclamation-triangle error-icon ai-asking" title="${msg}" data-ai-msg="${desc}"></i>` : `${data} <i class="fas fa-exclamation-circle alert-icon ai-asking" title="${msg}" data-ai-msg="${desc}"></i>`;
+        }
+        function renderRowError(row, data) {
+            var aCell = $(row).find('i.alert-icon').parent();
+            aCell.addClass('alert-row');
+            if (aCell.length) {
+                $(row).css('color', 'Goldenrod');
+            }
+
+            var eCell = $(row).find('i.error-icon').parent();
+            eCell.addClass('error-row');
+            if (eCell.length) {
+                $(row).css('color', 'OrangeRed');
+            }
+        }
+
+        var tablst = $('#navLinks .nav-link'), tblXML = {};
+        function resetView() {
+            tablst.removeClass('active').each(function () {
+                var a = $(this), c = a.attr('href').slice(1);
+                if (c === 'xml1') { a.addClass('active'); }
+                else if (c != 'error') { a.addClass('reload'); }
+            });
+            $('#tabPanes .tab-pane').removeClass('active').eq(0).addClass('active');
+
+            if (curXml1) {
+                var lst = curXml1.has_files.split(';');
+                $('#navLinks .nav-link').each(function () {
+                    var a = $(this), xml = a.attr('href').substring(1);
+                    if (xml === 'xml1' || xml === 'error' || xml === 'history') return;
+                    for (var i = 0; i < lst.length; i++) {
+                        if (xml.indexOf(lst[i]) >= 0) { a.removeClass('disabled'); }
+                        else if (!a.hasClass('disabled')) { a.addClass('disabled'); }
+                    }
+                });
+                $('#preXML1 input').each(function () {
+                    this.value = curXml1[this.id.toLowerCase()];
+                });
+                $('#frmXML1 input').each(function () {
+                    this.value = curXml1[this.id.toLowerCase()];
+                });
+            }
+        }
+
+        var cles = [], flds = headCaps['error'];
+        for (var i = 0; i < flds.length; i++) {
+            var c = { data: flds[i].toLowerCase() };
+            cles.push(c);
+        }
+        var tblError = $('#tblError').DataTable({
+            responsive: false,
+            bPaginate: false,
+            columns: cles,
+            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+        });
+        var errLst = {};
+
+        function resetErrors(errs) {
+            errLst = {};
+            tblError.clear();
+            tblError.rows.add(errs || []).draw();
+
+            $('.errCount').html('').each(function () {
+                var cnt = $(this), xml = cnt.attr('id').replace('ErrorTotal', '');
+                var elst = [];
+                for (var i = 0; i < errs.length; i++) {
+                    if (errs[i].error_file.toLowerCase() == xml) elst.push(errs[i]);
+                }
+                if (elst.length) { cnt.html(elst.length); }
+                errLst[xml] = elst;
+            });
+            $('#frmXML1 label').each(function () {
+                if (!errLst || !errLst['xml1']) return;
+                var lbl = $(this), par = lbl.parent(), err = errLst['xml1'].filter(e => e.error_tag.toLowerCase() === lbl.attr('for').toLowerCase());
+
+                $('i', par).remove();
+                par.parent().removeClass('alert-row').removeClass('error-row');
+                if (err.length) {
+                    $(`<i class="fas fa-exclamation-${err[0].is_alert ? 'circle' : 'triangle'} error-icon ai-asking" title="${err[0].message}" data-ai-msg="${err[0].error_desc}"></i>`).appendTo(par);
+                    par.parent().addClass((err[0].is_alert ? 'alert-row' : 'error-row'));
+                }
+            });
+        }
+        function loadTable(xml, url) {
+            var clms = [], fds = headCaps[xml.toLowerCase()];
+
+            for (var i = 0; i < fds.length; i++) {
+                var c = {
+                    data: fds[i].toLowerCase(),
+                    render: function (data, type, row, meta) {
+                        var elm = headCaps[xml.toLowerCase()];
+                        if (elm) { elm = elm[meta.col]; }
+                        return renderCell(data, xml, elm, row);
+                    }
+                };
+                clms.push(c);
+            }
+
+            var tbl = `#tbl${xml == 'history' ? 'History' : xml.toUpperCase()}`;
+            tblXML[xml] = $(tbl).DataTable({
+                responsive: false,
+                processing: true,
+                serverSide: true,
+                searchDelay: 500,
+                ajax: {
+                    url: url,
+                    type: 'POST',
+                    data: function (d) {
+                        d.xml01ID = curXml1.xml01id;
+                    }
+                },
+                order: [],
+                columns: clms,
+                rowCallback: function (row, data) { renderRowError(row, data); },
+                oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+                lengthMenu: @Html.Raw(@DataTableSettingDefault.LENGTH_MENU),
+            });
+        }
+
+        $('#navLinks').on('click', '.nav-link', function () {
+            var self = $(this), xml = $(this).attr('href').slice(1);
+            if (self.hasClass('active') || xml == 'xml1' || xml == 'error') return;
+
+            var tbl = tblXML[xml];
+            if (self.hasClass('reload')) {
+                self.removeClass('reload');
+                if (tbl && tbl.ajax) { tbl.ajax.reload(); }
+                else { loadTable(xml, self.data('path')); }
+            }
+        });
+
+        $('#tblXML1 tbody').on('dblclick', 'tr', function () {
+            curXml1 = tblData.row(this).data();
+            resetView();
+
+            $.ajax({
+                url: `@Url.Action(nameof(Files130Controller.GetXmlError), Uti.GetControllerName(nameof(Files130Controller)))?xml01ID=${curXml1.xml01id}`,
+                method: 'POST',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+                success: function (res) {
+                    resetErrors(res);
+                    $("#detailModal").modal("show");
+                }
+            });
+        });
+
+
+        function downloadXML() {
+            if (!curXml1?.file_name || !curXml1?.ngay_tao) {
+                $.toast({
+                    heading: 'Cảnh báo',
+                    text: 'Dữ liệu XML1 không hợp lệ.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 3500,
+                    stack: 6
+                });
+                return;
+            }
+
+            window.location = '@Url.Action(nameof(Files130Controller.DownloadHoso), Uti.GetControllerName(nameof(Files130Controller)))' + `?fileName=${curXml1.file_name}&date=${curXml1.ngay_tao}`;
+        }
+        function recheckXML() {
+            $("#spinnerWrapper").modal("show");
+
+            $.ajax({
+                url: "@Url.Action(nameof(Files130Controller.RecheckHoso), Uti.GetControllerName(nameof(Files130Controller)))" + `?xml01ID=${curXml1.xml01id}`,
+                method: 'GET',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+                success: function(res) {
+                    $("#spinnerWrapper").modal("hide");
+                    $("#detailModal").modal("hide");
+
+                    $.toast({
+                        heading: 'Thông báo',
+                        text: 'Đã đưa hồ sơ vào hàng đợi để giám định lại, vui lòng chờ trong chốc lát.',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'info',
+                        hideAfter: 3500,
+                        stack: 6
+                    });
+                },
+                fail: function() {
+                    alert(1);
+                    $("#spinnerWrapper").modal("hide");
+                    $("#detailModal").modal("hide");
+
+                    $.toast({
+                        heading: 'Cảnh báo',
+                        text: 'Dữ liệu XML1 không hợp lệ.',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 3500,
+                        stack: 6
+                    });
+                }
+            });
+        }
+
+        var downloadUrls = [
+            '@Url.Action(nameof(Files130Controller.GetDownloadData1), Uti.GetControllerName(nameof(Files130Controller)))',
+            '@Url.Action(nameof(Files130Controller.GetDownloadData2), Uti.GetControllerName(nameof(Files130Controller)))',
+            '@Url.Action(nameof(Files130Controller.GetDownloadData3), Uti.GetControllerName(nameof(Files130Controller)))',
+            '@Url.Action(nameof(Files130Controller.GetDownloadData4), Uti.GetControllerName(nameof(Files130Controller)))',
+            '@Url.Action(nameof(Files130Controller.GetDownloadData5), Uti.GetControllerName(nameof(Files130Controller)))',
+            '@Url.Action(nameof(Files130Controller.GetDownloadData6), Uti.GetControllerName(nameof(Files130Controller)))',
+            '@Url.Action(nameof(Files130Controller.GetDownloadData7), Uti.GetControllerName(nameof(Files130Controller)))'
+        ];
+        function downloadFile(idx) {
+            if (idx == 6) {
+                if (!$('#fromDateCreate').val()) {
+                    $.toast({
+                        heading: 'Chú ý',
+                        text: 'Bạn chưa nhập Ngày tạo, thời gian tính chấm công sẽ là mặc định trong tháng hiện tại!.',
+                        position: 'top-center',
+                        loader: false,
+                        icon: 'info',
+                        hideAfter: 2500,
+                        stack: false
+                    });
+                }
+            }
+            else {
+                if (!tblData.data().length) {
+                    $.toast({
+                        heading: 'Cảnh báo',
+                        text: 'Không có dữ liệu.',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 3500,
+                        stack: 6
+                    });
+                    return;
+                }
+                
+                var hasDate = false;
+                $('.input-daterange input').each(function(){
+                    if (this.value) {
+                        hasDate = true;
+                        return false;
+                    }
+                });
+
+                if (!hasDate || !$("#filterError").val()) {
+                    $.toast({
+                        heading: 'Cảnh báo',
+                        text: 'Vui lòng chọn ít nhất 1 mục ngày tháng (ngày vào, ngày ra, ngày tạo hoặc ngày thanh toán) hoặc loại lỗi để tải báo cáo.',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 3500,
+                        stack: 6
+                    });
+                    return;
+                }
+            }
+
+            $(".btn-download").addClass('disabled-custom');
+            $("#spinnerWrapper").modal("show");
+
+            $.ajax({
+                url: downloadUrls[idx],
+                method: "GET",
+                contentType: "application/json",
+                cache: false,
+                success: function (response) {
+                    $("#spinnerWrapper").modal("hide");
+                    $(".btn-download").removeClass('disabled-custom');
+
+                    if (response.code != 200) {
+                        $.toast({
+                            heading: 'Thất bại',
+                            text: 'Đã có lỗi hệ thống.',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                        return;
+                    }
+
+                    window.location = '@Url.Action(nameof(Files130Controller.Download), Uti.GetControllerName(nameof(Files130Controller)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    setTimeout(() => {
+                        $.toast({
+                            heading: 'Thành công',
+                            text: '',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'success',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                    }, 2000);
+                },
+                error: function (e) {
+                    $("#spinnerWrapper").modal("hide");
+                    $(".btn-download").removeClass('disabled-custom');
+
+                    $.toast({
+                        heading: 'Thất bại',
+                        text: 'Đã có lỗi hệ thống.',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 3500,
+                        stack: 6
+                    });
+                }
+            });
+        }
+
+        function recheckAll() {
+            const xml1Length = dataTbl?.data()?.length;
+            if (!xml1Length || xml1Length > 3000) {
+                $.toast({
+                    heading: 'Cảnh báo',
+                    text: xml1Length ? 'Số lượng hồ sơ quá lớn (> 3000).' : 'Không có dữ liệu.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 3500,
+                    stack: 6
+                });
+                return;
+            }
+
+            var hasDate = false;
+            var inp = $('input', datePickrs);
+            for (var i = 0; i < inp.length; i++) {
+                if (inp.eq(i).val()) {
+                    hasDate = true;
+                    break;
+                }
+            }
+
+            if (!hasDate || !$("#filterError").val()) {
+                $.toast({
+                    heading: 'Cảnh báo',
+                    text: 'Vui lòng chọn ít nhất 1 mục ngày tháng (ngày vào, ngày ra, ngày tạo hoặc ngày thanh toán) hoặc loại lỗi để tải báo cáo.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 3500,
+                    stack: 6
+                });
+                return;
+            }
+
+            if (!confirm('Những hồ sơ đã chọn sẽ được đánh dấu để kiểm tra lại tự động. Bạn đã chắc chắn muốn thực hiện chức năng này???')) return;
+
+            $("#btnRecheck").addClass('disabled-custom');
+            $("#spinnerWrapper").modal("show");
+
+            var path = '@Url.Action(nameof(Files130Controller.RecheckAll), Uti.GetControllerName(nameof(Files130Controller)))';
+            $.ajax({
+                url: path,
+                data: {
+                    filterDateIns: [$("#fromDateIn").val(), $('#toDateIn').val()],
+                    filterDateOuts: [$("#fromDateOut").val(), $('#toDateOut').val()],
+                    filterDateCreates: [$("#fromDateCreate").val(), $('#toDateCreate').val()],
+                    departments: $("#filterDepartment").val(),
+                    filterErrors: $("#filterError").val(),
+                    filterStatus: $('#filterStatus').val(),
+                    filterDatePaids: [$("#fromDatePaid").val(), $('#toDatePaid').val()],
+                    filterKCB: $('#filterKCB').val(),
+                    filterHospital: $('#filterHospital').val(),
+                },
+                method: "POST",
+                dataType: "json",
+                success: function (res) {
+                    $("#spinnerWrapper").modal("hide");
+                    $("#btnRecheck").removeClass('disabled-custom');
+
+                    if (!res.recordsTotal) {
+                        $.toast({
+                            heading: 'Thất bại',
+                            text: 'Đã có lỗi hệ thống.',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                    }
+                    else {
+                        $.toast({
+                            heading: 'Thành công',
+                            text: res.recordsTotal.toString() + ' hồ sơ đã vào hàng đợi, vui lòng chờ hệ thống kiểm tra lại hoàn thành',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'success',
+                            hideAfter: 5000,
+                            stack: 6
+                        });
+
+                        dataTbl.ajax.reload();
+                    }
+                },
+                error: function (e) {
+                    $("#spinnerWrapper").modal("hide");
+                    $("#btnDownload").removeClass('disabled-custom');
+
+                    $.toast({
+                        heading: 'Thất bại',
+                        text: 'Đã có lỗi hệ thống.',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 3500,
+                        stack: 6
+                    });
+                }
+            });
+        }
+
+        function dedublicate() {
+            var hasDate = false;
+            var inp = $('input', datePickrs);
+            for (var i = 0; i < inp.length; i++) {
+                if (inp.eq(i).val()) {
+                    hasDate = true;
+                    break;
+                }
+            }
+
+            if (!hasDate) {
+                $.toast({
+                    heading: 'Cảnh báo',
+                    text: 'Vui lòng chọn ngày thanh toán để thực hiện.',
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 5000,
+                    stack: 6
+                });
+                return;
+            }
+
+            $("#btnDublicate").addClass('disabled-custom');
+            $("#spinnerWrapper").modal("show");
+
+            var path = '@Url.Action(nameof(Files130Controller.RemoveDublicate), Uti.GetControllerName(nameof(Files130Controller)))';
+            $.ajax({
+                url: path,
+                data: {
+                    filterDatePaids: [$("#fromDatePaid").val(), $('#toDatePaid').val()],
+                },
+                method: "POST",
+                dataType: "json",
+                success: function (res) {
+                    $("#spinnerWrapper").modal("hide");
+                    $("#btnDublicate").removeClass('disabled-custom');
+
+                    $.toast({
+                        heading: 'Thành công',
+                        text: res.recordsTotal.toString() + ' hồ sơ đã hoàn thành',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'success',
+                        hideAfter: 5000,
+                        stack: 6
+                    });
+
+                    dataTbl.ajax.reload();
+                },
+                error: function (e) {
+                    $("#spinnerWrapper").modal("hide");
+                    $("#btnDublicate").removeClass('disabled-custom');
+
+                    $.toast({
+                        heading: 'Thất bại',
+                        text: 'Đã có lỗi hệ thống.',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 3500,
+                        stack: 6
+                    });
+                }
+            });
+        }
+    </script>
+
+
+    @* LINHIST ADDED ZONE FOR CHAT*@
+    <script>
+        var chatter = (function(){
+            var elm = $('#chatzone');
+            elm.bot = $('.chatbot', elm);
+            elm.box = $('.chatbox', elm);
+            elm.clr = $('.closer', elm.box);
+            elm.exr = $('.expder', elm.box);
+            elm.nmr = $('.normer', elm.box);
+            elm.frm = $('iframe', elm);
+
+            elm.show=function(){
+                elm.bot.removeClass('hide');
+                elm.box.removeClass('hide').removeClass('expd');
+                elm.exr.show();
+                elm.nmr.hide();
+            };
+            elm.send=function(msg) {
+                elm.frm[0].contentWindow.postMessage(msg, '*');
+                elm.show();
+            }
+
+            elm.bot.click(function(e){
+                e.preventDefault();
+                if (elm.bot.hasClass('hide')) return;
+                elm.bot.removeClass('hide');
+                elm.box.removeClass('hide').removeClass('expd');
+                elm.exr.show();
+                elm.nmr.hide();
+            });
+            elm.clr.click(function(e){
+                e.preventDefault();
+                if (elm.box.hasClass('hide')) return;
+                elm.box.removeClass('expd').addClass('hide');
+                elm.bot.removeClass('hide');
+            });
+            elm.exr.click(function(e){
+                e.preventDefault();
+                if (elm.box.hasClass('expd')) return;
+                elm.box.removeClass('hide').addClass('expd');
+                elm.exr.hide();
+                elm.nmr.show();
+                elm.send('this is a test message')
+            });
+            elm.nmr.click(function(e){
+                e.preventDefault();
+                if (!elm.box.hasClass('expd')) return;
+                elm.box.removeClass('hide').removeClass('expd');
+                elm.exr.show();
+                elm.nmr.hide();
+            });
+
+            $('body').on('click', '.ai-asking', function(e){
+                e.preventDefault();
+                var msg = $(this).data('ai-msg') || $(this).attr('title');
+                elm.send(msg);
+            });
+            return elm;
+        })();
+    </script>
+    @* LINHIST ADDED ZONE FOR CHAT*@
+}

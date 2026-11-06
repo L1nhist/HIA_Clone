@@ -1,0 +1,212 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Core.Languages.TitlePage;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@model HIA.Core.Models.Categories.DMBacSiModifyModel
+
+@{
+    ViewData["Title"] = TitlePageResource.DM_NHAN_VIEN;
+}
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@TitlePageResource.DM_NHAN_VIEN</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(DMBacSiController.Index), Uti.GetControllerName(nameof(DMBacSiController)))">@TitlePageResource.DM_NHAN_VIEN</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.CREATE_NEW</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="@nameof(DMBacSiController.Create)">
+                <div class="row">
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MA_KHOA" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="MA_KHOA" class="form-control custom-form-control" />
+                            <span asp-validation-for="MA_KHOA" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MaNhanVien" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="MaNhanVien" class="form-control custom-form-control" />
+                            <span asp-validation-for="MaNhanVien" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Ten_NHANVIEN" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Ten_NHANVIEN" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ten_NHANVIEN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Ten_VIETTAT" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Ten_VIETTAT" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ten_VIETTAT" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Gioi_TINH" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Gioi_TINH" class="form-control custom-form-control" />
+                            <span asp-validation-for="Gioi_TINH" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Ngay_SINH" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Ngay_SINH" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ngay_SINH" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Dia_CHI" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Dia_CHI" class="form-control custom-form-control" />
+                            <span asp-validation-for="Dia_CHI" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Dien_THOAI" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Dien_THOAI" class="form-control custom-form-control" />
+                            <span asp-validation-for="Dien_THOAI" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Email" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Email" class="form-control custom-form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="HocHam_HOCVI" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="HocHam_HOCVI" class="form-control custom-form-control" />
+                            <span asp-validation-for="HocHam_HOCVI" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MA_CHUYENNGANH" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="MA_CHUYENNGANH" class="form-control custom-form-control" />
+                            <span asp-validation-for="MA_CHUYENNGANH" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Loai" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Loai" class="form-control custom-form-control" />
+                            <span asp-validation-for="Loai" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="ChucDanh" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="ChucDanh" class="form-control custom-form-control" />
+                            <span asp-validation-for="ChucDanh" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MaCCHN" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="MaCCHN" class="form-control custom-form-control" />
+                            <span asp-validation-for="MaCCHN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="NgayCap_CCHN" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="NgayCap_CCHN" class="form-control custom-form-control" />
+                            <span asp-validation-for="NgayCap_CCHN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="NoiCap_CCHN" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="NoiCap_CCHN" class="form-control custom-form-control" />
+                            <span asp-validation-for="NoiCap_CCHN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="TuNgay" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="TuNgay" class="form-control custom-form-control" />
+                            <span asp-validation-for="TuNgay" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="DenNgay" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="DenNgay" class="form-control custom-form-control" />
+                            <span asp-validation-for="DenNgay" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="VanBangCM" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="VanBangCM" class="form-control custom-form-control" />
+                            <span asp-validation-for="VanBangCM" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="ThoiGian_DK" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="ThoiGian_DK" class="form-control custom-form-control" />
+                            <span asp-validation-for="ThoiGian_DK" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="ThoiGian_NGAY" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="ThoiGian_NGAY" class="form-control custom-form-control" />
+                            <span asp-validation-for="ThoiGian_NGAY" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="ThoiGian_TUAN" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="ThoiGian_TUAN" class="form-control custom-form-control" />
+                            <span asp-validation-for="ThoiGian_TUAN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="ChungChi_KHAC" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="ChungChi_KHAC" class="form-control custom-form-control" />
+                            <span asp-validation-for="ChungChi_KHAC" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Khoa_BOPHAN" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Khoa_BOPHAN" class="form-control custom-form-control" />
+                            <span asp-validation-for="Khoa_BOPHAN" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group text-center">
+                    <a asp-action="@nameof(DMBacSiController.Index)" class="btn btn-outline-primary">@DisplayFieldResource.BACK_TO_LIST</a>
+                    <input type="submit" value="@DisplayFieldResource.CREATE_NEW" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

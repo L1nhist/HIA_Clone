@@ -1,0 +1,11 @@
+2026-10-06 16:52:41.590 +07:00 [Error] SendEmailAsync: The SMTP server has unexpectedly disconnected.
+MailKit.Net.Smtp.SmtpProtocolException: The SMTP server has unexpectedly disconnected.
+   at MailKit.Net.Smtp.SmtpStream.ReadAheadAsync(Boolean doAsync, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpStream.ReadResponseAsync(Boolean doAsync, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpStream.ReadResponse(CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.SendCommandAsync(String command, Boolean doAsync, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, Boolean doAsync, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.Authenticate(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+   at MailKit.MailService.Authenticate(Encoding encoding, String userName, String password, CancellationToken cancellationToken)
+   at MailKit.MailService.Authenticate(String userName, String password, CancellationToken cancellationToken)
+   at HIA.Services.Email.EmailService.SendEmailAsync(MimeMessage message) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Email\EmailService.cs:line 72

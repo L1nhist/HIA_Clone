@@ -1,0 +1,235 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Categories;
+@using System.Security.Claims;
+@using HIA.Core.Models.Token;
+@model List<HIA.Core.Models.Categories.DMKhoaBVInfoModel>
+@{
+    ViewData["Title"] = DisplayFieldResource.MENU_DEPARTMENT_MAGEME;
+    var modelDisplay = new DMKhoaBVInfoModel();
+}
+@{
+    var roleId = User.FindFirst(ClaimTypes.Role)?.Value;
+    var isRoleUser = roleId == RoleConstant.USER;
+}
+
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net/css/jquery.dataTables.min.css")">
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net/css/select.dataTables.min.css")">
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/dataTables.bootstrap4.css")">
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/responsive.dataTables.min.css")">
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.checkbox/dataTables.checkboxes.css")">
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_DEPARTMENT_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.MENU_DEPARTMENT_MAGEME</li>
+                </ol>
+                @if (!isRoleUser)
+                {
+                    <a href="@Url.Action(nameof(DMKhoaController.Create), Uti.GetControllerName(nameof(DMKhoaController)))" class="btn btn-light d-none d-lg-block m-l-15 btn-add">
+                        <i class="fa fa-plus-circle"></i> @DisplayFieldResource.CREATE_NEW
+                    </a>
+                    <span>&nbsp; &nbsp;||</span>
+                    <a href="#" id="btnSave" class="btn btn-light d-none d-lg-block m-l-15 btn-add">
+                        <i class="fas fa-save"></i> @DisplayFieldResource.SAVE
+                    </a>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive fixed-table-custom not-custom-filter">
+                <table class="table table-bordered table-striped" id="tbl_DataTable">
+                    <thead>
+                        <tr>
+                            @if (!isRoleUser)
+                            {
+                                <th id="selectAll"></th>
+                                <th></th>
+                                <th></th>
+                            }
+                            <th class="w-50">@DisplayFieldResource.NO</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.KhoaCode)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.KhoaName)</th>
+                            @if (!isRoleUser)
+                            {
+                                <th class="w-50">@DisplayFieldResource.ACTIONS</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model?.Count > 0)
+                        {
+                            for (int i = 0; i < Model.Count; i++)
+                            {
+                                var item = Model[i];
+                                <tr>
+                                    @if (!isRoleUser)
+                                    {
+                                        <td class="chk-item"></td>
+                                        <td>@item.KhoaID</td>
+                                        <td>@item.IsSelected</td>
+                                    }
+                            
+                                    <td class="w-50">@(i + 1)</td>
+                                    <td>@item.KhoaCode</td>
+                                    <td>@item.KhoaName</td>
+                                    @if (!isRoleUser)
+                                    {
+                                        <td class="w-50">
+                                            <a href="@Url.Action(nameof(DMKhoaController.Edit), Uti.GetControllerName(nameof(DMKhoaController)), new {id = item.KhoaID })" class="edit-icon"><i class="icon-note"></i></a>
+                                            <a href="@Url.Action(nameof(DMKhoaController.DeleteAction), Uti.GetControllerName(nameof(DMKhoaController)), new {id = item.KhoaID })" class="del-icon"><i class="icon-trash"></i></a>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_spinnerPartial" />
+@section Scripts {
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/dataTables.select.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net-bs4/js/dataTables.responsive.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.checkbox/dataTables.checkboxes.min.js")"></script>
+    <script>
+        $(document).ready(function () {
+            const isUser = '@isRoleUser' === 'True';
+            const totalData = @(Model?.Count ?? 0);
+            let colsDef = [];
+            if (!isUser) {
+                colsDef = [
+                    {
+                        targets: 0,
+                        checkboxes: {
+                            selectRow: true
+                        },
+                        className: "w-50"
+                    },
+                    {
+                        targets: 1,
+                        visible: false
+                    },
+                    {
+                        targets: 2,
+                        visible: false
+                    },
+                    {
+                        targets: 6,
+                        orderable: false
+                    },
+                ];
+            }
+            const orderDef = !isUser ? [[3, 'asc']] : [[0, 'asc']];
+            const selectDef = !isUser ? { style: 'multi' } : {};
+            const dataTbl = $('#tbl_DataTable').DataTable({
+                searchDelay: 500,
+                bPaginate: false,
+                columnDefs: colsDef,
+                select: selectDef,
+                order: orderDef,
+                oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+            });
+            dataTbl.rows().every(function (rowIdx, tableLoop, rowLoop) {
+                if (this.data()?.[2] === 'True' && !isUser) this.select();
+
+                deSelecteAll();
+            });
+            $('.dataTable').on('click', 'tr', function () {
+                setTimeout(() => {
+                    deSelecteAll();
+                }, 0);
+            })
+            $('tr td.chk-item input').on('change', function () {
+                deSelecteAll();
+            });
+
+            function deSelecteAll() {
+                if (isUser) return;
+                const totalSelected = dataTbl.rows('.selected').data().length;
+                if (totalData !== totalSelected) $('#selectAll input').prop("checked", false);
+            }
+
+            $('#btnSave').on('click', function () {
+                if (isUser) return;
+
+                const selectedList = dataTbl.rows('.selected').data();
+                if (!selectedList.length) {
+                    $.toast({
+                        heading: 'Cảnh báo',
+                        text: 'Vui lòng chọn khoa.',
+                        position: 'top-center',
+                        loaderBg: '#ff6849',
+                        icon: 'warning',
+                        hideAfter: 2000,
+                        stack: 6
+                    });
+                    return;
+                }
+
+                const data = [];
+                for (var i = 0; i < selectedList.length; i++) {
+                    const item = selectedList[i];
+                    const itemData = {
+                        khoaID: item[1],
+                        khoaCode: item[4],
+                        khoaName: item[5],
+                    };
+                    data.push(itemData);
+                }
+                $.ajax({
+                    url: "@Url.Action(nameof(DMKhoaBVController.Save), Uti.GetControllerName(nameof(DMKhoaBVController)))",
+                    method: 'POST',
+                    data: {data},
+                    cache: false,
+                    success: function (data) {
+                        if (data?.code !== 200) {
+                            $.toast({
+                                heading: 'Lỗi',
+                                text: data.message,
+                                position: 'top-center',
+                                loaderBg: '#ff6849',
+                                icon: 'error',
+                                hideAfter: 2000,
+                                stack: 6
+                            });
+                            return;
+                        }
+
+                        $.toast({
+                            heading: 'Thành công',
+                            text: 'Lưu thành công.',
+                            position: 'top-center',
+                            loaderBg: '#ff6849',
+                            icon: 'success',
+                            hideAfter: 2000,
+                            stack: 6
+                        });
+                    },
+                    fail: function (jqXHR, textStatus) {
+                        alert("Request failed: " + textStatus);
+                    }
+                });
+            });
+        });
+    </script>
+}

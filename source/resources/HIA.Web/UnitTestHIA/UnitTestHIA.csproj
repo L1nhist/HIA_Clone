@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net5.0-windows</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\HIA.BackgroundServices\HIA.BackgroundServices.csproj" />
+		<ProjectReference Include="..\HIA.Core\HIA.Core.csproj" />
+		<ProjectReference Include="..\HIA.DatabaseModel\HIA.DatabaseModel.csproj" />
+		<ProjectReference Include="..\HIA.ImportExportApp\HIA.ImportExportApp.csproj" />
+		<ProjectReference Include="..\HIA.Repositories\HIA.Repositories.csproj" />
+		<ProjectReference Include="..\HIA.Services\HIA.Services.csproj" />
+		<ProjectReference Include="..\HIA.WebApi\HIA.WebApi.csproj" />
+		<ProjectReference Include="..\HIA.Web\HIA.Web.csproj" />
+	</ItemGroup>
+
+</Project>

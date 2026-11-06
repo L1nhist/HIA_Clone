@@ -1,0 +1,271 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 25px;
+}
+
+#sidebarnav li a {
+    text-decoration: none;
+}
+
+.txt-none-line,
+.txt-none-line > a:hover,
+.txt-none-line > a:focus {
+    text-decoration: none
+}
+
+.status-active {
+    color: #01c0c8;
+    font-weight: bold;
+}
+
+.status-inactive {
+    color: #e46a76;
+    font-weight: bold;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0rem;
+}
+
+.edit-icon, .edit-icon:hover, .edit-icon:active, .edit-icon:focus {
+    text-decoration: none;
+}
+
+.del-icon, .del-icon:hover, .del-icon:active, .del-icon:focus {
+    text-decoration: none;
+    color: #fb9678;
+}
+
+.datepicker-ui {
+    position: relative
+}
+
+    .datepicker-ui input {
+        padding-right: 87px;
+        min-width: 200px;
+    }
+
+    .datepicker-ui .input-group-addon {
+        cursor: pointer;
+    }
+
+        .datepicker-ui .input-group-addon .icon-search {
+            position: absolute;
+            top: 25%;
+            right: 12px;
+        }
+
+        .datepicker-ui .input-group-addon .icon-calender {
+            position: absolute;
+            top: 25%;
+            right: 40px;
+        }
+
+        .datepicker-ui .input-group-addon .icon-clear {
+            position: absolute;
+            top: 28%;
+            right: 72px;
+            color: red;
+        }
+
+.width-97 {
+    max-width: 97%;
+}
+
+.custom-modal {
+    height: 94vh;
+    overflow: auto;
+}
+
+.modal-main-content .xml1-lbl, .modal-main-content .xml1-data {
+    border: 1px solid #fbf6f6;
+}
+
+.modal-main-content .xml1-lbl {
+    border-right: 0;
+}
+
+.w-50 {
+    width: 50px !important;
+    min-width: 50px !important;
+}
+
+.w-200 {
+    width: 200px !important;
+    min-width: 200px !important;
+}
+
+.w-350 {
+    width: 350px !important;
+    min-width: 350px !important;
+}
+
+.w-650 {
+    width: 650px !important;
+    min-width: 650px !important;
+}
+
+.table-data td {
+    padding: 8px 8px 18px !important;
+    white-space: nowrap;
+}
+.xw-200, .xw-450, .xw-650, .xw-800 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.xw-200 {
+    width: 200px !important;
+    max-width: 200px !important;
+}
+
+.xw-450 {
+    width: 450px !important;
+    max-width: 450px !important;
+}
+
+.xw-650 {
+    width: 650px !important;
+    max-width: 650px !important;
+}
+
+.xw-800 {
+    width: 800px !important;
+    max-width: 800px !important;
+}
+
+.table-sticky td {
+    overflow-wrap: normal;
+    overflow-wrap: anywhere;
+}
+
+.collapse.in {
+    display: block !important;
+}
+
+.display-flex {
+    display: flex;
+}
+
+    .display-flex .flex-middle {
+        align-self: center;
+        flex: auto
+    }
+
+    .display-flex .flex-end {
+        align-self: flex-end;
+        flex: auto
+    }
+
+@media (min-width: 768px) {
+    .navbar-header {
+        width: 205px;
+    }
+}
+
+.topbar .top-navbar .navbar-header {
+    background: white !important;
+}
+.sidebar-nav {
+    padding: 15px;
+}
+
+    .sidebar-nav ul li a {
+        padding: 5px;
+    }
+
+    .sidebar-nav .has-arrow::after {
+        top: 17px;
+    }
+
+.page-titles {
+    padding: 4px 5px;
+    margin-bottom: 5px;
+}
+
+.container-fluid {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.select2-custom .select2.select2-container {
+    width: 100% !important;
+}
+
+.disabled-custom {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.select-info .select-item {
+    display: none;
+}
+
+.error-row {
+    background: #e46a76;
+    color: white;
+}
+
+.error-icon {
+    color: #fec107;
+}

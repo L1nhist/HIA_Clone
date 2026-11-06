@@ -1,0 +1,102 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@model HIA.Core.Models.Hospital.ModifyHospitalModel
+
+@{
+    ViewData["Title"] = @DisplayFieldResource.MENU_HOSPITAL_MAGEME;
+}
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_HOSPITAL_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HospitalController.Index), Uti.GetControllerName(nameof(HospitalController)))">@DisplayFieldResource.MENU_HOSPITAL_MAGEME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.CREATE_NEW</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="@nameof(HospitalController.Create)">
+                <div class="row">
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="SupperHospitalId" class="control-label col-3 text-right">Chủ Quản</label>
+                        <div class="col-9">
+                            <select asp-for="SupperHospitalId"
+                                    asp-items="@ViewBag.HospitalList"
+                                    class="form-control select2">
+                            </select>
+                            <span asp-validation-for="SupperHospitalId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Name" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Name" class="form-control custom-form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Address" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Address" class="form-control custom-form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MA_CSKCB" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="MA_CSKCB" class="form-control custom-form-control" />
+                            <span asp-validation-for="MA_CSKCB" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Loai_Tuyen" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Loai_Tuyen" class="form-control custom-form-control" />
+                            <span asp-validation-for="Loai_Tuyen" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Username" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Username" class="form-control custom-form-control" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Password" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Password" class="form-control custom-form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <div class="col-3"></div>
+                        <div class="col-9 pad-l-35">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="IsActivated" checked="CHECKED" /> @Html.DisplayNameFor(model => model.IsActivated)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group text-center">
+                    <a asp-action="@nameof(HospitalController.Index)" class="btn btn-outline-primary">@DisplayFieldResource.BACK_TO_LIST</a>
+                    <input type="submit" value="@DisplayFieldResource.CREATE_NEW" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

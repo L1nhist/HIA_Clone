@@ -1,0 +1,5 @@
+2026-08-20 16:03:48.467 +07:00 [Error] DMErrorService130 - Save: Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at HIA.Services.Categories.DMErrorService130.Save(DMErrorModifyModel request) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Categories\DMErrorService130.cs:line 167
+2026-08-20 16:31:55.813 +07:00 [Warning] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+2026-08-20 16:31:55.815 +07:00 [Warning] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.

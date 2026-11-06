@@ -1,0 +1,135 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Hospital;
+@{
+    ViewData["Title"] = @DisplayFieldResource.MENU_HOSPITAL_MAGEME;
+
+    var modelDisplay = new HospitalInfoModel();
+}
+
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/dataTables.bootstrap4.css")">
+<link rel="stylesheet" type="text/css"
+      href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/responsive.dataTables.min.css")">
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_HOSPITAL_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.MENU_HOSPITAL_MAGEME</li>
+                </ol>
+                <a href="@Url.Action(nameof(HospitalController.Create), Uti.GetControllerName(nameof(HospitalController)))" class="btn btn-light d-none d-lg-block m-l-15 btn-add">
+                    <i class="fa fa-plus-circle"></i> @DisplayFieldResource.CREATE_NEW
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive fixed-table-custom not-custom-filter fixed-column">
+                <table class="table table-bordered table-striped" id="tbl_DataTable">
+                    <thead>
+                        <tr>
+                            <th>@DisplayFieldResource.NO</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Name)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Address)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.MA_CSKCB)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Loai_Tuyen)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Username)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.Password)</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.MaxFilePerDate)</th>
+                            <th>Cơ quan chủ quản</th>
+                            <th>Bệnh viện trực thuộc</th>
+                            <th>Cấp độ hoạt động</th>
+                            <th>@Html.DisplayNameFor(x => modelDisplay.IsActivated)</th>
+
+                            <th>@DisplayFieldResource.ACTIONS</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net-bs4/js/dataTables.responsive.min.js")"></script>
+    <script>
+        function calcDataTableHeight() {
+            /*68px: header, 36px: title, 5px: mgbttom-top, 20px: 2 paddtop-bot 10; 32px: footer, 5px: bottom margin*/
+            const height = $(window).height() - 68 - 36 - 5 - 20 - 32 - 5;
+            return height;
+        }
+        $('#tbl_DataTable').DataTable({
+            //responsive: true,
+            processing: true,
+            serverSide: true,
+            searchDelay: 500,
+            ajax: {
+                url: "@Url.Action(nameof(HospitalController.GetItems), Uti.GetControllerName(nameof(HospitalController)))",
+                type: 'POST'
+            },
+            language: {
+                "search": "",
+                "searchPlaceholder": "Search..."
+            },
+            columnDefs: [
+                { targets: [0, 3], orderable: false },
+            ],
+            order: [[1, "asc"]],
+            columns: [
+                {
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Name))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Name))", autoWidth: true },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Address))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Address))", autoWidth: true },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MA_CSKCB))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MA_CSKCB))", autoWidth: true },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Loai_Tuyen))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Loai_Tuyen))", autoWidth: true },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Username))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Username))", autoWidth: true },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Password))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Password))", autoWidth: true },
+                
+                 { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MaxFilePerDate))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MaxFilePerDate))", autoWidth: true },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.SuperHospitalId))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.SuperHospitalId))", autoWidth: true },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.HospitalCons))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.HospitalCons))", autoWidth: true },
+                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.LevelId))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.LevelId))", autoWidth: true },
+                
+                {
+                    data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.IsActivated))",
+                    name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.IsActivated))",
+                    autoWidth: true,
+                    render: function (data, type, row, meta) {
+                        const isActived = "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.IsActivated))";
+                        return row[isActived]
+                            ? `<span class="status-active">@DisplayFieldResource.ACTIVE</span>`
+                            : `<span class="status-inactive">@DisplayFieldResource.INACTIVE</span>`;
+                    }
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        const editUrl = '@Url.Action(nameof(HospitalController.Edit), Uti.GetControllerName(nameof(HospitalController)))' + `?id=${row.id}`;
+                        const delUrl = '@Url.Action(nameof(HospitalController.DeleteAction), Uti.GetControllerName(nameof(HospitalController)))' + `?id=${row.id}`;
+                        return `<a href="${editUrl}" class="edit-icon"><i class="icon-note"></i></a> <a href="${delUrl}" class="del-icon"><i class="icon-trash"></i></a>`;
+                    }
+                },
+            ],
+            scrollX: true,
+            sScrollY: calcDataTableHeight(),
+            scrollCollapse: true,
+            fixedColumns: {
+                leftColumns: 0,
+                rightColumns: 1,
+            },
+            oLanguage: @Html.Raw(DataTableSettingDefault.O_LANGUAGE),
+            lengthMenu: @Html.Raw(@DataTableSettingDefault.LENGTH_MENU),
+        });
+    </script>
+}

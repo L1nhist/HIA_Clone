@@ -1,0 +1,479 @@
+2023-02-13 16:17:14.577 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:17:14.602 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:17:14.603 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:17:14.603 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:17:14.937 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 16:17:14.939 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:17:14).
+2023-02-13 16:17:14.950 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 16:17:14.951 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:17:14).
+2023-02-13 16:18:10.573 +07:00 [Error] An unhandled exception has occurred while executing the request.
+System.FormatException: String 'string' was not recognized as a valid DateTime.
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at HIA.Web.Controllers.ApiController.CheckFileAPI(Root request) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Web\Controllers\ApiController.cs:line 183
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-02-13 16:25:45.186 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:25:45.205 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:25:45.205 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:25:45.205 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:25:45.442 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 16:25:45.443 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:25:45).
+2023-02-13 16:25:45.448 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 16:25:45.449 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:25:45).
+2023-02-13 16:27:25.117 +07:00 [Error] An unhandled exception has occurred while executing the request.
+System.FormatException: String '10:52:00 27-01-2023' was not recognized as a valid DateTime.
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at HIA.Web.Controllers.ApiController.CheckFileAPI(Root request) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Web\Controllers\ApiController.cs:line 227
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-02-13 16:30:29.320 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:30:29.339 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:30:29.339 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:30:29.339 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:30:29.584 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 16:30:29.586 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:30:29).
+2023-02-13 16:30:29.592 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 16:30:29.593 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:30:29).
+2023-02-13 16:31:38.001 +07:00 [Error] An unhandled exception has occurred while executing the request.
+System.FormatException: String 'string' was not recognized as a valid DateTime.
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at HIA.Web.Controllers.ApiController.CheckFileAPI(Root request) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Web\Controllers\ApiController.cs:line 270
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-02-13 16:33:33.902 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:33:33.966 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:33:33.966 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:33:33.967 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:33:34.228 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 16:33:34.229 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:33:34).
+2023-02-13 16:33:34.235 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 16:33:34.236 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:33:34).
+2023-02-13 16:34:47.560 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API APIVIP (10061)
+2023-02-13 16:34:48.084 +07:00 [Information] [BACKGROUND_SERVICE] CheckFileAPI: S1. Haimaster Check API APIVIP (10061) - Error: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM. ---    at System.Data.SqlTypes.SqlDateTime.FromTimeSpan(TimeSpan value)
+   at System.Data.SqlTypes.SqlDateTime.FromDateTime(DateTime value)
+   at System.Data.SqlTypes.SqlDateTime..ctor(DateTime value)
+   at Microsoft.Data.SqlClient.MetaType.FromDateTime(DateTime dateTime, Byte cb)
+   at Microsoft.Data.SqlClient.TdsParser.WriteUnterminatedValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj, Int32 paramSize, Boolean isDataFeed)
+   at Microsoft.Data.SqlClient.TdsParser.WriteValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj, Int32 paramSize, Boolean isDataFeed)
+   at Microsoft.Data.SqlClient.TdsParser.TDSExecuteRPCAddParameter(TdsParserStateObject stateObj, SqlParameter param, MetaType mt, Byte options)
+   at Microsoft.Data.SqlClient.TdsParser.TdsExecuteRPC(SqlCommand cmd, _SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc, Boolean sync, TaskCompletionSource`1 completion, Int32 startRpc, Int32 startParam)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at .(DbCommand , BulkOperation , Int32 )
+   at .(DbCommand , BulkOperation , Int32 )
+   at .( , DbCommand )
+   at .Execute(List`1 actions)
+   at .(List`1 )
+   at Z.BulkOperations.BulkOperation.Execute()
+   at Z.BulkOperations.BulkOperation.BulkInsert()
+   at .BulkInsert[T](DbContext this, IEntityType entityType, IEnumerable`1 list, Action`1 options, SavingSelector savingSelector, Boolean forceSpecificTypeMapping)
+   at .BulkInsert[T](DbContext this, IEnumerable`1 entities, Action`1 options, Boolean isBulkSaveChanges)
+   at .(DbContext this, List`1 , Action`1 )
+   at .(DbContext this, StateManager , IReadOnlyList`1 , Action`1 )
+   at .(DbContext this, StateManager , IReadOnlyList`1 , Action`1 )
+   at .(DbContext this, Action`1 , DbContext )
+   at DbContextExtensions.BulkSaveChanges(DbContext this, Action`1 options)
+   at DbContextExtensions..()
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at DbContextExtensions.BulkSaveChangesAsync(DbContext this, Action`1 options, CancellationToken cancellationToken)
+   at HIA.Repositories.Base.BaseRepository`1.SaveChangesAsync() in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Repositories\Base\BaseRepository.cs:line 354
+   at HIA.Services.HosoManagement.HoSoManagementService.CreateNewHoSoAPI(XML1_API request, String hospitalIdAPI, String hospitalNameAPI, String userIdAPI, String MA_CSKCB_API, Boolean isFromHIS) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\HoSoManagement\HoSoManagementService.cs:line 13949
+   at HIA.Services.Files.FilesService.FileCheckAPI(XML1_API ListCheckAPI) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Files\FilesService.cs:line 1314
+   at HIA.Web.Controllers.ApiController.CheckFileAPI(Root request) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Web\Controllers\ApiController.cs:line 294
+2023-02-13 16:34:48.096 +07:00 [Warning] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2023-02-13 16:34:48.248 +07:00 [Error] SysHistoryLogService - CANNOT write log func to DB: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+System.Data.SqlTypes.SqlTypeException: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+   at System.Data.SqlTypes.SqlDateTime.FromTimeSpan(TimeSpan value)
+   at System.Data.SqlTypes.SqlDateTime.FromDateTime(DateTime value)
+   at System.Data.SqlTypes.SqlDateTime..ctor(DateTime value)
+   at Microsoft.Data.SqlClient.MetaType.FromDateTime(DateTime dateTime, Byte cb)
+   at Microsoft.Data.SqlClient.TdsParser.WriteUnterminatedValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj, Int32 paramSize, Boolean isDataFeed)
+   at Microsoft.Data.SqlClient.TdsParser.WriteValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj, Int32 paramSize, Boolean isDataFeed)
+   at Microsoft.Data.SqlClient.TdsParser.TDSExecuteRPCAddParameter(TdsParserStateObject stateObj, SqlParameter param, MetaType mt, Byte options)
+   at Microsoft.Data.SqlClient.TdsParser.TdsExecuteRPC(SqlCommand cmd, _SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc, Boolean sync, TaskCompletionSource`1 completion, Int32 startRpc, Int32 startParam)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at .(DbCommand , BulkOperation , Int32 )
+   at .(DbCommand , BulkOperation , Int32 )
+   at .( , DbCommand )
+   at .Execute(List`1 actions)
+   at .(List`1 )
+   at Z.BulkOperations.BulkOperation.Execute()
+   at Z.BulkOperations.BulkOperation.BulkInsert()
+   at .BulkInsert[T](DbContext this, IEntityType entityType, IEnumerable`1 list, Action`1 options, SavingSelector savingSelector, Boolean forceSpecificTypeMapping)
+   at .BulkInsert[T](DbContext this, IEnumerable`1 entities, Action`1 options, Boolean isBulkSaveChanges)
+   at .(DbContext this, List`1 , Action`1 )
+   at .(DbContext this, StateManager , IReadOnlyList`1 , Action`1 )
+   at .(DbContext this, StateManager , IReadOnlyList`1 , Action`1 )
+   at .(DbContext this, Action`1 , DbContext )
+   at DbContextExtensions.BulkSaveChanges(DbContext this, Action`1 options)
+   at DbContextExtensions..()
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at DbContextExtensions.BulkSaveChangesAsync(DbContext this, Action`1 options, CancellationToken cancellationToken)
+   at HIA.Repositories.Base.BaseRepository`1.SaveChangesAsync() in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Repositories\Base\BaseRepository.cs:line 354
+   at HIA.Services.SysHistoryLogManagement.SysHistoryLogService.AddSysLog(String functionName, String email) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\SysHistoryLogManagement\SysHistoryLogService.cs:line 51
+2023-02-13 16:35:56.656 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API APIVIP (10061)
+2023-02-13 16:37:09.363 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:37:09.382 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:37:09.383 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:37:09.383 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:37:09.613 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 16:37:09.614 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:37:09).
+2023-02-13 16:37:09.620 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 16:37:09.621 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:37:09).
+2023-02-13 16:40:06.255 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:40:06.273 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:40:06.274 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:40:06.274 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:40:06.497 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 16:40:06.498 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:40:06).
+2023-02-13 16:40:06.504 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 16:40:06.505 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:40:06).
+2023-02-13 16:40:35.766 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API APIVIP (10061)
+2023-02-13 16:43:52.966 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:43:52.983 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:43:52.984 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:43:52.984 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:43:53.194 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 16:43:53.195 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:43:53).
+2023-02-13 16:43:53.200 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 16:43:53.201 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:43:53).
+2023-02-13 16:44:15.200 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API APIVIP (10061)
+2023-02-13 16:45:58.769 +07:00 [Information] [BACKGROUND_SERVICE] CheckFileAPI: S1. Haimaster Check API APIVIP (10061) - Error: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM. ---    at System.Data.SqlTypes.SqlDateTime.FromTimeSpan(TimeSpan value)
+   at System.Data.SqlTypes.SqlDateTime.FromDateTime(DateTime value)
+   at System.Data.SqlTypes.SqlDateTime..ctor(DateTime value)
+   at Microsoft.Data.SqlClient.MetaType.FromDateTime(DateTime dateTime, Byte cb)
+   at Microsoft.Data.SqlClient.TdsParser.WriteUnterminatedValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj, Int32 paramSize, Boolean isDataFeed)
+   at Microsoft.Data.SqlClient.TdsParser.WriteValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj, Int32 paramSize, Boolean isDataFeed)
+   at Microsoft.Data.SqlClient.TdsParser.TDSExecuteRPCAddParameter(TdsParserStateObject stateObj, SqlParameter param, MetaType mt, Byte options)
+   at Microsoft.Data.SqlClient.TdsParser.TdsExecuteRPC(SqlCommand cmd, _SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc, Boolean sync, TaskCompletionSource`1 completion, Int32 startRpc, Int32 startParam)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at .(DbCommand , BulkOperation , Int32 )
+   at .(DbCommand , BulkOperation , Int32 )
+   at .( , DbCommand )
+   at .Execute(List`1 actions)
+   at .(List`1 )
+   at Z.BulkOperations.BulkOperation.Execute()
+   at Z.BulkOperations.BulkOperation.BulkInsert()
+   at .BulkInsert[T](DbContext this, IEntityType entityType, IEnumerable`1 list, Action`1 options, SavingSelector savingSelector, Boolean forceSpecificTypeMapping)
+   at .BulkInsert[T](DbContext this, IEnumerable`1 entities, Action`1 options, Boolean isBulkSaveChanges)
+   at .(DbContext this, List`1 , Action`1 )
+   at .(DbContext this, StateManager , IReadOnlyList`1 , Action`1 )
+   at .(DbContext this, StateManager , IReadOnlyList`1 , Action`1 )
+   at .(DbContext this, Action`1 , DbContext )
+   at DbContextExtensions.BulkSaveChanges(DbContext this, Action`1 options)
+   at DbContextExtensions..()
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at DbContextExtensions.BulkSaveChangesAsync(DbContext this, Action`1 options, CancellationToken cancellationToken)
+   at HIA.Repositories.Base.BaseRepository`1.SaveChangesAsync() in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Repositories\Base\BaseRepository.cs:line 354
+   at HIA.Services.HosoManagement.HoSoManagementService.CreateNewHoSoAPI(XML1_API request, String hospitalIdAPI, String hospitalNameAPI, String userIdAPI, String MA_CSKCB_API, Boolean isFromHIS) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\HoSoManagement\HoSoManagementService.cs:line 13949
+   at HIA.Services.Files.FilesService.FileCheckAPI(XML1_API ListCheckAPI) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Files\FilesService.cs:line 1314
+   at HIA.Web.Controllers.ApiController.CheckFileAPI(Root request) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Web\Controllers\ApiController.cs:line 301
+2023-02-13 16:45:58.780 +07:00 [Warning] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2023-02-13 16:45:58.881 +07:00 [Error] SysHistoryLogService - CANNOT write log func to DB: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+System.Data.SqlTypes.SqlTypeException: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+   at System.Data.SqlTypes.SqlDateTime.FromTimeSpan(TimeSpan value)
+   at System.Data.SqlTypes.SqlDateTime.FromDateTime(DateTime value)
+   at System.Data.SqlTypes.SqlDateTime..ctor(DateTime value)
+   at Microsoft.Data.SqlClient.MetaType.FromDateTime(DateTime dateTime, Byte cb)
+   at Microsoft.Data.SqlClient.TdsParser.WriteUnterminatedValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj, Int32 paramSize, Boolean isDataFeed)
+   at Microsoft.Data.SqlClient.TdsParser.WriteValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj, Int32 paramSize, Boolean isDataFeed)
+   at Microsoft.Data.SqlClient.TdsParser.TDSExecuteRPCAddParameter(TdsParserStateObject stateObj, SqlParameter param, MetaType mt, Byte options)
+   at Microsoft.Data.SqlClient.TdsParser.TdsExecuteRPC(SqlCommand cmd, _SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc, Boolean sync, TaskCompletionSource`1 completion, Int32 startRpc, Int32 startParam)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at .(DbCommand , BulkOperation , Int32 )
+   at .(DbCommand , BulkOperation , Int32 )
+   at .( , DbCommand )
+   at .Execute(List`1 actions)
+   at .(List`1 )
+   at Z.BulkOperations.BulkOperation.Execute()
+   at Z.BulkOperations.BulkOperation.BulkInsert()
+   at .BulkInsert[T](DbContext this, IEntityType entityType, IEnumerable`1 list, Action`1 options, SavingSelector savingSelector, Boolean forceSpecificTypeMapping)
+   at .BulkInsert[T](DbContext this, IEnumerable`1 entities, Action`1 options, Boolean isBulkSaveChanges)
+   at .(DbContext this, List`1 , Action`1 )
+   at .(DbContext this, StateManager , IReadOnlyList`1 , Action`1 )
+   at .(DbContext this, StateManager , IReadOnlyList`1 , Action`1 )
+   at .(DbContext this, Action`1 , DbContext )
+   at DbContextExtensions.BulkSaveChanges(DbContext this, Action`1 options)
+   at DbContextExtensions..()
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at DbContextExtensions.BulkSaveChangesAsync(DbContext this, Action`1 options, CancellationToken cancellationToken)
+   at HIA.Repositories.Base.BaseRepository`1.SaveChangesAsync() in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Repositories\Base\BaseRepository.cs:line 354
+   at HIA.Services.SysHistoryLogManagement.SysHistoryLogService.AddSysLog(String functionName, String email) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\SysHistoryLogManagement\SysHistoryLogService.cs:line 51
+2023-02-13 16:49:34.412 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:49:34.432 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:49:34.432 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:49:34.432 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 16:49:34.668 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 16:49:34.669 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:49:34).
+2023-02-13 16:49:34.675 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 16:49:34.676 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:49:34).
+2023-02-13 16:50:11.020 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API APIVIP (10061)
+2023-02-13 16:50:15.433 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data10061: Validated - Total time: 157,8811
+2023-02-13 16:50:15.469 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data10061: Get All Data - Total time: 35,9474
+2023-02-13 16:50:15.492 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data10061: After Validated - Total time: 58,8308
+2023-02-13 16:50:15.492 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu10061: After Validated - Total time: 0,0002
+2023-02-13 16:50:15.495 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S160. Haimaster Check API Save error xuong DB10061: After Validated - Total time: 2,3711
+2023-02-13 16:50:20.751 +07:00 [Warning] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2023-02-13 16:51:21.620 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API APIVIP (10061)
+2023-02-13 16:54:03.400 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data10061: Validated - Total time: 6689,2929
+2023-02-13 16:55:24.500 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data10061: Get All Data - Total time: 77153,0051
+2023-02-13 16:55:24.500 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data10061: After Validated - Total time: 77153,5134
+2023-02-13 16:55:27.196 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu10061: After Validated - Total time: 2155,7724
+2023-02-13 16:56:57.529 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S160. Haimaster Check API Save error xuong DB10061: After Validated - Total time: 88518,3256
+2023-02-13 17:01:23.713 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API Nguyen Khoi Mac (06001)
+2023-02-13 17:01:26.275 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data38289: Validated - Total time: 84,3189
+2023-02-13 17:01:29.485 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data38289: Get All Data - Total time: 3209,3832
+2023-02-13 17:01:29.645 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data38289: After Validated - Total time: 3369,1565
+2023-02-13 17:01:30.525 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu38289: After Validated - Total time: 880,4102
+2023-02-13 17:01:31.324 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S160. Haimaster Check API Save error xuong DB38289: After Validated - Total time: 798,972
+2023-02-13 17:03:37.290 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API Nguyen Khoi Mac (06001)
+2023-02-13 17:03:37.403 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data38289: Validated - Total time: 86,2714
+2023-02-13 17:03:42.613 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data38289: Get All Data - Total time: 5210,1486
+2023-02-13 17:03:42.767 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data38289: After Validated - Total time: 5364,8749
+2023-02-13 17:05:33.879 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu38289: After Validated - Total time: 111111,7133
+2023-02-13 17:05:34.981 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S160. Haimaster Check API Save error xuong DB38289: After Validated - Total time: 1101,5821
+2023-02-13 17:05:43.976 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API Nguyen Khoi Mac (06001)
+2023-02-13 17:05:44.995 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data38289: Validated - Total time: 101,7007
+2023-02-13 17:05:56.181 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data38289: Get All Data - Total time: 11185,3644
+2023-02-13 17:05:56.317 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data38289: After Validated - Total time: 11322,0961
+2023-02-13 17:08:06.578 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:08:06.598 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:08:06.598 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:08:06.598 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:08:06.827 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 17:08:06.828 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:08:06).
+2023-02-13 17:08:06.834 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 17:08:06.835 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:08:06).
+2023-02-13 17:08:41.048 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API Nguyen Khoi Mac (06001)
+2023-02-13 17:09:26.551 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data38289: Validated - Total time: 109,4832
+2023-02-13 17:09:28.704 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data38289: Get All Data - Total time: 2152,5835
+2023-02-13 17:09:28.894 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data38289: After Validated - Total time: 2342,8201
+2023-02-13 17:13:22.403 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:13:22.450 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:13:22.450 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:13:22.450 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:13:22.799 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 17:13:22.800 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:13:22).
+2023-02-13 17:13:22.812 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 17:13:22.813 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:13:22).
+2023-02-13 17:13:57.679 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API Nguyen Khoi Mac (06001)
+2023-02-13 17:14:00.874 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data38289: Validated - Total time: 123,7417
+2023-02-13 17:14:01.986 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data38289: Get All Data - Total time: 1111,6175
+2023-02-13 17:14:02.178 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data38289: After Validated - Total time: 1303,651
+2023-02-13 17:14:03.376 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu38289: After Validated - Total time: 1198,4347
+2023-02-13 17:16:05.685 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:16:05.705 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:16:05.705 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:16:05.705 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:16:05.917 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 17:16:05.918 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:16:05).
+2023-02-13 17:16:05.924 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 17:16:05.924 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:16:05).
+2023-02-13 17:16:30.078 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API Nguyen Khoi Mac (06001)
+2023-02-13 17:16:32.860 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data38289: Validated - Total time: 143,0169
+2023-02-13 17:16:33.625 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data38289: Get All Data - Total time: 764,8644
+2023-02-13 17:16:33.826 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data38289: After Validated - Total time: 966,2312
+2023-02-13 17:16:34.586 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu38289: After Validated - Total time: 759,5283
+2023-02-13 17:16:59.862 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S160. Haimaster Check API Save error xuong DB38289: After Validated - Total time: 25275,8381
+2023-02-13 17:16:59.869 +07:00 [Warning] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2023-02-13 17:17:50.611 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API APIVIP (10061)
+2023-02-13 17:17:52.810 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data10061: Validated - Total time: 118,1586
+2023-02-13 17:17:54.691 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data10061: Get All Data - Total time: 1880,7657
+2023-02-13 17:17:54.692 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data10061: After Validated - Total time: 1881,6635
+2023-02-13 17:17:55.718 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu10061: After Validated - Total time: 1026,1165
+2023-02-13 17:18:29.568 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S160. Haimaster Check API Save error xuong DB10061: After Validated - Total time: 33365,4728
+2023-02-13 17:19:02.029 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API APIVIP (10061)
+2023-02-13 17:19:38.201 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data10061: Validated - Total time: 103,1877
+2023-02-13 17:19:41.374 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data10061: Get All Data - Total time: 3173,1968
+2023-02-13 17:19:41.375 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data10061: After Validated - Total time: 3174,117
+2023-02-13 17:19:43.802 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu10061: After Validated - Total time: 2427,4972
+2023-02-13 17:28:49.625 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:28:49.642 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:28:49.642 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:28:49.643 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:28:49.871 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 17:28:49.872 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:28:49).
+2023-02-13 17:28:49.878 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 17:28:49.879 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:28:49).
+2023-02-13 17:29:18.792 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API APIVIP (10061)
+2023-02-13 17:29:21.485 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data10061: Validated - Total time: 127,8603
+2023-02-13 17:29:22.383 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data10061: Get All Data - Total time: 897,528
+2023-02-13 17:29:22.406 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data10061: After Validated - Total time: 920,5606
+2023-02-13 17:29:23.254 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu10061: After Validated - Total time: 847,8527
+2023-02-13 17:34:04.176 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:34:04.196 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:34:04.196 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:34:04.196 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:34:04.423 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 17:34:04.424 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:34:04).
+2023-02-13 17:34:04.430 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 17:34:04.431 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:34:04).
+2023-02-13 17:34:30.864 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API APIVIP (10061)
+2023-02-13 17:34:33.412 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data10061: Validated - Total time: 122,7595
+2023-02-13 17:34:34.225 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data10061: Get All Data - Total time: 813,4735
+2023-02-13 17:34:34.249 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data10061: After Validated - Total time: 837,1818
+2023-02-13 17:34:34.957 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu10061: After Validated - Total time: 707,73
+2023-02-13 17:35:07.005 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S160. Haimaster Check API Save error xuong DB10061: After Validated - Total time: 32048,0556
+2023-02-13 17:35:07.012 +07:00 [Warning] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2023-02-13 17:48:52.744 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:48:52.762 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:48:52.763 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:48:52.763 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:48:52.975 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 17:48:52.976 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:48:52).
+2023-02-13 17:48:52.982 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 17:48:52.984 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:48:52).
+2023-02-13 17:49:21.423 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API Nguyen Khoi Mac (06001)
+2023-02-13 17:49:24.735 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data38289: Validated - Total time: 181,6866
+2023-02-13 17:49:25.733 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data38289: Get All Data - Total time: 997,5589
+2023-02-13 17:49:25.934 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data38289: After Validated - Total time: 1198,2561
+2023-02-13 17:49:26.815 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu38289: After Validated - Total time: 881,6377
+2023-02-13 17:49:30.086 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S160. Haimaster Check API Save error xuong DB38289: After Validated - Total time: 3270,4211
+2023-02-13 17:49:30.094 +07:00 [Warning] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2023-02-13 17:50:08.193 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API Nguyen Khoi Mac (06001)
+2023-02-13 17:50:10.700 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data38289: Validated - Total time: 104,5919
+2023-02-13 17:50:11.574 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data38289: Get All Data - Total time: 873,0623
+2023-02-13 17:50:11.748 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data38289: After Validated - Total time: 1047,0179
+2023-02-13 17:50:12.687 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu38289: After Validated - Total time: 939,4501
+2023-02-13 17:50:16.813 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S160. Haimaster Check API Save error xuong DB38289: After Validated - Total time: 4125,823
+2023-02-13 17:55:45.113 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:55:45.133 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:55:45.134 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:55:45.134 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 17:55:45.417 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 17:55:45.418 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:55:45).
+2023-02-13 17:55:45.437 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 17:55:45.438 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:55:45).
+2023-02-13 17:56:06.552 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API Nguyen Khoi Mac (06001)
+2023-02-13 17:56:09.531 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data38289: Validated - Total time: 305,7504
+2023-02-13 17:56:10.414 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data38289: Get All Data - Total time: 883,1287
+2023-02-13 17:56:10.617 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data38289: After Validated - Total time: 1086,2004
+2023-02-13 17:56:11.475 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu38289: After Validated - Total time: 857,1892
+2023-02-13 17:56:13.912 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S160. Haimaster Check API Save error xuong DB38289: After Validated - Total time: 2437,5622
+2023-02-13 17:56:26.137 +07:00 [Warning] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2023-02-13 18:01:26.423 +07:00 [Warning] The property '"GioiTinhID"' on entity type '"DMGioiTinh"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 18:01:26.441 +07:00 [Warning] The property '"LyDoVVID"' on entity type '"DMLyDoVaoVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 18:01:26.441 +07:00 [Warning] The property '"TaiNanID"' on entity type '"DMTaiNan"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 18:01:26.441 +07:00 [Warning] The property '"TinhTrangRVID"' on entity type '"DMTinhTrangRaVien"' is of type 'byte', but is set up to use a SQL Server identity column. This requires that values starting at 255 and counting down will be used for temporary key values. A temporary key value is needed for every entity inserted in a single call to 'SaveChanges'. Care must be taken that these values do not collide with real key values.
+2023-02-13 18:01:26.685 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2023-02-13 18:01:26.686 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (06:01:26).
+2023-02-13 18:01:26.727 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2023-02-13 18:01:26.729 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (06:01:26).
+2023-02-13 18:01:55.343 +07:00 [Information] [BACKGROUND_SERVICE] UploadFile: Check API Nguyen Khoi Mac (06001)
+2023-02-13 18:01:58.286 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S120. Haimaster Check API get Data38289: Validated - Total time: 296,9278
+2023-02-13 18:01:59.127 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S130. Haimaster Check API get Data38289: Get All Data - Total time: 840,5294
+2023-02-13 18:01:59.302 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S140. Haimaster Check API get Data38289: After Validated - Total time: 1015,2398
+2023-02-13 18:02:00.055 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S150. Haimaster Check API Xoa XML1 cu38289: After Validated - Total time: 753,1943
+2023-02-13 18:02:02.567 +07:00 [Information] [BACKGROUND_SERVICE] ValidateFiles: S160. Haimaster Check API Save error xuong DB38289: After Validated - Total time: 2511,756
+2023-02-13 18:02:03.376 +07:00 [Warning] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'

@@ -1,0 +1,409 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@model HIA.Core.Models.Hospital.ModifyHospitalModel
+
+@{
+    ViewData["Title"] = @DisplayFieldResource.MENU_HOSPITAL_MAGEME;
+}
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_HOSPITAL_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HospitalController.Index), Uti.GetControllerName(nameof(HospitalController)))">@DisplayFieldResource.MENU_HOSPITAL_MAGEME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.UPDATE</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="@nameof(HospitalController.Edit)">
+                <div class="row">
+                    @Html.HiddenFor(model => model.Id)
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Name" class="control-label col-3 text-right">Cơ quan chủ quản</label>
+                         <div class="col-9">
+                            <select asp-for="SuperHospitalId"
+                                    asp-items="@ViewBag.HospitalList"
+                                    class="form-control select2">
+                            </select>
+                            <span asp-validation-for="SuperHospitalId" class="text-danger"></span>
+                              </div>
+                        </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Name" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Name" class="form-control custom-form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Address" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Address" class="form-control custom-form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MA_CSKCB" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="MA_CSKCB" class="form-control custom-form-control" />
+                            <span asp-validation-for="MA_CSKCB" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Loai_Tuyen" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Loai_Tuyen" class="form-control custom-form-control" />
+                            <span asp-validation-for="Loai_Tuyen" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="LevelId" class="control-label col-3 text-right">Cấp độ hoạt động</label>
+                        <div class="col-9">
+                            <input asp-for="LevelId" class="form-control custom-form-control" />
+                            <span asp-validation-for="LevelId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Username" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Username" class="form-control custom-form-control" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Password" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Password" class="form-control custom-form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MaxFilePerDate" class="control-label col-3 text-right">Hạng Bệnh viện</label>
+                        <div class="col-9">
+                            <input asp-for="MaxFilePerDate" class="form-control custom-form-control" />
+                            <span asp-validation-for="MaxFilePerDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <div class="col-3"></div>
+                        <div class="col-9 pad-l-35">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="IsActivated" checked="CHECKED" /> @Html.DisplayNameFor(model => model.IsActivated)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12 form-group row">
+                        <label asp-for="OfficeTime" class="control-label col-2 text-right pad-r-35">Giờ làm việc</label>
+                        <div class="col-10">
+                            <span asp-validation-for="OfficeTime" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 form-group official-time">
+                        <input asp-for="OfficeTime" class="form-control custom-form-control" />
+                    </div>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group text-center">
+                    <a asp-action="@nameof(HospitalController.Index)" class="btn btn-outline-primary">@DisplayFieldResource.BACK_TO_LIST</a>
+                    <input type="submit" value="@DisplayFieldResource.UPDATE" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <style>
+        .office-zone {
+            border: solid 1px #ccc;
+            border-radius: 5px;
+            display: inline-block;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .office-zone span, .office-zone small, .office-zone select {
+            display: inline-block;
+        }
+        .office-zone select {
+            border: none;
+            width: 4rem;
+            text-align: right;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            var ots = $('.official-time');
+            ots.inp = $('input', ots);
+            ots.inp.css('display', 'none');
+
+            function setTime(tme, idx) {
+                if (!tme) return;
+                var ars = tme.split(':');
+                if (ars.length != 2) return;
+
+                vals.hhs[idx] = ars[0];
+                vals.mms[idx] = ars[1];
+            }
+            function setGroup(grp, idx) {
+                if (!grp) return;
+                var ars = grp.split('-');
+                if (ars.length != 2) return;
+
+                setTime(ars[0], idx * 2);
+                setTime(ars[1], idx * 2 + 1);
+            }
+            function setZone(zne, idx) {
+                if (!zne) return;
+                var ars = zne.split(';');
+                if (ars.length != 2) return;
+
+                setGroup(ars[0], idx * 2);
+                setGroup(ars[1], idx * 2 + 1);
+            }
+            function bindData(){
+                for (var i = 0; i < vals.hhs.length; i++) {
+                    ots.hhs[i].val(vals.hhs[i]);
+                    ots.mms[i].val(vals.mms[i]);
+                }
+                for (var i = 0; i < vals.dds.length; i++) {
+                    ots.dds[i].val(vals.dds[i]);
+                    ots.oos[i].val(vals.oos[i]);
+                }
+            }
+            function getGroup(idx){
+                var g = '';
+                if (idx < 8) {
+                    if (!ots.hhs[idx].val() || !ots.mms[idx].val()) return '';
+                    g = ots.hhs[idx].val() + ':' + ots.mms[idx].val();
+                }
+                else {
+                    var dv = ots.dds[idx - 8].val(); var mv = ots.oos[idx - 8].val();
+                    if (!dv || !mv) return '';
+
+                    g = dv + '/' + mv;
+                    dv = parseInt(dv); mv = parseInt(mv);
+                    if (mv == 2 && dv > 28) return '';
+                    if ((mv == 4 || mv == 6 || mv == 9 || mv == 11) && dv > 30) return '';
+                }
+                
+                return g;
+            }
+
+            //[7:00-12:00;13:00-16:30][6:30-11:30;13:30-17:00]16/04-15/10
+            var tmes = ots.inp.val().split(']');
+            var vals = {
+                hhs: [ '', '', '', '', '', '', '', ''],
+                mms: [ '', '', '', '', '', '', '', ''],
+                dds: [ '', ''],
+                oos: ['', '']
+            };
+            for (var i = 0; i < 2; i++) {
+                if (tmes.length <= i || !tmes[i]) continue;
+                setZone(tmes[i].replace('[', ''), i);
+            }
+            if (tmes.length > 2 && tmes[2])
+            {
+                var ars = tmes[2].split('-');
+                if (ars.length != 2) return;
+                for (var i = 0; i < ars.length; i++) {
+                    if (!ars[i]) return;
+                    var arx = ars[i].split('/');
+                    if (arx.length != 2) return;
+
+                    vals.dds[i] = arx[0];
+                    vals.oos[i] = arx[1];
+                }
+            }
+
+            var cov = $('<div class="row"></div>').appendTo(ots);
+            $('<div class="col-2"></div>').appendTo(cov);
+            ots.msg = $('<span class="err text-danger"></span>').appendTo(ots);
+            ots.hhs = [];
+            ots.mms = [];
+            ots.dds = [];
+            ots.oos = [];
+
+            var hlf = $('<div class="col-5"></div>').appendTo(cov);
+            $('<div>Cơ bản (mùa đông)</div>').appendTo(hlf);
+
+            var tmp = $('<div></div>').addClass('office-zone').appendTo(hlf);
+            $('<small>Sáng từ: &nbsp;</small>').appendTo(tmp);
+            ots.hhs.push($('<select></select>').addClass("hr-sel").appendTo(tmp));
+            $('<span>:</span>').appendTo(tmp);
+            ots.mms.push($('<select></select>').addClass("mn-sel").appendTo(tmp));
+            $('<small>&nbsp; đến &nbsp;</small>').appendTo(tmp);
+            ots.hhs.push($('<select></select>').addClass("hr-sel").appendTo(tmp));
+            $('<span>:</span>').appendTo(tmp);
+            ots.mms.push($('<select></select>').addClass("mn-sel").appendTo(tmp));
+            $('<div></div>').appendTo(hlf);
+
+            tmp = $('<div></div>').addClass('office-zone').appendTo(hlf);
+            $('<small>Chiều từ: &nbsp;</small>').appendTo(tmp);
+            ots.hhs.push($('<select></select>').addClass("hr-sel").appendTo(tmp));
+            $('<span>:</span>').appendTo(tmp);
+            ots.mms.push($('<select></select>').addClass("mn-sel").appendTo(tmp));
+            $('<small>&nbsp; đến &nbsp;</small>').appendTo(tmp);
+            ots.hhs.push($('<select></select>').addClass("hr-sel").appendTo(tmp));
+            $('<span>:</span>').appendTo(tmp);
+            ots.mms.push($('<select></select>').addClass("mn-sel").appendTo(tmp));
+
+            hlf = $('<div class="col-5"></div>').appendTo(cov);
+            $('<div>Đổi giờ (mùa hè)</div>').appendTo(hlf);
+
+            tmp = $('<div></div>').addClass('office-zone').appendTo(hlf);
+            $('<small>Sáng từ: &nbsp;</small>').appendTo(tmp);
+            ots.hhs.push($('<select></select>').addClass("hr-sel").appendTo(tmp));
+            $('<span>:</span>').appendTo(tmp);
+            ots.mms.push($('<select></select>').addClass("mn-sel").appendTo(tmp));
+            $('<small>&nbsp; đến &nbsp;</small>').appendTo(tmp);
+            ots.hhs.push($('<select></select>').addClass("hr-sel").appendTo(tmp));
+            $('<span>:</span>').appendTo(hlf);
+            ots.mms.push($('<select></select>').addClass("mn-sel").appendTo(tmp));
+            $('<div></div>').appendTo(hlf);
+
+            tmp = $('<div></div>').addClass('office-zone').appendTo(hlf);
+            $('<small>Chiều từ: &nbsp;</small>').appendTo(tmp);
+            ots.hhs.push($('<select></select>').addClass("hr-sel").appendTo(tmp));
+            $('<span>:</span>').appendTo(tmp);
+            ots.mms.push($('<select></select>').addClass("mn-sel").appendTo(tmp));
+            $('<small>&nbsp; đến &nbsp;</small>').appendTo(tmp);
+            ots.hhs.push($('<select></select>').addClass("hr-sel").appendTo(tmp));
+            $('<span>:</span>').appendTo(tmp);
+            ots.mms.push($('<select></select>').addClass("mn-sel").appendTo(tmp));
+
+            $('<hr>').appendTo(hlf);
+            tmp = $('<div></div>').addClass('office-range').appendTo(hlf);
+            $('<small>Từ ngày &nbsp;</small>').appendTo(tmp);
+            ots.dds.push($('<select></select>').addClass("dy-sel").appendTo(tmp));
+            $('<span>/</span>').appendTo(tmp);
+            ots.oos.push($('<select></select>').addClass("mo-sel").appendTo(tmp));
+            $('<small>&nbsp; đến ngày &nbsp;</small>').appendTo(tmp);
+            ots.dds.push($('<select></select>').addClass("dy-sel").appendTo(tmp));
+            $('<span>/</span>').appendTo(tmp);
+            ots.oos.push($('<select></select>').addClass("mo-sel").appendTo(tmp));
+
+            for (var i = -1; i < 60; i++) {
+                var v = (i < 10 ? '0' : '') + i.toString();
+                var a = (i + 1 < 10 ? '0' : '') + (i + 1).toString();
+                if (i == -1) {
+                    $('select', ots).append($('<option></option>').val('').text('--'));
+                    continue;
+                }
+
+                if (i < 31) {
+                    for (var j = 0; j < ots.dds.length; j++)
+                    {
+                        if (i < 12) $('<option></option>').val(a).text(a).appendTo(ots.oos[j]);
+                        $('<option></option>').val(i + 1).text(a).appendTo(ots.dds[j]);
+                    }
+                }
+
+                for (var j = 0; j < ots.hhs.length; j++) {
+                    if (i < 24) $('<option></option>').val(i).text(i).appendTo(ots.hhs[j]);
+                    $('<option></option>').val(v).text(v).appendTo(ots.mms[j]);
+                }
+            }
+
+            bindData();
+
+            $(ots.inp[0].form).submit(function (e) {
+                var grps = [];
+                for (var i = 0; i < 10; i++) {
+                    grps.push(getGroup(i));
+                }
+
+                var zones = [];
+                for (var i = 0; i < 5; i++) {
+                    var t1 = grps[i * 2], t2 = grps[i * 2 + 1];
+                    if ((!t1 && t2) || (t1 && !t2)) {
+                        if (i < 4) {
+                            ots.msg.text('Thiếu giờ bắt đầu hoặc giờ kết thúc. Vui lòng kiểm tra lại.');
+                            ots.hhs[i * 2].focus();
+                        }
+                        else {
+                            ots.msg.text('Thiếu ngày bắt đầu hoặc ngày kết thúc. Vui lòng kiểm tra lại.');
+                            ots.dds[i * 2].focus();
+                        }
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                    else if (i < 4 && parseInt(t1.replace(':', '')) > parseInt(t2.replace(':', ''))) {
+                        ots.msg.text('Giờ kết thúc phải lớn hơn giờ bắt đầu. Vui lòng kiểm tra lại.');
+                        ots.hhs[i * 2].focus();
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+
+                    zones.push(t1 && t2 ? t1 + '-' + t2 : '');
+                }
+
+                var otd = zones[0] && zones[1] ? '[' + zones[0] + ';' + zones[1] + ']' : '';
+                var oth = zones[2] && zones[3] ? '[' + zones[2] + ';' + zones[3] + ']' : '';
+                if ((!zones[0] && zones[1]) || (zones[0] && !zones[1]))
+                {
+                    ots.msg.text('Thiếu giờ sáng chiều cơ bản (mùa đông). Vui lòng kiểm tra lại.');
+                    ots.hhs[0].focus();
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+                if ((!zones[2] && zones[3]) || (zones[2] && !zones[3]))
+                {
+                    ots.msg.text('Thiếu giờ sáng chiều đổi giờ (mùa hè). Vui lòng kiểm tra lại.');
+                    ots.hhs[4].focus();
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+
+                if (oth) {
+                    if (!otd) {
+                        ots.msg.text('Có ngày đổi giờ (mùa hè) nhưng thiếu giờ sáng chiều cơ bản (mùa đông). Vui lòng kiểm tra lại.');
+                        ots.hhs[0].focus();
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                    else if (!zones[4]) {
+                        ots.msg.text('Thiếu ngày đổi giờ làm việc (mùa hè). Vui lòng kiểm tra lại.');
+                        ots.dds[0].focus();
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                }
+
+                if (zones[4]) {
+                    if (!otd) {
+                        ots.msg.text('Có ngày đổi giờ (mùa hè) nhưng thiếu giờ mùa đông. Vui lòng kiểm tra lại.');
+                        ots.hhs[0].focus();
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                    else if (!oth) {
+                        ots.msg.text('Có ngày đổi giờ (mùa hè) nhưng thiếu giờ sáng chiều. Vui lòng kiểm tra lại.');
+                        ots.dds[4].focus();
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                }
+
+                ots.inp.val(otd + oth + zones[4]);
+                return true;
+            });
+        });
+    </script>
+}

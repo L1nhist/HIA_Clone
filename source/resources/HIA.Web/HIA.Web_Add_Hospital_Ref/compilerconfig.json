@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/custom.css",
+    "inputFile": "wwwroot/css/custom.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/_color.css",
+    "inputFile": "wwwroot/css/_color.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/_variable.css",
+    "inputFile": "wwwroot/css/_variable.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/common.css",
+    "inputFile": "wwwroot/css/common.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/home.css",
+    "inputFile": "wwwroot/css/home.scss"
+  }
+]

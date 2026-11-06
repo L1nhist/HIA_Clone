@@ -1,0 +1,82 @@
+﻿@using HIA.Core.Base;
+@using HIA.Core.Languages.DisplayField;
+@using HIA.Core.Models.HDSD
+@using HIA.Web.Controllers;
+@model DichVuMaMayModifyModel
+
+@{
+    ViewData["Title"] = "Chỉnh sửa Dịch vụ - Mã máy";
+}
+<link rel="stylesheet" href="@Url.Content("~/lib/select2/select2.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/select2/select2-bootstrap.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/css/tagslist.css")" />
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">Chỉnh sửa Dịch vụ - Mã máy</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(DichVuMaMayController.Index), Uti.GetControllerName(nameof(DichVuMaMayController)))">Danh mục Dịch vụ - Mã máy</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.UPDATE</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form asp-action="@nameof(DichVuMaMayController.Edit)">
+                        @Html.HiddenFor(model => model.DVMMID)
+                        <div class="form-group">
+                            <label asp-for="MA_CSKCB" class="control-label"></label>
+                            <select asp-for="MA_CSKCB" class="form-control select2">
+                                @foreach (var item in ViewBag.Hospitals)
+                                {
+                                    <option value="@item.Value" selected="@(item.Value == Model.MA_CSKCB)">@item.Text</option>
+                                }
+                            </select>
+                            <span asp-validation-for="MA_CSKCB" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MA_DICH_VU" class="control-label"></label>
+                            <input asp-for="MA_DICH_VU" class="form-control" />
+                            <span asp-validation-for="MA_DICH_VU" class="text-danger"></span>
+                            <small class="text-warning">Vui lòng nhập mã theo định dạng [21.0234.4363] hoặc [36.7*] hoặc [78.4367.*]</small>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MA_MAY" class="control-label"></label>
+                            <input asp-for="MA_MAY" class="form-control" />
+                            <span asp-validation-for="MA_MAY" class="text-danger"></span>
+                        </div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <a asp-action="@nameof(DichVuMaMayController.Index)" asp-controller="@Uti.GetControllerName(nameof(DichVuMaMayController))" class="btn btn-outline-primary">@DisplayFieldResource.BACK_TO_LIST</a>
+                            <input type="submit" value="@DisplayFieldResource.UPDATE" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="@Url.Content("~/lib/select2/select2.min.js")"></script>
+    <script src="@Url.Content("~/js/tagslist.js")"></script>
+    <script>
+        $('.select2').select2({ theme: "bootstrap" });
+
+        var dv = new TagsInput({ selector: 'MA_DICH_VU', splitchar: '|' }), mb = new TagsInput({ selector: 'MA_MAY', pattern: 0, splitchar: '|' });
+    </script>
+}

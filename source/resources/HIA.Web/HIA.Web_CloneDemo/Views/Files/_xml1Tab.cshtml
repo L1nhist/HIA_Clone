@@ -1,0 +1,744 @@
+﻿@using HIA.Core.Base;
+@using HIA.Core.Models.Files;
+@model XML1InfoModel;
+
+<div class="modal-main-content">
+    <div class="custom-box">
+        <h1 class="title w-145">Thông tin hành chính</h1>
+        <div class="row">
+            @{
+                var maBNMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_BN), Model.ErrorList);
+                var maLKMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_LK), Model.ErrorList);
+                var gioiTinhMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Gioi_TINH), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maBNMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_BN" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maBNMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maBNMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_BN" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maLKMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_LK" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maLKMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maLKMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_LK" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(gioiTinhMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Gioi_TINH" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(gioiTinhMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@gioiTinhMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input class="form-control custom-form-control" type="text" value="@(Model.Gioi_TINH == 1 ? "1: Nam" : (Model.Gioi_TINH == 2 ? "2: Nữ" : (Model.Gioi_TINH == 3 ? "3: Chưa xác định" : "")))" readonly />
+                    <input asp-for="Gioi_TINH" class="form-control custom-form-control" readonly style="display: none;" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var maTheMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_THE), Model.ErrorList);
+                var hoTenMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.HO_TEN), Model.ErrorList);
+                var ngaySinhMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Ngay_SINH), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maTheMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_THE" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maTheMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maTheMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_THE" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(hoTenMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="HO_TEN" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(hoTenMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@hoTenMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="HO_TEN" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(ngaySinhMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Ngay_SINH" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(ngaySinhMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@ngaySinhMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Ngay_SINH" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var maKhuVucMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_KHUVUC), Model.ErrorList);
+                var diaChiMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Dia_CHI), Model.ErrorList);
+                var hosNameMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_CSKCB), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maKhuVucMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_KHUVUC" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maKhuVucMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maKhuVucMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_KHUVUC" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(diaChiMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Dia_CHI" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(diaChiMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@diaChiMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Dia_CHI" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(hosNameMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="HospitalName" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(hosNameMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@hosNameMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_CSKCB" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var maCSKCBMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_CSKCB), Model.ErrorList);
+                var gtTheTuMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.GT_THE_TU), Model.ErrorList);
+                var gtTheDenMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.GT_THE_DEN), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maCSKCBMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_CSKCB" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maCSKCBMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maCSKCBMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_CSKCB" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(gtTheTuMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="GT_THE_TU" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(gtTheTuMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@gtTheTuMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="GT_THE_TU" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(gtTheDenMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="GT_THE_DEN" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(gtTheDenMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@gtTheDenMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="GT_THE_DEN" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom-box">
+        <h1 class="title w-182">Thông tin khám chữa bệnh</h1>
+        <div class="row">
+            @{
+                var sttMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Stt), Model.ErrorList);
+                var canNangMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Can_NANG), Model.ErrorList);
+                var maTaiNanMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_TAI_NAN), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(sttMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Stt" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(sttMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@sttMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Stt" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(canNangMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Can_NANG" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(canNangMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@canNangMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Can_NANG" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maTaiNanMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_TAI_NAN" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maTaiNanMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maTaiNanMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_TAI_NAN" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var maNoiChuyenMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_NOI_CHUYEN), Model.ErrorList);
+                var maKhoaMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_KHOA), Model.ErrorList);
+                var maLydoVVienMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_LYDO_VVIEN), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maNoiChuyenMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_NOI_CHUYEN" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maNoiChuyenMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maNoiChuyenMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_NOI_CHUYEN" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maKhoaMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_KHOA" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maKhoaMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maKhoaMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_KHOA" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maLydoVVienMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_LYDO_VVIEN" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maLydoVVienMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maLydoVVienMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input class="form-control custom-form-control" type="text" value="@(Model.MA_LYDO_VVIEN == 1 ? "1: Đúng tuyến" : (Model.MA_LYDO_VVIEN == 2 ? "2: Cấp cứu" : (Model.MA_LYDO_VVIEN == 3 ? "3: Trái tuyến" : (Model.MA_LYDO_VVIEN == 4 ? "4: Thông tuyến" : ""))))" readonly />
+                    <input asp-for="MA_LYDO_VVIEN" class="form-control custom-form-control" readonly style="display: none;" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var maBenhMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_BENH), Model.ErrorList);
+                var tenBenhMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Ten_BENH), Model.ErrorList);
+                var maBenhKhacMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_BENHKHAC), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maBenhMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_BENH" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maBenhMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maBenhMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_BENH" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(tenBenhMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Ten_BENH" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(tenBenhMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@tenBenhMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Ten_BENH" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maBenhKhacMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_BENHKHAC" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maBenhKhacMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maBenhKhacMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_BENHKHAC" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var ngayVaoMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Ngay_VAO), Model.ErrorList);
+                var ngayRaMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Ngay_RA), Model.ErrorList);
+                var soNgayDTMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.SO_NGAY_DTRI), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(ngayVaoMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Ngay_VAO" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(ngayVaoMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@ngayVaoMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Ngay_VAO" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(ngayRaMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Ngay_RA" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(ngayRaMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@ngayRaMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Ngay_RA" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(soNgayDTMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="SO_NGAY_DTRI" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(soNgayDTMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@soNgayDTMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="SO_NGAY_DTRI" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var maLoaiKCBMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_LOAI_KCB), Model.ErrorList);
+                var maDKBDMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_DKBD), Model.ErrorList);
+                var kqDieuTriMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Ket_QUA_DTRI), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maLoaiKCBMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_LOAI_KCB" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maLoaiKCBMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maLoaiKCBMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input class="form-control custom-form-control" type="text" value="@(Model.MA_LOAI_KCB == 1 ? "1: Khám bệnh" : (Model.MA_LOAI_KCB == 2 ? "2: Điều trị ngoại trú" : (Model.MA_LOAI_KCB == 3 ? "3: Điều trị nội trú" : "")))" readonly />
+                    <input asp-for="MA_LOAI_KCB" class="form-control custom-form-control" readonly style="display: none;" />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maDKBDMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_DKBD" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maDKBDMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maDKBDMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_DKBD" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(kqDieuTriMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Ket_QUA_DTRI" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(kqDieuTriMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@kqDieuTriMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input class="form-control custom-form-control" type="text" value="@(Model.Ket_QUA_DTRI == 1 ? "1: Khỏi" : (Model.Ket_QUA_DTRI == 2 ? "2: Đỡ" : (Model.Ket_QUA_DTRI == 3 ? "3: Không thay đổi" : Model.Ket_QUA_DTRI == 4 ? "4: Nặng hơn" : (Model.Ket_QUA_DTRI == 5 ? "5: Tử vong" : ""))))" readonly />
+                    <input asp-for="Ket_QUA_DTRI" class="form-control custom-form-control" readonly style="display: none;" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var maNoiDiMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_NOI_DI), Model.ErrorList);
+                var maNoiDenMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_NOI_DEN), Model.ErrorList);
+                var tinhTrangRVMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Tinh_TRANG_RV), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maNoiDiMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_NOI_DI" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maNoiDiMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maNoiDiMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_NOI_DI" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maNoiDenMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_NOI_DEN" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maNoiDenMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maNoiDenMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_NOI_DEN" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(tinhTrangRVMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Tinh_TRANG_RV" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(tinhTrangRVMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@tinhTrangRVMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input class="form-control custom-form-control" type="text" value="@(Model.Tinh_TRANG_RV == 1 ? "1: Ra viện" : (Model.Tinh_TRANG_RV == 2 ? "2: Chuyển viện" : (Model.Tinh_TRANG_RV == 3 ? "3: Trốn viện" : (Model.Tinh_TRANG_RV == 4 ? "4: Xin ra viện" : ""))))" readonly/>
+                    <input asp-for="Tinh_TRANG_RV" class="form-control custom-form-control" readonly style="display: none;" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var tBNTTMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.T_BNTT), Model.ErrorList);
+                var creatorMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Creator), Model.ErrorList);
+                var createDateMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.CreateDate), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(tBNTTMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="T_BNTT" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(tBNTTMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@tBNTTMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="T_BNTT" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(creatorMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Creator" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(creatorMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@creatorMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Creator" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(createDateMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="CreateDate" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(createDateMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@createDateMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="CreateDate" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var maPTTTQTMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.MA_PTTT_QT), Model.ErrorList);
+                var tNguoiKhacMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.T_NGUONKHAC), Model.ErrorList);
+                var tNgoaiDsMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.T_NGOAIDS), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(maPTTTQTMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="MA_PTTT_QT" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(maPTTTQTMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@maPTTTQTMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="MA_PTTT_QT" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(tNguoiKhacMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="T_NGUONKHAC" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(tNguoiKhacMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@tNguoiKhacMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="T_NGUONKHAC" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(tNgoaiDsMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="T_NGOAIDS" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(tNgoaiDsMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@tNgoaiDsMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="T_NGOAIDS" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var mienCungCTMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Mien_CUNG_CT), Model.ErrorList);
+                var tBHTTMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.T_BHTT), Model.ErrorList);
+                var tBNCCTMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.T_BNCCT), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(mienCungCTMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Mien_CUNG_CT" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(mienCungCTMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@mienCungCTMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Mien_CUNG_CT" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(tBHTTMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="T_BHTT" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(tBHTTMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@tBHTTMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="T_BHTT" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(tBNCCTMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="T_BNCCT" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(tBNCCTMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@tBNCCTMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="T_BNCCT" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var tVTYTMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.T_VTYT), Model.ErrorList);
+                var tThuocMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.T_THUOC), Model.ErrorList);
+                var tTongChiMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.T_TONGCHI), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(tVTYTMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="T_VTYT" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(tVTYTMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@tVTYTMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="T_VTYT" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(tThuocMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="T_THUOC" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(tThuocMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@tThuocMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="T_THUOC" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(tTongChiMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="T_TONGCHI" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(tTongChiMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@tTongChiMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="T_TONGCHI" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var thangQTMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Thang_QT), Model.ErrorList);
+                var namQTMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Nam_QT), Model.ErrorList);
+                var ngayTToanMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Ngay_TTOAN), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(thangQTMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Thang_QT" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(thangQTMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@thangQTMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Thang_QT" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(namQTMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Nam_QT" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(namQTMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@namQTMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Nam_QT" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(ngayTToanMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Ngay_TTOAN" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(ngayTToanMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@ngayTToanMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Ngay_TTOAN" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var mHtcidMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Mhtcid), Model.ErrorList);
+                var checkedMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.Checked), Model.ErrorList);
+                var dsLoiMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.DanhSachLoi), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(mHtcidMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Mhtcid" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(mHtcidMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@mHtcidMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Mhtcid" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(checkedMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="Checked" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(checkedMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@checkedMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="Checked" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(dsLoiMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="DanhSachLoi" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(dsLoiMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@dsLoiMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="DanhSachLoi" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                var fileNameMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.FileName), Model.ErrorList);
+                var ngayLapMes = Uti.GetErrorMessagePropertyFromErrorList(nameof(Model.NgayLAP), Model.ErrorList);
+            }
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(fileNameMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="FileName" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(fileNameMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@fileNameMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="FileName" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 form-group row @(!string.IsNullOrWhiteSpace(ngayLapMes) ? "error-row" : "")">
+                <div class="flex-center col-4">
+                    <label asp-for="NgayLAP" class="control-label"></label>
+                    @if (!string.IsNullOrWhiteSpace(ngayLapMes))
+                    {
+                        <i class="fas fa-exclamation-triangle error-icon" title="@ngayLapMes"></i>
+                    }
+                </div>
+                <div class="col-8">
+                    <input asp-for="NgayLAP" class="form-control custom-form-control" readonly />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <a onclick="downloadXml1()" id="btnDownloadXml1" class="btn btn-primary col-md-6 text-md-center" href="#">
+            <span class="float-start">Tải Xml1</span>
+        </a>
+   
+        <a onclick="reloadXml1()" id="btnReloadXml1" class="btn btn-info col-md-6 text-md-center" href="#">
+            <span class="col-md-6 text-right">Kiểm tra lại</span>
+        </a>
+    </div>
+</div>

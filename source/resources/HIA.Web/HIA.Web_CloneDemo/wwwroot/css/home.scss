@@ -1,0 +1,109 @@
+﻿@import "_color.scss";
+@import "_variable.scss";
+
+.home-wrapper {
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.panel-custom {
+    margin-bottom: 15px;
+
+    .panel-content {
+        background: $white;
+        border-radius: 4px;
+        border: 1px solid $white4;
+        border-bottom: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        padding: 10px 15px;
+        min-height: 101px;
+
+        .p-detail {
+            .p-detail-label {
+                color: $black1;
+            }
+
+            .p-detail-number {
+                font-size: 18px;
+                font-weight: bold;
+                padding-left: 5px;
+                text-align: right;
+                float: right;
+            }
+
+            .unit {
+                font-size: 14px;
+                font-style: italic;
+                font-weight: normal;
+            }
+
+            &.detail-unit {
+                text-align: right;
+                float: right;
+                padding: 0 15px;
+            }
+        }
+    }
+
+    .panel-title {
+        background: $white;
+        border-radius: 0px;
+        border: 0;
+        padding: 0px 10px;
+
+        .p-title-label {
+            margin: 0 !important;
+            padding: 10px 0px 10px 20px;
+            text-transform: uppercase;
+            font-size: 17px;
+            font-weight: 600;
+            color: $white;
+        }
+
+        .p-title-icon {
+            text-align: right;
+            margin: auto;
+        }
+    }
+
+    &.blue {
+        .panel-title {
+            background: $blue4;
+        }
+
+        .panel-content .p-detail-number {
+            color: $blue4;
+        }
+    }
+
+    &.green {
+        .panel-title {
+            background: $green1;
+        }
+
+        .panel-content .p-detail-number {
+            color: $green1;
+        }
+    }
+
+    &.greenleaf {
+        .panel-title {
+            background: $green2;
+        }
+
+        .panel-content .p-detail-number {
+            color: $green2;
+        }
+    }
+
+    &.red {
+        .panel-title {
+            background: $red1;
+        }
+
+        .panel-content .p-detail-number {
+            color: $red1;
+        }
+    }
+}

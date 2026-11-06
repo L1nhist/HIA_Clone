@@ -1,0 +1,114 @@
+2026-10-06 11:02:26.917 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-06 11:02:26.962 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (11:02:26).
+2026-10-06 11:02:26.967 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 11:02:26.969 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (11:02:26).
+2026-10-06 11:02:26.970 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 11:02:26.972 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (11:02:26).
+2026-10-06 11:02:43.440 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 10061 [06/10 11:02:43]
+2026-10-06 11:06:16.638 +07:00 [Information] [BACKGROUND_SERVICE] Validate: Validate130: XML2 MaBN: 343481 MaCSKCB: 10061; STT Bị Lỗi: 9 XML2 Giám định có lỗi: System.NullReferenceException: Object reference not set to an instance of an object.
+   at HIA.Services.Validate130.ValidateXML02.Validate_LieuDung() in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Validate130\ValidateXML02.cs:line 1197
+   at HIA.Services.Validate130.ValidateXML02.Validate(XML02 xml) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Validate130\ValidateXML02.cs:line 3315 [06/10 11:06:16]
+2026-10-06 11:06:29.807 +07:00 [Information] [BACKGROUND_SERVICE] Validate: Validate130: XML2 MaBN: 343481 MaCSKCB: 10061; STT Bị Lỗi: 11 XML2 Giám định có lỗi: System.NullReferenceException: Object reference not set to an instance of an object.
+   at HIA.Services.Validate130.ValidateXML02.Validate_LieuDung() in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Validate130\ValidateXML02.cs:line 1197
+   at HIA.Services.Validate130.ValidateXML02.Validate(XML02 xml) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Validate130\ValidateXML02.cs:line 3315 [06/10 11:06:29]
+2026-10-06 11:06:34.446 +07:00 [Information] [BACKGROUND_SERVICE] Validate: Validate130: XML2 MaBN: 343481 MaCSKCB: 10061; STT Bị Lỗi: 5 XML2 Giám định có lỗi: System.NullReferenceException: Object reference not set to an instance of an object.
+   at HIA.Services.Validate130.ValidateXML02.Validate_LieuDung() in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Validate130\ValidateXML02.cs:line 1197
+   at HIA.Services.Validate130.ValidateXML02.Validate(XML02 xml) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Validate130\ValidateXML02.cs:line 3315 [06/10 11:06:34]
+2026-10-06 11:06:36.896 +07:00 [Information] [BACKGROUND_SERVICE] Validate: Validate130: XML2 MaBN: 343481 MaCSKCB: 10061; STT Bị Lỗi: 2 XML2 Giám định có lỗi: System.NullReferenceException: Object reference not set to an instance of an object.
+   at HIA.Services.Validate130.ValidateXML02.Validate_LieuDung() in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Validate130\ValidateXML02.cs:line 1197
+   at HIA.Services.Validate130.ValidateXML02.Validate(XML02 xml) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Validate130\ValidateXML02.cs:line 3315 [06/10 11:06:36]
+2026-10-06 11:06:39.421 +07:00 [Information] [BACKGROUND_SERVICE] Validate: Validate130: XML2 MaBN: 343481 MaCSKCB: 10061; STT Bị Lỗi: 7 XML2 Giám định có lỗi: System.NullReferenceException: Object reference not set to an instance of an object.
+   at HIA.Services.Validate130.ValidateXML02.Validate_LieuDung() in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Validate130\ValidateXML02.cs:line 1197
+   at HIA.Services.Validate130.ValidateXML02.Validate(XML02 xml) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Validate130\ValidateXML02.cs:line 3315 [06/10 11:06:39]
+2026-10-06 11:08:12.731 +07:00 [Information] [BACKGROUND_SERVICE] Validate: Validate130: XML2 MaBN: 343481 MaCSKCB: 10061; STT Bị Lỗi: 3 XML2 Giám định có lỗi: System.NullReferenceException: Object reference not set to an instance of an object.
+   at HIA.Services.Validate130.ValidateXML02.Validate_LieuDung() in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Validate130\ValidateXML02.cs:line 1197
+   at HIA.Services.Validate130.ValidateXML02.Validate(XML02 xml) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Validate130\ValidateXML02.cs:line 3315 [06/10 11:08:12]
+2026-10-06 11:08:13.300 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Giam dinh xong 1 file cua viện 10061. Thoi gian thuc hien 329857,8077
+2026-10-06 11:18:18.288 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-06 11:18:18.313 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (11:18:18).
+2026-10-06 11:18:18.314 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 11:18:18.316 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (11:18:18).
+2026-10-06 11:18:18.317 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 11:18:18.318 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (11:18:18).
+2026-10-06 11:18:33.607 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 10061 [06/10 11:18:33]
+2026-10-06 14:51:50.671 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-06 14:51:50.698 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (02:51:50).
+2026-10-06 14:51:50.701 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 14:51:50.702 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (02:51:50).
+2026-10-06 14:51:50.704 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 14:51:50.705 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (02:51:50).
+2026-10-06 14:52:11.881 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: Validate130 OnDemand of linhist@gmail.com: Lay 1 ho so moi nhat tu viện 10061 [06/10 02:52:11]
+2026-10-06 15:52:46.889 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-06 15:52:46.914 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (03:52:46).
+2026-10-06 15:52:46.916 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 15:52:46.917 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (03:52:46).
+2026-10-06 15:52:46.919 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 15:52:46.920 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (03:52:46).
+2026-10-06 15:53:35.933 +07:00 [Information] [BACKGROUND_SERVICE] GetDownloadData5: User [76B18729-B55D-4579-944E-E2CD8DAC9C47] cua vien 34004 lay [Bao Cao Thong ke Loi] vao (03:53:35).
+2026-10-06 15:55:06.152 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-06 15:55:06.197 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (03:55:06).
+2026-10-06 15:55:06.200 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 15:55:06.201 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (03:55:06).
+2026-10-06 15:55:06.204 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 15:55:06.205 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (03:55:06).
+2026-10-06 15:55:26.847 +07:00 [Information] [BACKGROUND_SERVICE] GetDownloadData5: User [76B18729-B55D-4579-944E-E2CD8DAC9C47] cua vien 34004 lay [Bao Cao Thong ke Loi] vao (03:55:26).
+2026-10-06 16:04:29.431 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-06 16:04:29.460 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:04:29).
+2026-10-06 16:04:29.463 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 16:04:29.464 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:04:29).
+2026-10-06 16:04:29.466 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 16:04:29.466 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:04:29).
+2026-10-06 16:05:44.662 +07:00 [Information] [BACKGROUND_SERVICE] GetDownloadData5: User [76B18729-B55D-4579-944E-E2CD8DAC9C47] cua vien 25001 lay [Bao Cao Thong ke Loi] vao (04:05:44).
+2026-10-06 16:07:30.537 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-06 16:07:30.567 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:07:30).
+2026-10-06 16:07:30.570 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 16:07:30.573 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:07:30).
+2026-10-06 16:07:30.574 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 16:07:30.575 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:07:30).
+2026-10-06 16:07:48.000 +07:00 [Information] [BACKGROUND_SERVICE] GetDownloadData5: User [76B18729-B55D-4579-944E-E2CD8DAC9C47] cua vien 25001 lay [Bao Cao Thong ke Loi] vao (04:07:48).
+2026-10-06 16:51:31.688 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-06 16:51:31.712 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:51:31).
+2026-10-06 16:51:31.714 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 16:51:31.715 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:51:31).
+2026-10-06 16:51:31.717 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 16:51:31.720 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:51:31).
+2026-10-06 16:52:31.559 +07:00 [Information] [BACKGROUND_SERVICE] GetDownloadData5: User [76B18729-B55D-4579-944E-E2CD8DAC9C47] cua vien 34001 lay [Bao Cao Thong ke Loi] vao (04:52:31).
+2026-10-06 16:52:41.590 +07:00 [Error] SendEmailAsync: The SMTP server has unexpectedly disconnected.
+MailKit.Net.Smtp.SmtpProtocolException: The SMTP server has unexpectedly disconnected.
+   at MailKit.Net.Smtp.SmtpStream.ReadAheadAsync(Boolean doAsync, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpStream.ReadResponseAsync(Boolean doAsync, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpStream.ReadResponse(CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.SendCommandAsync(String command, Boolean doAsync, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, Boolean doAsync, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.Authenticate(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+   at MailKit.MailService.Authenticate(Encoding encoding, String userName, String password, CancellationToken cancellationToken)
+   at MailKit.MailService.Authenticate(String userName, String password, CancellationToken cancellationToken)
+   at HIA.Services.Email.EmailService.SendEmailAsync(MimeMessage message) in C:\Users\Administrator\source\repos\egdbh\HIA.Web\HIA.Services\Email\EmailService.cs:line 72
+2026-10-06 17:04:59.676 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-06 17:04:59.702 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:04:59).
+2026-10-06 17:04:59.704 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 17:04:59.705 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:04:59).
+2026-10-06 17:04:59.706 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 17:04:59.707 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (05:04:59).
+2026-10-06 17:05:33.944 +07:00 [Information] [BACKGROUND_SERVICE] GetDownloadData5: User [76B18729-B55D-4579-944E-E2CD8DAC9C47] cua vien 31313 lay [Bao Cao Thong ke Loi] vao (05:05:33).
+2026-10-06 17:07:35.838 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-06 17:07:35.859 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:07:35).
+2026-10-06 17:07:35.861 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 17:07:35.862 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:07:35).
+2026-10-06 17:07:35.864 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 17:07:35.865 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (05:07:35).
+2026-10-06 17:08:12.113 +07:00 [Information] [BACKGROUND_SERVICE] GetDownloadData5: User [76B18729-B55D-4579-944E-E2CD8DAC9C47] cua vien 31313 lay [Bao Cao Thong ke Loi] vao (05:08:12).
+2026-10-06 17:13:27.559 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-06 17:13:27.585 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:13:27).
+2026-10-06 17:13:27.587 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 17:13:27.587 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:13:27).
+2026-10-06 17:13:27.589 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 17:13:27.590 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (05:13:27).
+2026-10-06 17:13:45.589 +07:00 [Information] [BACKGROUND_SERVICE] GetDownloadData5: User [76B18729-B55D-4579-944E-E2CD8DAC9C47] cua vien 31313 lay [Bao Cao Thong ke Loi] vao (05:13:45).
+2026-10-06 17:17:45.759 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-06 17:17:45.782 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (05:17:45).
+2026-10-06 17:17:45.784 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 17:17:45.786 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (05:17:45).
+2026-10-06 17:17:45.787 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-06 17:17:45.788 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (05:17:45).
+2026-10-06 17:18:02.320 +07:00 [Information] [BACKGROUND_SERVICE] GetDownloadData5: User [76B18729-B55D-4579-944E-E2CD8DAC9C47] cua vien 31313 lay [Bao Cao Thong ke Loi] vao (05:18:02).

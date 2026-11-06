@@ -1,0 +1,190 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Core.Languages.TitlePage;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@model HIA.Core.Models.Categories.DMVTYTModifyModel
+
+@{
+    ViewData["Title"] = TitlePageResource.DM_VTYT_TITLE;
+}
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@TitlePageResource.DM_VTYT_TITLE</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(DMVTYTController.Index), Uti.GetControllerName(nameof(DMVTYTController)))">@TitlePageResource.DM_VTYT_TITLE</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.DELETE</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="@nameof(DMVTYTController.DeleteAction)">
+                <dl class="row">
+                    @Html.HiddenFor(model => model.VTID)
+                    @Html.HiddenFor(model => model.MA_CSKCB)
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.MA_VAT_TU)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.MA_VAT_TU)
+                        @Html.HiddenFor(model => model.MA_VAT_TU)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.NHOM_VAT_TU)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NHOM_VAT_TU)
+                        @Html.HiddenFor(model => model.NHOM_VAT_TU)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.TEN_VAT_TU)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.TEN_VAT_TU)
+                        @Html.HiddenFor(model => model.TEN_VAT_TU)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.MA_HIEU)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.MA_HIEU)
+                        @Html.HiddenFor(model => model.MA_HIEU)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.QUY_CACH)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.QUY_CACH)
+                        @Html.HiddenFor(model => model.QUY_CACH)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.DON_VI_TINH)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.DON_VI_TINH)
+                        @Html.HiddenFor(model => model.DON_VI_TINH)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.DON_GIA)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.DON_GIA)
+                        @Html.HiddenFor(model => model.DON_GIA)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.SO_LUONG)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.SO_LUONG)
+                        @Html.HiddenFor(model => model.SO_LUONG)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.NUOC_SX)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NUOC_SX)
+                        @Html.HiddenFor(model => model.NUOC_SX)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.NHA_SX)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NHA_SX)
+                        @Html.HiddenFor(model => model.NHA_SX)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.NHA_THAU)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NHA_THAU)
+                        @Html.HiddenFor(model => model.NHA_THAU)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.LOAI_THAU)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.LOAI_THAU)
+                        @Html.HiddenFor(model => model.LOAI_THAU)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.TT_THAU)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.TT_THAU)
+                        @Html.HiddenFor(model => model.TT_THAU)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.HT_THAU)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.HT_THAU)
+                        @Html.HiddenFor(model => model.HT_THAU)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.QUYET_DINH)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.QUYET_DINH)
+                        @Html.HiddenFor(model => model.QUYET_DINH)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.DINH_MUC)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.DINH_MUC)
+                        @Html.HiddenFor(model => model.DINH_MUC)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.MANHOM_9324)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.MANHOM_9324)
+                        @Html.HiddenFor(model => model.MANHOM_9324)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.MANHOM_5937)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.MANHOM_5937)
+                        @Html.HiddenFor(model => model.MANHOM_5937)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.TU_NGAY)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.TU_NGAY)
+                        @Html.HiddenFor(model => model.TU_NGAY)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.DEN_NGAY)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.DEN_NGAY)
+                        @Html.HiddenFor(model => model.DEN_NGAY)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.NGAY_DE_NGHI)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NGAY_DE_NGHI)
+                        @Html.HiddenFor(model => model.NGAY_DE_NGHI)
+                    </dd>
+                </dl>
+
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="submit" value="@DisplayFieldResource.DELETE" class="btn btn-danger" /> |
+                <a asp-action="@nameof(DMVTYTController.Index)">@DisplayFieldResource.BACK_TO_LIST</a>
+            </form>
+        </div>
+    </div>
+</div>
+

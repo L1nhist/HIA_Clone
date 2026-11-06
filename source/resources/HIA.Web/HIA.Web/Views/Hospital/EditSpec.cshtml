@@ -1,0 +1,98 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@model HIA.Core.Models.Hospital.ModifyHospitalModel
+
+@{
+    ViewData["Title"] = @DisplayFieldResource.MENU_HOSPITAL_MAGEME;
+}
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_HOSPITAL_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HospitalController.Index), Uti.GetControllerName(nameof(HospitalController)))">@DisplayFieldResource.MENU_HOSPITAL_MAGEME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.UPDATE</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h4 style="text-align: center;">Cấu hình thông số kiểm tra thông tuyến hồ sơ thông qua Cổng BHYT</h4>
+            <br />
+            <form id="formSpec" asp-action="@nameof(HospitalController.EditSpec)">
+                <div class="row">
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.HiddenFor(model => model.IsActivated)
+                    @Html.HiddenFor(model => model.Loai_Tuyen)
+                    @Html.HiddenFor(model => model.LevelId)
+                    @Html.HiddenFor(model => model.SuperHospitalId)
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Name" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Name" class="form-control custom-form-control" readonly />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MA_CSKCB" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="MA_CSKCB" class="form-control custom-form-control" readonly />
+                            <span asp-validation-for="MA_CSKCB" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="Username" class="control-label col-3 text-right">Tên đăng nhập</label>
+                        <div class="col-9">
+                            <input asp-for="Username" class="form-control custom-form-control" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label for="Password" class="control-label col-3 text-right">Mật khẩu</label>
+                        <div class="col-9">
+                            <input id="Password" name="Password" class="form-control custom-form-control" type="password" value="@Model.Password" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MaxFilePerDate" class="control-label col-3 text-right">Số lượt kiểm tra tối đa trong ngày</label>
+                        <div class="col-9">
+                            <input asp-for="MaxFilePerDate" class="form-control custom-form-control" />
+                            <span asp-validation-for="MaxFilePerDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label for="Retype" class="control-label col-3 text-right">Nhập lại</label>
+                        <div class="col-9">
+                            <input id="Retype" class="form-control custom-form-control" type="password" value="@Model.Password" />
+                            <span id="RetypeMsg" class="text-danger" style="display:none">Mật khẩu nhập lại không trùng khớp</span>
+                        </div>
+                    </div>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group text-center">
+                    <input type="submit" value="@DisplayFieldResource.UPDATE" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $('#formSpec').submit(function (e) {
+            $('#RetypeMsg').hide();
+            var p = $('#Password').val(), r = $('#Retype').val();
+            if (p && p != r) {
+                $('#RetypeMsg').show();
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+}

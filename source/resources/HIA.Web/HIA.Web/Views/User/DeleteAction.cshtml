@@ -1,0 +1,82 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@model HIA.Core.Models.User.ModifyUserModel
+
+@{
+    ViewData["Title"] = @DisplayFieldResource.MENU_USER_MAGEME;
+}
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_USER_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(UserController.Index), Uti.GetControllerName(nameof(UserController)))">@DisplayFieldResource.MENU_USER_MAGEME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.DELETE</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="@nameof(UserController.DeleteAction)">
+                <dl class="row">
+                    @Html.HiddenFor(model => model.Id)
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.HospitalName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.HospitalName)
+                        @Html.HiddenFor(model => model.HospitalName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.IsActivated)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.IsActivated)
+                        @Html.HiddenFor(model => model.IsActivated)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.RoleName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.RoleName)
+                        @Html.HiddenFor(model => model.RoleName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Email)
+                        @Html.HiddenFor(model => model.Email)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.FullName)
+                        @Html.HiddenFor(model => model.FullName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                        @Html.HiddenFor(model => model.PhoneNumber)
+                    </dd>
+                </dl>
+
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="submit" value="@DisplayFieldResource.DELETE" class="btn btn-danger" /> |
+                <a asp-action="@nameof(UserController.Index)">@DisplayFieldResource.BACK_TO_LIST</a>
+            </form>
+        </div>
+    </div>
+</div>
+

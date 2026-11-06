@@ -1,0 +1,54 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@model HIA.Core.Models.Categories.DMKhoaBVModifyBasicModel
+
+@{
+    ViewData["Title"] = @DisplayFieldResource.MENU_DEPARTMENT_MAGEME;
+}
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_DEPARTMENT_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(DMKhoaBVController.List), Uti.GetControllerName(nameof(DMKhoaBVController)))">@DisplayFieldResource.MENU_DEPARTMENT_MAGEME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.CREATE_NEW</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="@nameof(DMKhoaBVController.Create)">
+                        <div class="form-group">
+                            <label asp-for="MA" class="control-label"></label>
+                            <input asp-for="MA" class="form-control" />
+                            <span asp-validation-for="MA" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TEN" class="control-label"></label>
+                            <input asp-for="TEN" class="form-control" />
+                            <span asp-validation-for="TEN" class="text-danger"></span>
+                        </div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <a asp-action="@nameof(DMKhoaBVController.List)" asp-controller="@Uti.GetControllerName(nameof(DMKhoaBVController))" class="btn btn-outline-primary">@DisplayFieldResource.BACK_TO_LIST</a>
+                            <input type="submit" value="@DisplayFieldResource.CREATE_NEW" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

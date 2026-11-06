@@ -1,0 +1,23 @@
+2026-10-27 16:01:32.408 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-27 16:01:32.749 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:01:32).
+2026-10-27 16:01:32.848 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-27 16:01:32.850 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:01:32).
+2026-10-27 16:01:32.851 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-27 16:01:33.094 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:01:33).
+2026-10-27 16:02:07.989 +07:00 [Error] An exception occurred while iterating over the results of a query for context type '"HIA.DatabaseModel.Entites.HIADbContext"'."
+""System.InvalidCastException: Unable to cast object of type 'System.Double' to type 'System.Single'.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_Single()
+   at Microsoft.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at lambda_method153(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()"
+System.InvalidCastException: Unable to cast object of type 'System.Double' to type 'System.Single'.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_Single()
+   at Microsoft.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at lambda_method153(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2026-10-27 16:03:31.680 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: starts.
+2026-10-27 16:03:31.719 +07:00 [Information] [BACKGROUND_SERVICE] VerifyXMLCronJob: working (04:03:31).
+2026-10-27 16:03:31.724 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-27 16:03:31.725 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: working (04:03:31).
+2026-10-27 16:03:31.727 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML: starts.
+2026-10-27 16:03:31.728 +07:00 [Information] [BACKGROUND_SERVICE] ValidateXML130: working (04:03:31).

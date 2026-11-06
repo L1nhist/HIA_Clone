@@ -1,0 +1,164 @@
+﻿@using HIA.Core.Models.Token
+@using HIA.Web.Controllers;
+@using System.Security.Claims
+@model HIA.Core.Models.Diagram.Summary
+@{
+    ViewData["Title"] = $"{HIA.Core.Languages.TitlePage.TitlePageResource.REPORT_TITLE}";
+    var dte = Model.SelectedDate.AddDays(-7);
+    var hospitals = ViewBag.Hospitals;
+    var hospitalisupload = ViewBag.Hospitalupload;
+    var totalHospital = ViewBag.TotalHospitals;
+    var hospitalActive = ViewBag.Hospitalactive;
+    var isMaster = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.MASTER);
+    var isAdmin = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.ADMIN);
+
+}
+<link rel="stylesheet" href="@Url.Content("~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/elite/icons/font-awesome/css/fontawesome.css")" />
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/dataTables.bootstrap4.css")">
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/responsive.dataTables.min.css")">
+
+<style>
+    .xw-80 {width:80px;min-width:unset !important;}
+    .cen {text-align: center !important;}
+    th, td {white-space:nowrap !important;vertical-align: middle !important;}
+    .xw-200 {
+    white-space: wrap !important;
+    }
+</style>
+<div class="container-fluid container-report">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@ViewData["Title"]</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), HIA.Core.Base.Uti.GetControllerName(nameof(HomeController)))">@HIA.Core.Languages.DisplayField.DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card filter-wrapper">
+        <div class="card-body">
+            <form action="@Url.Action(nameof(ReportController.Summary), HIA.Core.Base.Uti.GetControllerName(nameof(ReportController)))" method="get">
+                <div class="form-row row">
+                    <div class="col-12 col-md-5 mb-2 form-group row">
+                        <label class="lbl-filter col-3 col-form-label text-right" for="createDate">Chọn ngày</label>
+                        <div class="input-group date col-9" id="datepicker">
+                            <input id="createDate" name="createDate" type="text" class="form-control" placeholder="dd/MM/yyyy" value="@Model.SelectedDate.ToString("dd/MM/yyyy")">
+                            <div class="input-group-addon"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5 mb-2">
+                        <button id="btnSubm" class="btn btn-inline btn-primary btn-download" type="submit">Xem</button>
+                    </div>
+                </div>
+            </form>
+
+            @{
+                int total = totalHospital ?? 0;
+
+                double ratio = total > 0 ? ((double)hospitalisupload / (double)total) * 100 : 0;
+                double ratiohd = total > 0 ? ((double)hospitalActive / (double)total) * 100 : 0;
+            }
+            @if (isMaster == true )
+            {
+                <div>
+                    Tổng số viện: <b>@total</b> <br />
+                Số viện đẩy dữ liệu XML trong 8 ngày gần nhất: <b style="color:green">@hospitalisupload</b> <br />
+                Số viện hoạt động trong 8 ngày gần nhất: <b style="color:green">@hospitalActive</b> <br />
+                Tỷ lệ đẩy dữ liệu: <b style="color:green">@ratio.ToString("0.00")%</b> <br />
+                Tỷ lệ hoạt động: <b style="color:green">@ratiohd.ToString("0.00")%</b> <br />
+                Thời điểm thống kê:<b> @DateTime.Now.ToString("dd/MM/yyyy HH:mm")</b>
+            </div>
+            }
+        </div>
+    </div>
+    <style>
+        .tw-380 {min-width: 380px !important;width: 380px;white-space: wrap !important;}
+    </style>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive fixed-table-custom table-sticky">
+                <table class="table table-bordered table-striped" id="tbl_DataTable">
+                    <thead>
+                        <tr>
+                            <th class="xw-80">Mã CSKCB</th>
+                            <th class="tw-380">Tên Bệnh viện</th>
+                            @for (int i = 0; i < 8; i++)
+                            {
+                                <th class="xw-80 cen">@dte.AddDays(i).ToString("dd/MM")</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (hospitals != null)
+                        {
+                            foreach (var h in hospitals)
+                            {
+                                <tr>
+                                    <td class="xw-80"><b>@h.MA_CSKCB</b></td>
+                                    <td class="tw-380"><b>@h.Name</b></td>
+
+                                    @for (int i = 0; i < 8; i++)
+                                    {
+                                        var d = dte.AddDays(i).Date;
+                                        var tk = Model.FirstOrDefault(e => e.MaCSKCB == h.MA_CSKCB && e.FromDate.Date == d);
+
+                                        @if (tk != null)
+                                        {
+                                            <td class="xw-80 cen">
+                                                <span class="badge text-white @(tk.isUploadFiles ? "bg-success" : "bg-danger")">
+                                                    @(tk.isUploadFiles ? "Có đẩy XML" : "Không có XML")
+                                                </span>
+                                                <div style="height: 5px"></div>
+                                                <span class="badge text-white @(tk.isActive ? "bg-success" : "bg-danger")">
+                                                    @(tk.isActive ? "Hoạt động" : "Không hoạt động")
+                                                </span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td class="xw-80 cen">
+                                                <span class="badge text-white bg-danger">
+                                                    Không đẩy XML
+                                                </span>
+                                                <div style="height: 5px"></div>
+                                                <span class="badge text-white bg-danger">
+                                                    Không hoạt động
+                                                </span>
+                                            </td>
+                                        }
+                                    }
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <b style="color:green">Số liệu đã gửi</b> | <b style="color:red">Chưa gửi số liệu</b>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="@Url.Content("~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/lib/elite/libs/datatables.net-bs4/js/dataTables.responsive.min.js")"></script>
+    <script>
+        $('#datepicker').datepicker({format: 'dd/mm/yyyy'});
+        $('#tbl_DataTable').DataTable({
+            responsive: false,
+            bPaginate: false,
+            searching: false,
+            ordering: false,
+            autoWidth: false
+        });
+    </script>
+}
