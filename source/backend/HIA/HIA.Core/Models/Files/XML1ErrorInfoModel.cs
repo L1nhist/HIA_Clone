@@ -1,4 +1,5 @@
 using HIA.Core.Languages.DisplayField;
+using HIA.Data.Catalogs;
 using System.ComponentModel.DataAnnotations;
 
 namespace HIA.Core.Models.Files;
@@ -66,10 +67,10 @@ public class XML1ErrorInfoModelAPI
 
     public string? CCHN { get; set; }
 
-    public HIA.Data.Entities.DMThuoc? DMThuoc { get; set; }
-    public HIA.Data.Entities.DMVTYT? DMVTYT { get; set; }
+    public DMThuoc? DMThuoc { get; set; }
+    public DMVTYT? DMVTYT { get; set; }
 
-    public HIA.Data.Entities.DMDichVu? DMDichVu { get; set; }
+    public DMDichVu? DMDichVu { get; set; }
 
 }
 

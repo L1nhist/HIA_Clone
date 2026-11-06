@@ -1,5 +1,5 @@
 using HIA.Core.Base;
-using HIA.Data.Entities;
+using HIA.Data.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

@@ -32,6 +32,35 @@
 | S5 | TB | HIA.Core/Base/Uti.cs (mục 1) | Salt/key mã hóa mật khẩu hardcode | Như mục 1 |
 Cách xử lý đề xuất (PO quyết): (a) đổi toàn bộ mật khẩu/khóa trên; (b) để repo private; (c) muốn xóa khỏi lịch sử: git filter-repo rồi force push (phá hủy, mọi bản clone khác phải clone lại); (d) code mới lấy bí mật từ user-secrets/biến môi trường. Chưa quét hết HIA.Web/appsettings và các project khác trong resources: sẽ quét ở bước Web.
 
+## Bảo mật trong Services (cảnh báo tự động security-guidance, 2026-11-06)
+Hai mục dưới nằm trong code Services đang port dở (agent T004 chưa xong). Cần đối chiếu bản cũ: nhiều khả năng là hành vi có sẵn từ trước, port chỉ giữ nguyên. Xử lý trong CR bảo mật sau khi convert.
+| # | Mức | Nơi | Mô tả | Đề xuất | Trạng thái |
+|---|---|---|---|---|---|
+| 27 | Cao | Services/Files/FilesService130.cs | Lọc theo `request.HospitalId` do client gửi, không ép theo cơ sở KCB của người đăng nhập: có nguy cơ xem dữ liệu của cơ sở khác (IDOR) | Lấy MA_CSKCB từ claim của user và luôn áp dụng; chỉ cho đổi HospitalId với vai trò MASTER/BOYTE sau khi kiểm tra quyền | Mở, chờ PO |
+| 28 | TB | Services/Auth/AuthService.cs | Link đặt mật khẩu/tài khoản mới dựng từ host của request (`Uti.GetFullDomainUrl`): có thể bị làm giả bằng header Host | Dùng URL gốc cấu hình sẵn (appsettings/secret), hoặc ép AllowedHosts | Mở, chờ PO |
+| 29 | Cao | Services/Categories/DMKhoaBVService | Cập nhật khoa theo `request.MA_CSKCB` do client gửi, không kiểm tra bản ghi thuộc cơ sở của người dùng: sửa dữ liệu cơ sở khác (IDOR) | Nạp bản ghi hiện có, ép theo claim MA_CSKCB của user, chỉ copy MA_KHOA/TEN_KHOA, bỏ qua MA_CSKCB từ request | Mở, chờ PO |
+| 30 | Cao | Services/Categories/DMKhoaBVService (xóa) | Xóa theo `id` không kiểm tra `item.MA_CSKCB` có khớp cơ sở của user | Kiểm tra claim trước khi xóa, cùng kiểm tra vai trò như Save/DeleteItem | Mở, chờ PO |
+| 31 | Cao | Services/HDSDManagement/ChiDinhDongThoiService | UpdateItem/GetItemById lấy bản ghi theo id; ADMIN còn bị ghi đè `item.MA_CSKCB = currentCSKCB` thay vì bị chặn khi khác cơ sở | ADMIN: trả 403 nếu `item.MA_CSKCB != currentCSKCB`, kiểm tra trước khi SaveRuleError; thêm kiểm tra vai trò + sở hữu cho GetItemById | Mở, chờ PO |
+| 32 | Cao | Services/HDSDManagement/HDSDDichVuService | Như #31 | Như #31 | Mở, chờ PO |
+| 33 | Cao | Services/HDSDManagement/HDSDThuocService | Như #31 | Như #31 | Mở, chờ PO |
+| 34 | TB | Services/Files/FilesService130 | Trả `ex.ToString()` (stack trace, đường dẫn) cho client trong thông báo lỗi upload và trong `res.Message` của GetXml1ErrorItem(s)ByFileName, GetXmlErrorItems: lộ thông tin nội bộ | Log phía server, trả thông báo chung (hoặc mã tham chiếu). Có thể có sẵn từ bản cũ, cần đối chiếu | Mở, chờ PO |
+| 35 | Cao | Services/Report/ReportHandleService.TongHop, TrungDichVu | Bộ lọc báo cáo giải mã từ chuỗi do client gửi; chỉ gán MaCSKCB từ claim khi client để trống, nên client truyền mã cơ sở khác sẽ xem được báo cáo của cơ sở đó (IDOR). Cùng gốc với #27, #29–#33 | Luôn gán MaCSKCB từ claim; chỉ cho đổi với vai trò đặc quyền sau kiểm tra. Làm cơ chế chung trong CR bảo mật | Mở, chờ PO |
+
+Nhận xét: #27, #29–#33 cùng một lỗi gốc là thiếu ràng buộc dữ liệu theo cơ sở KCB (multi-tenant). Nên xử lý một lần bằng cơ chế chung (filter theo claim ở repository/service) thay vì vá từng chỗ. Đối chiếu bản cũ để xác nhận có sẵn từ trước.
+
+## Services (T004, reviewer T004-R, 2026-11-06)
+| # | Mức | Nơi | Mô tả | Đề xuất | Trạng thái |
+|---|---|---|---|---|---|
+| 36 | TB | Services/Base/HandleFile130CommonService | UploadExcel/DownloadExcel bỏ DataTable + Newtonsoft, dùng reflection. Cột/null/ô rỗng khớp bản cũ; xử lý ngày chưa chứng minh (Newtonsoft mặc định đổi chuỗi ISO thành DateTime, bản mới giữ chuỗi thô). Không có test | Thử upload/download Excel thật với cột ngày; viết test tương đương ở giai đoạn 2; hoặc PO ghi nhận là thay đổi chấp nhận | Mở, chờ PO |
+| 37 | TB | Services (nhiều nơi) | Không có test cho các hành vi đã đổi: BuildQuery_XML01 bỏ nhánh Status và trim TypeKCB, ReplaceCategoryFile (EF.Property), DetachError, TotalFile* khoảng [from,to), AttachInnerXML/LoadInner (PO chọn chỉ build ở giai đoạn 1) | Viết characterization test khi bật lại tdd_gate (giai đoạn 2) | Mở |
+| 38 | Thấp | Services/Report/ReportHandleService.cs:294-297 | TypeKCB được trim trước khi so sánh (bản cũ không trim) | PO ghi nhận quyết định | Mở |
+| 39 | Thấp | Services/Categories/ReplaceCategoryFile | Các nhánh DMThuoc/DMVTYT/DMBacSi/DMKhoaBV không đổi so với bản cũ: nạp lại file sẽ chèn trùng bản ghi | Sửa khi làm nghiệp vụ, không thuộc port | Mở |
+| 40 | TB | Services/Auth/AuthService.cs:90, :232 | Email loại trừ hardcode trong code (địa chỉ cá nhân) | Chuyển ra cấu hình | Mở |
+| 41 | Thấp | Services/Report, Auth, UserManagement, HospitalManagement | Còn 14 cảnh báo CS: 8 x CS8619 (Include nav `Hospital?` nullable bên HIA.Data), 6 x CS8602/CS8604 ở Report (sửa sẽ đổi hành vi khi null) | PO xử lý nullable của entity Data; Report xem lại cùng test | Mở |
+| 42 | Thấp | Services/Validate130 | ValidateXML03 có 159 lời gọi `NullGuard.Req()` và 2 helper `StrField` ở ValidateXML01/02 vì Uti.CodeMatch/CodeContain, EvalHelper nhận `string` không nullable | Đổi các hàm Core sang `string?` để bỏ lớp phụ (~100 chỗ `?? string.Empty`) | Mở |
+| 43 | Thấp | Services/Files | `ValidateHoso` hardcode `{"25001"}`; `ValidateHosoFrom4210` chỉ còn là stub trả Task.CompletedTask; `FileUploadAsync`/`FileUploadAPI`/`DownloadBaoCao` trả nullable (Web phải xử lý null) | Xem khi port Web | Mở |
+| 44 | Thấp | Services/Categories | `ImportFromAPI` đổi cách map DataTable sang entity (`ToEntities`); lỗi cũ trong Scrape_* (kiểm tra nhầm biến content thay vì html) đã sửa | Thử với dữ liệu thật | Mở |
+
 ## Cấu trúc dữ liệu / entity
 | # | Mức | Nơi | Mô tả | Đề xuất | Trạng thái |
 |---|---|---|---|---|---|

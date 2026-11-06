@@ -123,7 +123,7 @@ public class Uti
     {
         logger.LogInformation($"[BACKGROUND_SERVICE] {cronJobName}: {message}");
     }
-    static public ResponseModel<T> HandleInternalServerError<T>(Exception ex, T data, ILogger<dynamic> logger, string serviceName)
+    static public ResponseModel<T> HandleInternalServerError<T>(Exception ex, T? data, ILogger<dynamic> logger, string serviceName)
     {
         var res = new ResponseModel<T>(HttpStatusCode.InternalServerError, ex.Message, data);
         logger.LogError(ex, $"{serviceName}: {ex.Message}");

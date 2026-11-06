@@ -176,127 +176,127 @@ public static class EvalHelper
     /// VD: xml01.Field(x => x.MA_LK)....
     /// </summary>
     public static Evaluation<TOwner, TField> Field<TOwner, TField>(this TOwner xml, Expression<Func<TOwner, TField>> expression)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
     {
         return new Evaluation<TOwner, TField>(xml, expression);
     }
 
     #region Extra function for Evaluation String
     public static Evaluation<TOwner, string> CodeContain<TOwner>(this Evaluation<TOwner, string> eval, string patterns, bool ignoreSpace = false)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => Uti.CodeContain(f, patterns, ignoreSpace));
 
     public static Evaluation<TOwner, string> CodeMatch<TOwner>(this Evaluation<TOwner, string> eval, string patterns, bool ignoreSpace = false)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => Uti.CodeMatch(f, patterns, ignoreSpace));
 
     public static Evaluation<TOwner, string> IsOnlyWhitespace<TOwner>(this Evaluation<TOwner, string> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => f.Trim() == "");
 
     /// <summary>
     /// Kiểm tra xem chuỗi có bằng giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, string> IsEqual<TOwner>(this Evaluation<TOwner, string> eval, string value, bool ignoreCase = false)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => f.Equals(value, ignoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal));
 
     /// <summary>
     /// Kiểm tra xem chuỗi có bằng giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, string> IsEqual<TOwner>(this Evaluation<TOwner, string> eval, Evaluation<TOwner, string> other, bool ignoreCase = false)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check((f, o) => f.Equals(o, ignoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal), other);
 
     /// <summary>
     /// Kiểm tra xem chuỗi có không bằng giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, string> IsNotEqual<TOwner>(this Evaluation<TOwner, string> eval, string value, bool ignoreCase = false)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.CheckNot(f => f.Equals(value, ignoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal));
 
     /// <summary>
     /// Kiểm tra xem chuỗi có không bằng giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, string> IsNotEqual<TOwner>(this Evaluation<TOwner, string> eval, Evaluation<TOwner, string> other, bool ignoreCase = false)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.CheckNot((f, o) => f.Equals(o, ignoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal), other);
 
     /// <summary>
     /// Kiểm tra xem có đúng định dạng truyền vào (kiểu 12.*; AB*.1;...)
     /// </summary>
     public static Evaluation<TOwner, string> LikesAny<TOwner>(this Evaluation<TOwner, string> eval, string patterns, bool ignoreCase = false)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => CodeLike(f, patterns, ignoreCase));
 
     /// <summary>
     /// Kiểm tra xem có không đúng định dạng truyền vào (kiểu 12.*; AB*.1;...)
     /// </summary>
     public static Evaluation<TOwner, string> NotLikes<TOwner>(this Evaluation<TOwner, string> eval, string patterns, bool ignoreCase = false)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.CheckNot(f => CodeLike(f, patterns, ignoreCase));
 
     /// <summary>
     /// Kiểm tra xem có khoảng trống (dấu cách) trong chuỗi hay không?
     /// </summary>
     public static Evaluation<TOwner, string> HasSpaceAny<TOwner>(this Evaluation<TOwner, string> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => f.Trim().Contains(' '));
 
     /// <summary>
     /// Kiểm tra xem không có khoảng trống (dấu cách) trong chuỗi hay không?
     /// </summary>
     public static Evaluation<TOwner, string> NotHasSpace<TOwner>(this Evaluation<TOwner, string> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.CheckNot(f => f.Trim().Contains(' '));
 
     /// <summary>
     /// Kiểm tra chuỗi dạng mảng có đáp ứng ít nhất 1 điều kiện truyền vào
     /// </summary>
     public static Evaluation<TOwner, string> EachAny<TOwner>(this Evaluation<TOwner, string> eval, string spliters, Func<string, bool> predicate)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => f.Split((spliters ?? " ").ToCharArray()).Any(predicate));
 
     /// <summary>
     /// Kiểm tra chuỗi dạng mảng có đáp ứng tất cả theo điều kiện truyền vào
     /// </summary>
     public static Evaluation<TOwner, string> EachAll<TOwner>(this Evaluation<TOwner, string> eval, string spliters, Func<string, bool> predicate)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => f.Split((spliters ?? " ").ToCharArray()).All(predicate));
 
     /// <summary>
     /// Kiểm tra số lượng chuỗi trong mảng có lớn hơn giá trị truyền vào không
     /// </summary>
     public static Evaluation<TOwner, string> EachCountOver<TOwner>(this Evaluation<TOwner, string> eval, string spliters, int? min)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => f.Split((spliters ?? " ").ToCharArray()).Count() > min);
 
     /// <summary>
     /// Kiểm tra số lượng chuỗi trong mảng có lớn hơn hoặc bằng giá trị truyền vào không
     /// </summary>
     public static Evaluation<TOwner, string> EachCountOverOrEqual<TOwner>(this Evaluation<TOwner, string> eval, string spliters, int? min)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => f.Split((spliters ?? " ").ToCharArray()).Count() >= min);
 
     /// <summary>
     /// Kiểm tra số lượng chuỗi trong mảng có nhỏ hơn giá trị truyền vào không
     /// </summary>
     public static Evaluation<TOwner, string> EachCountUnder<TOwner>(this Evaluation<TOwner, string> eval, string spliters, int? max)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => f.Split((spliters ?? " ").ToCharArray()).Count() < max);
 
     /// <summary>
     /// Kiểm tra số lượng chuỗi trong mảng có nhỏ hơn hoặc bằng giá trị truyền vào không
     /// </summary>
     public static Evaluation<TOwner, string> EachCountUnderOrEqual<TOwner>(this Evaluation<TOwner, string> eval, string spliters, int? max)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => f.Split((spliters ?? " ").ToCharArray()).Count() < max);
 
     /// <summary>
     /// Kiểm tra số lượng chuỗi trong mảng có nằm ngoài khoảng giá trị truyền vào không
     /// </summary>
     public static Evaluation<TOwner, string> EachCountNotBetween<TOwner>(this Evaluation<TOwner, string> eval, string spliters, int? min, int? max)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
     {
         Func<int, bool> exec = e => e < min || e > max;
         return eval.Check(f => exec.Invoke(f.Split((spliters ?? " ").ToCharArray()).Count()));
@@ -309,7 +309,7 @@ public static class EvalHelper
     /// Kiểm tra xem có lớn hơn giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, TComp?> IsOver<TOwner, TComp>(this Evaluation<TOwner, TComp?> eval, TComp? min)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         where TComp : struct, IComparable
         => eval.Check(f => (f ?? default).CompareTo(min) > 0);
 
@@ -317,7 +317,7 @@ public static class EvalHelper
     /// Kiểm tra xem có lớn hơn giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, TComp?> IsOver<TOwner, TComp>(this Evaluation<TOwner, TComp?> eval, Evaluation<TOwner, TComp?> other)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         where TComp : struct, IComparable
         => eval.Check((f, o) => (f ?? default).CompareTo(o ?? default) > 0, other);
 
@@ -325,7 +325,7 @@ public static class EvalHelper
     /// Kiểm tra xem có lớn hơn hoặc bằng giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, TComp?> IsOverOrEqual<TOwner, TComp>(this Evaluation<TOwner, TComp?> eval, TComp? min)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         where TComp : struct, IComparable
         => eval.Check(f => (f ?? default).CompareTo(min) >= 0);
 
@@ -333,7 +333,7 @@ public static class EvalHelper
     /// Kiểm tra xem có lớn hơn hoặc bằng giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, TComp?> IsOverOrEqual<TOwner, TComp>(this Evaluation<TOwner, TComp?> eval, Evaluation<TOwner, TComp?> other)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         where TComp : struct, IComparable
         => eval.Check((f, o) => (f ?? default).CompareTo(o) >= 0, other);
 
@@ -341,7 +341,7 @@ public static class EvalHelper
     /// Kiểm tra xem có nhỏ hơn giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, TComp?> IsUnder<TOwner, TComp>(this Evaluation<TOwner, TComp?> eval, TComp? max)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         where TComp : struct, IComparable
         => eval.Check(f => (f ?? default).CompareTo(max) < 0);
 
@@ -349,7 +349,7 @@ public static class EvalHelper
     /// Kiểm tra xem có nhỏ hơn giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, TComp?> IsUnder<TOwner, TComp>(this Evaluation<TOwner, TComp?> eval, Evaluation<TOwner, TComp?> other)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         where TComp : struct, IComparable
         => eval.Check((f, o) => (f ?? default).CompareTo(o) < 0, other);
 
@@ -357,7 +357,7 @@ public static class EvalHelper
     /// Kiểm tra xem có nhỏ hơn hoặc bằng giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, TComp?> IsUnderOrEqual<TOwner, TComp>(this Evaluation<TOwner, TComp?> eval, TComp? max)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         where TComp : struct, IComparable
         => eval.Check(f => (f ?? default).CompareTo(max) <= 0);
 
@@ -365,7 +365,7 @@ public static class EvalHelper
     /// Kiểm tra xem có nhỏ hơn hoặc bằng giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, TComp> IsUnderOrEqual<TOwner, TComp>(this Evaluation<TOwner, TComp> eval, Evaluation<TOwner, TComp> other)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         where TComp : struct, IComparable
         => eval.Check((f, o) => f.CompareTo(o) <= 0, other);
 
@@ -373,7 +373,7 @@ public static class EvalHelper
     /// Kiểm tra xem có nằm trong khoảng giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, TComp?> Between<TOwner, TComp>(this Evaluation<TOwner, TComp?> eval, TComp? min, TComp? max)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         where TComp : struct, IComparable
         => eval.Check(f => (f ?? default).CompareTo(min) > 0 && (f ?? default).CompareTo(max) < 0);
 
@@ -381,7 +381,7 @@ public static class EvalHelper
     /// Kiểm tra xem có nằm trong khoảng hoặc bằng giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, TComp?> BetweenOrEqual<TOwner, TComp>(this Evaluation<TOwner, TComp?> eval, TComp? min, TComp? max)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         where TComp : struct, IComparable
         => eval.Check(f => (f ?? default).CompareTo(min) >= 0 && (f ?? default).CompareTo(max) <= 0);
 
@@ -389,7 +389,7 @@ public static class EvalHelper
     /// Kiểm tra xem có nằm ngoài khoảng giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, TComp> NotBetween<TOwner, TComp>(this Evaluation<TOwner, TComp> eval, TComp? min, TComp? max)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         where TComp : struct, IComparable
         => eval.CheckNot(f => f.CompareTo(min) > 0 && f.CompareTo(max) < 0);
 
@@ -397,7 +397,7 @@ public static class EvalHelper
     /// Kiểm tra xem có nằm ngoài khoảng hoặc bằng giá trị truyền vào không?
     /// </summary>
     public static Evaluation<TOwner, TComp?> NotBetweenOrEqual<TOwner, TComp>(this Evaluation<TOwner, TComp?> eval, TComp? min, TComp? max)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         where TComp : struct, IComparable
         => eval.CheckNot(f => (f ?? default).CompareTo(min) >= 0 && (f ?? default).CompareTo(max) <= 0);
 
@@ -405,14 +405,14 @@ public static class EvalHelper
     /// Kiểm tra xem có vượt quá số phút không?
     /// </summary>
     public static Evaluation<TOwner, DateTime?> TimeOverMinute<TOwner>(this Evaluation<TOwner, DateTime?> eval, DateTime? date, int minute)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => date == null || (date.Value - (f ?? default)).TotalMinutes > minute);
 
     /// <summary>
     /// Kiểm tra xem có vượt quá số phút không?
     /// </summary>
     public static Evaluation<TOwner, DateTime?> TimeOverOrEqualMinute<TOwner>(this Evaluation<TOwner, DateTime?> eval, DateTime? date, int minute)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => date == null || (date.Value - (f ?? default)).TotalMinutes >= minute);
 
     /// <summary>
@@ -420,14 +420,14 @@ public static class EvalHelper
     /// 12:10 - 12:05; 12:11 - 12:05
     /// </summary>
     public static Evaluation<TOwner, DateTime?> TimeUnderMinute<TOwner>(this Evaluation<TOwner, DateTime?> eval, DateTime? date, int minute)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => date == null || (date.Value - (f ?? default)).TotalMinutes < minute);
 
     /// <summary>
     /// Kiểm tra xem có ít hơn số phút không?
     /// </summary>
     public static Evaluation<TOwner, DateTime?> TimeUnderOrEqualMinute<TOwner>(this Evaluation<TOwner, DateTime?> eval, DateTime? date, int minute)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => date == null || (date.Value - (f ?? default)).TotalMinutes <= minute);
 
     #endregion
@@ -438,84 +438,84 @@ public static class EvalHelper
     /// Kiểm tra xem có không chứa một trong các giá trị truyền vào làm tròn không?
     /// </summary>
     public static Evaluation<TOwner, double?> HasRoundedEquals<TOwner>(this Evaluation<TOwner, double?> eval, double? value, int decimals)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => Math.Round(f ?? 0, 2).Equals(Math.Round(value ?? 0, 2)));
 
     /// <summary>
     /// Kiểm tra xem có không chứa một trong các giá trị truyền vào làm tròn không?
     /// </summary>
     public static Evaluation<TOwner, double?> NotRoundedEquals<TOwner>(this Evaluation<TOwner, double?> eval, double? value, int decimals)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.CheckNot(f => Math.Round(f ?? 0, 2).Equals(Math.Round(value ?? 0, 2)));
 
     /// <summary>
     /// Không đúng định dạng ngày tháng yyyymmddHHMM hoặc yyyymmdd hoặc yyyy
     /// </summary>
     public static Evaluation<TOwner, DateTime?> NotDateTimeFormat<TOwner>(this Evaluation<TOwner, DateTime?> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.Check(f => f == minSqlDte);
 
     /// <summary>
     /// Không đúng định dạng #####.###
     /// </summary>
     public static Evaluation<TOwner, double?> NotNumberFormat<TOwner>(this Evaluation<TOwner, double?> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.CheckIgnoreEmpty(f => f == double.MinValue);
 
     /// <summary>
     /// Kiểm tra xem có phải là giá trị 1,2,3 hay không
     /// </summary>
     public static Evaluation<TOwner, byte?> Not_1To3<TOwner>(this Evaluation<TOwner, byte?> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.NotBetweenOrEqual(1, 3);
 
     /// <summary>
     /// Kiểm tra xem có phải là giá trị 1,2,3 hay không
     /// </summary>
     public static Evaluation<TOwner, int?> Not_1To3<TOwner>(this Evaluation<TOwner, int?> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.NotBetweenOrEqual(1, 3);
 
     /// <summary>
     /// Kiểm tra xem có phải là giá trị 1,2,3,4,5 hay không
     /// </summary>
     public static Evaluation<TOwner, byte?> Not_1To5<TOwner>(this Evaluation<TOwner, byte?> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.NotBetweenOrEqual(1, 5);
 
     /// <summary>
     /// Kiểm tra xem có phải là giá trị 1,2,3,4,5 hay không
     /// </summary>
     public static Evaluation<TOwner, int?> Not_1To5<TOwner>(this Evaluation<TOwner, int?> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.NotBetweenOrEqual(1, 5);
 
     /// <summary>
     /// Kiểm tra xem có phải là giá trị 1,2,3,4,5,6,7,8 hay không
     /// </summary>
     public static Evaluation<TOwner, byte?> Not_1To8<TOwner>(this Evaluation<TOwner, byte?> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.NotBetweenOrEqual(1, 8);
 
     /// <summary>
     /// Kiểm tra xem có phải là giá trị 1,2,3,4,5,6,7,8 hay không
     /// </summary>
     public static Evaluation<TOwner, int?> Not_1To8<TOwner>(this Evaluation<TOwner, int?> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.NotBetweenOrEqual(1, 8);
 
     /// <summary>
     /// Kiểm tra xem có phải là giá trị 1,2,3,4,5,6,7,8,9 hay không
     /// </summary>
     public static Evaluation<TOwner, byte?> Not_1To9<TOwner>(this Evaluation<TOwner, byte?> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.NotBetweenOrEqual(1, 9);
 
     /// <summary>
     /// Kiểm tra xem có phải là giá trị 1,2,3,4,5,6,7,8,9 hay không
     /// </summary>
     public static Evaluation<TOwner, int?> Not_1To9<TOwner>(this Evaluation<TOwner, int?> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.NotBetweenOrEqual(1, 9);
 
     /// <summary>
@@ -529,7 +529,7 @@ public static class EvalHelper
     /// 8   Tử vong ngoại viện
     /// </summary>
     public static Evaluation<TOwner, byte?> Not_KQ_DTRI<TOwner>(this Evaluation<TOwner, byte?> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.NotBetweenOrEqual(1, 8);
 
     /// <summary>
@@ -540,14 +540,14 @@ public static class EvalHelper
     /// 5   Chuyển tuyến theo yêu cầu người bệnh
     /// </summary>
     public static Evaluation<TOwner, byte?> Not_LOAI_RV<TOwner>(this Evaluation<TOwner, byte?> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.NotBetweenOrEqual(1, 5);
 
     /// <summary>
     /// ...
     /// </summary>
     public static Evaluation<TOwner, string> Not_LOAI_KCB<TOwner>(this Evaluation<TOwner, string> eval)
-        where TOwner : IXMLEntity
+        where TOwner : IRecord
         => eval.NotValue("01", "02", "03", "04", "05", "06", "07", "08", "09","10");
     #endregion
 }

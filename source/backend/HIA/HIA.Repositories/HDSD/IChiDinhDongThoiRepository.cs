@@ -1,5 +1,5 @@
 using HIA.Core.Models.Pagination;
-using HIA.Data.Entities;
+using HIA.Data.Rules;
 using HIA.Repositories.Base;
 
 namespace HIA.Repositories.HDSD;

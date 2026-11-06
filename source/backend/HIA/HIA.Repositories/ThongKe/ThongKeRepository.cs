@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 using HIA.Core.Base;
-using HIA.Data.Entities;
+using HIA.Data.Reports;
 using HIA.Repositories.Base;
 using LinqKit;
 using Microsoft.AspNetCore.Http;

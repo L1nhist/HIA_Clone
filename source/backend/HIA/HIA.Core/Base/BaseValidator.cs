@@ -1,13 +1,13 @@
 using System.Linq.Expressions;
 using System.Reflection;
 using HIA.Data.Base;
-using HIA.Data.Entities;
+using HIA.Data.Records;
 using Microsoft.Extensions.Logging;
 
 namespace HIA.Core.Base;
 
 public class BaseValidator<T>
-    where T : class, IXMLEntity
+    where T : class, IRecord
 {
     private readonly Dictionary<string, object> _evals = new();
     private readonly Dictionary<int, string> _errors;
@@ -79,14 +79,14 @@ public class BaseValidator<T>
     }
 
     public bool RaiseError<TXml>(TXml xml, bool eval, int error, string? desc = null)
-        where TXml : IXMLEntity<XML01>
+        where TXml : IRecord<XML01>
     {
         if (eval) xml.RaiseError(error, desc);
         return eval;
     }
 
     public void RaiseError<TXml>(TXml xml, int error, string? desc = null)
-        where TXml : IXMLEntity<XML01>
+        where TXml : IRecord<XML01>
     {
         if (string.IsNullOrEmpty(MsgPrefix) && (_errors == null || _errors.Count == 0))
         {

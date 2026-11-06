@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 using HIA.Data.Base;
-using HIA.Data.Entities;
+using HIA.Data.Records;
 using HIA.Repositories.Base;
 
 namespace HIA.Repositories.Files;
@@ -12,7 +12,7 @@ public interface IXml01Repository : IBaseRepository<XML01>
     Task<IEnumerable<XML01>> GetAllByListID(string maCSKCB, params long[] ids);
 
     Task<IEnumerable<T>> GetInnersByListID<T>(string maCSKCB, params long[] ids)
-        where T : class, IXMLEntity;
+        where T : class, IRecord;
 
     Task<IEnumerable<XMLError>> GetErrorsByListID(string maCSKCB, params long[] ids);
 

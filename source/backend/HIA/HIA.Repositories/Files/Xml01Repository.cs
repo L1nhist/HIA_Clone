@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 using HIA.Core.Base;
 using HIA.Core.Models.Token;
 using HIA.Data.Base;
-using HIA.Data.Entities;
+using HIA.Data.Records;
 using HIA.Repositories.Base;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +35,7 @@ public class Xml01Repository : BaseRepository<XML01>, IXml01Repository
     }
 
     public async Task<IEnumerable<T>> GetInnersByListID<T>(string maCSKCB, params long[] ids)
-        where T : class, IXMLEntity
+        where T : class, IRecord
     {
         var query = _dbContext.Set<T>().AsNoTracking().Where(x => x.MA_CSKCB == maCSKCB && ids.Contains(x.XML01ID));
         return await query.ToListAsync();

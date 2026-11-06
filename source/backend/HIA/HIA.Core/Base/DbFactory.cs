@@ -1,4 +1,4 @@
-using HIA.Data.Entities;
+using HIA.Data.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace HIA.Core.Base;

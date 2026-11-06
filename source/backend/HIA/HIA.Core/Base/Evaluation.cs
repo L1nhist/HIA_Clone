@@ -3,7 +3,7 @@ using HIA.Data.Base;
 
 namespace HIA.Core.Base;
 public class Evaluation<TOwner, TField>
-    where TOwner : IXMLEntity
+    where TOwner : IRecord
 {
     private readonly bool _empty;
     private bool _error;

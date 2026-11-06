@@ -1,5 +1,5 @@
 using HIA.Core.Base;
-using HIA.Data.Entities;
+using HIA.Data.Records;
 using HIA.Repositories.Base;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;

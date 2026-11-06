@@ -1,4 +1,4 @@
-using HIA.Data.Entities;
+using HIA.Data.Records;
 using HIA.Repositories.Base;
 
 namespace HIA.Repositories.CheckThe;
