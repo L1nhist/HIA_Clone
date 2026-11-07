@@ -1,0 +1,91 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Core.Languages.TitlePage;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@model HIA.Core.Models.Categories.DMDichVuModifyModel
+
+@{
+    ViewData["Title"] = TitlePageResource.DM_DICHVU_TITLE;
+}
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@TitlePageResource.DM_DICHVU_TITLE</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(DMDichVuController.Index), Uti.GetControllerName(nameof(DMDichVuController)))">@TitlePageResource.DM_DICHVU_TITLE</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.UPDATE</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="@nameof(DMDichVuController.Edit)">
+                <div class="row">
+                    @Html.HiddenFor(model => model.DVID)
+                    @*@Html.HiddenFor(model => model.DichVuMHTCID)*@
+                    @Html.HiddenFor(model => model.MA_CSKCB)
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MA_DICH_VU" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="MA_DICH_VU" class="form-control custom-form-control" />
+                            <span asp-validation-for="MA_DICH_VU" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="TEN_DICH_VU" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="TEN_DICH_VU" class="form-control custom-form-control" />
+                            <span asp-validation-for="TEN_DICH_VU" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MA_GIA" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="MA_GIA" class="form-control custom-form-control" />
+                            <span asp-validation-for="MA_GIA" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="DON_GIA" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="DON_GIA" class="form-control custom-form-control" />
+                            <span asp-validation-for="DON_GIA" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="QUYET_DINH" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="QUYET_DINH" class="form-control custom-form-control" />
+                            <span asp-validation-for="QUYET_DINH" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MANHOM_5937" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="MANHOM_5937" class="form-control custom-form-control" />
+                            <span asp-validation-for="MANHOM_5937" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group row">
+                        <label asp-for="MANHOM_9324" class="control-label col-3 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="MANHOM_9324" class="form-control custom-form-control" />
+                            <span asp-validation-for="MANHOM_9324" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group text-center">
+                    <a asp-action="@nameof(DMDichVuController.Index)" class="btn btn-outline-primary">@DisplayFieldResource.BACK_TO_LIST</a>
+                    <input type="submit" value="@DisplayFieldResource.UPDATE" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

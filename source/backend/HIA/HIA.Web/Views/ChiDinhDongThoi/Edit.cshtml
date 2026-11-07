@@ -1,0 +1,171 @@
+﻿@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Token;
+@using System.Security.Claims;
+@model HIA.Core.Models.HDSD.ChiDinhDongThoiModifyModel
+@{
+    ViewData["Title"] = "Chỉ định đồng thời";
+
+    var curCSKCB = User.FindFirst(ClaimKey.MA_CSKCB)?.Value;
+    var isMaster = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.MASTER);
+    var isAdmin = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.ADMIN);
+    var isEditable = (isMaster == true) || (isAdmin == true && Model.Ma_CSKCB == curCSKCB);
+}
+
+<link rel="stylesheet" href="@Url.Content("~/lib/select2/select2.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/select2/select2-bootstrap.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/css/tagslist.css")" />
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">Cập nhật Danh mục Chỉ định đồng thời</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(ChiDinhDongThoiController.Index), Uti.GetControllerName(nameof(ChiDinhDongThoiController)))">Chỉ định đồng thời</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.UPDATE</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            @if (!isEditable)
+            {
+            <div class="alert alert-danger">Bạn không có quyền chỉnh sửa nội dung này!</div>
+            }
+            <form asp-action="@nameof(ChiDinhDongThoiController.Edit)">
+                @Html.HiddenFor(model => model.CddtID)
+                <div class="container-fluid">
+                    <div class="form-group">
+                        <div class="col-9 offset-3">
+                            <div class="custom-control custom-switch rule-switch">
+                                <input asp-for="Chi_DINH" class="custom-control-input">
+                                <label asp-for="Chi_DINH" id="lblChiDinh" class="custom-control-label"><span></span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Ma_DICH_VU" class="control-label col-2 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Ma_DICH_VU" class="form-control custom-form-control" />
+                            <span asp-validation-for="Ma_DICH_VU" class="text-danger"></span>
+                            <small class="text-warning">Vui lòng nhập mã theo định dạng [21.0234.4363] hoặc [36.7*] hoặc [78.4367.*]</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Dich_VU_KHAC" class="control-label col-2 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Dich_VU_KHAC" class="form-control custom-form-control" />
+                            <small class="text-warning">Vui lòng nhập mã theo định dạng [21.0234.4363] hoặc [36.7*] hoặc [78.4367.*]</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Vat_TU_BHYT" class="control-label col-2 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Vat_TU_BHYT" class="form-control custom-form-control" />
+                            <small class="text-warning">Vui lòng nhập mã theo định dạng [21.0234.4363] hoặc [36.7*] hoặc [78.4367.*]</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Vat_TU_KO_BH" class="control-label col-2 text-right"></label>
+                        <div class="col-9">
+                            <input asp-for="Vat_TU_KO_BH" class="form-control custom-form-control" />
+                            <small class="text-warning">Vui lòng nhập mã theo định dạng [21.0234.4363] hoặc [36.7*] hoặc [78.4367.*]</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-2 text-right">Kiểm tra:</label>
+                        <div class="col-3">
+                            <div class="radio">
+                                <label>
+                                    Cùng hồ sơ:
+                                    <input asp-for="Cung_LOAI" type="radio" value="1" checked="@(Model.Cung_LOAI == 1)" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="radio">
+                                <label>
+                                    Cùng ngày y lệnh:
+                                    <input asp-for="Cung_LOAI" type="radio" value="2" checked="@(Model.Cung_LOAI == 2)" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="radio">
+                                <label>
+                                    Cùng thời điểm:
+                                    <input asp-for="Cung_LOAI" type="radio" value="3" checked="@(Model.Cung_LOAI == 3)" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="text-danger text-center mb-30">
+                        * Chọn [Tạo lỗi mới] để thêm mã lỗi mới<br />
+                        * Chọn mã lỗi đã có và nhập nội dung mới cần thay đổi vào ô Nội dung lỗi để cập nhật mã lỗi
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Ma_LOI" class="control-label col-2 text-right">Mã lỗi:</label>
+                        <div class="col-9 select2-custom">
+                            <select asp-for="Ma_LOI" class="form-control select2 filter-change">
+                                <option value="0">Tạo lỗi mới</option>
+                                @foreach (var item in ViewBag.DMErrors)
+                                {
+                                    @if (item.ErrorCode == Model.Ma_LOI)
+                                    {
+                                        <option value="@item.ErrorCode" selected>@item.ErrorCode | @item.Message</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.ErrorCode">@item.ErrorCode | @item.Message</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Noi_DUNG_LOI" class="control-label col-2 text-right">Nội dung lỗi:</label>
+                        <div class="col-9">
+                            <input asp-for="Noi_DUNG_LOI" class="form-control custom-form-control" />
+                        </div>
+                    </div>
+                    @if (isMaster == true)
+                    {
+                        <div class="form-group row">
+                            <label asp-for="Ma_CSKCB" class="control-label col-2 text-right"></label>
+                            <div class="col-9">
+                                <input asp-for="Ma_CSKCB" class="form-control custom-form-control" />
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group text-center">
+                    <a asp-action="@nameof(HospitalController.Index)" class="btn btn-outline-primary">@DisplayFieldResource.BACK_TO_LIST</a>
+                    @if (isEditable)
+                    {
+                    <input type="submit" value="@DisplayFieldResource.UPDATE" class="btn btn-primary" />
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="@Url.Content("~/lib/select2/select2.min.js")"></script>
+    <script src="@Url.Content("~/js/tagslist.js")"></script>
+    <script>
+        $('.select2').select2({ theme: "bootstrap" });
+
+        var dv = new TagsInput({ selector: 'Ma_DICH_VU' }), dk = new TagsInput({ selector: 'Dich_VU_KHAC' }), vt = new TagsInput({ selector: 'Vat_TU_BHYT' }), vk = new TagsInput({ selector: 'Vat_TU_KO_BH'});
+    </script>
+}

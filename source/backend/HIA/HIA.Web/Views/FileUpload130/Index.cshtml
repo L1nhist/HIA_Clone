@@ -1,0 +1,165 @@
+﻿
+@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Files;
+@model HIA.Core.Models.FileUploads.FileUpload
+@{
+    ViewData["Title"] = "Tải Lên Hồ Sơ 130";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/lib/elite/libs/dropify/dropify.min.css")">
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">Tải Lên Hồ Sơ</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">Tải Lên Hồ Sơ</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="card upload-file-wrapper">
+        <form class="card-body" id="formUpload" action="@Url.Action(nameof(FileUpload130Controller.Index), Uti.GetControllerName(nameof(FileUpload130Controller)))" method="post">
+            <div class="row handle-file display-flex">
+                <div class="col-10 drop-wrapper">
+                    <input type="file" multiple asp-for="FormFiles" class="dropify" data-allowed-file-extensions='["xml"]' />
+                </div>
+                <div class="col-2 button-wrappe flex-middler">
+                    <div style="height: 38px;">Tổng số tệp được chọn: <b id="numberFiles">0</b></div>
+                    <button type="submit" class="btn btn-block btn-info"><i class="icon-cloud-upload"></i> @DisplayFieldResource.UPLOAD_TEXT</button>
+                </div>
+            </div>
+            <div id="uplProgress"style="padding: 10px;display:none;">
+                <h6>Đang tải lên:</h6>
+                <div class="progress" style="margin: 10px 0;height:25px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width:0%;background-image: linear-gradient(-45deg,rgba(0,0,0,.1) 25%,transparent 25%,transparent 50%,rgba(0,0,0,.1) 50%,rgba(0,0,0,.1) 75%,transparent 75%,transparent);-webkit-animation: stripes 3s linear infinite;animation: stripes 2s linear infinite;background-size: 30px 30px;">0%</div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card result-wrapper custom-display none">
+        <div class="card-body">
+            <div class="upload-result">
+                <div class="result-item summary-wrapper">
+                    <div class="status"></div>
+                    <div class="time"></div>
+                </div>
+                <div class="result-item error-wrapper">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_spinnerPartial" />
+
+@section Scripts {
+    <script src="@Url.Content("~/lib/elite/libs/dropify/dropify.min.js")"></script>
+    <script type="text/javascript" charset="utf-8">
+        var uplForm = $('#formUpload'), fileInp = $('.dropify'), fileCnt = $('#numberFiles'), errorMsg = '', isUploading = 0;
+
+        function hasFiles() {
+            if (fileInp.length && fileInp[0].files && fileInp[0].files.length) return fileInp[0].files;
+
+            alert('Không có hồ sơ nào được chọn! Vui lòng chọn lại danh sách hố sơ.');
+            return 0;
+        }
+
+        function setResultState(sts) {
+            var prgss = $('#uplProgress'), pgrbar = $('.progress-bar', prgss);
+            $(".summary-wrapper .status").html(sts ? sts.uploadStatus : '');
+            $(".summary-wrapper .time").html(sts ? sts.uploadTime : '');
+            $(".success-wrapper").html(sts ? sts.successMessage : '');
+            $(".error-wrapper").html(sts ? sts.failedMessage : '');
+
+            if (sts) {
+                fileInp.removeAttr('disabled');
+                prgss.css('display', 'none');
+                $('.result-wrapper').removeClass('none').addClass('block');
+            }
+            else {
+                fileInp.attr('disabled', 'disabled');
+                prgss.css('display', '').css('width', 0).html('0%');
+                $('.result-wrapper').removeClass('block').addClass('none');
+            }
+        }
+
+        fileInp.dropify({
+            messages: @Html.Raw(DropifySettingDefault.MESSAGES_XML),
+            error: @Html.Raw(DropifySettingDefault.ERROR),
+        }).change(function() {
+            var inp = this;
+            if (!inp.files) return;
+            fileCnt.text(inp.files.length);
+            errorMsg = '';
+
+            if (inp.files.length > 500) {
+                errorMsg = 'Tổng số hồ sơ tải lên không được vượt quá 500! Vui lòng chọn lại danh sách hồ sơ.';
+                alert(errorMsg);
+            }
+
+            var sze = 0;
+            for (var i = 0; i < inp.files.length; i++) {
+                sze += inp.files[i].size;
+            }
+            if (sze > 100000000) {
+                errorMsg = 'Tổng dung lượng hồ sơ tải lên quá lớn! Vui lòng chọn lại danh sách hồ sơ.';
+                alert(errorMsg);
+            }
+        });
+
+        uplForm.submit(function (e) {
+            e.preventDefault();
+            if (isUploading) return;
+            if (errorMsg) {
+                alert(errorMsg);
+                return;
+            }
+
+            var files = hasFiles();
+            if (!files) return;
+
+            setResultState();
+
+            var formData = new FormData();
+            for (var i = 0; i != files.length; i++) {
+                formData.append('formFiles', files[i]);
+            }
+
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: formData,
+                processData: false,
+                contentType: false,
+                xhr: function()
+                {
+                    isUploading = 1;
+                    myXhr = $.ajaxSettings.xhr();
+                    if(myXhr.upload) {
+                        myXhr.upload.addEventListener('progress', function(e) {
+                            if (!evt.lengthComputable) return;
+                            var pct = parseInt(evt.loaded / evt.total * 1000) / 10;
+                            pct = pct.toString() + '%';
+                            pgrbar.css('width', pct);
+                            pgrbar.html(pct);
+                        }, false);
+                    }
+                    return myXhr;
+                },
+                success: function (res) {
+                    isUploading = 0;
+                    if (res && res.data) {
+                        setResultState(res.data);
+                        errorMsg = 'Bạn đã hoàn thành tải hồ sơ này lên! Vui lòng chọn lại danh sách hồ sơ.';
+                    }
+                }
+            });
+        });
+    </script>
+}

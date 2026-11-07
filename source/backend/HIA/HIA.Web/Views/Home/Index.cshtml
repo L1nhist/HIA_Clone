@@ -1,8 +1,599 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using HIA.Core.Languages.TitlePage;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Token;
+@using System.Security.Claims;
+@model HIA.Core.Models.Diagram.TotalReports
+
+@{
+    ViewData["Title"] = $"{TitlePageResource.HOME}";
+}
+@{
+    //var list = HIA.Core.Base.JsonDefaults.Serialize(Model.report1);
+    //var list2 = HIA.Core.Base.JsonDefaults.Serialize(Model.report2);
+    var isMaster = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.MASTER);
+    var isAdmin = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.ADMIN);
+    var isUser = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.USER);
+
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" />
+<link rel="stylesheet" href="@Url.Content("~/lib/elite/icons/font-awesome/css/fontawesome.css")" />
+<link rel="stylesheet" href="@Url.Content("~/css/home.min.css")" />
+<style>
+    .chart-wrapper .override-text {
+        left: auto;
+        right: 10px;
+        bottom: 0;
+    }
+</style>
+
+<!-- scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.js" integrity="sha512-SJYdL2kA5iRh/PXQY8so9DvAkBtfVPcIk5pL0aPlsYjeHE7fUNWmWSVsX3X8zldgBxffJmlhxnp1gT59ZDFYqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--[if lt IE 9 ]>
+<script src="/Scripts/html5shiv.min.js"></script>
+<script src="/Scripts/respond.min.js"></script>
+<![endif]-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<div class="home-wrapper">
+    <div class="row panel-wrapper">
+        <div class="col-12 col-md-6 col-xl-3 panel-custom blue">
+            <div class="panel-content">
+                <div class="p-detail row">
+                    <div class="col-9 p-detail-label">
+                        Trong ngày:
+                    </div>
+                    <div class="col-3 p-detail-number">
+                        @Model.TotalFilesDate.ToString("##,##0")
+                    </div>
+                </div>
+                <div class="p-detail row">
+                    <div class="col-9 p-detail-label">
+                        Trong tháng:
+                    </div>
+                    <div class="col-3 p-detail-number">
+                        @Model.TotalFilesMonth.ToString("##,##0")
+                    </div>
+                </div>
+                <div class="p-detail row">
+                    <div class="col-9 p-detail-label">
+                        % Bảo hiểm y tế:
+                    </div>
+                    <div class="col-3 p-detail-number">
+                        100%
+                    </div>
+                </div>
+            </div>
+            <div class="panel-title">
+                <div class="row">
+                    <div class="col-9 p-title-label">
+                        Tổng Số Hồ Sơ
+                    </div>
+                    <div class="col-3 p-title-icon">
+                        <img src="@Url.Content("~/imgs/db-ico-1.png")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-3 panel-custom green">
+            <div class="panel-content">
+                <div class="p-detail row">
+                    <div class="col-9 p-detail-label">
+                        Trong ngày:
+                    </div>
+                    <div class="col-3 p-detail-number">
+                        @Model.TotalNoiTruDate.ToString("##,##0")
+                    </div>
+                </div>
+                <div class="p-detail row">
+                    <div class="col-9 p-detail-label">
+                        Trong tháng:
+                    </div>
+                    <div class="col-3 p-detail-number">
+                        @Model.TotalNoiTruMonth.ToString("##,##0")
+                    </div>
+                </div>
+            </div>
+            <div class="panel-title">
+                <div class="row">
+                    <div class="col-9 p-title-label">
+                        Điều Trị Nội Trú
+                    </div>
+                    <div class="col-3 p-title-icon">
+                        <img src="@Url.Content("~/imgs/db-ico-2.png")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-3 panel-custom greenleaf">
+            <div class="panel-content">
+                <div class="p-detail row">
+                    <div class="col-9 p-detail-label">
+                        Trong ngày:
+                    </div>
+                    <div class="col-3 p-detail-number">
+                        @Model.TotalRaVienDate.ToString("##,##0")
+                    </div>
+                </div>
+                <div class="p-detail row">
+                    <div class="col-9 p-detail-label">
+                        Trong tháng:
+                    </div>
+                    <div class="col-3 p-detail-number">
+                        @Model.TotalRaVienMonth.ToString("##,##0")
+                    </div>
+                </div>
+            </div>
+            <div class="panel-title">
+                <div class="row">
+                    <div class="col-9 p-title-label">
+                        Tình Trạng Chuyển viện
+                    </div>
+                    <div class="col-3 p-title-icon">
+                        <img src="@Url.Content("~/imgs/db-ico-3.png")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (isAdmin == true || isMaster == true)
+        {
+            <div class="col-12 col-md-6 col-xl-3 panel-custom red">
+                <div class="panel-content">
+                    <div class="p-detail row">
+                        <div class="col-6 p-detail-label">
+                            Trong ngày:
+                        </div>
+                        <div class="col-6 p-detail-number">
+                            @((Model.TongTienDate ?? 0d).ToString("##,##0.00"))
+                        </div>
+                    </div>
+                    <div class="p-detail row">
+                        <div class="col-6 p-detail-label">
+                            Trong tháng:
+                        </div>
+                        <div class="col-6 p-detail-number">
+                            @((Model.TongTienMonth ?? 0d).ToString("##,##0.00"))
+                        </div>
+                    </div>
+                    <div class="p-detail row detail-unit">
+                        <span class="unit">(Đơn vị tính: vnd)</span>
+                    </div>
+                </div>
+                <div class="panel-title">
+                    <div class="row">
+                        <div class="col-9 p-title-label">
+                            Thanh Toán Bảo Hiểm
+                        </div>
+                        <div class="col-2 p-title-icon">
+                            <img src="@Url.Content("~/imgs/db-ico-4.png")" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
+<div class="home-wrapper">
+    <div class="row panel-wrapper">
+        <div class="col col-md-6 panel-custom">
+            <div class="chart-wrapper" id="chartContainer1" style="height: 360px;"></div>
+        </div>
+        @if (isAdmin == true || isMaster == true)
+        {
+            <div class="col col-md-6 panel-custom">
+                <div class="chart-wrapper" id="chartContainer2" style="height: 360px;"></div>
+            </div>
+        }
+    </div>
+    <div class="row panel-wrapper">
+        <div class="chart-wrapper" id="chartContainer3" style="height: 320px;"></div>
+    </div>
+    <div class="override-text">
+        Dữ liệu được cập nhật lúc: @DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy")
+    </div>
+</div>
+
+
+    
+
+
+@Html.Raw(@ViewBag.TotalFileTongTienMonth)
+
+@{
+    var lstTotal = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["TongHop"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstKham = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["KhamBenh"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstNoi = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["NoiTru"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstNgoai = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["NgoaiTru"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstMoney = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["TongTien"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+
+    var lstBH = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["TienBH"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstBN = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["TienBN"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstTB = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["ChiTB"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstNTB = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["NoiTB"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstGTB = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["NgoaiTB"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+
+    var lstBenh = HIA.Core.Base.JsonDefaults.Serialize(Model.PieCharts);
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        function addTextOverrideCanvasJsTrial(id) {
+            const div = document.createElement("div");
+            div.className = "override-text";
+            $(`#${id}`).append(div);
+        }
+        $(function () {
+            @* Linhist added 01/08/22 create new chart *@
+            CanvasJS.addCultureInfo("vn", {
+                decimalSeparator: ",",
+                digitGroupSeparator: "."
+            });
+
+            var chart1 = new CanvasJS.Chart('chartContainer1', {
+                exportEnabled: true,
+                animationEnabled: true,
+                culture: 'vn',
+                height: 360,
+                title: {
+                    text: 'THỐNG KÊ HỒ SƠ KCB',
+                    fontFamily: 'sans-serif',
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                    padding: 10
+                },
+                legend: {
+                    cursor: 'pointer',
+                    itemclick: toggleDataSeries
+                },
+                toolTip: {
+                    shared: true
+                },
+                axisX: {
+                    interlacedColor: '#F0F8FF',
+                    labelAutoFit: true,
+                    labelWrap: true,
+                    labelMaxWidth: 32,
+                    labelFontSize: 10,
+                    interval: 1,
+                    intervalType: 'month',
+                    tickColor: '#ccc',
+                    tickLength: 5,
+                    tickThickness: 3,
+                    valueFormatString: '"Th"M YYYY',
+                },
+                data: [
+                    {
+                        type: 'column',
+                        color: '#4dbbd3',
+                        name: 'Khám bệnh',
+                        showInLegend: true,
+                        xValueFormatString: '"Tháng" M-YYYY',
+                        yValueFormatString: '#,##0.## hồ sơ',
+                        dataPoints: @Html.Raw(lstKham)
+                    },
+                    {
+                        type: 'column',
+                        color: '#f70000',
+                        name: 'Ngoại trú',
+                        showInLegend: true,
+                        yValueFormatString: '#,##0.# hồ sơ',
+                        dataPoints: @Html.Raw(lstNgoai)
+                    },
+                    {
+                        type: 'column',
+                        color: '#1a227e',
+                        name: 'Nội trú',
+                        showInLegend: true,
+                        yValueFormatString: '#,##0.# hồ sơ',
+                        dataPoints: @Html.Raw(lstNoi)
+                    },
+                    {
+                        type: 'line',
+                        color: '#18a475',
+                        name: 'Tổng hồ sơ',
+                        connectNullData: true,
+                        showInLegend: true,
+                        nullDataLineDashType: 'solid',
+                        yValueFormatString: '#,##0.##  hồ sơ',
+                        dataPoints: @Html.Raw(lstTotal)
+                    },
+                    {
+                        type: 'line',
+                        color: '#d44bfa',
+                        name: 'Tổng tiền',
+                        connectNullData: true,
+                        showInLegend: true,
+                        nullDataLineDashType: 'solid',
+                        yValueFormatString: '#,##0.## triệu Đồng',
+                        axisYType: 'secondary',
+                        dataPoints: @Html.Raw(lstMoney)
+                    },
+                ]
+            });
+
+
+
+            var chart2 = new CanvasJS.Chart('chartContainer2', {
+                exportEnabled: true,
+                animationEnabled: true,
+                culture: 'vn',
+                height: 360,
+                title: {
+                    text: 'THỐNG KÊ CHI PHÍ KCB',
+                    fontFamily: 'sans-serif',
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                    padding: 10
+                },
+                legend: {
+                    cursor: 'pointer',
+                    itemclick: toggleDataSeries
+                },
+                toolTip: {
+                    shared: true
+                },
+                axisX: {
+                    interlacedColor: '#F0F8FF',
+                    labelAutoFit: true,
+                    labelWrap: true,
+                    labelMaxWidth: 32,
+                    labelFontSize: 10,
+                    interval: 1,
+                    intervalType: 'month',
+                    tickColor: '#ccc',
+                    tickLength: 5,
+                    tickThickness: 3,
+                    valueFormatString: '"Th"M YYYY',
+                },
+                data: [
+                    {
+                        type: 'column',
+                        color: '#4dbbd3',
+                        name: 'Tổng chi phí',
+                        showInLegend: true,
+                        xValueFormatString: '"Tháng" M-YYYY',
+                        yValueFormatString: '#,##0.## triệu Đồng',
+                        dataPoints: @Html.Raw(lstMoney)
+                    },
+                    {
+                        type: 'column',
+                        color: '#f79647',
+                        name: 'Bảo hiểm thanh toán',
+                        showInLegend: true,
+                        yValueFormatString: '#,##0.## triệu Đồng',
+                        dataPoints: @Html.Raw(lstBH)
+                    },
+                    {
+                        type: 'column',
+                        color: '#1a227e',
+                        name: 'Bệnh nhân thanh toán',
+                        showInLegend: true,
+                        yValueFormatString: '#,##0.## triệu Đồng',
+                        dataPoints: @Html.Raw(lstBN)
+                    },
+                    {
+                        type: 'line',
+                        color: '#f70000',
+                        name: 'Chi phí TB',
+                        connectNullData: true,
+                        showInLegend: true,
+                        nullDataLineDashType: 'solid',
+                        yValueFormatString: '#,##0.## triệu Đồng',
+                        axisYType: 'secondary',
+                        dataPoints: @Html.Raw(lstTB)
+                    },
+                    {
+                        type: 'line',
+                        color: '#18a475',
+                        name: 'Chi phí ngoại trú TB',
+                        connectNullData: true,
+                        showInLegend: true,
+                        nullDataLineDashType: 'solid',
+                        yValueFormatString: '#,##0.## triệu Đồng',
+                        axisYType: 'secondary',
+                        dataPoints: @Html.Raw(lstGTB)
+                    },
+                    {
+                        type: 'line',
+                        color: '#d44bfa',
+                        name: 'Chi phí nội trú TB',
+                        connectNullData: true,
+                        showInLegend: true,
+                        nullDataLineDashType: 'solid',
+                        yValueFormatString: '#,##0.## triệu Đồng',
+                        axisYType: 'secondary',
+                        dataPoints: @Html.Raw(lstNTB)
+                    },
+                ]
+            });
+            @* End Linhist added 01 / 08 / 22 create new chart *@
+
+
+
+            @* Linhist removed 01/08/2022 *@
+            @*var chart = new CanvasJS.Chart("chartContainer", {
+                title: {
+                    text: "",/*"Thống kê tổng số hồ sơ qua các tháng"*/
+                    fontFamily: "sans-serif",
+                },
+                animationEnabled: true,
+                axisY2: {
+                    valueFormatString: "0",
+                },
+                axisY2: {
+                    minimum: 0,
+                },
+                axisY: {
+                    minimum: 0
+                    //   maximum: 90
+                },
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    verticalAlign: "top",
+                    horizontalAlign: "center"
+                },
+                height: calcDataTableHeight(),
+                data: @Html.Raw(list)*@
+                @*data: [
+                {
+                    type: "stackedBar",
+                    showInLegend: true,
+                    name: "Hồ sơ upload",
+                    axisYType: "secondary",
+                    color: "#7E8F74",
+                    dataPoints: [
+                        { y: 3, label: "India" },
+                        { y: 5, label: "US" },
+                        { y: 3, label: "Germany" },
+                        { y: 6, label: "Brazil" },
+                        { y: 7, label: "China" },
+                        { y: 5, label: "Australia" },
+                        { y: 5, label: "France" },
+                        { y: 7, label: "Italy" },
+                        { y: 9, label: "Singapore" },
+                        { y: 8, label: "Switzerland" },
+                        { y: 12, label: "Japan" }
+                    ],
+
+                    //You can add dynamic data from the controller as shown below. Check the controller and uncomment the line which generates dataPoints.
+                    //dataPoints: @Html.Raw(ViewBag.DataPoints1),
+                },
+                {
+                    type: "stackedBar",
+                    showInLegend: true,
+                    name: "Hồ Sơ Tạch",
+                    axisYType: "secondary",
+                    color: "#F0E6A7",
+                    dataPoints: [
+                        { y: .5, label: "India" },
+                        { y: 1.5, label: "US" },
+                        { y: 1, label: "Germany" },
+                        { y: 2, label: "Brazil" },
+                        { y: 2, label: "China" },
+                        { y: 2.5, label: "Australia" },
+                        { y: 1.5, label: "France" },
+                        { y: 1, label: "Italy" },
+                        { y: 2, label: "Singapore" },
+                        { y: 2, label: "Switzerland" },
+                        { y: 3, label: "Japan" }
+                    ],
+
+                    //You can add dynamic data from the controller as shown below. Check the controller and uncomment the line which generates dataPoints.
+                    //dataPoints: @Html.Raw(ViewBag.DataPoints2),
+                },
+                {
+                    type: "stackedBar",
+                    showInLegend: true,
+                    name: "Hồ Sơ Thiếu",
+                    axisYType: "secondary",
+                    color: "#EBB88A",
+                    dataPoints: [
+                        { y: 2, label: "India" },
+                        { y: 3, label: "US" },
+                        { y: 3, label: "Germany" },
+                        { y: 3, label: "Brazil" },
+                        { y: 4, label: "China" },
+                        { y: 3, label: "Australia" },
+                        { y: 4.5, label: "France" },
+                        { y: 4.5, label: "Italy" },
+                        { y: 6, label: "Singapore" },
+                        { y: 3, label: "Switzerland" },
+                        { y: 6, label: "Japan" }
+                    ],
+
+                    //You can add dynamic data from the controller as shown below. Check the controller and uncomment the line which generates dataPoints.
+                    //dataPoints: @Html.Raw(ViewBag.DataPoints3),
+                },
+                {
+                    type: "stackedBar",
+                    showInLegend: true,
+                    name: "Hồ Sơ thành công",
+                    axisYType: "secondary",
+                    color: "#DB9079",
+                    indexLabel: "$#total",
+                    indexLabelPlacement: "outside",
+                    dataPoints: [
+                        { y: 2, label: "India" },
+                        { y: 3, label: "US" },
+                        { y: 6, label: "Germany" },
+                        { y: 4, label: "Brazil" },
+                        { y: 4, label: "China" },
+                        { y: 8, label: "Australia" },
+                        { y: 8, label: "France" },
+                        { y: 8, label: "Italy" },
+                        { y: 4, label: "Singapore" },
+                        { y: 11, label: "Switzerland" },
+                        { y: 6, label: "Japan" }
+                    ],
+
+                    //You can add dynamic data from the controller as shown below. Check the controller and uncomment the line which generates dataPoints.
+                    //dataPoints: @Html.Raw(ViewBag.DataPoints4),
+                }
+                ]*@
+            @*});*@
+            @* End Linhist removed 01 / 08 / 2022 *@
+
+
+            chart1.render();
+            addTextOverrideCanvasJsTrial("chartContainer1");
+
+            chart2.render();
+            addTextOverrideCanvasJsTrial("chartContainer2");
+
+            function toggleDataSeries(e) {
+                if (typeof (e.dataSeries.visible) === 'undefined' || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                } else {
+                    e.dataSeries.visible = true;
+                }
+                e.chart.render();
+            }
+        });
+
+        window.onload = function () {
+
+            var chart3 = new CanvasJS.Chart("chartContainer3", {
+                exportEnabled: true,
+                animationEnabled: true,
+                title: {
+                    text: 'TỔNG HỢP 20 BỆNH PHỔ BIẾN',
+                    fontFamily: 'sans-serif',
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                    padding: 10
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: explodePie,
+                    horizontalAlign: "right", 
+                    verticalAlign: "center"
+                },
+                height: 320,
+                data: [{
+                    type: "pie",
+                    showInLegend: false,
+                    toolTipContent: "{name}: <strong>{y} bn</strong>",
+                    indexLabel: "{name} - {y} bn",
+                    dataPoints: @Html.Raw(lstBenh)
+                }]
+            });
+            chart3.render();
+            addTextOverrideCanvasJsTrial("chartContainer3");
+        }
+
+        function explodePie(e) {
+            if (typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+                e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+            } else {
+                e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+            }
+            e.chart.render();
+
+        }
+    </script>
+}

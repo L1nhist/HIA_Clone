@@ -4,6 +4,19 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>HIA.Web</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.*" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HIA.Core\HIA.Core.csproj" />
+    <ProjectReference Include="..\HIA.Data\HIA.Data.csproj" />
+    <ProjectReference Include="..\HIA.Repositories\HIA.Repositories.csproj" />
+    <ProjectReference Include="..\HIA.Services\HIA.Services.csproj" />
+  </ItemGroup>
 
 </Project>

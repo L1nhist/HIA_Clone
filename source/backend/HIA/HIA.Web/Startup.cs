@@ -1,0 +1,175 @@
+using System.Globalization;
+using System.Text;
+using HIA.Core.Base;
+using HIA.Core.Models.Token;
+using HIA.Web.Helper;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.IdentityModel.Tokens;
+
+namespace HIA.Web;
+
+public class Startup
+{
+    private static readonly CultureInfo[] SupportedCultures =
+    [
+        new CultureInfo("vi"),
+        new CultureInfo("en")
+    ];
+
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        var excludedEmails = new ExcludedEmailValidator(
+            Configuration.GetSection("AppSettings:ExcludedEmails").Get<string[]>() ?? Array.Empty<string>());
+        var jwtKey = Configuration["Jwt:Key"] ?? throw new InvalidOperationException("Missing configuration: Jwt:Key");
+
+        #region Authenticate
+        services.AddAuthentication(options =>
+        {
+            options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        })
+        .AddCookie(options =>
+        {
+            options.AccessDeniedPath = new PathString(Configuration["Jwt:DeniedPath"]);
+            options.LoginPath = new PathString(Configuration["Jwt:LoginPath"]);
+        })
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ClockSkew = TimeSpan.Zero,
+                ValidateLifetime = true,
+                RequireExpirationTime = true,
+
+                ValidIssuer = Configuration["Jwt:Issuer"],
+                ValidateIssuer = true,
+
+                ValidAudience = Configuration["Jwt:Issuer"],
+                ValidateAudience = true,
+
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+                ValidateIssuerSigningKey = true,
+            };
+
+            options.Events = new JwtBearerEvents
+            {
+                OnTokenValidated = context =>
+                {
+                    var refresh = context.Principal?.FindFirst(ClaimKey.REFRESH)?.Value;
+                    if (refresh != ClaimKey.REFRESH_CODE)
+                        context.Fail(new Exception("Token not valid anymore"));
+
+                    var email = context.Principal?.FindFirst(ClaimKey.FULL_NAME)?.Value;
+                    if (excludedEmails.IsExcluded(email))
+                        context.Fail(new Exception("Token not valid anymore"));
+
+                    return Task.CompletedTask;
+                }
+            };
+        });
+        services.AddHttpContextAccessor();
+        services.AddScoped<HIA.Core.Base.TokenHandler>();
+        #endregion
+
+        services.Configure<KestrelServerOptions>(options =>
+        {
+            options.Limits.MaxRequestBodySize = int.MaxValue; // if don't set default value is: 30 MB
+            options.Limits.MaxRequestHeaderCount = int.MaxValue;
+        });
+
+        services.AddControllersWithViews(options =>
+            {
+                options.MaxModelBindingCollectionSize = 10000;
+            })
+            .AddMvcLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+            .AddSessionStateTempDataProvider();
+        services.AddSession();
+
+        #region mutiple-language
+        services.Configure<RequestLocalizationOptions>(options =>
+        {
+            options.DefaultRequestCulture = new RequestCulture(culture: SupportedCultures[0].Name, uiCulture: SupportedCultures[0].Name);
+            options.SupportedCultures = SupportedCultures;
+            options.SupportedUICultures = SupportedCultures;
+            options.RequestCultureProviders = new List<IRequestCultureProvider>();
+        });
+        #endregion
+
+        services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+        services.AddOpenApi();
+
+        HIA.Core.Startup.ConfigureServices(services, Configuration);
+        HIA.Repositories.Startup.ConfigureServices(services, Configuration);
+        HIA.Services.Startup.ConfigureServices(services, Configuration);
+
+        //Linhist added 08/06/22
+        services.AddAntiforgery(options =>
+        {
+            options.SuppressXFrameOptionsHeader = true;
+        });
+
+        // Note: If you are using a standard HTML form submission, you may also need to
+        // increase the FormOptions ValueCountLimit, which defaults to 1024 as well.
+        services.Configure<FormOptions>(options =>
+        {
+            options.ValueCountLimit = 10000;
+            options.MultipartBodyLengthLimit = int.MaxValue;
+        });
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+        else
+        {
+            app.UseExceptionHandler("/Home/Error");
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
+        }
+
+        #region mutiple-language
+        app.UseRequestLocalization(options =>
+        {
+            options.DefaultRequestCulture = new RequestCulture(culture: SupportedCultures[0].Name, uiCulture: SupportedCultures[0].Name);
+            options.SupportedCultures = new List<CultureInfo> { SupportedCultures[0] };
+            options.SupportedUICultures = new List<CultureInfo> { SupportedCultures[0] };
+            options.RequestCultureProviders = new List<IRequestCultureProvider>();
+        });
+        #endregion
+
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+        app.UseSession();
+
+        app.UseRouting();
+
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapOpenApi();
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller}/{action}/{id?}",
+                defaults: new { controller = "Home", action = "Index" });
+        });
+    }
+}

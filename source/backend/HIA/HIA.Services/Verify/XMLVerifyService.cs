@@ -1,7 +1,10 @@
 using HIA.Core.Base;
+using HIA.Core.Models.Base;
+using HIA.Data.Auths;
 using HIA.Data.Records;
 using HIA.Repositories.CheckThe;
 using Microsoft.Extensions.Logging;
+using System.Net;
 
 namespace HIA.Services.Verify;
 
@@ -17,6 +20,17 @@ public class XMLVerifyService : IXMLVerifyService
     {
         _logger = logger;
         _checkThe130Repository = checkThe130Repository;
+    }
+
+    public async Task<ResponseModel<XML01>> GetXMLNeedVerify(string? maCSKCB = null, Hospital? hospital = null)
+    {
+        var res = new ResponseModel<XML01>(HttpStatusCode.BadRequest, "", null);
+        return await Task.FromResult(res);
+    }
+
+    public async Task<bool> UpdateXMLVerifyResult(long xml01Id, string? maCSKCB, string? ketqua)
+    {
+        return await Task.FromResult(false);
     }
 
     //Linhist changed 20/10/24

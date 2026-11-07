@@ -1,4 +1,6 @@
 using HIA.Services.Auth;
+using HIA.Services.BackgroundServices;
+using HIA.Services.BackgroundServices.VerifyXML;
 using HIA.Services.Categories;
 using HIA.Services.Department;
 using HIA.Services.Email;
@@ -40,5 +42,23 @@ public class Startup
         services.AddScoped<IReportHandleService, ReportHandleService>();
         services.AddScoped<IDichVuMaMayService, DichVuMaMayService>();
         services.AddScoped<IChiDinhDongThoiService, ChiDinhDongThoiService>();
+
+        services.AddCronJob<VerifyXMLCronJob>(c =>
+        {
+            c.TimeZoneInfo = TimeZoneInfo.Local;
+            c.CronExpression = $"*/{configuration["AppSettings:BackgroundServices:VerifyXML:MinuteVerifyTime"]} * * * *";
+        });
+
+        services.AddVerify<ValidateXML>(c =>
+        {
+            c.TimeZoneInfo = TimeZoneInfo.Local;
+            c.CronExpression = $"*/{configuration["AppSettings:BackgroundServices:VerifyXML:MinuteVerifyTime"]} * * * *";
+        });
+
+        services.AddValidate130<ValidateXML130>(c =>
+        {
+            c.TimeZoneInfo = TimeZoneInfo.Local;
+            c.CronExpression = $"*/{configuration["AppSettings:BackgroundServices:VerifyXML:MinuteVerifyTime"]} * * * *";
+        });
     }
 }

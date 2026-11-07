@@ -1,0 +1,159 @@
+﻿@* @using System.Security.Claims;
+@using HIA.Core.Languages.DisplayField;
+@using HIA.Web.Controllers;
+@using HIA.Core.Base;
+@using HIA.Core.Models.Files;
+@using HIA.Core.Models.Token;
+
+@{
+    ViewData["Title"] = @DisplayFieldResource.MENU_HOSO_MAGEME;
+
+    var isMaster = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.MASTER);
+    var isAdmin = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.ADMIN);
+    var isUser = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.USER);
+}
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h6 class="text-themecolor">@DisplayFieldResource.MENU_HOSO_MAGEME</h6>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action(nameof(HomeController.Index), Uti.GetControllerName(nameof(HomeController)))">@DisplayFieldResource.HOME</a></li>
+                    <li class="breadcrumb-item active">@DisplayFieldResource.MENU_HOSO_MAGEME</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <form asp-action="@nameof(FileDownloadController.Index)">
+        <div class="card filter-wrapper">
+            <div class="card-body">
+                <div class="row" id="divFilters">
+                    <div class="col-12 col-md-6">
+                        <div class="mb-2 form-group row">
+                            <label class="lbl-filter col-3 col-form-label text-right" for="filterDateOut">Ngày ra</label>
+                            <div class="input-daterange input-group col-9" id="datepicker">
+                                <input id="fromDateOut" name="dateOuts" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                                <span class="input-group-text custom-group-text">đến</span>
+                                <input id="toDateOut" name="dateOuts" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                            </div>
+                        </div>
+                        <div class="mb-2 form-group row">
+                            <label class="lbl-filter col-3 col-form-label text-right" for="filterDateIn">Ngày vào</label>
+                            <div class="input-daterange input-group col-9" id="datepicker">
+                                <input id="fromDateIn" name="dateIns" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                                <span class="input-group-text custom-group-text">đến</span>
+                                <input id="toDateIn" name="dateIns" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                            </div>
+                        </div>
+                        <div class="mb-2 form-group row">
+                            <label class="lbl-filter col-3 col-form-label text-right" for="filterDateCreate">Ngày tạo</label>
+                            <div class="input-daterange input-group col-9" id="datepicker">
+                                <input id="fromDateCreate" name="dateCreates" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                                <span class="input-group-text custom-group-text">đến</span>
+                                <input id="toDateCreate" name="dateCreates" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                            </div>
+                        </div>
+                        <div class="mb-2 form-group row">
+                            <label class="lbl-filter col-3 col-form-label text-right" for="filterDateCreate">Ngày TT</label>
+                            <div class="input-daterange input-group col-9" id="datepicker">
+                                <input id="fromDatePaid" name="datePaids" type="text" class="custom-daterange form-control left-control filter-change" placeholder="dd/mm/yyyy" />
+                                <span class="input-group-text custom-group-text">đến</span>
+                                <input id="toDatePaid" name="datePaids" type="text" class="custom-daterange form-control right-control filter-change" placeholder="dd/mm/yyyy" />
+                            </div>
+                        </div>
+                        <div class="mb-2 form-group row">
+                            <label class="lbl-filter col-3 col-form-label text-right" for="loaiKCB">Loại KCB</label>
+                            <div class="col-9">
+                                <select name="loaiKCB" id="loaiKCB" class="form-control filter-change">
+                                    <option value="0" selected>Tất cả</option>
+                                    <option value="1">Khám bệnh</option>
+                                    <option value="2">Điều trị ngoại trú</option>
+                                    <option value="3">Điều trị nội trú</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-2 form-group row">
+                            <label class="lbl-filter col-3 col-form-label text-right" for="status">Trạng thái</label>
+                            <div class="col-9">
+                                <select name="status" id="status" class="form-control filter-change">
+                                    <option value="0" selected>Tất cả mọi hồ sơ</option>
+                                    <option value="1">Chỉ hồ sơ hoàn thành</option>
+                                    <option value="2">Chỉ hồ sơ có lỗi</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="mb-2 select2-custom form-group row">
+                            <label class="lbl-filter col-3 col-form-label text-right" for="departments">Khoa</label>
+                            <div class="col-9">
+                                <select name="departments" id="departments" class="form-control select2 filter-change" multiple="multiple">
+                                    <option value="" selected>Tất cả mọi hồ sơ</option>
+                                    @foreach (var item in ViewBag.DepartmentList)
+                                    {
+                                        <option value="@item.Value">@item.Text - @item.Value</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="mb-2 select2-custom form-group row">
+                            <label class="lbl-filter col-3 col-form-label text-right" for="listErrors">Lỗi</label>
+                            <div class="col-9">
+                                <select name="listErrors" id="listErrors" class="form-control select2 filter-change" multiple="multiple">
+                                    <option value="" selected>Tất cả mọi hồ sơ</option>
+                                    @foreach (var item in ViewBag.ErrorList)
+                                    {
+                                        <option value="@item.Value" class="@(item.Quantity > 0 ? "error-option" : "")">
+                                            @item.Value - @item.Text
+                                            @if (item.Quantity > 0)
+                                            {
+                                                <b>(@item.Quantity)</b>
+                                            }
+                                        </option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        @if (isMaster == true && ViewBag.Hospitals != null)
+                        {
+                            <div class="mb-2 select2-custom form-group row">
+                                <label class="lbl-filter col-3 col-form-label text-right" for="hospital">Bệnh viện</label>
+                                <div class="col-9">
+                                    <select name="hospital" id="hospital" class="form-control select2 filter-change">
+                                        <option value="" selected>Tất cả bệnh viện</option>
+                                        @foreach (var item in ViewBag.Hospitals)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="mb-2 select2-custom form-group row">
+                            <label class="lbl-filter col-2 col-form-label text-right" for="fileType">Loại:</label>
+                            <div class="col-10">
+                                <select name="fileType" id="fileType" class="form-control select2 filter-change">
+                                    <option value="0" selected>Báo cáo Tổng hợp</option>
+                                    <option value="1">Báo cáo trùng dịch vụ</option>
+                                    <option value="2">Báo cáo Thuốc &Aacute; Vật tư</option>
+                                    <option value="3">Báo cáo Chỉ định</option>
+                                    <option value="4">Thống kê lỗi</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 text-right">
+                        <button id="btnDownload" class="btn btn-inline btn-primary btn-download" type="submit">Tải về báo cáo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <p class="text-center"><i>Quá trình tải bảo cáo có thể sẽ hơi lâu, vui lòng đợi trang web tải xong!</i></p>
+</div> *@
