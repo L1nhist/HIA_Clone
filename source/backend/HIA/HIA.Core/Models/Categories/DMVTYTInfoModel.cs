@@ -60,7 +60,7 @@ public class DMVTYTInfoModel : IMapable<DMVTYT>
     public string? Quyet_DINH { get; set; }
 
     [Display(Name = nameof(DisplayFieldResource.DINH_MUC), ResourceType = typeof(DisplayFieldResource))]
-    public int? Dinh_MUC { get; set; }
+    public double? Dinh_MUC { get; set; }
 
     [Display(Name = nameof(DisplayFieldResource.TYLE_TT), ResourceType = typeof(DisplayFieldResource))]
     public string? Tyle_TT_BH { get; set; }
@@ -101,7 +101,7 @@ public class DMVTYTInfoModel : IMapable<DMVTYT>
         Tt_THAU = item.TT_THAU;
         Ht_THAU = item.HT_THAU;
         Quyet_DINH = item.QUYET_DINH;
-        Dinh_MUC = (int?)item.DINH_MUC;
+        Dinh_MUC = item.DINH_MUC;
         Tyle_TT_BH = item.TYLE_TT_BH;
         MaNHOM_9324 = item.MANHOM_9324?.ToString();
         MaNHOM_5937 = item.MANHOM_5937?.ToString();

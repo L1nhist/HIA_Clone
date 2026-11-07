@@ -1,10 +1,10 @@
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
 
-using HIA.Services.Files;
+
 using HIA.Core.Models.FileUploads;
-
+using HIA.Services.Files;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 namespace HIA.Web.Controllers
 {
     [Authorize]

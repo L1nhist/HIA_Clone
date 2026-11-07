@@ -4,6 +4,7 @@ using HIA.Repositories.Base;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Net.Http;
@@ -20,6 +21,8 @@ namespace HIA.Web.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IConfiguration _configs;
         private readonly IBaseRepository<UserLogs> _userLogsRepository;
+        private readonly ILogger<AIMessageController> _logger;
+        private static readonly object GptErrorResponse = new { error = "remote_gpt_error", detail = "Dịch vụ GPT đang gặp lỗi, vui lòng thử lại sau." };
         private string maCSKCB = "";
         private string userID = "";
         private string useremail = "";
@@ -54,11 +57,12 @@ namespace HIA.Web.Controllers
             return input;
         }
 
-        public AIMessageController(IHttpContextAccessor httpContextAccessor, IConfiguration configs, IBaseRepository<UserLogs> userLogsRepository)
+        public AIMessageController(IHttpContextAccessor httpContextAccessor, IConfiguration configs, IBaseRepository<UserLogs> userLogsRepository, ILogger<AIMessageController> logger)
         {
             _httpContextAccessor = httpContextAccessor;
             _configs = configs;
             _userLogsRepository = userLogsRepository;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -145,12 +149,26 @@ namespace HIA.Web.Controllers
                 var json = JsonSerializer.Serialize(payload);
                 using var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var resp = await http.PostAsync(endpoint, content);
-                var respBody = await resp.Content.ReadAsStringAsync();
+                HttpResponseMessage resp;
+                string respBody;
+                try
+                {
+                    resp = await http.PostAsync(endpoint, content);
+                    respBody = await resp.Content.ReadAsStringAsync();
+                }
+                catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException)
+                {
+                    // Khong log payload hay khoa API; chi log loi mang
+                    _logger.LogError(ex, "Loi mang khi goi dich vu GPT");
+                    return StatusCode(502, GptErrorResponse);
+                }
 
                 if (!resp.IsSuccessStatusCode)
                 {
-                    return StatusCode((int)resp.StatusCode, new { error = "remote_gpt_error", detail = respBody });
+                    // Chi log status va do dai body: body co the lap lai prompt chua du lieu y te. Khong tra body ve client.
+                    _logger.LogError("Dich vu GPT tra loi khong thanh cong: status {Status}, do dai body {BodyLength}", (int)resp.StatusCode, respBody.Length);
+                    var code = (int)resp.StatusCode;
+                    return StatusCode(code is >= 400 and <= 599 ? code : 502, GptErrorResponse);
                 }
 
                 // Try to parse expected shape { response, raw, duration }

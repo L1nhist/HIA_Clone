@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Security.Claims;
 using System.Text;
+using System.Text.RegularExpressions;
 using HIA.Core.Base;
 using HIA.Core.Models.Token;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -162,6 +163,19 @@ public class Startup
         });
         #endregion
 
+        #region frame-ancestors (CSP)
+        var frameAncestors = BuildFrameAncestorsPolicy(
+            Configuration.GetSection("AppSettings:AllowedFrameAncestors").Get<string[]>(),
+            app.ApplicationServices.GetRequiredService<ILogger<Startup>>());
+        app.Use(async (context, next) =>
+        {
+            // Khong ghi de CSP da duoc dat truoc do
+            if (!context.Response.Headers.ContainsKey("Content-Security-Policy"))
+                context.Response.Headers.Append("Content-Security-Policy", frameAncestors);
+            await next();
+        });
+        #endregion
+
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseSession();
@@ -179,5 +193,22 @@ public class Startup
                 pattern: "{controller}/{action}/{id?}",
                 defaults: new { controller = "Home", action = "Index" });
         });
+    }
+
+    // Chi nhan origin dang http(s)://host[:port]; muc khac bi bo qua de khong chen duoc ky tu vao header.
+    private static readonly Regex FrameAncestorOrigin = new(@"^https?://[A-Za-z0-9.-]+(:[0-9]{1,5})?\z", RegexOptions.Compiled);
+
+    private static string BuildFrameAncestorsPolicy(string[]? configured, ILogger<Startup> logger)
+    {
+        var sources = new List<string> { "'self'" };
+        foreach (var item in configured ?? [])
+        {
+            var origin = item?.Trim() ?? string.Empty;
+            if (FrameAncestorOrigin.IsMatch(origin))
+                sources.Add(origin);
+            else
+                logger.LogWarning("AppSettings:AllowedFrameAncestors bo qua muc khong hop le: {Item}", item);
+        }
+        return "frame-ancestors " + string.Join(" ", sources);
     }
 }

@@ -135,9 +135,23 @@ public class Uti
         return !string.IsNullOrWhiteSpace(text) ? Char.ToUpperInvariant(text[0]) + text.Substring(1) : "";
     }
 
-    static public string GetFullDomainUrl(HttpContext context)
+    public const string PublicBaseUrlErrorMessage = "Hệ thống chưa cấu hình địa chỉ website để gửi email, vui lòng liên hệ quản trị viên.";
+
+    /// <summary>
+    /// Chuan hoa AppSettings:PublicBaseUrl (bo '/' cuoi). Chi nhan http(s) tuyet doi, khong query/fragment/khoang trang.
+    /// Khong lay Host cua request.
+    /// </summary>
+    static public bool TryGetPublicBaseUrl(string? value, out string baseUrl)
     {
-        return string.Format("{0}://{1}", context.Request.IsHttps ? "https" : "http", context.Request.Host);
+        baseUrl = string.Empty;
+        var trimmed = value?.Trim().TrimEnd('/');
+        if (string.IsNullOrEmpty(trimmed) || trimmed.Any(char.IsWhiteSpace)) return false;
+        if (!Uri.TryCreate(trimmed, UriKind.Absolute, out var uri)) return false;
+        if (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps) return false;
+        if (!string.IsNullOrEmpty(uri.Query) || !string.IsNullOrEmpty(uri.Fragment)) return false;
+
+        baseUrl = trimmed;
+        return true;
     }
 
     static public string GetErrorMessagePropertyFromErrorList(string propName, List<XML1ErrorInfoModel>? errorList)

@@ -1,9 +1,9 @@
-using HIA.Core.Base;
-using HIA.Core.Models.Files;
 using MailKit.Net.Smtp;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using HIA.Core.Base;
+using HIA.Core.Models.Files;
+using Microsoft.Extensions.Logging;
 
 namespace HIA.Services.Email;
 

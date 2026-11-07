@@ -1,4 +1,3 @@
-using System.Linq.Expressions;
 using HIA.Core.Base;
 using HIA.Core.Models.Token;
 using HIA.Data.Base;
@@ -84,32 +83,4 @@ public class Xml01Repository : BaseRepository<XML01>, IXml01Repository
             ?? throw new InvalidOperationException("Khong tim thay claim MA_CSKCB cua nguoi dung hien tai.");
         return await GetListAsync(x => x.MA_CSKCB == currentMaCSKCB && x.HospitalID == HospitalID);
     }
-
-    // Cac ham duoi day la stub tu ban cu (logic truy van da bi vo hieu hoa, luon tra ve null); giu nguyen hanh vi.
-    public Task<IEnumerable<XML01>?> GetAllListXmlReferenceLe(int idsLe, string maCSKCB)
-        => Task.FromResult<IEnumerable<XML01>?>(null);
-
-    public Task<IEnumerable<string>?> GetAllListMaCSKCB()
-        => Task.FromResult<IEnumerable<string>?>(null);
-
-    public Task<IEnumerable<XML01>?> GetAllListXmlReferenceLeStringFile(List<string> idsLe)
-        => Task.FromResult<IEnumerable<XML01>?>(null);
-
-    public Task<IEnumerable<XML01>?> GetAllListXmlReferenceLeString(List<string> idsLe)
-        => Task.FromResult<IEnumerable<XML01>?>(null);
-
-    public Task<IEnumerable<XML01>?> GetAllListXmlReferenceSameDate(string currentHospitalId, DateTime mindate, DateTime MAxDate)
-        => Task.FromResult<IEnumerable<XML01>?>(null);
-
-    public Task<IEnumerable<XML01>?> GetAllListXmlReferenceKhoi(string currentHospitalId, Expression<Func<XML01, bool>>? filter = null)
-        => Task.FromResult<IEnumerable<XML01>?>(null);
-
-    public Task<IEnumerable<XML01>?> GetAllListXmlReference_WithXml4Only(string currentHospitalId, Expression<Func<XML01, bool>>? filter = null)
-        => Task.FromResult<IEnumerable<XML01>?>(null);
-
-    public Task<IEnumerable<XML01>?> GetListXmlReport3(string currentHospitalId, Expression<Func<XML01, bool>>? filter = null, bool includedErrors = false)
-        => Task.FromResult<IEnumerable<XML01>?>(null);
-
-    public Task<IEnumerable<XML01>?> GetXML1AndErrorsOnly(string currentHospitalId, Expression<Func<XML01, bool>>? filter = null)
-        => Task.FromResult<IEnumerable<XML01>?>(null);
 }

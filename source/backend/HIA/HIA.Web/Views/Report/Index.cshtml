@@ -8,9 +8,9 @@
 
 @{
     ViewData["Title"] = "Báo cáo tổng hợp hoạt động";
-    var lst1 = HIA.Core.Base.JsonDefaults.Serialize(Model.DataLines).Replace("\"new Date", "new Date").Replace(")\"", ")").Replace("\"label\":", "x:").Replace("\"y\":", "y:");
-    var lst2 = HIA.Core.Base.JsonDefaults.Serialize(Model.DataBars).Replace("\"new Date", "new Date").Replace(")\"", ")").Replace("\"label\":", "x:").Replace("\"y\":", "y:");
-    var lst3 = HIA.Core.Base.JsonDefaults.Serialize(Model.DataPies);
+    var lst1 = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.DataLines).Replace("\"new Date", "new Date").Replace(")\"", ")").Replace("\"label\":", "x:").Replace("\"y\":", "y:");
+    var lst2 = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.DataBars).Replace("\"new Date", "new Date").Replace(")\"", ")").Replace("\"label\":", "x:").Replace("\"y\":", "y:");
+    var lst3 = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.DataPies);
 }
 
 <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" />

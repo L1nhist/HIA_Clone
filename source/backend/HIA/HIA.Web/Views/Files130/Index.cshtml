@@ -1224,20 +1224,6 @@ href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/responsive.dataTable
             ERROR_VALUE: 'Giá trị lỗi', COMMENT: 'Ghi chú', MESSAGE: 'Nội dung lỗi', MA_AX: 'Mã ánh xạ', TEN_AX: 'Tên ánh xạ', MA_BS_YL: 'Mã bác sĩ y lệnh', MA_BS_CD: 'Mã bác sĩ chỉ định',
             getName: function (key) { return (this[key] || key).replace(/\_/gi, ' '); } 
         };
-        const errors = [
-        @{
-            var fst = false;
-            foreach (var err in ViewBag.ErrorList)
-            {
-                if (!fst)
-                {
-                    Html.Raw(", ");
-                }
-                Html.Raw($"{{error:{err.ErrorCode},tag:'{err.ErrorAtXMLTag}',message:'{(err.ErrorContent??"").Replace("'", "\\'")}',warning:{(err.IsAlarm ? 1 : 0)}}}");
-            }
-        }
-        ];
-
         const headCaps = {
             xml1: [
                 'STT', 'NGAY_TAO', 'MA_LK', 'HO_TEN', 'SO_CCCD', 'NGAY_SINH', 'GIOI_TINH', 'NHOM_MAU', 'MA_QUOCTICH', 'MA_DANTOC', 'MA_NGHE_NGHIEP', 'DIA_CHI',

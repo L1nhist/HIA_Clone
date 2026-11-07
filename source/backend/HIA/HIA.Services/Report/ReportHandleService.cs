@@ -1,7 +1,8 @@
+
 using HIA.Core.Base;
 using HIA.Core.Models.Base;
 using HIA.Core.Models.Categories;
-using HIA.Core.Models.Files130;
+using HIA.Core.Models.Files;
 using HIA.Core.Models.Pagination;
 using HIA.Core.Models.Token;
 using HIA.Data.Auths;
@@ -16,7 +17,6 @@ using LinqKit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
-
 namespace HIA.Services.Report;
 
 public partial class ReportHandleService : IReportHandleService

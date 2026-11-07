@@ -1,8 +1,8 @@
+
 using HIA.Core.Languages.DisplayField;
 using HIA.Data.Base;
 using HIA.Data.Records;
 using System.ComponentModel.DataAnnotations;
-
 namespace HIA.Core.Models.Files;
 
 public class XML1InfoModel : IMapable<XML01>

@@ -13,6 +13,7 @@ using LinqKit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using System.Net;
@@ -31,6 +32,7 @@ public class UserManagementService : IUserManagementService
     private readonly IEmailService _emailService;
     private readonly IHttpContextAccessor _httpContext;
     private readonly ILogger<UserManagementService> _logger;
+    private readonly IOptions<AppSettings> _appSettings;
     public UserManagementService(
         IUnitOfWork unitOfWork,
         IUserRepository userRepository,
@@ -40,7 +42,8 @@ public class UserManagementService : IUserManagementService
         IEmailService emailService,
         IHttpContextAccessor httpContext,
         ILogger<UserManagementService> logger,
-        IBaseRepository<Hospital> hospitalRepository
+        IBaseRepository<Hospital> hospitalRepository,
+        IOptions<AppSettings> appSettings
         )
     {
         _unitOfWork = unitOfWork;
@@ -52,6 +55,7 @@ public class UserManagementService : IUserManagementService
         _httpContext = httpContext;
         _logger = logger;
         _hospitalRepository = hospitalRepository;
+        _appSettings = appSettings;
     }
 
     private HttpContext CurrentContext => _httpContext.HttpContext ?? throw new InvalidOperationException("No HttpContext");
@@ -226,6 +230,17 @@ public class UserManagementService : IUserManagementService
             if (res.Data == false) return res;
             #endregion
 
+            // Kiem tra cau hinh truoc khi ghi DB, de khong tao user ma khong gui duoc email
+            var publicBaseUrl = string.Empty;
+            if (!request.IsValidated && !Uti.TryGetPublicBaseUrl(_appSettings.Value.PublicBaseUrl, out publicBaseUrl))
+            {
+                _logger.LogError("AppSettings:PublicBaseUrl chua cau hinh hoac khong hop le");
+                res.Code = HttpStatusCode.InternalServerError;
+                res.Message = Uti.PublicBaseUrlErrorMessage;
+                res.Data = false;
+                return res;
+            }
+
             #region add user and userRole
             request.Password = Uti.PasswordEncrypt(request.IsValidated ? "123456" : Uti.RandomGuidString());
             request.Email = request.Email.Trim();
@@ -254,7 +269,7 @@ public class UserManagementService : IUserManagementService
                     Id = savedModel.Id,
                     Type = TypeUpdatePass.NEW_USER.ToString()
                 }).Token;
-                var url = $"{Uti.GetFullDomainUrl(CurrentContext)}/{newUserUrl}?token={token}";
+                var url = $"{publicBaseUrl}/{newUserUrl}?token={token}";
                 _emailService.SendEmailNewUser(url, request.FullName, request.Email, true);
             }
             #endregion

@@ -2,7 +2,7 @@
     "use strict"
 
     var o = document, f = function (e) { return e && e.tagName ? e : o.getElementById(e) },
-        v = function (d, c, t) { var e = o.createElement(d); if (c) { e.className = c } if (t) { e.innerHTML = t }; return e },
+        v = function (d, c, t) { var e = o.createElement(d); if (c) { e.className = c } if (t) { e.textContent = t }; return e },
         at = function (e, g, v) { e = f(e); if (g && v) { e.setAttribute(g, v) } else { return e.getAttribute(g) } },
         g = function (d, c) { d = f(d); return d.getElementsByClassName(c) };
 
@@ -28,7 +28,9 @@
         this.wrapper = v('div', 'tags-input-wrapper');
         this.input = v('input', 'tag-input');
         this.message = v('div', 'tag-error');
-        this.resetr = v('a', 'tag-reset', '<span>&times;</span> Xóa hết');
+        this.resetr = v('a', 'tag-reset');
+        this.resetr.appendChild(v('span', '', '×'));
+        this.resetr.appendChild(o.createTextNode(' Xóa hết'));
         init(this);
         initEvents(this);
 
@@ -42,7 +44,7 @@
         plugin.arr.sort();
 
         var tagElm = v('span', 'tag', tag);
-        var closr = v('a', 'tag-closer', '&times;');
+        var closr = v('a', 'tag-closer', '×');
 
         // delete the tag when icon is clicked
         closr.addEventListener('click', function (e) {
@@ -71,7 +73,7 @@
         tag = tag.trim().toUpperCase();
 
         var err = this.anyErrors(tag);
-        if (err && err != '') this.message.innerHTML = err;
+        if (err && err != '') this.message.textContent = err;
         else appendTag(this, tag);
         return this;
     }
@@ -212,7 +214,7 @@
 
         tags.oldval = '';
         tags.input.addEventListener('keydown', function (e) {
-            tags.message.innerHTML = '';
+            tags.message.textContent = '';
             var lst = g(tags.wrapper, 'tag dub');
             for (var i = 0; i < lst.length; i++) {
                 lst[i].className = 'tag';

@@ -1,41 +1,39 @@
 using System.Data;
 using System.Linq.Dynamic.Core;
-using System.Net;
-using System.Security.Claims;
-using System.Text;
 
 using LinqKit;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
-using HIA.Core.Base;
-using HIA.Core.Languages.Message;
-using HIA.Core.Models.Base;
-using HIA.Core.Models.Categories;
-using HIA.Core.Models.Files;
-using HIA.Core.Models.FileUploads130;
-using HIA.Core.Models.Pagination;
-using HIA.Core.Models.Token;
-using HIA.Data.Base;
-using HIA.Repositories.Base;
-using HIA.Repositories.Files;
-using HIA.Core.Models.Files130;
 using HIA.Core.Models.FileUploads;
+using HIA.Repositories.Files;
 using HIA.Services.HosoManagement130;
-using HIA.Services.SysHistoryLogManagement;
-using System.Xml.Serialization;
 using System.Xml;
 using System.Linq.Expressions;
 using System.Reflection;
 using HIA.Services.Report;
 using Microsoft.EntityFrameworkCore.Query;
 using HIA.Services.Categories;
+using HIA.Data.Reports;
+using HIA.Data.Auths;
+using HIA.Core.Base;
+using HIA.Core.Languages.Message;
+using HIA.Core.Models.Base;
+using HIA.Core.Models.Categories;
+using HIA.Core.Models.Files;
+using HIA.Core.Models.Pagination;
+using HIA.Core.Models.Token;
+using HIA.Data.Base;
 using HIA.Data.Catalogs;
 using HIA.Data.Records;
 using HIA.Data.Rules;
-using HIA.Data.Reports;
-using HIA.Data.Auths;
+using HIA.Repositories.Base;
+using HIA.Services.SysHistoryLogManagement;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using System.Net;
+using System.Security.Claims;
+using System.Text;
+using System.Xml.Serialization;
 
 namespace HIA.Services.Files;
 
@@ -241,25 +239,46 @@ public class FilesService130 : IFilesService130
                 continue;
             }
 
+            // Ten luu tru = ten client sau ToFilename (cung ten voi xml01.FileName). Ten khong hop le
+            // (ten thiet bi Windows, ky tu la, ...) thi bo qua, khong xu ly va khong ghi file.
+            var storedName = Uti.ToFilename(aformFile.FileName);
+            var storedPath = SafeFilePath.Resolve(filePath, storedName);
+            if (storedPath == null)
+            {
+                failed++;
+                failedMessage += "Tên file không hợp lệ: " + Path.GetFileName(aformFile.FileName) + "<br/> ";
+                failedFiles.Add(aformFile.FileName);
+                continue;
+            }
+
+            // Trang thai truoc file nay: neu ghi file goc that bai (cuoi vong) thi bo cac ho so cua file nay.
+            int newCountBefore = newXml1s.Count;
+            int successBefore = success;
+            string successMessageBefore = successMessage;
+
+            // Doc noi dung file mot lan (binData dung de parse va de ghi file goc o cuoi vong, nhu HEAD).
+            byte[] binData = Array.Empty<byte>();
             try
             {
                 string result = "";
-                using (BinaryReader b = new(aformFile.OpenReadStream()))
+                using (var src = aformFile.OpenReadStream())
+                using (var buffer = new MemoryStream())
                 {
-                    byte[] binData = b.ReadBytes((int)aformFile.Length);
-                    Encoding enc = GetEncoding(binData);
-                    if (enc == Encoding.UTF8)
-                    {
-                        result = Encoding.Default.GetString(binData);
-                    }
-                    else if (enc == Encoding.Unicode)
-                    {
-                        result = enc.GetString(binData);
-                    }
-                    else
-                    {
-                        result = Encoding.ASCII.GetString(binData);
-                    }
+                    await src.CopyToAsync(buffer);
+                    binData = buffer.ToArray();
+                }
+                Encoding enc = GetEncoding(binData);
+                if (enc == Encoding.UTF8)
+                {
+                    result = Encoding.Default.GetString(binData);
+                }
+                else if (enc == Encoding.Unicode)
+                {
+                    result = enc.GetString(binData);
+                }
+                else
+                {
+                    result = Encoding.ASCII.GetString(binData);
                 }
 
                 int iCnt = 0;
@@ -707,7 +726,17 @@ public class FilesService130 : IFilesService130
 
                         if (danhSachHoSo.Length > 1)
                         {
+                            // MA_LK lay tu noi dung XML do client gui. Khong dung lam ten file duoc (rong, ten thiet bi
+                            // Windows, ky tu la...) thi dung ten du phong khong phu thuoc du lieu. Loi ghi vao catch ngoai (nhu HEAD).
                             var fileName = Uti.ToFilename(Need(xml01.MA_LK)) + ".xml";
+                            var savedPath = SafeFilePath.Resolve(filePath, fileName);
+                            if (savedPath == null)
+                            {
+                                fileName = $"HS_{Guid.NewGuid():N}.xml";
+                                savedPath = SafeFilePath.Resolve(filePath, fileName) ?? throw new InvalidOperationException("Không tạo được tên file dự phòng");
+                                Uti.HandleCronJobLog(_logger, $"Ten file tach ho so khong hop le, ghi bang ten du phong {fileName}", nameof(FilesService130));
+                            }
+
                             GIAMDINHHS130 newHoso = new()
                             {
                                 THONGTINDONVI = hosoGD.THONGTINDONVI,
@@ -717,7 +746,7 @@ public class FilesService130 : IFilesService130
                                 },
                             };
 
-                            await File.WriteAllTextAsync(Path.Combine(filePath, fileName), GetXmlString(newHoso));
+                            await File.WriteAllTextAsync(savedPath, GetXmlString(newHoso));
                             xml01.FileName = fileName;
                         }
 
@@ -736,15 +765,24 @@ public class FilesService130 : IFilesService130
                 failedFiles.Add(aformFile.FileName);
             }
 
-            var formFile = aformFile;
-            if (formFile.Length > 0)
+            // Ghi file goc o cuoi vong lap, sau khi file da qua moi kiem tra (nhu HEAD).
+            // Ghi that bai: bo cac ho so cua chinh file nay (khong de DB tro toi file khong ton tai).
+            if (binData.Length > 0)
             {
                 try
                 {
-                    using var stream = File.Create(Path.Combine(filePath, Uti.ToFilename(formFile.FileName)));
-                    await formFile.CopyToAsync(stream);
+                    await File.WriteAllBytesAsync(storedPath, binData);
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    Uti.HandleCronJobLog(_logger, $"Ghi file {aformFile.FileName} loi: {ex}", nameof(FilesService130));
+                    failed++;
+                    failedMessage += $"Không lưu được file {Path.GetFileName(aformFile.FileName)} lên hệ thống, vui lòng thử lại.<br/> ";
+                    failedFiles.Add(aformFile.FileName);
+                    newXml1s.RemoveRange(newCountBefore, newXml1s.Count - newCountBefore);
+                    success = successBefore;
+                    successMessage = successMessageBefore;
+                }
             }
         }
 

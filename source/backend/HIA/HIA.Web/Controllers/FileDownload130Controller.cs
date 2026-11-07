@@ -1,3 +1,8 @@
+using HIA.Services.HospitalManagement;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using HIA.Core.Base;
 using HIA.Core.Models.Categories;
 using HIA.Core.Models.Files;
@@ -5,15 +10,10 @@ using HIA.Core.Models.Pagination;
 using HIA.Core.Models.Token;
 using HIA.Services.Categories;
 using HIA.Services.Files;
-using HIA.Services.HospitalManagement;
 using HIA.Services.UserManagement;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace HIA.Web.Controllers
 {
@@ -125,7 +125,12 @@ namespace HIA.Web.Controllers
         {
             //Linhist changed 26/04/22 thay doi ten thu muc goc XML thanh MA_CSKCB
             var hospitalName = HttpContext.User.FindFirst(ClaimKey.MA_CSKCB)?.Value ?? "";
-            var path = $"{Uti.GenerateFilePath(hospitalName, DateTime.Parse(date))}\\{fileName}";
+            if (!DateTime.TryParse(date, out var dteDate)) return BadRequest();
+
+            var path = SafeFilePath.Resolve(Uti.GenerateFilePath(hospitalName, dteDate), fileName);
+            if (path == null) return BadRequest();
+            if (!System.IO.File.Exists(path)) return NotFound();
+
             return PhysicalFile(path, FileTypeConstant.XML_TYPE, fileName);
         }
 

@@ -11,6 +11,7 @@ using HIA.Services.SysHistoryLogManagement;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System.Net;
 
 namespace HIA.Services.Auth;
@@ -22,7 +23,7 @@ public class AuthService : IAuthService
     private readonly ISysHistoryLogService _sysHistoryLogService;
     private readonly TokenHandler _tokenHandle;
     private readonly IEmailService _emailService;
-    private readonly IHttpContextAccessor _httpContext;
+    private readonly IOptions<AppSettings> _appSettings;
     private readonly ILogger<AuthService> _logger;
     private readonly ExcludedEmailValidator _excludedEmails;
     public AuthService(
@@ -31,7 +32,7 @@ public class AuthService : IAuthService
         ISysHistoryLogService sysHistoryLogService,
         TokenHandler tokenHandle,
         IEmailService emailService,
-        IHttpContextAccessor httpContext,
+        IOptions<AppSettings> appSettings,
         ILogger<AuthService> logger,
         ExcludedEmailValidator excludedEmails
         )
@@ -41,7 +42,7 @@ public class AuthService : IAuthService
         _sysHistoryLogService = sysHistoryLogService;
         _tokenHandle = tokenHandle;
         _emailService = emailService;
-        _httpContext = httpContext;
+        _appSettings = appSettings;
         _logger = logger;
         _excludedEmails = excludedEmails;
     }
@@ -280,8 +281,15 @@ public class AuthService : IAuthService
                 Id = user.Id,
                 Type = TypeUpdatePass.RESET.ToString()
             })?.Token;
-            var httpContext = _httpContext.HttpContext ?? throw new InvalidOperationException("HttpContext is not available.");
-        var url = $"{Uti.GetFullDomainUrl(httpContext)}/{newUserUrl}?token={token}";
+            if (!Uti.TryGetPublicBaseUrl(_appSettings.Value.PublicBaseUrl, out var publicBaseUrl))
+            {
+                _logger.LogError("AppSettings:PublicBaseUrl chua cau hinh hoac khong hop le");
+                res.Code = HttpStatusCode.InternalServerError;
+                res.Message = Uti.PublicBaseUrlErrorMessage;
+                res.Data = false;
+                return res;
+            }
+            var url = $"{publicBaseUrl}/{newUserUrl}?token={token}";
             _emailService.SendEmailNewUser(url, user.FullName ?? string.Empty, user.Email ?? string.Empty, false);
             #endregion
         }

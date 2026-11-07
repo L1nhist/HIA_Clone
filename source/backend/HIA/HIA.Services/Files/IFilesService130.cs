@@ -1,11 +1,10 @@
+
 using HIA.Core.Models.Base;
 using HIA.Core.Models.Categories;
-using HIA.Core.Models.Files;
-using HIA.Core.Models.Files130;
 using HIA.Core.Models.FileUploads;
+using HIA.Core.Models.Files;
 using HIA.Core.Models.Pagination;
 using HIA.Data.Records;
-
 namespace HIA.Services.Files;
 
 public interface IFilesService130

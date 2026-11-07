@@ -1,5 +1,5 @@
-using HIA.Core.Models.Files;
 
+using HIA.Core.Models.Files;
 namespace HIA.Services.Email;
 
 public interface IEmailService

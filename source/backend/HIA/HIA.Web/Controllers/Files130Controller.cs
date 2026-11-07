@@ -1,30 +1,29 @@
+using HIA.Core.Models.DataTable;
+using HIA.Services.BackgroundServices.VerifyXML;
+using HIA.Services.Email;
+using System.Threading;
 using HIA.Core.Base;
 using HIA.Core.Models.Base;
 using HIA.Core.Models.Categories;
-using HIA.Core.Models.DataTable;
 using HIA.Core.Models.Files;
-using HIA.Core.Models.Files130;
 using HIA.Core.Models.Pagination;
 using HIA.Core.Models.Token;
 using HIA.Data.Reports;
 using HIA.Repositories.Base;
 using HIA.Repositories.Files;
-using HIA.Services.BackgroundServices.VerifyXML;
 using HIA.Services.Categories;
-using HIA.Services.Email;
 using HIA.Services.Files;
 using HIA.Services.HosoManagement130;
 using HIA.Services.HospitalManagement;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Security.Claims;
-using System.Threading;
 using System.Threading.Tasks;
+using System;
 using static HIA.Services.HosoManagement130.HoSoManagementService130;
 
 namespace HIA.Web.Controllers
@@ -383,7 +382,12 @@ namespace HIA.Web.Controllers
         public IActionResult DownloadHoso(string fileName, string date)
         {
             var maCSKCB = User.FindFirst(ClaimKey.MA_CSKCB)?.Value ?? "";
-            var path = $"{Uti.GenerateFilePath130(maCSKCB, DateTime.Parse(date))}\\{fileName}";
+            if (!DateTime.TryParse(date, out var dteDate)) return BadRequest();
+
+            var path = SafeFilePath.Resolve(Uti.GenerateFilePath130(maCSKCB, dteDate), fileName);
+            if (path == null) return BadRequest();
+            if (!System.IO.File.Exists(path)) return NotFound();
+
             return PhysicalFile(path, FileTypeConstant.XML_TYPE, fileName);
         }
 

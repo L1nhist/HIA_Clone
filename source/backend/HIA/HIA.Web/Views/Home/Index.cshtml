@@ -8,8 +8,8 @@
     ViewData["Title"] = $"{TitlePageResource.HOME}";
 }
 @{
-    //var list = HIA.Core.Base.JsonDefaults.Serialize(Model.report1);
-    //var list2 = HIA.Core.Base.JsonDefaults.Serialize(Model.report2);
+    //var list = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.report1);
+    //var list2 = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.report2);
     var isMaster = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.MASTER);
     var isAdmin = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.ADMIN);
     var isUser = User.FindFirst(ClaimTypes.Role)?.Value?.Contains(RoleConstant.USER);
@@ -203,19 +203,19 @@
 @Html.Raw(@ViewBag.TotalFileTongTienMonth)
 
 @{
-    var lstTotal = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["TongHop"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
-    var lstKham = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["KhamBenh"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
-    var lstNoi = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["NoiTru"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
-    var lstNgoai = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["NgoaiTru"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
-    var lstMoney = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["TongTien"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstTotal = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.ChartPoints["TongHop"]).Replace("\"new Date", "new Date").Replace(")\\u0026nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstKham = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.ChartPoints["KhamBenh"]).Replace("\"new Date", "new Date").Replace(")\\u0026nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstNoi = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.ChartPoints["NoiTru"]).Replace("\"new Date", "new Date").Replace(")\\u0026nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstNgoai = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.ChartPoints["NgoaiTru"]).Replace("\"new Date", "new Date").Replace(")\\u0026nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstMoney = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.ChartPoints["TongTien"]).Replace("\"new Date", "new Date").Replace(")\\u0026nbsp;\"", ")").Replace("\"label\"", "\"x\"");
 
-    var lstBH = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["TienBH"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
-    var lstBN = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["TienBN"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
-    var lstTB = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["ChiTB"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
-    var lstNTB = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["NoiTB"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
-    var lstGTB = HIA.Core.Base.JsonDefaults.Serialize(Model.ChartPoints["NgoaiTB"]).Replace("\"new Date", "new Date").Replace(")&nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstBH = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.ChartPoints["TienBH"]).Replace("\"new Date", "new Date").Replace(")\\u0026nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstBN = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.ChartPoints["TienBN"]).Replace("\"new Date", "new Date").Replace(")\\u0026nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstTB = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.ChartPoints["ChiTB"]).Replace("\"new Date", "new Date").Replace(")\\u0026nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstNTB = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.ChartPoints["NoiTB"]).Replace("\"new Date", "new Date").Replace(")\\u0026nbsp;\"", ")").Replace("\"label\"", "\"x\"");
+    var lstGTB = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.ChartPoints["NgoaiTB"]).Replace("\"new Date", "new Date").Replace(")\\u0026nbsp;\"", ")").Replace("\"label\"", "\"x\"");
 
-    var lstBenh = HIA.Core.Base.JsonDefaults.Serialize(Model.PieCharts);
+    var lstBenh = HIA.Core.Base.JsonDefaults.SerializeForHtml(Model.PieCharts);
 }
 
 @section Scripts {

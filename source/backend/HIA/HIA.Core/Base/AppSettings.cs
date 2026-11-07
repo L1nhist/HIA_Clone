@@ -5,6 +5,8 @@ public class AppSettings
     public EmailConfig EmailConfig { get; set; } = new();
     public BackgroundServices BackgroundServices { get; set; } = new();
     public List<string> ExcludedEmails { get; set; } = new();
+    public string PublicBaseUrl { get; set; } = string.Empty;
+    public List<string> AllowedFrameAncestors { get; set; } = new();
 }
 
 #region EmailConfig

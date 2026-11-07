@@ -1,8 +1,8 @@
+
 using HIA.Core.Models.Base;
 using HIA.Core.Models.Categories;
 using HIA.Core.Models.Files;
 using HIA.Data.Rules;
-
 namespace HIA.Services.Categories;
 
 public interface IDMErrorService130
