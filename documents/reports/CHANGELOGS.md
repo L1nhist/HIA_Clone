@@ -9,3 +9,4 @@ Mỗi dòng: `YYYY-MM-DD R-<id>: <quyết định>`. Mới nhất ở cuối. Qu
 2026-11-07 R-20261107-03: email loại trừ từ appsettings (không phân biệt hoa thường); [Authorize] cho Report và DMKhoaBV.Import; lỗi thân thiện thay ex.ToString(); bỏ AutoMapper, map tay IMapable<T>; #53 #62 giữ nguyên
 2026-11-07 R-20261107-03: Rule 5d - dùng lại agent theo dòng việc (SendMessage), chuỗi task giao một lần, reviewer/tester luôn mới
 2026-11-07 R-20261107-04: #28 PublicBaseUrl mdinsight.vn; #48 CSP frame-ancestors từ appsettings; #50 #47 #55 #60 #67 sửa; #68 chấp nhận; Models: xóa Files/FileUploads cũ, Files130->Files, FileUploads130->FileUploads; T014 hướng 1 (chỉ license Z.EF)
+2026-11-07 R-20261107-02: T014 hướng 1 - lịch sử local đã xóa license Z.EF (commit đổi mã); force-push chờ PO
