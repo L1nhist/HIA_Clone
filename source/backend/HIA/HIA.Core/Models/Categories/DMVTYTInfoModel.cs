@@ -1,9 +1,11 @@
+using HIA.Data.Base;
+using HIA.Data.Catalogs;
 using HIA.Core.Languages.DisplayField;
 using System.ComponentModel.DataAnnotations;
 
 namespace HIA.Core.Models.Categories;
 
-public class DMVTYTInfoModel
+public class DMVTYTInfoModel : IMapable<DMVTYT>
 {
     public int VTID { get; set; }
 
@@ -76,4 +78,67 @@ public class DMVTYTInfoModel
     public string? Den_NGAY { get; set; }
 
     public string? Ngay_DE_NGHI { get; set; }
+
+    // Map cap: DMVTYT <-> DMVTYTInfoModel
+    public void MapFrom(DMVTYT? item)
+    {
+        if (item == null) return;
+        VTID = item.VTID;
+        Ma_CSKCB = item.MA_CSKCB;
+        Ma_VAT_TU = item.MA_VAT_TU;
+        Nhom_VAT_TU = item.NHOM_VAT_TU;
+        Ten_VAT_TU = item.TEN_VAT_TU;
+        Ma_HIEU = item.MA_HIEU;
+        Quy_CACH = item.QUY_CACH;
+        Don_VI_TINH = item.DON_VI_TINH;
+        Don_GIA = item.DON_GIA;
+        Don_GIA_BH = item.DON_GIA_BH;
+        So_LUONG = item.SO_LUONG;
+        Nuoc_SX = item.NUOC_SX;
+        Nha_SX = item.NHA_SX;
+        Nha_THAU = item.NHA_THAU;
+        Loai_THAU = item.LOAI_THAU;
+        Tt_THAU = item.TT_THAU;
+        Ht_THAU = item.HT_THAU;
+        Quyet_DINH = item.QUYET_DINH;
+        Dinh_MUC = (int?)item.DINH_MUC;
+        Tyle_TT_BH = item.TYLE_TT_BH;
+        MaNHOM_9324 = item.MANHOM_9324?.ToString();
+        MaNHOM_5937 = item.MANHOM_5937?.ToString();
+        Tu_NGAY = item.TU_NGAY;
+        Den_NGAY = item.DEN_NGAY;
+        Ngay_DE_NGHI = item.NGAY_DE_NGHI;
+    }
+
+    public DMVTYT? MapTo()
+    {
+        return new DMVTYT
+        {
+            VTID = VTID,
+            MA_CSKCB = Ma_CSKCB ?? string.Empty,
+            MA_VAT_TU = Ma_VAT_TU,
+            NHOM_VAT_TU = Nhom_VAT_TU,
+            TEN_VAT_TU = Ten_VAT_TU,
+            MA_HIEU = Ma_HIEU,
+            QUY_CACH = Quy_CACH,
+            DON_VI_TINH = Don_VI_TINH,
+            DON_GIA = Don_GIA,
+            DON_GIA_BH = Don_GIA_BH,
+            SO_LUONG = So_LUONG,
+            NUOC_SX = Nuoc_SX,
+            NHA_SX = Nha_SX,
+            NHA_THAU = Nha_THAU,
+            LOAI_THAU = Loai_THAU,
+            TT_THAU = Tt_THAU,
+            HT_THAU = Ht_THAU,
+            QUYET_DINH = Quyet_DINH,
+            DINH_MUC = Dinh_MUC,
+            TYLE_TT_BH = Tyle_TT_BH,
+            MANHOM_9324 = byte.TryParse(MaNHOM_9324, out var nhom9324) ? nhom9324 : null,
+            MANHOM_5937 = byte.TryParse(MaNHOM_5937, out var nhom5937) ? nhom5937 : null,
+            TU_NGAY = Tu_NGAY,
+            DEN_NGAY = Den_NGAY,
+            NGAY_DE_NGHI = Ngay_DE_NGHI
+        };
+    }
 }

@@ -111,13 +111,7 @@ namespace HIA.Web.Controllers
             TempData["FILTER_DOWNLOAD_MODEL"] = JsonDefaults.Serialize(filterDownloadModel);
 
             var page = res.Code == HttpStatusCode.OK ? res.Data : null;
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = page?.TotalItems ?? 0,
-                recordsTotal = page?.TotalItems ?? 0,
-                data = page?.Items ?? new List<XML01Info>(),
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, page?.TotalItems ?? 0, page?.Items ?? new List<XML01Info>()));
         }
 
         [HttpPost]
@@ -129,23 +123,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml02Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML02Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML02Info>()));
         }
 
         [HttpPost]
@@ -157,23 +139,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml03Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML03Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML03Info>()));
         }
 
         [HttpPost]
@@ -185,23 +155,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml04Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML04Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML04Info>()));
         }
 
         [HttpPost]
@@ -213,23 +171,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml05Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML05Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML05Info>()));
         }
 
         [HttpPost]
@@ -241,23 +187,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml06Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML06Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML06Info>()));
         }
 
         [HttpPost]
@@ -269,23 +203,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml07Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML07Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML07Info>()));
         }
 
         [HttpPost]
@@ -297,23 +219,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml08Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML08Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML08Info>()));
         }
 
         [HttpPost]
@@ -325,23 +235,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml09Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML09Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML09Info>()));
         }
 
         [HttpPost]
@@ -353,23 +251,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml10Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML10Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML10Info>()));
         }
 
         [HttpPost]
@@ -381,23 +267,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml11Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML11Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML11Info>()));
         }
 
         [HttpPost]
@@ -409,23 +283,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml13Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML13Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML13Info>()));
         }
 
         [HttpPost]
@@ -437,23 +299,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml14Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML14Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML14Info>()));
         }
 
         [HttpPost]
@@ -465,23 +315,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml15Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML15Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML15Info>()));
         }
 
         [HttpPost]
@@ -500,23 +338,11 @@ namespace HIA.Web.Controllers
                 var result = await _filesService.GetXml03Items(paniationRequest, xml01ID.Value);
                 if (result.Code == HttpStatusCode.OK && result.Data is { } page)
                 {
-                    return Ok(new
-                    {
-                        draw = paniationRequest.Draw,
-                        recordsFiltered = page.TotalItems,
-                        recordsTotal = page.TotalItems,
-                        data = page.Items,
-                    });
+                    return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
                 }
             }
 
-            return Ok(new
-            {
-                draw = paniationRequest.Draw,
-                recordsFiltered = 0,
-                recordsTotal = 0,
-                data = new List<XML03Info>()
-            });
+            return Ok(DataTableResponse.Create(paniationRequest.Draw, 0, new List<XML03Info>()));
         }
 
         [HttpGet]
@@ -568,7 +394,7 @@ namespace HIA.Web.Controllers
             var ids = res.Data.Items.Select(x => x.xml01id).ToArray();
 
             var cnt = await _filesService.RecheckHoso(ids);
-            return Ok(new { cnt.Data, recordsTotal = ids.Length });
+            return Ok(new RecordsTotalResponse<bool> { Data = cnt.Data, RecordsTotal = ids.Length });
         }
 
         [HttpGet]
@@ -873,18 +699,12 @@ namespace HIA.Web.Controllers
 
                 int res = await _hospitalService.RemoveDublicated130(currentMaCSKCB);
 
-                return Ok(new
-                {
-                    recordsTotal = res,
-                });
+                return Ok(new RecordsTotalResponse { RecordsTotal = res });
             }
             catch
             { }
 
-            return Ok(new
-            {
-                recordsTotal = 0,
-            });
+            return Ok(new RecordsTotalResponse { RecordsTotal = 0 });
         }
 
         private string GetClaimValue(string claimType) =>

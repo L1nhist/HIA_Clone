@@ -90,23 +90,23 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Name))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Name))", autoWidth: true },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Address))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Address))", autoWidth: true },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MA_CSKCB))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MA_CSKCB))", autoWidth: true },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Loai_Tuyen))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Loai_Tuyen))", autoWidth: true },
-                @*{ data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Username))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Username))", autoWidth: true },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Password))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Password))", autoWidth: true },*@
+                { data: "@nameof(modelDisplay.Name).ToLowerInvariant()", name: "@nameof(modelDisplay.Name).ToLowerInvariant()", autoWidth: true },
+                { data: "@nameof(modelDisplay.Address).ToLowerInvariant()", name: "@nameof(modelDisplay.Address).ToLowerInvariant()", autoWidth: true },
+                { data: "@nameof(modelDisplay.MA_CSKCB).ToLowerInvariant()", name: "@nameof(modelDisplay.MA_CSKCB).ToLowerInvariant()", autoWidth: true },
+                { data: "@nameof(modelDisplay.Loai_Tuyen).ToLowerInvariant()", name: "@nameof(modelDisplay.Loai_Tuyen).ToLowerInvariant()", autoWidth: true },
+                @*{ data: "@nameof(modelDisplay.Username).ToLowerInvariant()", name: "@nameof(modelDisplay.Username).ToLowerInvariant()", autoWidth: true },
+                { data: "@nameof(modelDisplay.Password).ToLowerInvariant()", name: "@nameof(modelDisplay.Password).ToLowerInvariant()", autoWidth: true },*@
                 
-                 { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MaxFilePerDate))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MaxFilePerDate))", autoWidth: true },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.SuperHospitalId))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.SuperHospitalId))", autoWidth: true },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.HospitalCons))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.HospitalCons))", autoWidth: true },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.LevelId))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.LevelId))", autoWidth: true },
+                 { data: "@nameof(modelDisplay.MaxFilePerDate).ToLowerInvariant()", name: "@nameof(modelDisplay.MaxFilePerDate).ToLowerInvariant()", autoWidth: true },
+                { data: "@nameof(modelDisplay.SuperHospitalId).ToLowerInvariant()", name: "@nameof(modelDisplay.SuperHospitalId).ToLowerInvariant()", autoWidth: true },
+                { data: "@nameof(modelDisplay.HospitalCons).ToLowerInvariant()", name: "@nameof(modelDisplay.HospitalCons).ToLowerInvariant()", autoWidth: true },
+                { data: "@nameof(modelDisplay.LevelId).ToLowerInvariant()", name: "@nameof(modelDisplay.LevelId).ToLowerInvariant()", autoWidth: true },
                 {
-                    data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.IsActivated))",
-                    name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.IsActivated))",
+                    data: "@nameof(modelDisplay.IsActivated).ToLowerInvariant()",
+                    name: "@nameof(modelDisplay.IsActivated).ToLowerInvariant()",
                     autoWidth: true,
                     render: function (data, type, row, meta) {
-                        const isActived = "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.IsActivated))";
+                        const isActived = "@nameof(modelDisplay.IsActivated).ToLowerInvariant()";
                         return row[isActived]
                             ? `<span class="status-active">@DisplayFieldResource.ACTIVE</span>`
                             : `<span class="status-inactive">@DisplayFieldResource.INACTIVE</span>`;

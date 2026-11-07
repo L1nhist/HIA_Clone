@@ -130,10 +130,6 @@ public class Uti
         return res;
     }
 
-    static public string SetLowerCaseFirstChar(string text)
-    {
-        return !string.IsNullOrWhiteSpace(text) ? Char.ToLowerInvariant(text[0]) + text.Substring(1) : "";
-    }
     static public string SetUpperCaseFirstChar(string text)
     {
         return !string.IsNullOrWhiteSpace(text) ? Char.ToUpperInvariant(text[0]) + text.Substring(1) : "";

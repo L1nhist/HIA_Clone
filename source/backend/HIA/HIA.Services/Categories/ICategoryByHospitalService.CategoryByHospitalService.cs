@@ -5,8 +5,8 @@ using System.Linq.Expressions;
 using System.Net;
 using System.Reflection;
 using System.Security.Claims;
-using AutoMapper;
 using HIA.Core.Base;
+using HIA.Data.Base;
 using HIA.Core.HTML;
 using HIA.Core.Languages.DisplayField;
 using HIA.Core.Languages.Message;
@@ -29,8 +29,8 @@ namespace HIA.Services.Categories;
 
 public class CategoryByHospitalService<TEntity, TDisplayModel, TModifyModel> : ICategoryByHospitalService<TEntity, TDisplayModel, TModifyModel>
     where TEntity : class
-    where TDisplayModel : class
-    where TModifyModel : class
+    where TDisplayModel : class, IMapable<TEntity>, new()
+    where TModifyModel : class, IMapable<TEntity>, new()
 {
     private const string ScrapeReadError = "Không đọc được dữ liệu từ cổng BH";
     private const string ScrapeFormatError = "Định dạng dữ liệu từ cổng BH đã thay đổi";
@@ -41,7 +41,6 @@ public class CategoryByHospitalService<TEntity, TDisplayModel, TModifyModel> : I
     private readonly IBaseRepository<Hospital> _hospitalRepos;
     private readonly ISysHistoryLogService _sysHistoryLogService;
     private readonly IHttpContextAccessor _httpContext;
-    private readonly IMapper _mapper;
     private readonly ILogger<CategoryByHospitalService<TEntity, TModifyModel, TModifyModel>> _logger;
 
     private string _errorScraping = "";
@@ -52,7 +51,6 @@ public class CategoryByHospitalService<TEntity, TDisplayModel, TModifyModel> : I
         IBaseRepository<Hospital> hospitalRepos,
         ISysHistoryLogService sysHistoryLogService,
         IHttpContextAccessor httpContext,
-        IMapper mapper,
         ILogger<CategoryByHospitalService<TEntity, TModifyModel, TModifyModel>> logger)
     {
         _unitOfWork = unitOfWork;
@@ -60,9 +58,11 @@ public class CategoryByHospitalService<TEntity, TDisplayModel, TModifyModel> : I
         _hospitalRepos = hospitalRepos;
         _sysHistoryLogService = sysHistoryLogService;
         _httpContext = httpContext;
-        _mapper = mapper;
         _logger = logger;
     }
+
+    private static TEntity ToEntity(TModifyModel request) =>
+        request.MapTo() ?? throw new InvalidOperationException($"Cannot map {typeof(TModifyModel).Name} to {typeof(TEntity).Name}");
 
     private string GetClaim(string claimType)
         => _httpContext.HttpContext?.User.FindFirst(claimType)?.Value ?? string.Empty;
@@ -119,13 +119,19 @@ public class CategoryByHospitalService<TEntity, TDisplayModel, TModifyModel> : I
                 return res;
             }
 
-            var filterModel = _mapper.Map<FilterDownloadModel>(request);
+            var filterModel = new FilterDownloadModel();
+            ((IMapable<PaginationRequestModel>)filterModel).MapFrom(request);
             filterModel.IgnoreKeysForSearch = ignoreKeysForSearch;
             var queryable = BuildQueryToGetListData(filterModel, emptyModel, currentMaCSKCB);
 
             PaginationResponseModel<TEntity> items = await _cateRepos.GetListPaginationCustomSortAsync(
                 request.PageIndex, request.PageNumber, queryable.FilterQueryable, queryable.OrderQueryable, queryable.IncludeQueryable);
-            var itemInfo = _mapper.Map<List<TDisplayModel>>(items.Items.ToList());
+            var itemInfo = items.Items.Select(x =>
+            {
+                var m = new TDisplayModel();
+                m.MapFrom(x);
+                return m;
+            }).ToList();
 
             res.Data = new PaginationResponseModel<TDisplayModel>(items.TotalItems, itemInfo);
 
@@ -161,7 +167,9 @@ public class CategoryByHospitalService<TEntity, TDisplayModel, TModifyModel> : I
                 x => EF.Property<int>(x, keyString).Equals(idEntity),
                 null);
 
-            res.Data = _mapper.Map<TModifyModel>(item);
+            var itemData = item == null ? null : new TModifyModel();
+            itemData?.MapFrom(item);
+            res.Data = itemData;
         }
         catch (Exception ex)
         {
@@ -179,7 +187,7 @@ public class CategoryByHospitalService<TEntity, TDisplayModel, TModifyModel> : I
         {
             var roleId = GetClaim(ClaimTypes.Role);
             var currentMaCSKCB = GetClaim(ClaimKey.MA_CSKCB);
-            var savedModel = _mapper.Map<TEntity>(request);
+            var savedModel = ToEntity(request);
             (savedModel as dynamic).MA_CSKCB = currentMaCSKCB;
 
             #region Validtion
@@ -246,7 +254,7 @@ public class CategoryByHospitalService<TEntity, TDisplayModel, TModifyModel> : I
                 return res;
             }
 
-            var savedModel = _mapper.Map<TEntity>(request);
+            var savedModel = ToEntity(request);
             if (uniqueFieldNames.Any())
             {
                 var isExistUniqueFields = await CheckUniqueFieldsExist(savedModel, uniqueFieldNames, currentMaCSKCB, entity);

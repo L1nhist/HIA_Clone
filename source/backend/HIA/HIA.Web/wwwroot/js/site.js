@@ -16,16 +16,16 @@
         cache: false,
         success: function (data) {
             if (data?.code !== 200) {
-                const currentPassError = data?.data.find(x => x.key === currentPassId)?.errorMessage;
+                const currentPassError = data?.data.find(x => x.key === currentPassId)?.errormessage;
                 $(`#${currentPassId}Error`).text(currentPassError);
 
-                const newPassError = data?.data.find(x => x.key === newPassId)?.errorMessage;
+                const newPassError = data?.data.find(x => x.key === newPassId)?.errormessage;
                 $(`#${newPassId}Error`).text(newPassError);
 
-                const confirmPassError = data?.data.find(x => x.key === confirmPassId)?.errorMessage;
+                const confirmPassError = data?.data.find(x => x.key === confirmPassId)?.errormessage;
                 $(`#${confirmPassId}Error`).text(confirmPassError);
 
-                const commonError = data?.data.find(x => x.key === commonId)?.errorMessage;
+                const commonError = data?.data.find(x => x.key === commonId)?.errormessage;
                 $(`#${commonId}Error`).html(commonError);
                 return;
             }

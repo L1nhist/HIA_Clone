@@ -75,7 +75,7 @@ public partial class ReportHandleService
                             rows - 2, t.XML01.FileName, t.XML01.MA_LK, t.XML01.MA_BN, t.XML01.HO_TEN, t.XML01.MA_THE_BHYT,
                             t.MA_DICH_VU, t.TEN_DICH_VU, t.TEN_CHI_SO, t.MA_NHOM,
                             t.NGAY_KQ, t.XML01.NGAY_VAO, t.XML01.NGAY_RA, t.XML01.NGAY_TTOAN,
-                            string.Format("{0:yyyy/MM/dd HH:mm:ss}", t.NGAY_KQ)
+                            t.NGAY_KQ
                         );
                 }
 

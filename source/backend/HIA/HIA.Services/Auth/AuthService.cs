@@ -1,4 +1,3 @@
-using AutoMapper;
 using HIA.Core.Base;
 using HIA.Core.Languages.Message;
 using HIA.Core.Models.Base;
@@ -24,8 +23,8 @@ public class AuthService : IAuthService
     private readonly TokenHandler _tokenHandle;
     private readonly IEmailService _emailService;
     private readonly IHttpContextAccessor _httpContext;
-    private readonly IMapper _mapper;
     private readonly ILogger<AuthService> _logger;
+    private readonly ExcludedEmailValidator _excludedEmails;
     public AuthService(
         IUnitOfWork unitOfWork,
         IUserRepository userRepository,
@@ -33,8 +32,8 @@ public class AuthService : IAuthService
         TokenHandler tokenHandle,
         IEmailService emailService,
         IHttpContextAccessor httpContext,
-        IMapper mapper,
-        ILogger<AuthService> logger
+        ILogger<AuthService> logger,
+        ExcludedEmailValidator excludedEmails
         )
     {
         _unitOfWork = unitOfWork;
@@ -43,8 +42,8 @@ public class AuthService : IAuthService
         _tokenHandle = tokenHandle;
         _emailService = emailService;
         _httpContext = httpContext;
-        _mapper = mapper;
         _logger = logger;
+        _excludedEmails = excludedEmails;
     }
 
     public async Task<ResponseModel<bool>> SignOut()
@@ -87,7 +86,7 @@ public class AuthService : IAuthService
                 y => y.Include(t => t.UserRoles).ThenInclude(t1 => t1.Role).Include(t2 => t2.Hospital));
 
             //Linhist changed 13/01/26
-            if (user == null || user.Email == "donhuquynh2503@gmail.com")
+            if (user == null || _excludedEmails.IsExcluded(user.Email))
             {
                 res.Code = HttpStatusCode.Unauthorized;
                 res.Message = MessageResource.ERR_401_UNAUTHORIZED;
@@ -229,7 +228,7 @@ public class AuthService : IAuthService
             var user = await _userRepository.GetItem(x => x.Id.Equals(tokenData.Data.Id) && x.IsActivated && !x.IsDeleted && x.IsFirstTimeLogin == isFirstTimeLogin);
 
             //Linhist added 13/01/26
-            if (user == null || user.Email == "donhuquynh2503@gmail.com") return res;
+            if (user == null || _excludedEmails.IsExcluded(user.Email)) return res;
             res.Data = user;
         }
         catch (Exception ex)

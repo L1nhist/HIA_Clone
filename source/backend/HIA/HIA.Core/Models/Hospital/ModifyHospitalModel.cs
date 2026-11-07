@@ -1,3 +1,5 @@
+using EntityHospital = HIA.Data.Auths.Hospital;
+using HIA.Data.Base;
 using HIA.Core.Languages.DisplayField;
 using HIA.Core.Languages.Message;
 using System.ComponentModel.DataAnnotations;
@@ -5,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HIA.Core.Models.Hospital;
 
-public class ModifyHospitalModel
+public class ModifyHospitalModel : IMapable<EntityHospital>
 {
     public string? Id { get; set; }
 
@@ -35,4 +37,41 @@ public class ModifyHospitalModel
     [NotMapped]
     public bool PredefError { get; set; }
 
+
+    // Map cap: Hospital <-> ModifyHospitalModel
+    public void MapFrom(EntityHospital? item)
+    {
+        if (item == null) return;
+        Id = item.Id;
+        Name = item.Name ?? string.Empty;
+        IsActivated = item.IsActivated;
+        Username = item.Username;
+        Password = item.Password;
+        Address = item.Address;
+        MA_CSKCB = item.MA_CSKCB;
+        Loai_Tuyen = item.Loai_Tuyen ?? 0;
+        MaxFilePerDate = item.MaxFilePerDate ?? 0;
+        LevelId = item.LevelId ?? 0;
+        SuperHospitalId = item.SuperHospitalId;
+        OfficeTime = item.OfficeTime;
+    }
+
+    public EntityHospital? MapTo()
+    {
+        return new EntityHospital
+        {
+            Id = Id ?? string.Empty,
+            Name = Name,
+            IsActivated = IsActivated,
+            Username = Username,
+            Password = Password,
+            Address = Address,
+            MA_CSKCB = MA_CSKCB,
+            Loai_Tuyen = Loai_Tuyen,
+            MaxFilePerDate = MaxFilePerDate,
+            LevelId = LevelId,
+            SuperHospitalId = SuperHospitalId,
+            OfficeTime = OfficeTime
+        };
+    }
 }

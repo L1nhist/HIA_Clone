@@ -6,6 +6,7 @@ using HIA.Repositories.Base;
 using HIA.Repositories.ThongKe;
 using HIA.Services.HospitalManagement;
 using HIA.Services.Report;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -20,6 +21,7 @@ using System.Threading.Tasks;
 
 namespace HIA.Web.Controllers
 {
+    [Authorize(Roles = RoleConstant.ALL)]
     public class ReportController : Controller
     {
         private readonly IReportService _reportService;
@@ -113,6 +115,7 @@ namespace HIA.Web.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = RoleConstant.MASTER_and_ADMIN)]
         [HttpGet]
         public async Task<IActionResult> Totalize(string createDate)
         {
@@ -172,6 +175,7 @@ namespace HIA.Web.Controllers
             return View(res);
         }
 
+        [Authorize(Roles = RoleConstant.MASTER_and_ADMIN)]
         [HttpGet]
         public async Task<IActionResult> Summary(string createDate)
         {

@@ -129,34 +129,34 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_THUOC))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_THUOC))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_HOAT_CHAT))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Loai_THUOC))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_DUONG_DUNG))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Duong_DUNG))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ham_LUONG))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Dang_BAO_CHE))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Don_VI_TINH))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Don_GIA))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Don_GIA_BH ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.So_LUONG))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Quy_CACH))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Pp_CHE_BIEN))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.So_DANG_KY))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_DVKT))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Nuoc_SX))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Nha_SX))", className: "w-200" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Nha_THAU))", className: "w-650" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Nhom_THAU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Loai_THAU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tt_THAU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ht_THAU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MaNHOM_5937))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MaNHOM_9324))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tu_NGAY))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Den_NGAY))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ngay_DE_NGHI))" },
+                { data: "@nameof(modelDisplay.Ma_THUOC).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ten_THUOC).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ten_HOAT_CHAT).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Loai_THUOC).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ma_DUONG_DUNG).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Duong_DUNG).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ham_LUONG).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Dang_BAO_CHE).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Don_VI_TINH).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Don_GIA).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Don_GIA_BH ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.So_LUONG).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Quy_CACH).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Pp_CHE_BIEN).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.So_DANG_KY).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ma_DVKT).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Nuoc_SX).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Nha_SX).ToLowerInvariant()", className: "w-200" },
+                { data: "@nameof(modelDisplay.Nha_THAU).ToLowerInvariant()", className: "w-650" },
+                { data: "@nameof(modelDisplay.Nhom_THAU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Loai_THAU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Tt_THAU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ht_THAU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.MaNHOM_5937).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.MaNHOM_9324).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Tu_NGAY).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Den_NGAY).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ngay_DE_NGHI).ToLowerInvariant()" },
                 {
                     render: function (data, type, row, meta) {
                         const editUrl = '@Url.Action(nameof(DMThuocController.Edit), Uti.GetControllerName(nameof(DMThuocController)))' + `?id=${row.thid}`;
@@ -285,7 +285,7 @@
                         return;
                     }
 
-                    window.location = '@Url.Action(nameof(DMThuocController.Download), Uti.GetControllerName(nameof(DMThuocController)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    window.location = '@Url.Action(nameof(DMThuocController.Download), Uti.GetControllerName(nameof(DMThuocController)))' + `?fileGuid=${response.data.fileguid}&fileName=${response.data.filename}`;
                     setTimeout(() => {
                         $("#spinnerWrapper").modal("hide");
                         $("#btnDownload").removeClass('disabled-custom');

@@ -1,9 +1,11 @@
+using HIA.Data.Base;
+using HIA.Data.Catalogs;
 using HIA.Core.Languages.DisplayField;
 using System.ComponentModel.DataAnnotations;
 
 namespace HIA.Core.Models.Categories;
 
-public class DMDichVuInfoModel
+public class DMDichVuInfoModel : IMapable<DMDichVu>
 {
     public int DVID { get; set; }
 
@@ -38,4 +40,41 @@ public class DMDichVuInfoModel
     public string? Den_NGAY { get; set; }
 
     public string? Ngay_DE_NGHI { get; set; }
+
+    // Map cap: DMDichVu <-> DMDichVuInfoModel
+    public void MapFrom(DMDichVu? item)
+    {
+        if (item == null) return;
+        DVID = item.DVID;
+        Ma_CSKCB = item.MA_CSKCB;
+        Ma_DICH_VU = item.MA_DICH_VU;
+        Ten_DICH_VU = item.TEN_DICH_VU;
+        Ma_GIA = item.MA_GIA;
+        Don_GIA = item.DON_GIA;
+        Quyet_DINH = item.QUYET_DINH;
+        MaNHOM_9324 = item.MANHOM_9324;
+        MaNHOM_5937 = item.MANHOM_5937;
+        Tu_NGAY = item.TU_NGAY;
+        Den_NGAY = item.DEN_NGAY;
+        Ngay_DE_NGHI = item.NGAY_DE_NGHI;
+    }
+
+    public DMDichVu? MapTo()
+    {
+        return new DMDichVu
+        {
+            DVID = DVID,
+            MA_CSKCB = Ma_CSKCB ?? string.Empty,
+            MA_DICH_VU = Ma_DICH_VU,
+            TEN_DICH_VU = Ten_DICH_VU,
+            MA_GIA = Ma_GIA,
+            DON_GIA = Don_GIA,
+            QUYET_DINH = Quyet_DINH,
+            MANHOM_9324 = MaNHOM_9324,
+            MANHOM_5937 = MaNHOM_5937,
+            TU_NGAY = Tu_NGAY,
+            DEN_NGAY = Den_NGAY,
+            NGAY_DE_NGHI = Ngay_DE_NGHI
+        };
+    }
 }

@@ -25,9 +25,10 @@ public class Startup
         services.AddScoped<DbFactory>();
         #endregion
 
-        #region auto mapper
-        var mapper = AutoMapperConfig.Initialize();
-        services.AddSingleton(mapper);
+        #region excluded emails
+        // Doc truc tiep section AppSettings mot lan (khong Configure lai AppSettings de tranh bind trung danh sach)
+        services.AddSingleton(_ => new ExcludedEmailValidator(
+            configuration.GetSection("AppSettings").Get<AppSettings>()?.ExcludedEmails ?? []));
         #endregion
 
         #region Seria Logger

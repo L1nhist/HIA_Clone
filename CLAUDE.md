@@ -76,6 +76,14 @@ Khi một task gồm nhiều việc giống nhau (port hàng chục file cùng k
 ## Rule 5c — Subagent dùng model rẻ hơn
 Mọi subagent dùng model cấp thấp hơn model của phiên chính (hiện là haiku, khai báo bằng `model:` trong frontmatter của `.claude/agents/*.md`), không dùng cấp cao. Chọn cấp rẻ nhất đủ cho việc: việc cơ học, lặp lại thì chia nhỏ theo Rule 5b thay vì nâng model. Chất lượng bù bằng task ngắn có `ac` rõ và việc orchestrator tự build/kiểm lại sau khi gộp. Không tự nâng model cho agent nào nếu PO chưa đồng ý.
 
+## Rule 5d — Dùng lại agent, không sinh agent mới cho mỗi task (PO, 2026-11-07)
+Mỗi agent mới phải đọc lại quy ước, file nguồn, các project đã port: tốn token. Agent đã xong vẫn tiếp tục được bằng `SendMessage` (to: tên hoặc agentId; nó được khôi phục từ transcript, giữ nguyên ngữ cảnh). Vì vậy:
+1. **Một dòng việc = một agent.** Dòng việc = cùng loại agent + cùng vùng file/chủ đề (vd "Model nhóm 1", "Controllers nhóm A", "Excel"). Task kế tiếp của dòng đó (task tiếp theo, bản sửa theo review, retry theo Rule 5) giao cho CHÍNH agent đó bằng `SendMessage` với nội dung `Do .running/tasks/T0xx.md` (kèm một dòng "đọc lại các file trong `in:` vì có thể đã đổi"), không gọi `Agent` mới. Retry theo Rule 5 ưu tiên dùng lại agent cũ vì nó đã có ngữ cảnh lỗi.
+2. **Chuỗi task biết trước thì giao một lần.** Khi các task tuần tự cùng dòng việc đã rõ từ đầu (có `dep` nối nhau), dispatch một prompt duy nhất: `Do .running/tasks/T012.md, then T013.md, then T014.md`. Agent làm lần lượt, ghi một result riêng cho từng task (`<taskid>-<n>.md`), và dừng ngay khi một task `blocked`/`fail`. Đây là cách để agent chạy đến hết chuỗi mà không cần dựng lại.
+3. **Ghi sổ.** Orchestrator giữ `.running/agents.md`: `stream | agentId | task đã xong | ước lượng token`. Cập nhật sau mỗi lần agent báo xong. Agent chỉ sống trong phiên; sang phiên mới ghi lại trạng thái trong `latest_state.md` và tạo agent mới.
+4. **Khi nào PHẢI tạo agent mới:** (a) loại agent hoặc zone khác; (b) cần chạy song song (mỗi nhánh song song một agent, tối đa 4, Rule 5b); (c) `reviewer` và `tester` luôn là agent mới cho mỗi lần kiểm, để không bị neo vào cách nghĩ của người code (tester viết test từ `ac`, reviewer đọc diff độc lập); (d) agent đã dùng quá khoảng 200k token tích lũy, hoặc bắt đầu lẫn/sai lặp lại (ngữ cảnh phình làm mỗi lượt đắt hơn và dễ lỗi thời); (e) dòng việc đã kết thúc và chủ đề kế tiếp không liên quan.
+5. **Giới hạn cần biết:** agent không tự lấy việc từ hàng đợi; mỗi task kế vẫn cần orchestrator gửi (hoặc nằm sẵn trong chuỗi ở mục 2). Ngữ cảnh agent giữ có thể cũ nếu agent khác đã sửa file: luôn nhắc đọc lại `in:`. Zone vẫn kiểm tra bằng `git status` sau mỗi lần.
+
 ## Rule 6 — .running protocol (compact: English keys, no prose)
 Task `.running/tasks/T012.md` (ids global, increasing; tester `T012-T`, reviewer `T012-R`):
 ```
@@ -88,7 +96,7 @@ in: <paths to read, ; separated>
 out: <paths to write>
 ac: 1) <testable> 2) <testable>
 ```
-Dispatch prompt is only `Do .running/tasks/T012.md`. Independent tasks run in parallel.
+Dispatch prompt is only `Do .running/tasks/T012.md` (chuỗi task và dùng lại agent: xem Rule 5d). Independent tasks run in parallel.
 Result files are never overwritten: `.running/results/<taskid>-<n>.md`, n = attempt (1 + existing files of that task). Formats:
 ```
 id: T012            | id: T012-T        | id: T012-R

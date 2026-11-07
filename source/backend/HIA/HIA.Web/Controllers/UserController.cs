@@ -59,13 +59,7 @@ namespace HIA.Web.Controllers
             if (res.Code == HttpStatusCode.OK)
             {
                 var page = res.Data ?? throw new InvalidOperationException("Khong co du lieu phan trang");
-                return Ok(new
-                {
-                    draw = paniationRequest.Draw,
-                    recordsFiltered = page.TotalItems,
-                    recordsTotal = page.TotalItems,
-                    data = page.Items
-                });
+                return Ok(DataTableResponse.Create(paniationRequest.Draw, page.TotalItems, page.Items));
             }
 
             return Ok(res.Message);

@@ -1,4 +1,3 @@
-using AutoMapper;
 using HIA.Core.Base;
 using HIA.Core.Languages.Message;
 using HIA.Core.Models.Base;
@@ -24,7 +23,6 @@ public class HDSDThuocService : IHDSDThuocService
     private readonly IDMErrorService130 _dmErrorService;
     private readonly ISysHistoryLogService _sysHistoryLogService;
     private readonly IHttpContextAccessor _httpContext;
-    private readonly IMapper _mapper;
     private readonly ILogger<HDSDThuocService> _logger;
     public HDSDThuocService(
         IUnitOfWork unitOfWork,
@@ -32,7 +30,6 @@ public class HDSDThuocService : IHDSDThuocService
         IDMErrorService130 dmErrorService,
         ISysHistoryLogService sysHistoryLogService,
         IHttpContextAccessor httpContext,
-        IMapper mapper,
         ILogger<HDSDThuocService> logger
         )
     {
@@ -41,7 +38,6 @@ public class HDSDThuocService : IHDSDThuocService
         _dmErrorService = dmErrorService;
         _sysHistoryLogService = sysHistoryLogService;
         _httpContext = httpContext;
-        _mapper = mapper;
         _logger = logger;
     }
 
@@ -138,7 +134,9 @@ public class HDSDThuocService : IHDSDThuocService
             #endregion
 
             var item = await _hdsdThuocRepository.GetById(hdsdID);
-            res.Data = _mapper.Map<ModifyHDSDThuocModel>(item);
+            var itemData = item == null ? null : new ModifyHDSDThuocModel();
+            itemData?.MapFrom(item);
+            res.Data = itemData;
         }
         catch (Exception ex)
         {
@@ -209,7 +207,7 @@ public class HDSDThuocService : IHDSDThuocService
                 return res;
             }
 
-            var savedModel = _mapper.Map<HDSDThuoc>(request);
+            var savedModel = request.MapTo() ?? throw new InvalidOperationException("Cannot map ModifyHDSDThuocModel to HDSDThuoc");
             if (currentRole.Equals(RoleConstant.ADMIN))
             {
                 savedModel.MA_CSKCB = currentCSKCB;

@@ -1877,7 +1877,7 @@ href="@Url.Content("~/lib/elite/libs/datatables.net-bs4/css/responsive.dataTable
                         return;
                     }
 
-                    window.location = '@Url.Action(nameof(Files130Controller.Download), Uti.GetControllerName(nameof(Files130Controller)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    window.location = '@Url.Action(nameof(Files130Controller.Download), Uti.GetControllerName(nameof(Files130Controller)))' + `?fileGuid=${response.data.fileguid}&fileName=${response.data.filename}`;
                     setTimeout(() => {
                         $.toast({
                             heading: 'Thành công',

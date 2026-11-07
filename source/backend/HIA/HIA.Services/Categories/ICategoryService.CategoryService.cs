@@ -2,8 +2,8 @@ using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using System.Net;
 using System.Reflection;
-using AutoMapper;
 using HIA.Core.Base;
+using HIA.Data.Base;
 using HIA.Core.Languages.DisplayField;
 using HIA.Core.Languages.Message;
 using HIA.Core.Models.Base;
@@ -22,29 +22,29 @@ namespace HIA.Services.Categories;
 
 public class CategoryService<TEntity, TDisplayModel, TModifyModel> : ICategoryService<TEntity, TDisplayModel, TModifyModel>
     where TEntity : class
-    where TDisplayModel : class
-    where TModifyModel : class
+    where TDisplayModel : class, IMapable<TEntity>, new()
+    where TModifyModel : class, IMapable<TEntity>, new()
 {
     private readonly string serviceName = $"{nameof(TEntity)}_CategoryService";
     private readonly IUnitOfWork _unitOfWork;
     private readonly IBaseRepository<TEntity> _cateRepos;
     private readonly ISysHistoryLogService _sysHistoryLogService;
-    private readonly IMapper _mapper;
     private readonly ILogger<CategoryService<TEntity, TModifyModel, TModifyModel>> _logger;
 
     public CategoryService(
         IUnitOfWork unitOfWork,
         IBaseRepository<TEntity> cateRepos,
         ISysHistoryLogService sysHistoryLogService,
-        IMapper mapper,
         ILogger<CategoryService<TEntity, TModifyModel, TModifyModel>> logger)
     {
         _unitOfWork = unitOfWork;
         _cateRepos = cateRepos;
         _sysHistoryLogService = sysHistoryLogService;
-        _mapper = mapper;
         _logger = logger;
     }
+
+    private static TEntity ToEntity(TModifyModel request) =>
+        request.MapTo() ?? throw new InvalidOperationException($"Cannot map {typeof(TModifyModel).Name} to {typeof(TEntity).Name}");
 
     private static FilterQueryableModel<TEntity> BuildQueryToGetListData(FilterDownloadModel request, TEntity emptyModel)
     {
@@ -89,13 +89,19 @@ public class CategoryService<TEntity, TDisplayModel, TModifyModel> : ICategorySe
         var res = new ResponseModel<PaginationResponseModel<TDisplayModel>>(HttpStatusCode.OK, "", new PaginationResponseModel<TDisplayModel>());
         try
         {
-            var filterModel = _mapper.Map<FilterDownloadModel>(request);
+            var filterModel = new FilterDownloadModel();
+            ((IMapable<PaginationRequestModel>)filterModel).MapFrom(request);
             filterModel.IgnoreKeysForSearch = ignoreKeysForSearch;
             var queryable = BuildQueryToGetListData(filterModel, emptyModel);
 
             PaginationResponseModel<TEntity> items = await _cateRepos.GetListPaginationCustomSortAsync(
                 request.PageIndex, request.PageNumber, queryable.FilterQueryable, queryable.OrderQueryable, queryable.IncludeQueryable);
-            var itemInfo = _mapper.Map<List<TDisplayModel>>(items.Items.ToList());
+            var itemInfo = items.Items.Select(x =>
+            {
+                var m = new TDisplayModel();
+                m.MapFrom(x);
+                return m;
+            }).ToList();
 
             res.Data = new PaginationResponseModel<TDisplayModel>(items.TotalItems, itemInfo);
 
@@ -131,7 +137,9 @@ public class CategoryService<TEntity, TDisplayModel, TModifyModel> : ICategorySe
                 x => EF.Property<int>(x, keyString).Equals(idEntity),
                 null);
 
-            res.Data = _mapper.Map<TModifyModel>(item);
+            var itemData = item == null ? null : new TModifyModel();
+            itemData?.MapFrom(item);
+            res.Data = itemData;
         }
         catch (Exception ex)
         {
@@ -147,7 +155,7 @@ public class CategoryService<TEntity, TDisplayModel, TModifyModel> : ICategorySe
         var res = new ResponseModel<bool>(HttpStatusCode.OK, "", true);
         try
         {
-            var savedModel = _mapper.Map<TEntity>(request);
+            var savedModel = ToEntity(request);
 
             #region Validtion
             var isExistUniqueFields = await CheckUniqueFieldsExist(savedModel, uniqueFieldNames);
@@ -198,7 +206,7 @@ public class CategoryService<TEntity, TDisplayModel, TModifyModel> : ICategorySe
                 return res;
             }
 
-            var savedModel = _mapper.Map<TEntity>(request);
+            var savedModel = ToEntity(request);
             if (uniqueFieldNames.Any())
             {
                 var isExistUniqueFields = await CheckUniqueFieldsExist(savedModel, uniqueFieldNames, entity);

@@ -104,8 +104,8 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_KHOA))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_KHOA))" },
+                { data: "@nameof(modelDisplay.Ma_KHOA).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ten_KHOA).ToLowerInvariant()" },
                 {
                     render: function (data, type, row, meta) {
                         const editUrl = '@Url.Action(nameof(DMKhoaBVController.Edit), Uti.GetControllerName(nameof(DMKhoaBVController)))' + `?id=${row.kbvid}`;
@@ -237,7 +237,7 @@
                         return;
                     }
 
-                    window.location = '@Url.Action(nameof(DMKhoaBVController.Download), Uti.GetControllerName(nameof(DMKhoaBVController)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    window.location = '@Url.Action(nameof(DMKhoaBVController.Download), Uti.GetControllerName(nameof(DMKhoaBVController)))' + `?fileGuid=${response.data.fileguid}&fileName=${response.data.filename}`;
                     setTimeout(() => {
                         $("#spinnerWrapper").modal("hide");
                         $("#btnDownload").removeClass('disabled-custom');

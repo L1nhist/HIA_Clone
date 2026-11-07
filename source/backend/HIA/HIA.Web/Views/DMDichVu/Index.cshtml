@@ -114,21 +114,21 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_DICH_VU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_DICH_VU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_CSKCB))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_GIA))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Don_GIA))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Quyet_DINH))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MaNHOM_5937))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MaNHOM_9324))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tu_NGAY))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Den_NGAY))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ngay_DE_NGHI))" },
+                { data: "@nameof(modelDisplay.Ma_DICH_VU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ten_DICH_VU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ma_CSKCB).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ma_GIA).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Don_GIA).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Quyet_DINH).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.MaNHOM_5937).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.MaNHOM_9324).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Tu_NGAY).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Den_NGAY).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ngay_DE_NGHI).ToLowerInvariant()" },
                 {
                     render: function (data, type, row, meta) {
-                        const editUrl = '@Url.Action(nameof(DMDichVuController.Edit), Uti.GetControllerName(nameof(DMDichVuController)))' + `?id=${row.dichvuID}`;
-                        const delUrl = '@Url.Action(nameof(DMDichVuController.DeleteAction), Uti.GetControllerName(nameof(DMDichVuController)))' + `?id=${row.dichvuID}`;
+                        const editUrl = '@Url.Action(nameof(DMDichVuController.Edit), Uti.GetControllerName(nameof(DMDichVuController)))' + `?id=${row.dvid}`;
+                        const delUrl = '@Url.Action(nameof(DMDichVuController.DeleteAction), Uti.GetControllerName(nameof(DMDichVuController)))' + `?id=${row.dvid}`;
                         return `<a href="${editUrl}" class="edit-icon"><i class="icon-note"></i></a> <a href="${delUrl}" class="del-icon"><i class="icon-trash"></i></a>`;
                     }
                 },
@@ -253,7 +253,7 @@
                         return;
                     }
 
-                    window.location = '@Url.Action(nameof(DMDichVuController.Download), Uti.GetControllerName(nameof(DMDichVuController)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    window.location = '@Url.Action(nameof(DMDichVuController.Download), Uti.GetControllerName(nameof(DMDichVuController)))' + `?fileGuid=${response.data.fileguid}&fileName=${response.data.filename}`;
                     setTimeout(() => {
                         $("#spinnerWrapper").modal("hide");
                         $("#btnDownload").removeClass('disabled-custom');

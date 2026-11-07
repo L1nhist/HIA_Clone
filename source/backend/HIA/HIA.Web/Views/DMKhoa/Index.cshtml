@@ -109,12 +109,12 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.KhoaCode))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.KhoaName))" },
+                { data: "@nameof(modelDisplay.KhoaCode).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.KhoaName).ToLowerInvariant()" },
                 {
                     render: function (data, type, row, meta) {
-                        const editUrl = '@Url.Action(nameof(DMKhoaController.Edit), Uti.GetControllerName(nameof(DMKhoaController)))' + `?id=${row.khoaID}`;
-                        const delUrl = '@Url.Action(nameof(DMKhoaController.DeleteAction), Uti.GetControllerName(nameof(DMKhoaController)))' + `?id=${row.khoaID}`;
+                        const editUrl = '@Url.Action(nameof(DMKhoaController.Edit), Uti.GetControllerName(nameof(DMKhoaController)))' + `?id=${row.khoaid}`;
+                        const delUrl = '@Url.Action(nameof(DMKhoaController.DeleteAction), Uti.GetControllerName(nameof(DMKhoaController)))' + `?id=${row.khoaid}`;
                         return `<a href="${editUrl}" class="edit-icon"><i class="icon-note"></i></a> <a href="${delUrl}" class="del-icon"><i class="icon-trash"></i></a>`;
                     }
                 },
@@ -240,7 +240,7 @@
                         return;
                     }
 
-                    window.location = '@Url.Action(nameof(DMKhoaController.Download), Uti.GetControllerName(nameof(DMKhoaController)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    window.location = '@Url.Action(nameof(DMKhoaController.Download), Uti.GetControllerName(nameof(DMKhoaController)))' + `?fileGuid=${response.data.fileguid}&fileName=${response.data.filename}`;
                     setTimeout(() => {
                         $("#spinnerWrapper").modal("hide");
                         $("#btnDownload").removeClass('disabled-custom');

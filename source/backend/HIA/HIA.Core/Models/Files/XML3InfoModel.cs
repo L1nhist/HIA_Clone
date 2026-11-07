@@ -1,9 +1,11 @@
 using HIA.Core.Languages.DisplayField;
+using HIA.Data.Base;
+using HIA.Data.Records;
 using System.ComponentModel.DataAnnotations;
 
 namespace HIA.Core.Models.Files;
 
-public class XML3InfoModel
+public class XML3InfoModel : IMapable<XML03>
 {
     //Linhist changed 26/12/22
     //Thay doi het kieu DateTime thanh string de hien thi dung dinh dang
@@ -72,4 +74,68 @@ public class XML3InfoModel
     public string? Ngay_KQ { get; set; }
     [Display(Name = nameof(DisplayFieldResource.MA_PTTT), ResourceType = typeof(DisplayFieldResource))]
     public byte? MA_PTTT { get; set; }
+
+    // Map cap: XML03 <-> XML3InfoModel
+    public void MapFrom(XML03? item)
+    {
+        if (item == null) return;
+        Stt = item.STT;
+        MA_LK = item.MA_LK;
+        MA_DICH_VU = item.MA_DICH_VU;
+        MA_VAT_TU = item.MA_VAT_TU;
+        MA_NHOM = item.MA_NHOM;
+        Goi_VTYT = item.GOI_VTYT;
+        Ten_VAT_TU = item.TEN_VAT_TU;
+        Ten_DICH_VU = item.TEN_DICH_VU;
+        Don_VI_TINH = item.DON_VI_TINH;
+        Pham_VI = item.PHAM_VI;
+        SO_LUONG = item.SO_LUONG;
+        TT_THAU = item.TT_THAU;
+        T_TRANTT = item.T_TRANTT;
+        Muc_HUONG = (byte?)item.MUC_HUONG;
+        T_NGUONKHAC = item.T_NGUONKHAC;
+        T_BNTT = item.T_BNTT;
+        T_BHTT = item.T_BHTT;
+        T_BNCCT = item.T_BNCCT;
+        MA_KHOA = item.MA_KHOA;
+        MA_GIUONG = item.MA_GIUONG;
+        MA_BAC_SI = item.MA_BAC_SI;
+        MA_BENH = item.MA_BENH;
+        Ngay_YL = item.NGAY_YL?.ToString();
+        Ngay_KQ = item.NGAY_KQ?.ToString();
+        MA_PTTT = item.MA_PTTT;
+    }
+
+    // Map cap: XML03 <-> XML3InfoModel
+    public XML03? MapTo()
+    {
+        return new XML03
+        {
+            STT = Stt,
+            MA_LK = MA_LK,
+            MA_DICH_VU = MA_DICH_VU,
+            MA_VAT_TU = MA_VAT_TU,
+            MA_NHOM = MA_NHOM,
+            GOI_VTYT = Goi_VTYT,
+            TEN_VAT_TU = Ten_VAT_TU,
+            TEN_DICH_VU = Ten_DICH_VU,
+            DON_VI_TINH = Don_VI_TINH,
+            PHAM_VI = Pham_VI,
+            SO_LUONG = SO_LUONG,
+            TT_THAU = TT_THAU,
+            T_TRANTT = T_TRANTT,
+            MUC_HUONG = Muc_HUONG,
+            T_NGUONKHAC = T_NGUONKHAC,
+            T_BNTT = T_BNTT,
+            T_BHTT = T_BHTT,
+            T_BNCCT = T_BNCCT,
+            MA_KHOA = MA_KHOA,
+            MA_GIUONG = MA_GIUONG,
+            MA_BAC_SI = MA_BAC_SI,
+            MA_BENH = MA_BENH,
+            NGAY_YL = MapConvert.ToDate(Ngay_YL),
+            NGAY_KQ = MapConvert.ToDate(Ngay_KQ),
+            MA_PTTT = MA_PTTT,
+        };
+    }
 }

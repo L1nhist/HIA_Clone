@@ -4,7 +4,6 @@ using System.Net;
 using System.Security.Claims;
 using System.Text;
 
-using AutoMapper;
 using LinqKit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -43,8 +42,8 @@ namespace HIA.Services.Files;
 public class FilesService130 : IFilesService130
 {
     #region Constructions
-    private readonly IMapper _mapper;
     private readonly ILogger<FilesService130> _logger;
+    private const string UnexpectedErrorMessage = "Hệ thống gặp lỗi khi xử lý file, vui lòng thử lại hoặc liên hệ quản trị viên.";
     private readonly IUnitOfWork _unitOfWork;
     private readonly ISysHistoryLogService _sysHistoryLogService;
     private readonly IHttpContextAccessor _httpContext;
@@ -89,7 +88,6 @@ public class FilesService130 : IFilesService130
     private static T[] Rows<T>(T[]? items) => items ?? throw new InvalidDataException("Không có dữ liệu chi tiết");
 
     public FilesService130(
-        IMapper mapper,
         ILogger<FilesService130> logger,
         IUnitOfWork unitOfWork,
         ISysHistoryLogService sysHistoryLogService,
@@ -125,7 +123,6 @@ public class FilesService130 : IFilesService130
         IReportHandleService reportHandle
     )
     {
-        _mapper = mapper;
         _logger = logger;
         _unitOfWork = unitOfWork;
         _sysHistoryLogService = sysHistoryLogService;
@@ -362,7 +359,8 @@ public class FilesService130 : IFilesService130
                                 catch (Exception ex)
                                 {
                                     failed++;
-                                    failedMessage += $" &nbsp; + Hồ sơ thứ {iCnt} của file {Path.GetFileName(aformFile.FileName)} lỗi: {fileHoso.LOAIHOSO} không đọc được do sai định dạng XML <br/> {ex.ToString()}<br/> ";
+                                    Uti.HandleCronJobLog(_logger, $"Doc XML2 file {aformFile.FileName} loi: {ex}", nameof(FilesService130));
+                                    failedMessage += $" &nbsp; + Hồ sơ thứ {iCnt} của file {Path.GetFileName(aformFile.FileName)} lỗi: {fileHoso.LOAIHOSO} không đọc được do sai định dạng XML <br/> ";
                                     failedFiles.Add(aformFile.FileName);
                                     break;
                                 }
@@ -416,7 +414,8 @@ public class FilesService130 : IFilesService130
                                 catch (Exception ex)
                                 {
                                     failed++;
-                                    failedMessage += $" &nbsp; + Hồ sơ thứ {iCnt} của file {Path.GetFileName(aformFile.FileName)} lỗi: {fileHoso.LOAIHOSO} không đọc được do sai định dạng XML<br/> {ex.ToString()}<br/> ";
+                                    Uti.HandleCronJobLog(_logger, $"Doc XML4 file {aformFile.FileName} loi: {ex}", nameof(FilesService130));
+                                    failedMessage += $" &nbsp; + Hồ sơ thứ {iCnt} của file {Path.GetFileName(aformFile.FileName)} lỗi: {fileHoso.LOAIHOSO} không đọc được do sai định dạng XML<br/> ";
                                     failedFiles.Add(aformFile.FileName);
                                     break;
                                 }
@@ -732,7 +731,7 @@ public class FilesService130 : IFilesService130
             catch (Exception ex)
             {
                 failed++;
-                var s = ex.Message;
+                Uti.HandleCronJobLog(_logger, $"Doc file {aformFile.FileName} loi: {ex}", nameof(FilesService130));
                 failedMessage += $"Lỗi đọc file {Path.GetFileName(aformFile.FileName)}: Nội dung file rỗng hoặc không đúng định dạng.<br/> ";
                 failedFiles.Add(aformFile.FileName);
             }
@@ -942,7 +941,8 @@ public class FilesService130 : IFilesService130
 
         try
         {
-            var filterModel = _mapper.Map<FilterDownloadModel>(request);
+            var filterModel = new FilterDownloadModel();
+            ((IMapable<FilesPaginationRequest>)filterModel).MapFrom(request);
 
             var query = BuildQueryToGetListData(filterModel);
             var data = await _hosoRepository.GetListPaginationCustomSortAsync(request.PageIndex, request.PageNumber, query.FilterQueryable, query.OrderQueryable, query.IncludeQueryable);
@@ -1430,7 +1430,7 @@ public class FilesService130 : IFilesService130
         {
             res = Uti.HandleInternalServerError<IEnumerable<XML1ErrorInfoModel>>(
                 ex, new List<XML1ErrorInfoModel>(), _logger, $"{nameof(FilesService130)} - {nameof(GetXml1ErrorItemByFileName)}");
-            res.Message = ex.ToString();
+            res.Message = UnexpectedErrorMessage;
             Uti.HandleCronJobLog(_logger, $"CheckError.GetFiles Co loi  {ex.Message} ({fileNames.FirstOrDefault(f => !string.IsNullOrEmpty(f))}). CSKCB: {maCSKCB}", nameof(FilesService130));
         }
 
@@ -1594,8 +1594,8 @@ public class FilesService130 : IFilesService130
         {
             res = Uti.HandleInternalServerError<IEnumerable<XML1ErrorInfoModel>>(
                 ex, new List<XML1ErrorInfoModel>(), _logger, $"{nameof(FilesService130)} - {nameof(FilesService130.GetXml1ErrorItemsByFileName)}");
-            res.Message = ex.ToString();
-            Uti.HandleCronJobLog(_logger, $"CheckError.GetFiles Co loi  {ex.ToString()} ({fileNames.FirstOrDefault()}). CSKCB: {maCSKCB}", nameof(FilesService130));
+            res.Message = UnexpectedErrorMessage;
+            Uti.HandleCronJobLog(_logger, $"CheckError.GetFiles Co loi  {ex} ({fileNames.FirstOrDefault()}). CSKCB: {maCSKCB}", nameof(FilesService130));
 
         }
         return res;
@@ -1627,8 +1627,8 @@ public class FilesService130 : IFilesService130
         }
         catch (Exception ex)
         {
-            res.Message = ex.ToString();
-            Uti.HandleCronJobLog(_logger, $"GetErrors Co loi  {ex.Message} (ID: {xml01ID}).", nameof(GetXmlErrorItems));
+            res.Message = UnexpectedErrorMessage;
+            Uti.HandleCronJobLog(_logger, $"GetErrors Co loi  {ex} (ID: {xml01ID}).", nameof(GetXmlErrorItems));
         }
 
         return res;

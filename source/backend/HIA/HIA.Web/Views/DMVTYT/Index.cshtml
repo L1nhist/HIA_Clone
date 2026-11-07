@@ -125,33 +125,33 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_VAT_TU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Nhom_VAT_TU ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_VAT_TU ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_HIEU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Quy_CACH))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Don_VI_TINH))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Don_GIA))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Don_GIA_BH))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.So_LUONG))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Nuoc_SX))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Nha_SX))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Nha_THAU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Loai_THAU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tt_THAU ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ht_THAU ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Quyet_DINH))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Dinh_MUC))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tyle_TT_BH ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MaNHOM_9324))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.MaNHOM_5937))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tu_NGAY ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Den_NGAY ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ngay_DE_NGHI ))" },
+                { data: "@nameof(modelDisplay.Ma_VAT_TU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Nhom_VAT_TU ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ten_VAT_TU ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ma_HIEU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Quy_CACH).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Don_VI_TINH).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Don_GIA).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Don_GIA_BH).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.So_LUONG).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Nuoc_SX).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Nha_SX).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Nha_THAU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Loai_THAU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Tt_THAU ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ht_THAU ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Quyet_DINH).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Dinh_MUC).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Tyle_TT_BH ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.MaNHOM_9324).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.MaNHOM_5937).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Tu_NGAY ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Den_NGAY ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ngay_DE_NGHI ).ToLowerInvariant()" },
                 {
                     render: function (data, type, row, meta) {
-                        const editUrl = '@Url.Action(nameof(DMVTYTController.Edit), Uti.GetControllerName(nameof(DMVTYTController)))' + `?id=${row.vtytid}`;
-                        const delUrl = '@Url.Action(nameof(DMVTYTController.DeleteAction), Uti.GetControllerName(nameof(DMVTYTController)))' + `?id=${row.vtytid}`;
+                        const editUrl = '@Url.Action(nameof(DMVTYTController.Edit), Uti.GetControllerName(nameof(DMVTYTController)))' + `?id=${row.vtid}`;
+                        const delUrl = '@Url.Action(nameof(DMVTYTController.DeleteAction), Uti.GetControllerName(nameof(DMVTYTController)))' + `?id=${row.vtid}`;
                         return `<a href="${editUrl}" class="edit-icon"><i class="icon-note"></i></a> <a href="${delUrl}" class="del-icon"><i class="icon-trash"></i></a>`;
                     }
                 },
@@ -276,7 +276,7 @@
                         return;
                     }
 
-                    window.location = '@Url.Action(nameof(DMVTYTController.Download), Uti.GetControllerName(nameof(DMVTYTController)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    window.location = '@Url.Action(nameof(DMVTYTController.Download), Uti.GetControllerName(nameof(DMVTYTController)))' + `?fileGuid=${response.data.fileguid}&fileName=${response.data.filename}`;
                     setTimeout(() => {
                         $("#spinnerWrapper").modal("hide");
                         $("#btnDownload").removeClass('disabled-custom');

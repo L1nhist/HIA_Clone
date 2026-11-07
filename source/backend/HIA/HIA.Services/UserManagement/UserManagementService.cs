@@ -1,4 +1,3 @@
-using AutoMapper;
 using HIA.Core.Base;
 using HIA.Core.Languages.Message;
 using HIA.Core.Models.Base;
@@ -31,7 +30,6 @@ public class UserManagementService : IUserManagementService
     private readonly TokenHandler _tokenHandle;
     private readonly IEmailService _emailService;
     private readonly IHttpContextAccessor _httpContext;
-    private readonly IMapper _mapper;
     private readonly ILogger<UserManagementService> _logger;
     public UserManagementService(
         IUnitOfWork unitOfWork,
@@ -41,7 +39,6 @@ public class UserManagementService : IUserManagementService
         TokenHandler tokenHandle,
         IEmailService emailService,
         IHttpContextAccessor httpContext,
-        IMapper mapper,
         ILogger<UserManagementService> logger,
         IBaseRepository<Hospital> hospitalRepository
         )
@@ -53,7 +50,6 @@ public class UserManagementService : IUserManagementService
         _tokenHandle = tokenHandle;
         _emailService = emailService;
         _httpContext = httpContext;
-        _mapper = mapper;
         _logger = logger;
         _hospitalRepository = hospitalRepository;
     }
@@ -193,7 +189,8 @@ public class UserManagementService : IUserManagementService
                 y => y.Include(t => t.UserRoles).ThenInclude(t1 => t1.Role).Include(t2 => t2.Hospital))
                 ?? throw new InvalidOperationException($"User not found: {id}");
 
-            var itemData = _mapper.Map<ModifyUserModel>(item);
+            var itemData = new ModifyUserModel();
+            itemData.MapFrom(item);
             itemData.Password = Uti.PasswordDecrypt(itemData.Password);
             itemData.RoleId = string.Join(",", item.UserRoles.Select(x => x.RoleId).ToArray());
             itemData.RoleName = string.Join(",", item.UserRoles.Select(x => x.Role.Name).ToArray());
@@ -219,7 +216,7 @@ public class UserManagementService : IUserManagementService
         try
         {
             var currentRole = GetClaim(ClaimTypes.Role);
-            var validateRequestModel = _mapper.Map<ModifyUserModel>(request);
+            var validateRequestModel = request.ToModifyUserModel();
 
             #region Validtion
             res = ValidateModifyItem(validateRequestModel, currentRole, false);
@@ -233,8 +230,8 @@ public class UserManagementService : IUserManagementService
             request.Password = Uti.PasswordEncrypt(request.IsValidated ? "123456" : Uti.RandomGuidString());
             request.Email = request.Email.Trim();
             request.IsFirstTimeLogin = !request.IsValidated;
-            var savedModel = _mapper.Map<User>(request);
-            savedModel.Hospital = null; // after automapper, hospital is set empty model --> must set null
+            var savedModel = request.MapTo() ?? throw new InvalidOperationException("Cannot map NewUserModel to User");
+            savedModel.Hospital = null; // MapTo does not set Hospital; keep null as before
             savedModel.HospitalId = await UpdateHospitalIdWhenRoleAdmin(currentRole, savedModel.HospitalId);
 
             await _userRepository.InsertAsBaseEntityAsync(savedModel);

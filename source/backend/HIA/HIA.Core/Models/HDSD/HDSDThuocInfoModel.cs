@@ -1,9 +1,11 @@
 using HIA.Core.Languages.DisplayField;
+using HIA.Data.Base;
+using HIA.Data.Rules;
 using System.ComponentModel.DataAnnotations;
 
 namespace HIA.Core.Models.HDSD;
 
-public class HDSDThuocInfoModel
+public class HDSDThuocInfoModel : IMapable<HDSDThuoc>
 {
     public int Id { get; set; }
     [Display(Name = nameof(DisplayFieldResource.MA_THUOC), ResourceType = typeof(DisplayFieldResource))]
@@ -43,4 +45,54 @@ public class HDSDThuocInfoModel
     public string? Ma_CSKCB { get; set; }
     [Display(Name = nameof(DisplayFieldResource.Ten_BENH), ResourceType = typeof(DisplayFieldResource))]
     public string? Ten_BENH { get; set; }
+
+    // Map cap: HDSDThuoc <-> HDSDThuocInfoModel
+    public void MapFrom(HDSDThuoc? item)
+    {
+        if (item == null) return;
+        Id = item.HDSDThuocID;
+        Ma_THUOC = item.MA_THUOC;
+        Ten_THUOC = item.TEN_THUOC;
+        Duong_DUNG = item.DUONG_DUNG;
+        Chi_DINH = item.CHI_DINH;
+        Do_TUOI = item.TUOI;
+        Co_THAI = item.CO_THAI;
+        Cho_CON_BU = item.CHO_CON_BU;
+        Ma_BENH = item.MA_BENH;
+        Thuoc_KHAC = item.THUOC_KHAC;
+        Dich_VU = item.DICH_VU;
+        Tien_SU_BENH = item.TIEN_SU_BENH;
+        Tyle_TT = item.TYLE_TT;
+        Tre_SO_SINH = item.TRE_SO_SINH;
+        Thoi_GIAN_TOI_THIEU = item.THOI_GIAN_TOI_THIEU;
+        Hieu_LUC = item.HIEU_LUC;
+        Ma_CSKCB = item.MA_CSKCB;
+        Ten_BENH = item.TEN_BENH;
+    }
+
+    // Map cap: HDSDThuoc <-> HDSDThuocInfoModel
+    public HDSDThuoc? MapTo()
+    {
+        return new HDSDThuoc
+        {
+            HDSDThuocID = Id,
+            MA_THUOC = Ma_THUOC,
+            TEN_THUOC = Ten_THUOC,
+            DUONG_DUNG = Duong_DUNG,
+            CHI_DINH = Chi_DINH,
+            TUOI = Do_TUOI,
+            CO_THAI = Co_THAI,
+            CHO_CON_BU = Cho_CON_BU,
+            MA_BENH = Ma_BENH,
+            TEN_BENH = Ten_BENH,
+            THUOC_KHAC = Thuoc_KHAC,
+            DICH_VU = Dich_VU,
+            TIEN_SU_BENH = Tien_SU_BENH,
+            TYLE_TT = Tyle_TT,
+            TRE_SO_SINH = Tre_SO_SINH,
+            THOI_GIAN_TOI_THIEU = Thoi_GIAN_TOI_THIEU,
+            HIEU_LUC = Hieu_LUC,
+            MA_CSKCB = Ma_CSKCB,
+        };
+    }
 }

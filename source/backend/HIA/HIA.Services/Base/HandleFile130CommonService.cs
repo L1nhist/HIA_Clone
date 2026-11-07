@@ -99,6 +99,8 @@ public class HandleFile130CommonService
             int colNhom9 = -1;
             int colNhom5 = -1;
             int colHamLuong = -1;
+            // Cot Excel co cot dich la DateTime: o ngay goc doi thanh ExcelDate.Format de ToEntities parse lai.
+            var dateCols = new HashSet<int>();
 
             string[][] flds = FieldMappings[typeof(T)];
             for (int j = 0; j < cellCount; j++)
@@ -117,6 +119,7 @@ public class HandleFile130CommonService
                 {
                     dtTable.Columns.Add(capt);
                 }
+                if (IsDateTarget<T>(capt)) dateCols.Add(j);
 
                 if (Uti.IsEqual(header.Trim(), "MANHOM_9324", ignoreCase: true))
                 {
@@ -148,7 +151,7 @@ public class HandleFile130CommonService
                     }
                     else if (row.GetCell(j) != null)
                     {
-                        var cellValue = row.GetCell(j).ToString()?.Trim();
+                        var cellValue = CellText(row.GetCell(j), dateCols.Contains(j))?.Trim();
                         if (cellValue != null && double.TryParse(cellValue, out _))
                             cellValue = cellValue.Replace(',', '.');
 
@@ -201,7 +204,7 @@ public class HandleFile130CommonService
             row = excelSheet.CreateRow(rowIndex);
             for (int cellIndex = 0; cellIndex < props.Count; cellIndex++)
             {
-                row.CreateCell(cellIndex).SetCellValue(props[cellIndex].GetValue(item)?.ToString() ?? string.Empty);
+                row.CreateCell(cellIndex).SetCellValue(ExportText(props[cellIndex].GetValue(item)));
             }
 
             rowIndex++;
@@ -241,6 +244,13 @@ public class HandleFile130CommonService
                 }
 
                 if (text.Length == 0) continue;
+                if (type == typeof(DateTime))
+                {
+                    if (!ExcelDate.TryParse(text, out var date))
+                        throw new FormatException($"Ngay khong hop le o cot {prop.Name}: '{text}'.");
+                    prop.SetValue(item, date);
+                    continue;
+                }
                 prop.SetValue(item, Convert.ChangeType(text, type, CultureInfo.InvariantCulture));
             }
             result.Add(item);
@@ -248,4 +258,41 @@ public class HandleFile130CommonService
 
         return result;
     }
+
+    // Cot dich la DateTime (co the Nullable) -> true. Khop ten cot theo cach ToEntities khop thuoc tinh.
+    private static bool IsDateTarget<T>(string column)
+    {
+        var prop = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance)
+            .FirstOrDefault(p => p.CanWrite && p.GetIndexParameters().Length == 0
+                && string.Equals(p.Name, column, StringComparison.OrdinalIgnoreCase));
+        return prop != null && (Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType) == typeof(DateTime);
+    }
+
+    // Ngay Excel khi chi co gio: NPOI tra 30/12/1899 + gio (serial < 1).
+    private static readonly DateTime ExcelTimeOnlyDate = new(1899, 12, 30);
+
+    // O ngay goc cua Excel (so co dinh dang ngay):
+    //  - cot dich DateTime -> ExcelDate.Format (ToEntities parse lai);
+    //  - cot dich chuoi, chi co gio -> "HH:mm:ss" (khong sinh ngay gia);
+    //  - cot dich chuoi, ngay-gio hoac chi ngay -> ExcelDate.Format.
+    // Cac o khac giu ToString().
+    private static string? CellText(ICell? cell, bool toDate)
+    {
+        if (cell == null) return null;
+        if (cell.CellType == CellType.Numeric && DateUtil.IsCellDateFormatted(cell) && cell.DateCellValue is DateTime date)
+        {
+            if (!toDate && date.Date == ExcelTimeOnlyDate)
+                return date.ToString("HH:mm:ss", CultureInfo.InvariantCulture);
+            return ExcelDate.Format(date);
+        }
+        return cell.ToString();
+    }
+
+    // Gia tri xuat ra o text: DateTime theo ExcelDate.OutputFormat (invariant), con lai ToString() nhu cu.
+    private static string ExportText(object? value) => value switch
+    {
+        null => string.Empty,
+        DateTime date => ExcelDate.Format(date),
+        _ => value.ToString() ?? string.Empty,
+    };
 }

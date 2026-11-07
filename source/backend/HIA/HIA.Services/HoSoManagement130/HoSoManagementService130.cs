@@ -1,4 +1,3 @@
-using AutoMapper;
 using HIA.Core.Base;
 using HIA.Core.Models.Base;
 using HIA.Core.Models.Token;
@@ -39,7 +38,6 @@ public class HoSoManagementService130 : IHoSoManagementService130
     #region Constructions
     //Linhist changed 02/03/26
     private List<string> lstMA_CSKCB_DANGTT = new List<string>();
-    private readonly IMapper _mapper;
     private readonly ILogger<HoSoManagementService130> _logger;
     private readonly IUnitOfWork _unitOfWork;
     private readonly AppSettings _appSettings;
@@ -82,7 +80,6 @@ public class HoSoManagementService130 : IHoSoManagementService130
 
     public HoSoManagementService130(
 
-        IMapper mapper,
         ILogger<HoSoManagementService130> logger,
         IUnitOfWork unitOfWork,
         IOptions<AppSettings> appSettings,
@@ -124,7 +121,6 @@ public class HoSoManagementService130 : IHoSoManagementService130
 
     )
     {
-        _mapper = mapper;
         _logger = logger;
         _unitOfWork = unitOfWork;
         _appSettings = appSettings.Value;

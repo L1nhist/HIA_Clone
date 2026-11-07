@@ -96,13 +96,13 @@
                         @if (isAdmin == true)
                         {
                             <text>
-                                if (row.ma_CSKCB != '@curCSKCB') return '';
+                                if (row.ma_cskcb != '@curCSKCB') return '';
                             </text>
                         }
-                        var actSts = row.hieu_LUC ? 'pause' : 'play';
-                        var actTit = row.hieu_LUC ? 'Hủy bỏ hiệu lực của HDSD Thuốc' : 'Kích hoạt hiệu lực cho HDSD Thuốc';
+                        var actSts = row.hieu_luc ? 'pause' : 'play';
+                        var actTit = row.hieu_luc ? 'Hủy bỏ hiệu lực của HDSD Thuốc' : 'Kích hoạt hiệu lực cho HDSD Thuốc';
                         return `<a href="@Url.Action(nameof(HDSDThuocController.Edit), Uti.GetControllerName(nameof(HDSDThuocController)))?id=${row.id}" class="edit-icon" title="Chỉnh sửa nội dung HDSD Thuốc"><i class="icon-note"></i></a>` + ' &nbsp; ' +
-                            `<a href="@Url.Action(nameof(HDSDThuocController.Activate), Uti.GetControllerName(nameof(HDSDThuocController)))?id=${row.id}&sts=${!row.hieu_LUC}" class="del-icon" title="${actTit}"><i class="icon-control-${actSts}"></i></a>`;
+                            `<a href="@Url.Action(nameof(HDSDThuocController.Activate), Uti.GetControllerName(nameof(HDSDThuocController)))?id=${row.id}&sts=${!row.hieu_luc}" class="del-icon" title="${actTit}"><i class="icon-control-${actSts}"></i></a>`;
                     },
                     className: "w-50"
                 },
@@ -112,46 +112,46 @@
                     },
                     className: "w-50"
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_THUOC))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_THUOC))", className: "w-200" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Duong_DUNG))", className: "w-50" },
+                { data: "@nameof(modelDisplay.Ma_THUOC).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ten_THUOC).ToLowerInvariant()", className: "w-200" },
+                { data: "@nameof(modelDisplay.Duong_DUNG).ToLowerInvariant()", className: "w-50" },
                 {
-                    data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Chi_DINH))",
+                    data: "@nameof(modelDisplay.Chi_DINH).ToLowerInvariant()",
                     render: function(data, type, row, meta) {
                         return data ? '&#10004;' : '&#10006;';
                     },
                     className: "w-50"
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Do_TUOI))", className: "w-50" },
+                { data: "@nameof(modelDisplay.Do_TUOI).ToLowerInvariant()", className: "w-50" },
                 {
-                    data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Co_THAI))",
+                    data: "@nameof(modelDisplay.Co_THAI).ToLowerInvariant()",
                     render: function(data, type, row, meta) {
                         return data ? '&#10004;' : '';
                     },
                     className: "w-50"
                 },
                 {
-                    data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Cho_CON_BU))",
+                    data: "@nameof(modelDisplay.Cho_CON_BU).ToLowerInvariant()",
                     render: function(data, type, row, meta) {
                         return data ? '&#10004;' : '';
                     },
                     className: "w-50"
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_BENH))", className: "w-650" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_BENH))", className: "w-200" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Thuoc_KHAC))", className: "w-350" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Dich_VU))", className: "w-350" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tien_SU_BENH))", className: "w-350" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tyle_TT))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tre_SO_SINH))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Thoi_GIAN_TOI_THIEU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Noi_DUNG_LOI))", className: "w-650" },
+                { data: "@nameof(modelDisplay.Ma_BENH).ToLowerInvariant()", className: "w-650" },
+                { data: "@nameof(modelDisplay.Ten_BENH).ToLowerInvariant()", className: "w-200" },
+                { data: "@nameof(modelDisplay.Thuoc_KHAC).ToLowerInvariant()", className: "w-350" },
+                { data: "@nameof(modelDisplay.Dich_VU).ToLowerInvariant()", className: "w-350" },
+                { data: "@nameof(modelDisplay.Tien_SU_BENH).ToLowerInvariant()", className: "w-350" },
+                { data: "@nameof(modelDisplay.Tyle_TT).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Tre_SO_SINH).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Thoi_GIAN_TOI_THIEU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Noi_DUNG_LOI).ToLowerInvariant()", className: "w-650" },
                 {
-                    data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Hieu_LUC))",
-                    name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Hieu_LUC))",
+                    data: "@nameof(modelDisplay.Hieu_LUC).ToLowerInvariant()",
+                    name: "@nameof(modelDisplay.Hieu_LUC).ToLowerInvariant()",
                     autoWidth: true,
                     render: function (data, type, row, meta) {
-                        const isActived = "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Hieu_LUC))";
+                        const isActived = "@nameof(modelDisplay.Hieu_LUC).ToLowerInvariant()";
                         return row[isActived]
                             ? `<span class="status-active">@DisplayFieldResource.ACTIVE</span>`
                             : `<span class="status-inactive">@DisplayFieldResource.INACTIVE</span>`;
@@ -160,9 +160,9 @@
                 },
             ],
             createdRow: function (row, data, dataIndex) {
-                if (data.hieu_LUC)
+                if (data.hieu_luc)
                 {
-                    var bgColor = data.chi_DINH ? "LimeGreen" : "OrangeRed";
+                    var bgColor = data.chi_dinh ? "LimeGreen" : "OrangeRed";
                     $(row).css("color", bgColor);
                 }
             },

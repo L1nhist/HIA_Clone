@@ -72,10 +72,10 @@
 
         function setResultState(sts) {
             var prgss = $('#uplProgress'), pgrbar = $('.progress-bar', prgss);
-            $(".summary-wrapper .status").html(sts ? sts.uploadStatus : '');
-            $(".summary-wrapper .time").html(sts ? sts.uploadTime : '');
-            $(".success-wrapper").html(sts ? sts.successMessage : '');
-            $(".error-wrapper").html(sts ? sts.failedMessage : '');
+            $(".summary-wrapper .status").html(sts ? sts.uploadstatus : '');
+            $(".summary-wrapper .time").html(sts ? sts.uploadtime : '');
+            $(".success-wrapper").html(sts ? sts.successmessage : '');
+            $(".error-wrapper").html(sts ? sts.failedmessage : '');
 
             if (sts) {
                 fileInp.removeAttr('disabled');

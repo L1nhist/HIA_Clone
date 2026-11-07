@@ -1,9 +1,11 @@
+using HIA.Data.Base;
+using HIA.Data.Catalogs;
 using HIA.Core.Languages.DisplayField;
 using System.ComponentModel.DataAnnotations;
 
 namespace HIA.Core.Models.Categories;
 
-public class DMThietBiModifyModel
+public class DMThietBiModifyModel : IMapable<DMThietBi>
 {
     public int TBID { get; set; }
 
@@ -45,4 +47,45 @@ public class DMThietBiModifyModel
 
     [Display(Name = nameof(DisplayFieldResource.DENNGAY), ResourceType = typeof(DisplayFieldResource))]
     public string? DEN_NGAY { get; set; }
+
+    // Map cap: DMThietBi <-> DMThietBiModifyModel
+    public void MapFrom(DMThietBi? item)
+    {
+        if (item == null) return;
+        TBID = item.TBID;
+        MA_CSKCB = item.MA_CSKCB;
+        MA_MAY = item.MA_MAY;
+        KY_HIEU = item.KY_HIEU;
+        TEN_THIET_BI = item.TEN_THIET_BI;
+        CONGTY_SX = item.CONGTY_SX;
+        NUOC_SX = item.NUOC_SX;
+        NAM_SX = item.NAM_SX;
+        NAM_SD = item.NAM_SD;
+        SO_LUU_HANH = item.SO_LUU_HANH;
+        HD_TU = item.HD_TU;
+        HD_DEN = item.HD_DEN;
+        TU_NGAY = item.TU_NGAY;
+        DEN_NGAY = item.DEN_NGAY;
+    }
+
+    public DMThietBi? MapTo()
+    {
+        return new DMThietBi
+        {
+            TBID = TBID,
+            MA_CSKCB = MA_CSKCB,
+            MA_MAY = MA_MAY,
+            KY_HIEU = KY_HIEU,
+            TEN_THIET_BI = TEN_THIET_BI,
+            CONGTY_SX = CONGTY_SX,
+            NUOC_SX = NUOC_SX,
+            NAM_SX = NAM_SX,
+            NAM_SD = NAM_SD,
+            SO_LUU_HANH = SO_LUU_HANH,
+            HD_TU = HD_TU,
+            HD_DEN = HD_DEN,
+            TU_NGAY = TU_NGAY,
+            DEN_NGAY = DEN_NGAY
+        };
+    }
 }

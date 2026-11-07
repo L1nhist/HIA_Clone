@@ -125,41 +125,41 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_BHXH ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ho_TEN ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Gioi_TINH))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_KHOA ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_KHOA))" },
+                { data: "@nameof(modelDisplay.Ma_BHXH ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ho_TEN ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Gioi_TINH).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ma_KHOA ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ten_KHOA).ToLowerInvariant()" },
                 {
                     render: function (data, type, row, meta) {
-                        return (row.chuc_DANH_NN || '') + ((row.chuc_DANH || '').trimStart().trimEnd() != '' ? ' (' + row.chuc_DANH + ')' : '');
+                        return (row.chuc_danh_nn || '') + ((row.chuc_danh || '').trimStart().trimEnd() != '' ? ' (' + row.chuc_danh + ')' : '');
                     }
                 },
                 {
                     render: function (data, type, row, meta) {
-                        return (row.ma_VI_TRI || '') + ((row.vi_TRI || '').trimStart().trimEnd() != '' ? ' (' + row.vi_TRI + ')' : '');
+                        return (row.ma_vi_tri || '') + ((row.vi_tri || '').trimStart().trimEnd() != '' ? ' (' + row.vi_tri + ')' : '');
                     }
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_CCHN))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ngaycap_CCHN))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Noicap_CCHN))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Phamvi_CM ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Phamvi_CMBS ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Dvkt_KHAC ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Vb_PHANCONG ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tg_DANGKY))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tg_NGAY))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tg_TUAN))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Cskcb_KHAC ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Cskcb_CGKT))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Qd_CGKT ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tu_NGAY ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Den_NGAY))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_CSKCB))" },
+                { data: "@nameof(modelDisplay.Ma_CCHN).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ngaycap_CCHN).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Noicap_CCHN).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Phamvi_CM ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Phamvi_CMBS ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Dvkt_KHAC ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Vb_PHANCONG ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Tg_DANGKY).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Tg_NGAY).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Tg_TUAN).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Cskcb_KHAC ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Cskcb_CGKT).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Qd_CGKT ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Tu_NGAY ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Den_NGAY).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ma_CSKCB).ToLowerInvariant()" },
                 {
                     render: function (data, type, row, meta) {
-                        const editUrl = '@Url.Action(nameof(DMBacSiController.Edit), Uti.GetControllerName(nameof(DMBacSiController)))' + `?id=${row.bacSiID}`;
-                        const delUrl = '@Url.Action(nameof(DMBacSiController.DeleteAction), Uti.GetControllerName(nameof(DMBacSiController)))' + `?id=${row.bacSiID}`;
+                        const editUrl = '@Url.Action(nameof(DMBacSiController.Edit), Uti.GetControllerName(nameof(DMBacSiController)))' + `?id=${row.bsid}`;
+                        const delUrl = '@Url.Action(nameof(DMBacSiController.DeleteAction), Uti.GetControllerName(nameof(DMBacSiController)))' + `?id=${row.bsid}`;
                         return `<a href="${editUrl}" class="edit-icon"><i class="icon-note"></i></a> <a href="${delUrl}" class="del-icon"><i class="icon-trash"></i></a>`;
                     }
                 },
@@ -284,7 +284,7 @@
                         return;
                     }
 
-                    window.location = '@Url.Action(nameof(DMBacSiController.Download), Uti.GetControllerName(nameof(DMBacSiController)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    window.location = '@Url.Action(nameof(DMBacSiController.Download), Uti.GetControllerName(nameof(DMBacSiController)))' + `?fileGuid=${response.data.fileguid}&fileName=${response.data.filename}`;
                     setTimeout(() => {
                         $("#spinnerWrapper").modal("hide");
                         $("#btnDownload").removeClass('disabled-custom');

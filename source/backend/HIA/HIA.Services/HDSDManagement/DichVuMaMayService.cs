@@ -1,4 +1,3 @@
-using AutoMapper;
 using HIA.Core.Base;
 using HIA.Core.Languages.DisplayField;
 using HIA.Core.Languages.Message;
@@ -25,21 +24,18 @@ public class DichVuMaMayService : IDichVuMaMayService
     private readonly IBaseRepository<DichVuMaMay> _dvmmRepos;
     private readonly ISysHistoryLogService _sysHistoryLogService;
     private readonly IHttpContextAccessor _httpContext;
-    private readonly IMapper _mapper;
     private readonly ILogger<DichVuMaMayService> _logger;
 
     public DichVuMaMayService(
         IBaseRepository<DichVuMaMay> dvmmRepos,
         ISysHistoryLogService sysHistoryLogService,
         IHttpContextAccessor httpContext,
-        IMapper mapper,
         ILogger<DichVuMaMayService> logger
         )
     {
         _dvmmRepos = dvmmRepos;
         _sysHistoryLogService = sysHistoryLogService;
         _httpContext = httpContext;
-        _mapper = mapper;
         _logger = logger;
     }
 
@@ -57,7 +53,9 @@ public class DichVuMaMayService : IDichVuMaMayService
         {
             var item = await _dvmmRepos.GetItem(x => x.DVMMID == id, null);
 
-            res.Data = _mapper.Map<DichVuMaMayModifyModel>(item);
+            var itemData = item == null ? null : new DichVuMaMayModifyModel();
+            itemData?.MapFrom(item);
+            res.Data = itemData;
 
             // write log to db
             await _sysHistoryLogService.AddSysLog("Get One DichVuMaMay");
@@ -99,7 +97,12 @@ public class DichVuMaMayService : IDichVuMaMayService
 
             PaginationResponseModel<DichVuMaMay> items = await _dvmmRepos.GetListPaginationCustomSortAsync(request.PageIndex, request.PageNumber, filter, order, null);
 
-            data.Items = _mapper.Map<List<DichVuMaMayInfoModel>>(items.Items.ToList());
+            data.Items = items.Items.Select(x =>
+            {
+                var m = new DichVuMaMayInfoModel();
+                m.MapFrom(x);
+                return m;
+            }).ToList();
             data.TotalItems = items.TotalItems;
 
             // write log to db
@@ -136,7 +139,7 @@ public class DichVuMaMayService : IDichVuMaMayService
                 return res;
             }
 
-            var savedModel = _mapper.Map<DichVuMaMay>(request);
+            var savedModel = request.MapTo() ?? throw new InvalidOperationException("Cannot map DichVuMaMayModifyModel to DichVuMaMay");
             savedModel.MA_MAY = string.IsNullOrEmpty(savedModel.MA_MAY?.Trim()) ? string.Empty : savedModel.MA_MAY;
             if (await CheckUniqueFieldsExist(savedModel))
             {
@@ -172,7 +175,7 @@ public class DichVuMaMayService : IDichVuMaMayService
                 return res;
             }
 
-            var savedModel = _mapper.Map<DichVuMaMay>(request);
+            var savedModel = request.MapTo() ?? throw new InvalidOperationException("Cannot map DichVuMaMayModifyModel to DichVuMaMay");
             savedModel.MA_MAY = string.IsNullOrEmpty(savedModel.MA_MAY?.Trim()) ? string.Empty : savedModel.MA_MAY;
             _dvmmRepos.Update(savedModel);
             await _dvmmRepos.SaveChangesAsync();

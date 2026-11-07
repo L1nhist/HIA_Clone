@@ -1,4 +1,3 @@
-using AutoMapper;
 using HIA.Core.Base;
 using HIA.Core.Languages.Message;
 using HIA.Core.Models.Base;
@@ -28,7 +27,6 @@ public class HospitalService : IHospitalService
     private readonly IXml01Repository _xml1Repository;
     private readonly ISysHistoryLogService _sysHistoryLogService;
     private readonly IHttpContextAccessor _httpContext;
-    private readonly IMapper _mapper;
     private readonly ILogger<HospitalService> _logger;
 
     public HospitalService(
@@ -37,7 +35,6 @@ public class HospitalService : IHospitalService
         IXml01Repository xml1Repository,
         ISysHistoryLogService sysHistoryLogService,
         IHttpContextAccessor httpContext,
-        IMapper mapper,
         ILogger<HospitalService> logger
     )
     {
@@ -46,7 +43,6 @@ public class HospitalService : IHospitalService
         _xml1Repository = xml1Repository;
         _sysHistoryLogService = sysHistoryLogService;
         _httpContext = httpContext;
-        _mapper = mapper;
         _logger = logger;
     }
 
@@ -292,7 +288,8 @@ public class HospitalService : IHospitalService
                 y => y.Include(t => t.SuperHospital))
                 ?? throw new InvalidOperationException($"Hospital not found: {currentMaCSKCB}");
 
-            var itemData = _mapper.Map<ModifyHospitalModel>(item);
+            var itemData = new ModifyHospitalModel();
+            itemData.MapFrom(item);
             itemData.SuperHospitalId = item.SuperHospital?.MA_CSKCB;
             res.Data = itemData;
         }
@@ -325,7 +322,8 @@ public class HospitalService : IHospitalService
                 y => y.Include(t => t.SuperHospital))
                 ?? throw new InvalidOperationException($"Hospital not found: {id}");
 
-            var itemData = _mapper.Map<ModifyHospitalModel>(item);
+            var itemData = new ModifyHospitalModel();
+            itemData.MapFrom(item);
             itemData.SuperHospitalId = item.SuperHospital?.MA_CSKCB;
             res.Data = itemData;
         }
@@ -354,7 +352,7 @@ public class HospitalService : IHospitalService
             #endregion
 
             request.Name = request.Name.Trim();
-            var savedModel = _mapper.Map<Hospital>(request);
+            var savedModel = request.MapTo() ?? throw new InvalidOperationException("Cannot map ModifyHospitalModel to Hospital");
 
             await _hospitalRepository.InsertAsBaseEntityAsync(savedModel);
 

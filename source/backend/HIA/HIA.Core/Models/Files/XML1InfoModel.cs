@@ -1,9 +1,11 @@
 using HIA.Core.Languages.DisplayField;
+using HIA.Data.Base;
+using HIA.Data.Records;
 using System.ComponentModel.DataAnnotations;
 
 namespace HIA.Core.Models.Files;
 
-public class XML1InfoModel
+public class XML1InfoModel : IMapable<XML01>
 {
     //Linhist changed 26/12/22
     //Thay doi het kieu DateTime thanh string de hien thi dung dinh dang
@@ -125,4 +127,92 @@ public class XML1InfoModel
     public string? CreateDate { get; set; }
 
     public List<XML1ErrorInfoModel> XML1Errors { get; set; } = new();
+
+    // Map cap: XML01 <-> XML1InfoModel
+    public void MapFrom(XML01? item)
+    {
+        if (item == null) return;
+        XML1ID = (int)item.XML01ID;
+        Stt = item.STT;
+        HospitalId = item.HospitalID;
+        MA_KHOA = item.MA_KHOA;
+        HO_TEN = item.HO_TEN;
+        Can_NANG = item.CAN_NANG;
+        Dia_CHI = item.DIA_CHI;
+        Gioi_TINH = item.GIOI_TINH;
+        Ngay_SINH = item.NGAY_SINH?.ToString();
+        GT_THE_TU = item.GT_THE_TU;
+        GT_THE_DEN = item.GT_THE_DEN;
+        Ket_QUA_DTRI = item.KET_QUA_DTRI;
+        MA_BN = item.MA_BN;
+        MA_CSKCB = item.MA_CSKCB;
+        MA_DKBD = item.MA_DKBD;
+        MA_KHUVUC = item.MA_KHUVUC;
+        MA_LK = item.MA_LK;
+        MA_LOAI_KCB = MapConvert.ToByte(item.MA_LOAI_KCB);
+        MA_PTTT_QT = item.MA_PTTT_QT;
+        MA_TAI_NAN = item.MA_TAI_NAN;
+        Nam_QT = item.NAM_QT;
+        Ngay_VAO = item.NGAY_VAO?.ToString();
+        Ngay_RA = item.NGAY_RA?.ToString();
+        SO_NGAY_DTRI = item.SO_NGAY_DTRI;
+        Ngay_TTOAN = item.NGAY_TTOAN?.ToString();
+        Thang_QT = item.THANG_QT;
+        T_BHTT = item.T_BHTT;
+        T_BNCCT = item.T_BNCCT;
+        T_BNTT = item.T_BNTT;
+        T_VTYT = item.T_VTYT;
+        T_THUOC = item.T_THUOC;
+        T_NGUONKHAC = item.T_NGUONKHAC;
+        FileName = item.FileName;
+        NgayLAP = item.NGAY_LAP?.ToString();
+        MA_NOI_DI = item.MA_NOI_DI;
+        MA_NOI_DEN = item.MA_NOI_DEN;
+        CreateDate = item.CreateDate?.ToString();
+    }
+
+    // Map cap: XML01 <-> XML1InfoModel
+    public XML01? MapTo()
+    {
+        return new XML01
+        {
+            XML01ID = XML1ID,
+            STT = Stt,
+            HospitalID = HospitalId,
+            MA_KHOA = MA_KHOA,
+            HO_TEN = HO_TEN,
+            CAN_NANG = Can_NANG,
+            DIA_CHI = Dia_CHI,
+            GIOI_TINH = Gioi_TINH,
+            NGAY_SINH = MapConvert.ToDate(Ngay_SINH),
+            GT_THE_TU = GT_THE_TU,
+            GT_THE_DEN = GT_THE_DEN,
+            KET_QUA_DTRI = Ket_QUA_DTRI,
+            MA_BN = MA_BN,
+            MA_CSKCB = MA_CSKCB ?? string.Empty,
+            MA_DKBD = MA_DKBD,
+            MA_KHUVUC = MA_KHUVUC,
+            MA_LK = MA_LK,
+            MA_LOAI_KCB = MA_LOAI_KCB?.ToString(),
+            MA_PTTT_QT = MA_PTTT_QT,
+            MA_TAI_NAN = MA_TAI_NAN,
+            NAM_QT = Nam_QT,
+            NGAY_VAO = MapConvert.ToDate(Ngay_VAO),
+            NGAY_RA = MapConvert.ToDate(Ngay_RA),
+            SO_NGAY_DTRI = SO_NGAY_DTRI,
+            NGAY_TTOAN = MapConvert.ToDate(Ngay_TTOAN),
+            THANG_QT = Thang_QT,
+            T_BHTT = T_BHTT,
+            T_BNCCT = T_BNCCT,
+            T_BNTT = T_BNTT,
+            T_VTYT = T_VTYT,
+            T_THUOC = T_THUOC,
+            T_NGUONKHAC = T_NGUONKHAC,
+            FileName = FileName,
+            NGAY_LAP = MapConvert.ToDate(NgayLAP),
+            MA_NOI_DI = MA_NOI_DI,
+            MA_NOI_DEN = MA_NOI_DEN,
+            CreateDate = MapConvert.ToDate(CreateDate),
+        };
+    }
 }

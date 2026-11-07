@@ -57,7 +57,7 @@ public partial class ReportHandleService
             }
             cell.CellStyle = style;
 
-            string val = $"{values[i]}";
+            string val = values[i] is DateTime date ? ExcelDate.Format(date) : $"{values[i]}";
             if (val.StartsWith("$="))
             {
                 cell.SetCellFormula(val[2..]);
@@ -335,8 +335,10 @@ public partial class ReportHandleService
         return result;
     }
 
+    // Moi ngay trong bao cao (ca ngay sinh) cung dinh dang ExcelDate.OutputFormat; null -> chuoi rong.
+    // Tham so noTime giu de tuong thich cac cho goi, khong con tac dung.
     private static string GetNgayThang(DateTime? ngayThang, bool noTime = false)
-        => noTime ? $"{ngayThang:dd/MM/yyyy}" : $"{ngayThang:dd/MM/yyyy HH:mm:ss}";
+        => ngayThang == null ? string.Empty : ExcelDate.Format(ngayThang.Value);
 
     private static string GetType_BacSi(string? CHUCDANH_NN)
         => int.TryParse(CHUCDANH_NN, out int idx) && idx > 0 && idx < ServiceConstants.ALL_CHUC_DANH.Length ? ServiceConstants.ALL_CHUC_DANH[idx - 1] : "";

@@ -1,6 +1,9 @@
+using HIA.Core.Models.Files;
+using HIA.Core.Models.Pagination;
+using HIA.Data.Base;
 namespace HIA.Core.Models.Categories;
 
-public class FilterDownloadModel
+public class FilterDownloadModel : IMapable<PaginationRequestModel>, IMapable<FilesPaginationRequest>
 {
     public string? HospitalId { get; set; }
 
@@ -34,4 +37,76 @@ public class FilterDownloadModel
     public int? ToMin { get; set; }
 
     public string? TypeKCB { get; set; }
+
+    // Map cap: PaginationRequestModel <-> FilterDownloadModel
+    void IMapable<PaginationRequestModel>.MapFrom(PaginationRequestModel? item)
+    {
+        if (item == null) return;
+        SearchKey = item.SearchKey;
+        OrderByColumn = item.OrderByColumn;
+        OrderType = item.OrderType;
+    }
+
+    PaginationRequestModel? IMapable<PaginationRequestModel>.MapTo()
+    {
+        return new PaginationRequestModel
+        {
+            SearchKey = SearchKey,
+            OrderByColumn = OrderByColumn,
+            OrderType = OrderType
+        };
+    }
+
+    // Map cap: FilesPaginationRequest <-> FilterDownloadModel
+    void IMapable<FilesPaginationRequest>.MapFrom(FilesPaginationRequest? item)
+    {
+        if (item == null) return;
+        HospitalId = item.HospitalId;
+        SearchKey = item.SearchKey;
+        OrderByColumn = item.OrderByColumn;
+        OrderType = item.OrderType;
+        FromDateIn = item.FromDateIn;
+        ToDateIn = item.ToDateIn;
+        FromDateOut = item.FromDateOut;
+        ToDateOut = item.ToDateOut;
+        FromDateCreate = item.FromDateCreate;
+        ToDateCreate = item.ToDateCreate;
+        FromDatePaid = item.FromDatePaid;
+        ToDatePaid = item.ToDatePaid;
+        FromHour = item.FromHour;
+        FromMin = item.FromMin;
+        ToHour = item.ToHour;
+        ToMin = item.ToMin;
+        Status = item.Status;
+        TypeKCB = item.TypeKCB;
+        Departments = item.Departments?.ToList() ?? new List<string>();
+        Errors = item.Errors?.ToList() ?? new List<string>();
+    }
+
+    FilesPaginationRequest? IMapable<FilesPaginationRequest>.MapTo()
+    {
+        return new FilesPaginationRequest
+        {
+            HospitalId = HospitalId,
+            SearchKey = SearchKey,
+            OrderByColumn = OrderByColumn,
+            OrderType = OrderType,
+            FromDateIn = FromDateIn,
+            ToDateIn = ToDateIn,
+            FromDateOut = FromDateOut,
+            ToDateOut = ToDateOut,
+            FromDateCreate = FromDateCreate,
+            ToDateCreate = ToDateCreate,
+            FromDatePaid = FromDatePaid,
+            ToDatePaid = ToDatePaid,
+            FromHour = FromHour,
+            FromMin = FromMin,
+            ToHour = ToHour,
+            ToMin = ToMin,
+            Status = Status,
+            TypeKCB = TypeKCB,
+            Departments = Departments?.ToList() ?? new List<string>(),
+            Errors = Errors?.ToList() ?? new List<string>()
+        };
+    }
 }

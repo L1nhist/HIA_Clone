@@ -3,7 +3,6 @@ using System.Linq.Expressions;
 using System.Net;
 using System.Reflection;
 using System.Security.Claims;
-using AutoMapper;
 using HIA.Core.Base;
 using HIA.Core.Languages.DisplayField;
 using HIA.Core.Languages.Message;
@@ -11,6 +10,7 @@ using HIA.Core.Models.Base;
 using HIA.Core.Models.Categories;
 using HIA.Core.Models.Pagination;
 using HIA.Core.Models.Token;
+using HIA.Data.Base;
 using HIA.Data.Catalogs;
 using HIA.Repositories.Base;
 using HIA.Services.Base;
@@ -29,7 +29,6 @@ public class DMKhoaBVService : IDMKhoaBVService
     private readonly IBaseRepository<DMKhoaBV> _dMKhoaBVRepo;
     private readonly ISysHistoryLogService _sysHistoryLogService;
     private readonly IHttpContextAccessor _httpContext;
-    private readonly IMapper _mapper;
     private readonly ILogger<DMKhoaBVService> _logger;
 
     public DMKhoaBVService(
@@ -38,7 +37,6 @@ public class DMKhoaBVService : IDMKhoaBVService
         IBaseRepository<DMKhoaBV> dMKhoaBVRepo,
         ISysHistoryLogService sysHistoryLogService,
         IHttpContextAccessor httpContext,
-        IMapper mapper,
         ILogger<DMKhoaBVService> logger)
     {
         _unitOfWork = unitOfWork;
@@ -46,7 +44,6 @@ public class DMKhoaBVService : IDMKhoaBVService
         _dMKhoaBVRepo = dMKhoaBVRepo;
         _sysHistoryLogService = sysHistoryLogService;
         _httpContext = httpContext;
-        _mapper = mapper;
         _logger = logger;
     }
 
@@ -284,13 +281,19 @@ public class DMKhoaBVService : IDMKhoaBVService
                 return res;
             }
 
-            var filterModel = _mapper.Map<FilterDownloadModel>(request);
+            var filterModel = new FilterDownloadModel();
+            ((IMapable<PaginationRequestModel>)filterModel).MapFrom(request);
             filterModel.IgnoreKeysForSearch = ignoreKeysForSearch;
             var queryable = BuildQueryToGetListData(filterModel, maCSKCB);
 
             PaginationResponseModel<DMKhoaBV> items = await _dMKhoaBVRepo.GetListPaginationCustomSortAsync(
                 request.PageIndex, request.PageNumber, queryable.FilterQueryable, queryable.OrderQueryable, queryable.IncludeQueryable);
-            var itemInfo = _mapper.Map<List<DMKhoaBVInfoBasicModel>>(items.Items.ToList());
+            var itemInfo = items.Items.Select(x =>
+            {
+                var m = new DMKhoaBVInfoBasicModel();
+                m.MapFrom(x);
+                return m;
+            }).ToList();
 
             res.Data = new PaginationResponseModel<DMKhoaBVInfoBasicModel>(items.TotalItems, itemInfo);
 
@@ -329,7 +332,7 @@ public class DMKhoaBVService : IDMKhoaBVService
                 return res;
             }
 
-            var savedModel = _mapper.Map<DMKhoaBV>(request);
+            var savedModel = request.MapTo() ?? throw new InvalidOperationException("Cannot map DMKhoaBV model to DMKhoaBV");
             savedModel.MA_CSKCB = maCSKCB;
             savedModel.TU_NGAY = DateTime.Now.ToString();
 
@@ -384,7 +387,7 @@ public class DMKhoaBVService : IDMKhoaBVService
                 res.Data = false;
                 return res;
             }
-            var savedModel = _mapper.Map<DMKhoaBV>(request);
+            var savedModel = request.MapTo() ?? throw new InvalidOperationException("Cannot map DMKhoaBV model to DMKhoaBV");
             var isExistUniqueFields = await CheckUniqueFieldsExist(savedModel, request.MA_CSKCB, false);
             if (isExistUniqueFields)
             {

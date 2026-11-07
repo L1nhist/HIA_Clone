@@ -56,13 +56,7 @@ namespace HIA.Web.Controllers
 
             if (res.Code == HttpStatusCode.OK && res.Data != null)
             {
-                return Ok(new
-                {
-                    draw = paniationRequest.Draw,
-                    recordsFiltered = res.Data.TotalItems,
-                    recordsTotal = res.Data.TotalItems,
-                    data = res.Data.Items,
-                });
+                return Ok(DataTableResponse.Create(paniationRequest.Draw, res.Data.TotalItems, res.Data.Items));
             }
 
             return Ok(res.Message);

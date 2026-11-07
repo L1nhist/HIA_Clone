@@ -1,9 +1,11 @@
 using HIA.Core.Languages.DisplayField;
+using HIA.Data.Base;
+using HIA.Data.Rules;
 using System.ComponentModel.DataAnnotations;
 
 namespace HIA.Core.Models.HDSD;
 
-public partial class HDSDDichVuInfoModel
+public partial class HDSDDichVuInfoModel : IMapable<HDSDDichVu>
 {
     public int Id { get; set; }
 
@@ -64,4 +66,58 @@ public partial class HDSDDichVuInfoModel
     public int? So_NGUOI_TOI_THIEU { get; set; }
 
     public string? Ma_DICH_VU_KO_CHECK { get; set; }
+
+    // Map cap: HDSDDichVu <-> HDSDDichVuInfoModel
+    public void MapFrom(HDSDDichVu? item)
+    {
+        if (item == null) return;
+        Id = item.HDSDDVID;
+        Ma_DICH_VU = item.MA_DICH_VU;
+        Ten_DICH_VU = item.TEN_DICH_VU;
+        Chi_DINH = item.CHI_DINH == true;
+        Do_TUOI = item.TUOI;
+        Co_THAI = item.CO_THAI == true;
+        Cho_CON_BU = item.CHO_CON_BU == true;
+        Ma_BENH = item.MA_BENH;
+        Thuoc_KHAC = item.THUOC_KHAC;
+        Ma_NHOM = item.MA_NHOM;
+        Dich_VU_KHAC = item.DICH_VU_KHAC;
+        Tien_SU_BENH = item.TIEN_SU_BENH;
+        Tyle_TT = item.TYLE_TT;
+        Thoi_GIAN_TOI_THIEU = item.THOI_GIAN_TOI_THIEU;
+        Thoi_GIAN_THUC_HIEN = item.THOI_GIAN_THUC_HIEN;
+        Hieu_LUC = item.HIEU_LUC;
+        Ma_CSKCB = item.MA_CSKCB;
+        Ma_LOAI_KCB = item.MA_LOAI_KCB;
+        So_NGUOI_TOI_THIEU = item.SO_NGUOI_TOI_THIEU;
+        Ma_DICH_VU_KO_CHECK = item.MA_DICH_VU_KO_CHECK;
+    }
+
+    // Map cap: HDSDDichVu <-> HDSDDichVuInfoModel
+    public HDSDDichVu? MapTo()
+    {
+        return new HDSDDichVu
+        {
+            HDSDDVID = Id,
+            MA_DICH_VU = Ma_DICH_VU,
+            TEN_DICH_VU = Ten_DICH_VU,
+            CHI_DINH = Chi_DINH,
+            TUOI = Do_TUOI,
+            CO_THAI = Co_THAI,
+            CHO_CON_BU = Cho_CON_BU,
+            MA_BENH = Ma_BENH,
+            THUOC_KHAC = Thuoc_KHAC,
+            MA_NHOM = Ma_NHOM,
+            DICH_VU_KHAC = Dich_VU_KHAC,
+            TIEN_SU_BENH = Tien_SU_BENH,
+            TYLE_TT = Tyle_TT,
+            THOI_GIAN_TOI_THIEU = Thoi_GIAN_TOI_THIEU,
+            THOI_GIAN_THUC_HIEN = Thoi_GIAN_THUC_HIEN,
+            HIEU_LUC = Hieu_LUC,
+            MA_CSKCB = Ma_CSKCB,
+            MA_LOAI_KCB = Ma_LOAI_KCB,
+            SO_NGUOI_TOI_THIEU = So_NGUOI_TOI_THIEU,
+            MA_DICH_VU_KO_CHECK = Ma_DICH_VU_KO_CHECK,
+        };
+    }
 }

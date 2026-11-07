@@ -10,7 +10,7 @@
 
 5/ run command as bellow:
 
-Scaffold-DbContext "data source=localhost;initial catalog=HIA_DB;user id=sa;password=Aa,123456;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entites -Context "HIADbContext" -f -UseDatabaseNames -Project HIA.DatabaseModel
+Scaffold-DbContext "data source=localhost;initial catalog=HIA_DB;trusted_connection=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entites -Context "HIADbContext" -f -UseDatabaseNames -Project HIA.DatabaseModel
 
 6/ remove Entites_1 folder
 

@@ -114,18 +114,18 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ky_HIEU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_MAY ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ten_THIET_BI ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.So_LUU_HANH))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Congty_SX))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Nuoc_SX))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Nam_SX))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Nam_SD))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Hd_TU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Hd_DEN))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Tu_NGAY ))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Den_NGAY ))" },
+                { data: "@nameof(modelDisplay.Ky_HIEU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ma_MAY ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ten_THIET_BI ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.So_LUU_HANH).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Congty_SX).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Nuoc_SX).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Nam_SX).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Nam_SD).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Hd_TU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Hd_DEN).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Tu_NGAY ).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Den_NGAY ).ToLowerInvariant()" },
                 {
                     render: function (data, type, row, meta) {
                         const editUrl = '@Url.Action(nameof(DMThietBiController.Edit), Uti.GetControllerName(nameof(DMThietBiController)))' + `?id=${row.tbid}`;
@@ -254,7 +254,7 @@
                         return;
                     }
 
-                    window.location = '@Url.Action(nameof(DMThietBiController.Download), Uti.GetControllerName(nameof(DMThietBiController)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    window.location = '@Url.Action(nameof(DMThietBiController.Download), Uti.GetControllerName(nameof(DMThietBiController)))' + `?fileGuid=${response.data.fileguid}&fileName=${response.data.filename}`;
                     setTimeout(() => {
                         $("#spinnerWrapper").modal("hide");
                         $("#btnDownload").removeClass('disabled-custom');

@@ -97,7 +97,7 @@ namespace HIA.DatabaseModel.Entites
             {
 
                 var logPath = Path.Combine(AppContext.BaseDirectory, "ef-log.txt");
-                optionsBuilder.UseSqlServer("Server=172.16.101.188,1433;Initial Catalog=HIA_NEO;User ID=khoi;Password=Alo123ma;Persist Security Info=True")
+                optionsBuilder.UseSqlServer("Server=172.16.101.188,1433;Initial Catalog=HIA_NEO;Trusted_Connection=True;Persist Security Info=True")
                                  .UseLoggerFactory(_loggerFactory)
                                 .EnableSensitiveDataLogging(); // hiển thị giá trị tham số như @__maCSKCB_0
             }

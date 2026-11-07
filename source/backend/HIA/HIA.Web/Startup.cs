@@ -1,8 +1,8 @@
 using System.Globalization;
+using System.Security.Claims;
 using System.Text;
 using HIA.Core.Base;
 using HIA.Core.Models.Token;
-using HIA.Web.Helper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
@@ -30,8 +30,6 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        var excludedEmails = new ExcludedEmailValidator(
-            Configuration.GetSection("AppSettings:ExcludedEmails").Get<string[]>() ?? Array.Empty<string>());
         var jwtKey = Configuration["Jwt:Key"] ?? throw new InvalidOperationException("Missing configuration: Jwt:Key");
 
         #region Authenticate
@@ -72,7 +70,11 @@ public class Startup
                     if (refresh != ClaimKey.REFRESH_CODE)
                         context.Fail(new Exception("Token not valid anymore"));
 
-                    var email = context.Principal?.FindFirst(ClaimKey.FULL_NAME)?.Value;
+                    // Doc email giong TokenHandler.IsTokenValid: NameIdentifier, neu rong thi Email
+                    var email = context.Principal?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                    if (string.IsNullOrWhiteSpace(email))
+                        email = context.Principal?.FindFirst(ClaimTypes.Email)?.Value;
+                    var excludedEmails = context.HttpContext.RequestServices.GetRequiredService<ExcludedEmailValidator>();
                     if (excludedEmails.IsExcluded(email))
                         context.Fail(new Exception("Token not valid anymore"));
 
@@ -93,6 +95,12 @@ public class Startup
         services.AddControllersWithViews(options =>
             {
                 options.MaxModelBindingCollectionSize = 10000;
+            })
+            .AddJsonOptions(options =>
+            {
+                // Cung chinh sach ten voi JsonDefaults (toan chu thuong); khong dung UnsafeRelaxedJsonEscaping cho MVC
+                options.JsonSerializerOptions.PropertyNamingPolicy = LowerCaseNamingPolicy.Instance;
+                options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
             })
             .AddMvcLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
             .AddSessionStateTempDataProvider();

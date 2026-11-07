@@ -148,13 +148,13 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_CSKCB))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_DICH_VU))" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Ma_MAY))" },
+                { data: "@nameof(modelDisplay.Ma_CSKCB).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ma_DICH_VU).ToLowerInvariant()" },
+                { data: "@nameof(modelDisplay.Ma_MAY).ToLowerInvariant()" },
                 {
                     render: function (data, type, row, meta) {
-                        const editUrl = '@Url.Action(nameof(DichVuMaMayController.Edit), Uti.GetControllerName(nameof(DichVuMaMayController)))' + `?id=${row.dvmmID}`;
-                        return `<a href="${editUrl}" class="edit-icon"><i class="icon-note"></i></a> <a href="#" class="del-icon" onclick="deleteOne(${row.dvmmID});return false;"><i class="icon-trash"></i></a>`;
+                        const editUrl = '@Url.Action(nameof(DichVuMaMayController.Edit), Uti.GetControllerName(nameof(DichVuMaMayController)))' + `?id=${row.dvmmid}`;
+                        return `<a href="${editUrl}" class="edit-icon"><i class="icon-note"></i></a> <a href="#" class="del-icon" onclick="deleteOne(${row.dvmmid});return false;"><i class="icon-trash"></i></a>`;
                     }
                 },
             ],
@@ -278,7 +278,7 @@
                         return;
                     }
 
-                    window.location = '@Url.Action(nameof(DichVuMaMayController.Download), Uti.GetControllerName(nameof(DichVuMaMayController)))' + `?fileGuid=${response.data.fileGuid}&fileName=${response.data.fileName}`;
+                    window.location = '@Url.Action(nameof(DichVuMaMayController.Download), Uti.GetControllerName(nameof(DichVuMaMayController)))' + `?fileGuid=${response.data.fileguid}&fileName=${response.data.filename}`;
                     setTimeout(() => {
                         $("#spinnerWrapper").modal("hide");
                         $("#btnDownload").removeClass('disabled-custom');

@@ -49,7 +49,7 @@ public static class FileTypeConstant
 
 public static class DataTableSettingDefault
 {
-    // Giu nguyen ten thuoc tinh (sEmptyTable, oPaginate...) nhu Newtonsoft: khong dung LowerCaseNamingPolicy
+    // Giu nguyen ten thuoc tinh (sEmptyTable, oPaginate...): khong dung LowerCaseNamingPolicy
     private static readonly JsonSerializerOptions _json = new()
     {
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping

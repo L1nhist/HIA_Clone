@@ -1,4 +1,3 @@
-using AutoMapper;
 using HIA.Core.Base;
 using HIA.Core.Languages.Message;
 using HIA.Core.Models.Base;
@@ -24,7 +23,6 @@ public class HDSDDichVuService : IHDSDDichVuService
     private readonly IDMErrorService130 _dmErrorService;
     private readonly ISysHistoryLogService _sysHistoryLogService;
     private readonly IHttpContextAccessor _httpContext;
-    private readonly IMapper _mapper;
     private readonly ILogger<HDSDDichVuService> _logger;
     public HDSDDichVuService(
         IUnitOfWork unitOfWork,
@@ -32,7 +30,6 @@ public class HDSDDichVuService : IHDSDDichVuService
         IDMErrorService130 dmErrorService,
         ISysHistoryLogService sysHistoryLogService,
         IHttpContextAccessor httpContext,
-        IMapper mapper,
         ILogger<HDSDDichVuService> logger
         )
     {
@@ -41,7 +38,6 @@ public class HDSDDichVuService : IHDSDDichVuService
         _dmErrorService = dmErrorService;
         _sysHistoryLogService = sysHistoryLogService;
         _httpContext = httpContext;
-        _mapper = mapper;
         _logger = logger;
     }
 
@@ -138,7 +134,9 @@ public class HDSDDichVuService : IHDSDDichVuService
             #endregion
 
             var item = await _hdsdDichVuRepository.GetById(hdsdID);
-            res.Data = _mapper.Map<ModifyHDSDDichVuModel>(item);
+            var itemData = item == null ? null : new ModifyHDSDDichVuModel();
+            itemData?.MapFrom(item);
+            res.Data = itemData;
         }
         catch (Exception ex)
         {
@@ -210,7 +208,7 @@ public class HDSDDichVuService : IHDSDDichVuService
                 return res;
             }
 
-            var savedModel = _mapper.Map<HDSDDichVu>(request);
+            var savedModel = request.MapTo() ?? throw new InvalidOperationException("Cannot map ModifyHDSDDichVuModel to HDSDDichVu");
             if (currentRole.Equals(RoleConstant.ADMIN))
             {
                 savedModel.MA_CSKCB = currentCSKCB;

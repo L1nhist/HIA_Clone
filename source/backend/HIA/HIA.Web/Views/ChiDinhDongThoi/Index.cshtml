@@ -88,13 +88,13 @@
                         @if (isAdmin == true)
                         {
                             <text>
-                                if (row.ma_CSKCB != '@curCSKCB') return '';
+                                if (row.ma_cskcb != '@curCSKCB') return '';
                             </text>
                         }
-                        var actSts = row.hieu_LUC ? 'pause' : 'play';
-                        var actTit = row.hieu_LUC ? 'Hủy bỏ hiệu lực của Chỉ định đồng thời' : 'Kích hoạt hiệu lực cho Chỉ định đồng thời';
-                        return `<a href="@Url.Action(nameof(ChiDinhDongThoiController.Edit), Uti.GetControllerName(nameof(ChiDinhDongThoiController)))?id=${row.cddtID}" class="edit-icon" title="Chỉnh sửa nội dung này"><i class="icon-note"></i></a>` + ' &nbsp; ' +
-                            `<a href="@Url.Action(nameof(ChiDinhDongThoiController.Activate), Uti.GetControllerName(nameof(ChiDinhDongThoiController)))?id=${row.cddtID}&sts=${!row.hieu_LUC}" class="del-icon" title="${actTit}"><i class="icon-control-${actSts}"></i></a>`;
+                        var actSts = row.hieu_luc ? 'pause' : 'play';
+                        var actTit = row.hieu_luc ? 'Hủy bỏ hiệu lực của Chỉ định đồng thời' : 'Kích hoạt hiệu lực cho Chỉ định đồng thời';
+                        return `<a href="@Url.Action(nameof(ChiDinhDongThoiController.Edit), Uti.GetControllerName(nameof(ChiDinhDongThoiController)))?id=${row.cddtid}" class="edit-icon" title="Chỉnh sửa nội dung này"><i class="icon-note"></i></a>` + ' &nbsp; ' +
+                            `<a href="@Url.Action(nameof(ChiDinhDongThoiController.Activate), Uti.GetControllerName(nameof(ChiDinhDongThoiController)))?id=${row.cddtid}&sts=${!row.hieu_luc}" class="del-icon" title="${actTit}"><i class="icon-control-${actSts}"></i></a>`;
                     },
                     className: "w-50"
                 },
@@ -105,53 +105,53 @@
                     className: "w-50"
                 },
                 {
-                    data: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Chi_DINH))",
+                    data: "@nameof(ChiDinhDongThoiInfoModel.Chi_DINH).ToLowerInvariant()",
                     render: function(data, type, row, meta) {
                         return data ? '&#10004;' : '&#10006;';
                     },
                     className: "w-50"
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Ma_DICH_VU))", className: "w-350" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Dich_VU_KHAC))", className: "w-350" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Vat_TU_BHYT))", className: "w-350" },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Vat_TU_KO_BH))", className: "w-350" },
+                { data: "@nameof(ChiDinhDongThoiInfoModel.Ma_DICH_VU).ToLowerInvariant()", className: "w-350" },
+                { data: "@nameof(ChiDinhDongThoiInfoModel.Dich_VU_KHAC).ToLowerInvariant()", className: "w-350" },
+                { data: "@nameof(ChiDinhDongThoiInfoModel.Vat_TU_BHYT).ToLowerInvariant()", className: "w-350" },
+                { data: "@nameof(ChiDinhDongThoiInfoModel.Vat_TU_KO_BH).ToLowerInvariant()", className: "w-350" },
                 {
-                    data: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Cung_LOAI))",
-                    name: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Cung_LOAI))",
+                    data: "@nameof(ChiDinhDongThoiInfoModel.Cung_LOAI).ToLowerInvariant()",
+                    name: "@nameof(ChiDinhDongThoiInfoModel.Cung_LOAI).ToLowerInvariant()",
                     autoWidth: true,
                     render: function (data, type, row, meta) {
-                        const fld = "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Cung_LOAI))";
+                        const fld = "@nameof(ChiDinhDongThoiInfoModel.Cung_LOAI).ToLowerInvariant()";
                         return row[fld] == 1 ? '&#10004;' : '&#10006;';
                     },
                     className: "w-50"
                 },
                 {
-                    data: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Cung_LOAI))",
-                    name: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Cung_LOAI))",
+                    data: "@nameof(ChiDinhDongThoiInfoModel.Cung_LOAI).ToLowerInvariant()",
+                    name: "@nameof(ChiDinhDongThoiInfoModel.Cung_LOAI).ToLowerInvariant()",
                     autoWidth: true,
                     render: function (data, type, row, meta) {
-                        const fld = "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Cung_LOAI))";
+                        const fld = "@nameof(ChiDinhDongThoiInfoModel.Cung_LOAI).ToLowerInvariant()";
                         return row[fld] == 2 ? '&#10004;' : '&#10006;';
                     },
                     className: "w-50"
                 },
                 {
-                    data: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Cung_LOAI))",
-                    name: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Cung_LOAI))",
+                    data: "@nameof(ChiDinhDongThoiInfoModel.Cung_LOAI).ToLowerInvariant()",
+                    name: "@nameof(ChiDinhDongThoiInfoModel.Cung_LOAI).ToLowerInvariant()",
                     autoWidth: true,
                     render: function (data, type, row, meta) {
-                        const fld = "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Cung_LOAI))";
+                        const fld = "@nameof(ChiDinhDongThoiInfoModel.Cung_LOAI).ToLowerInvariant()";
                         return row[fld] == 3 ? '&#10004;' : '&#10006;';
                     },
                     className: "w-50"
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Noi_DUNG_LOI))", className: "w-650" },
+                { data: "@nameof(ChiDinhDongThoiInfoModel.Noi_DUNG_LOI).ToLowerInvariant()", className: "w-650" },
                 {
-                    data: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Hieu_LUC))",
-                    name: "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Hieu_LUC))",
+                    data: "@nameof(ChiDinhDongThoiInfoModel.Hieu_LUC).ToLowerInvariant()",
+                    name: "@nameof(ChiDinhDongThoiInfoModel.Hieu_LUC).ToLowerInvariant()",
                     autoWidth: true,
                     render: function (data, type, row, meta) {
-                        const isActived = "@Uti.SetLowerCaseFirstChar(nameof(ChiDinhDongThoiInfoModel.Hieu_LUC))";
+                        const isActived = "@nameof(ChiDinhDongThoiInfoModel.Hieu_LUC).ToLowerInvariant()";
                         return row[isActived]
                             ? `<span class="status-active">@DisplayFieldResource.ACTIVE</span>`
                             : `<span class="status-inactive">@DisplayFieldResource.INACTIVE</span>`;
@@ -160,9 +160,9 @@
                 },
             ],
             createdRow: function (row, data, dataIndex) {
-                if (data.hieu_LUC)
+                if (data.hieu_luc)
                 {
-                    var bgColor = data.chi_DINH ? "LimeGreen" : "OrangeRed";
+                    var bgColor = data.chi_dinh ? "LimeGreen" : "OrangeRed";
                     $(row).css("color", bgColor);
                 }
             },

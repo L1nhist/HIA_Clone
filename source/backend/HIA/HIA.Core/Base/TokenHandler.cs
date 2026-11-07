@@ -15,11 +15,13 @@ public class TokenHandler
 {
     private readonly IConfiguration _configuration;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly ExcludedEmailValidator _excludedEmails;
 
-    public TokenHandler(IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+    public TokenHandler(IConfiguration configuration, IHttpContextAccessor httpContextAccessor, ExcludedEmailValidator excludedEmails)
     {
         _configuration = configuration;
         _httpContextAccessor = httpContextAccessor;
+        _excludedEmails = excludedEmails;
     }
 
     public TokenResponseModel BuildToken(TokenRequestModel request)
@@ -140,7 +142,7 @@ public class TokenHandler
             }
 
             //Linhist added 13/01/26
-            if (email == "donhuquynh2503@gmail.com")
+            if (_excludedEmails.IsExcluded(email))
             {
                 res.Code = System.Net.HttpStatusCode.NotFound;
                 return res;

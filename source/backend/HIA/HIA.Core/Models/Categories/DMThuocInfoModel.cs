@@ -1,9 +1,11 @@
+using HIA.Data.Base;
+using HIA.Data.Catalogs;
 using HIA.Core.Languages.DisplayField;
 using System.ComponentModel.DataAnnotations;
 
 namespace HIA.Core.Models.Categories;
 
-public class DMThuocInfoModel
+public class DMThuocInfoModel : IMapable<DMThuoc>
 {
     public int THID { get; set; }
 
@@ -93,4 +95,77 @@ public class DMThuocInfoModel
 
     [Display(Name = nameof(DisplayFieldResource.PP_CHE_BIEN), ResourceType = typeof(DisplayFieldResource))]
     public string? Pp_CHE_BIEN { get; set; }
+
+    // Map cap: DMThuoc <-> DMThuocInfoModel
+    public void MapFrom(DMThuoc? item)
+    {
+        if (item == null) return;
+        THID = item.THID;
+        Ma_CSKCB = item.MA_CSKCB;
+        Ma_THUOC = item.MA_THUOC;
+        Ten_THUOC = item.TEN_THUOC;
+        Ten_HOAT_CHAT = item.TEN_HOAT_CHAT;
+        Loai_THUOC = item.LOAI_THUOC;
+        Ma_DUONG_DUNG = item.MA_DUONG_DUNG;
+        Duong_DUNG = item.DUONG_DUNG;
+        Ham_LUONG = item.HAM_LUONG;
+        Dang_BAO_CHE = item.DANG_BAO_CHE;
+        Don_VI_TINH = item.DON_VI_TINH;
+        Don_GIA = item.DON_GIA;
+        Don_GIA_BH = item.DON_GIA_BH;
+        So_LUONG = item.SO_LUONG;
+        Quy_CACH = item.QUY_CACH;
+        So_DANG_KY = item.SO_DANG_KY;
+        Ma_DVKT = item.MA_DVKT;
+        Nuoc_SX = item.NUOC_SX;
+        Nha_SX = item.NHA_SX;
+        Nha_THAU = item.NHA_THAU;
+        Nhom_THAU = item.NHOM_THAU;
+        Loai_THAU = item.LOAI_THAU;
+        Tt_THAU = item.TT_THAU;
+        Ht_THAU = item.HT_THAU;
+        MaNHOM_9324 = item.MANHOM_9324;
+        MaNHOM_5937 = item.MANHOM_5937;
+        Tu_NGAY = item.TU_NGAY;
+        Den_NGAY = item.DEN_NGAY;
+        Ngay_DE_NGHI = item.NGAY_DE_NGHI;
+        Pp_CHE_BIEN = item.PP_CHEBIEN;
+    }
+
+    public DMThuoc? MapTo()
+    {
+        return new DMThuoc
+        {
+            THID = THID,
+            MA_CSKCB = Ma_CSKCB ?? string.Empty,
+            MA_THUOC = Ma_THUOC,
+            TEN_THUOC = Ten_THUOC,
+            TEN_HOAT_CHAT = Ten_HOAT_CHAT,
+            LOAI_THUOC = Loai_THUOC,
+            MA_DUONG_DUNG = Ma_DUONG_DUNG,
+            DUONG_DUNG = Duong_DUNG,
+            HAM_LUONG = Ham_LUONG,
+            DANG_BAO_CHE = Dang_BAO_CHE,
+            DON_VI_TINH = Don_VI_TINH,
+            DON_GIA = Don_GIA,
+            DON_GIA_BH = Don_GIA_BH,
+            SO_LUONG = So_LUONG,
+            QUY_CACH = Quy_CACH,
+            SO_DANG_KY = So_DANG_KY,
+            MA_DVKT = Ma_DVKT,
+            NUOC_SX = Nuoc_SX,
+            NHA_SX = Nha_SX,
+            NHA_THAU = Nha_THAU,
+            NHOM_THAU = Nhom_THAU,
+            LOAI_THAU = Loai_THAU,
+            TT_THAU = Tt_THAU,
+            HT_THAU = Ht_THAU,
+            MANHOM_9324 = MaNHOM_9324,
+            MANHOM_5937 = MaNHOM_5937,
+            TU_NGAY = Tu_NGAY,
+            DEN_NGAY = Den_NGAY,
+            NGAY_DE_NGHI = Ngay_DE_NGHI,
+            PP_CHEBIEN = Pp_CHE_BIEN
+        };
+    }
 }

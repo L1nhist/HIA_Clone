@@ -81,18 +81,18 @@
                     },
                     className: "w-50"
                 },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.HospitalName))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.HospitalName))", autoWidth: true },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Email))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.Email))", autoWidth: true },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.RoleName))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.RoleName))", autoWidth: true },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.FullName))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.FullName))", autoWidth: true },
-                { data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.PhoneNumber))", name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.PhoneNumber))", autoWidth: true },
+                { data: "@nameof(modelDisplay.HospitalName).ToLowerInvariant()", name: "@nameof(modelDisplay.HospitalName).ToLowerInvariant()", autoWidth: true },
+                { data: "@nameof(modelDisplay.Email).ToLowerInvariant()", name: "@nameof(modelDisplay.Email).ToLowerInvariant()", autoWidth: true },
+                { data: "@nameof(modelDisplay.RoleName).ToLowerInvariant()", name: "@nameof(modelDisplay.RoleName).ToLowerInvariant()", autoWidth: true },
+                { data: "@nameof(modelDisplay.FullName).ToLowerInvariant()", name: "@nameof(modelDisplay.FullName).ToLowerInvariant()", autoWidth: true },
+                { data: "@nameof(modelDisplay.PhoneNumber).ToLowerInvariant()", name: "@nameof(modelDisplay.PhoneNumber).ToLowerInvariant()", autoWidth: true },
                 {
-                    data: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.IsActivated))",
-                    name: "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.IsActivated))",
+                    data: "@nameof(modelDisplay.IsActivated).ToLowerInvariant()",
+                    name: "@nameof(modelDisplay.IsActivated).ToLowerInvariant()",
                     autoWidth: true,
                     render: function (data, type, row, meta) {
-                        const isActived = "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.IsActivated))";
-                        const isFirstTimeLogin = "@Uti.SetLowerCaseFirstChar(nameof(modelDisplay.IsFirstTimeLogin))";
+                        const isActived = "@nameof(modelDisplay.IsActivated).ToLowerInvariant()";
+                        const isFirstTimeLogin = "@nameof(modelDisplay.IsFirstTimeLogin).ToLowerInvariant()";
                         return row[isFirstTimeLogin]
                             ? `<span class="status-pending">@DisplayFieldResource.PENDING</span>`
                             : (row[isActived]
